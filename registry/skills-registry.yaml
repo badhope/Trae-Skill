@@ -1,0 +1,224 @@
+# Skills Registry
+# Skills 中央注册表
+# 最后更新：2026-03-19
+
+skills:
+
+  # ==================== CODING ====================
+
+  - id: skill-coding-v1
+    name: Coding
+    path: .trae/skills/coding/SKILL.md
+    category: coding
+    tags: [coding, code-generation, implementation]
+    summary: 代码生成、实现、审查的完整能力
+    intent: 提供编程任务的基础能力支持
+    typical_use_cases:
+      - 从需求生成代码
+      - 从规格实现功能
+      - 代码审查
+    related_prompts:
+      - prompt-task-coding-generate-code
+      - prompt-task-coding-implement-feature
+      - prompt-task-coding-review-code
+    related_workflows:
+      - workflow-feature-implementation
+    status: active
+
+  - id: skill-coding-code-review-v1
+    name: Code Review
+    path: skills/coding/skill-coding-code-review.md
+    category: coding
+    tags: [coding, review, quality]
+    summary: 对代码进行全面质量审查
+    intent: 提高代码质量，发现潜在问题
+    typical_use_cases:
+      - 提交代码前审查
+      - Code review 同事的代码
+      - 学习他人代码
+    related_prompts:
+      - prompt-task-coding-review-code
+    related_workflows: []
+    status: active
+
+  - id: skill-coding-bug-fixing-v1
+    name: Bug Fixing
+    path: skills/coding/skill-coding-bug-fixing.md
+    category: coding
+    tags: [coding, bug-fixing, debugging]
+    summary: 安全修复 Bug 的技术
+    intent: 在理解根因的基础上实施安全修复
+    typical_use_cases:
+      - 已确定 Bug 原因后的修复
+      - 需要确保修复安全时
+      - 需要验证修复时
+    related_prompts:
+      - prompt-task-debugging-fix-bug
+      - prompt-task-debugging-verify-fix
+    related_workflows:
+      - workflow-bug-investigation
+    status: active
+
+  # ==================== DEBUGGING ====================
+
+  - id: skill-debugging-v1
+    name: Debugging
+    path: .trae/skills/debugging/SKILL.md
+    category: debugging
+    tags: [debugging, root-cause, analysis]
+    summary: 系统性调试：识别根因、生成计划、安全修复、验证结果
+    intent: 提供完整的调试方法论
+    typical_use_cases:
+      - 调查 Bug 根本原因
+      - 制定调试计划
+      - 验证修复结果
+    related_prompts:
+      - prompt-task-debugging-identify-root-cause
+      - prompt-task-debugging-generate-plan
+      - prompt-task-debugging-fix-bug
+      - prompt-task-debugging-verify-fix
+    related_workflows:
+      - workflow-bug-investigation
+      - workflow-tool-assisted-debug
+    status: active
+
+  # ==================== REPO ANALYSIS ====================
+
+  - id: skill-repo-analysis-v1
+    name: Repo Analysis
+    path: .trae/skills/repo-analysis/SKILL.md
+    category: repo-analysis
+    tags: [repo-analysis, structure, architecture]
+    summary: 仓库结构分析、文件定位、架构总结
+    intent: 帮助理解陌生代码库
+    typical_use_cases:
+      - 接手新项目
+      - 了解项目结构
+      - 定位特定文件
+    related_prompts:
+      - prompt-task-repo-analysis-structure
+      - prompt-task-repo-analysis-locate-files
+      - prompt-task-repo-analysis-summarize-architecture
+    related_workflows:
+      - workflow-new-repo-onboarding
+      - workflow-repo-reading-to-change
+    status: active
+
+  # ==================== PLANNING ====================
+
+  - id: skill-planning-v1
+    name: Planning
+    path: .trae/skills/planning/SKILL.md
+    category: planning
+    tags: [planning, task-decomposition, execution-plan]
+    summary: 任务分解、计划制定、执行规划
+    intent: 帮助将复杂任务拆解为可执行的步骤
+    typical_use_cases:
+      - 任务太大需要拆解
+      - 需要制定执行计划
+      - 估算工作量
+    related_prompts:
+      - prompt-task-planning-break-down
+      - prompt-task-planning-create-plan
+    related_workflows: []
+    status: active
+
+  # ==================== RESEARCH ====================
+
+  - id: skill-research-v1
+    name: Research
+    path: .trae/skills/research/SKILL.md
+    category: research
+    tags: [research, investigation, evaluation]
+    summary: 信息收集、主题研究、方案评估
+    intent: 帮助深入研究主题并生成结构化结论
+    typical_use_cases:
+      - 调研某个主题
+      - 对比多个方案
+      - 评估技术选型
+    related_prompts:
+      - prompt-task-research-brief
+    related_workflows:
+      - workflow-research-to-summary
+    status: active
+
+  # ==================== ROUTING ====================
+
+  - id: skill-routing-v1
+    name: Routing
+    path: skills/routing/skill-routing.md
+    category: routing
+    tags: [routing, task-identification, selection]
+    summary: 路由和任务类型识别
+    intent: 帮助 AI 理解用户需求并路由到合适的资源
+    typical_use_cases:
+      - 用户需求不明确时判断任务类型
+      - 从多个候选中选择合适的 prompts
+      - 组合多个 prompts 处理复杂任务
+    related_prompts:
+      - prompt-routing-scan-repository
+      - prompt-routing-identify-task-type
+      - prompt-routing-select-relevant
+      - prompt-routing-compose
+    related_workflows:
+      - workflow-vague-request-to-action
+      - workflow-prompt-selection-composition
+    status: active
+
+  # ==================== TOOL-USE ====================
+
+  - id: skill-tool-use-v1
+    name: Tool Use
+    path: skills/tool-use/skill-tool-use.md
+    category: tool-use
+    tags: [tool-use, file-reading, command-execution]
+    summary: 工具使用的指导和安全规范
+    intent: 确保 AI 安全、高效地使用各种工具
+    typical_use_cases:
+      - 读取文件获取信息
+      - 执行命令验证结果
+      - 组合多个工具的结果
+    related_prompts:
+      - prompt-tool-use-read-files
+      - prompt-tool-use-use-command
+      - prompt-tool-use-combine-results
+    related_workflows:
+      - workflow-tool-assisted-debug
+    status: active
+
+  # ==================== PROMPT-COMPOSITION ====================
+
+  - id: skill-prompt-composition-v1
+    name: Prompt Composition
+    path: skills/prompt-composition/skill-prompt-composition.md
+    category: prompt-composition
+    tags: [prompt-composition, workflow, orchestration]
+    summary: 将多个 prompts 组合为连贯工作流
+    intent: 指导 AI 如何将简单 prompts 组装成复杂工作流
+    typical_use_cases:
+      - 复杂任务需要多个步骤时
+      - 确定 prompts 执行顺序
+      - 在 prompts 之间传递参数
+    related_prompts:
+      - prompt-routing-compose
+      - prompt-routing-select-relevant
+    related_workflows:
+      - workflow-prompt-selection-composition
+    status: active
+
+  # ==================== WRITING ====================
+
+  - id: skill-writing-article-draft-v1
+    name: Article Draft Writing
+    path: skills/writing/skill-writing-article-draft.md
+    category: writing
+    tags: [writing, article, content-generation]
+    summary: 生成结构化文章草稿
+    intent: 帮助生成高质量的文章内容
+    typical_use_cases:
+      - 需要生成文章内容时
+      - 头脑风暴整理思路
+      - 撰写文档
+    related_prompts: []
+    related_workflows: []
+    status: active
