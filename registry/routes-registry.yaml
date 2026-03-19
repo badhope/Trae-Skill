@@ -161,7 +161,7 @@ routes:
       - skill-repo-analysis
     recommended_workflows:
       - workflow-new-repo-onboarding
-      - workflow-repo-reading-to-change
+      - workflow-repo-reading-to-change-plan
     optional_supporting_prompts:
       - prompt-tool-use-analyze-folder
       - prompt-tool-use-read-files
@@ -204,15 +204,15 @@ routes:
     description: 任务规划、分解、执行计划相关任务
     first_step: |
       判断规划需求：
-      - 如果任务太大需要拆解 → 使用 prompt-task-planning-break-down
-      - 如果需要详细执行计划 → 使用 prompt-task-planning-create-plan
+      - 如果任务太大需要拆解 → 使用 prompt-task-planning-break-down-task-into-subtasks
+      - 如果需要详细执行计划 → 使用 prompt-task-planning-create-execution-plan
     required_questions:
       - "目标是什么？"
       - "有什么约束条件吗？（时间、资源、技术等）"
       - "优先级是什么？"
     recommended_prompts:
-      - prompt-task-planning-break-down
-      - prompt-task-planning-create-plan
+      - prompt-task-planning-break-down-task-into-subtasks
+      - prompt-task-planning-create-execution-plan
     recommended_skills:
       - skill-planning
     recommended_workflows: []
