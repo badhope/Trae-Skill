@@ -303,11 +303,280 @@ skills:
     related_workflows: []
     status: active
 
+  # ==================== MCU DEVELOPMENT ====================
+
+  - id: skill-mcu-main-v1
+    name: MCU Development
+    path: skills/mcu/skill-mcu-main.md
+    category: mcu
+    tags: [mcu, embedded, microcontroller, arm, avr, riscv, esp32, stm32]
+    summary: 微控制器单元开发与嵌入式系统设计指南
+    intent: 提供微控制器开发、驱动编写、硬件抽象层设计的完整技术指导
+    typical_use_cases:
+      - 需要开发嵌入式系统时
+      - 需要编写MCU外设驱动时
+      - 需要设计硬件抽象层时
+      - 需要优化嵌入式代码时
+    related_prompts:
+      - prompt-task-mcu-generate-gpio-driver
+      - prompt-task-mcu-generate-uart-driver
+      - prompt-task-mcu-design-hal-layer
+    related_workflows: []
+    status: active
+
+  # ==================== DEVOPS ====================
+
+  - id: skill-devops-main-v1
+    name: DevOps Engineering
+    path: skills/devops/skill-devops-main.md
+    category: devops
+    tags: [devops, ci-cd, infrastructure, docker, kubernetes, terraform, ansible]
+    summary: DevOps实践、CI/CD流水线与基础设施自动化指南
+    intent: 提供DevOps全流程工具链集成和自动化实施能力
+    typical_use_cases:
+      - 构建CI/CD流水线
+      - 容器化应用部署
+      - 基础设施即代码
+      - 自动化运维
+    related_prompts:
+      - prompt-task-devops-design-pipeline
+      - prompt-task-devops-dockerize-application
+      - prompt-task-devops-write-kubernetes-config
+    related_workflows: []
+    status: active
+
+  # ==================== DATA VISUALIZATION ====================
+
+  - id: skill-data-visualization-main-v1
+    name: Data Visualization
+    path: skills/data-visualization/skill-data-visualization-main.md
+    category: data-visualization
+    tags: [visualization, charts, graphs, data, dashboard, reporting]
+    summary: 数据可视化与图表生成指南
+    intent: 提供数据可视化设计原则和图表生成最佳实践
+    typical_use_cases:
+      - 需要将数据可视化时
+      - 设计数据仪表盘时
+      - 生成报表图表时
+      - 选择合适的图表类型时
+    related_prompts:
+      - prompt-task-dataviz-select-chart-type
+      - prompt-task-dataviz-design-dashboard
+      - prompt-task-dataviz-create-chart-config
+    related_workflows: []
+    status: active
+
+  # ==================== SECURITY ====================
+
+  - id: skill-security-main-v1
+    name: Security Engineering
+    path: skills/security/skill-security-main.md
+    category: security
+    tags: [security, vulnerability, encryption, authentication, authorization]
+    summary: 安全编码、漏洞防护与安全架构设计指南
+    intent: 提供安全开发实践和漏洞防护技术指导
+    typical_use_cases:
+      - 进行代码安全审计时
+      - 需要实现身份认证时
+      - 防止常见安全漏洞时
+      - 设计安全架构时
+    related_prompts:
+      - prompt-task-security-audit-code
+      - prompt-task-security-implement-auth
+      - prompt-task-security-review-architecture
+    related_workflows: []
+    status: active
+
+  # ==================== LEARNING SUPPORT ====================
+
+  - id: skill-learning-support-main-v1
+    name: Learning Support
+    path: skills/learning-support/skill-learning-support-main.md
+    category: learning-support
+    tags: [learning, education, teaching, knowledge, study, training]
+    summary: 个性化学习支持与知识巩固指南
+    intent: 提供个性化学习路径规划和知识巩固策略
+    typical_use_cases:
+      - 需要制定学习计划时
+      - 巩固已学知识时
+      - 识别知识盲区时
+      - 评估学习进度时
+    related_prompts:
+      - prompt-general-learning-support-generate-learning-plan
+      - prompt-general-learning-support-identify-gaps
+      - prompt-general-learning-support-quiz-user
+    related_workflows: []
+    status: active
+
+  # ==================== REFLECTION ====================
+
+  - id: skill-reflection-main-v1
+    name: Self Reflection
+    path: skills/reflection/skill-reflection-main.md
+    category: reflection
+    tags: [reflection, self-improvement, learning, growth, metacognition]
+    summary: 系统性自我反思与持续改进指南
+    intent: 提供结构化反思方法论和持续改进策略
+    typical_use_cases:
+      - 项目复盘时
+      - 识别重复问题时
+      - 制定改进计划时
+      - 日常反思时
+    related_prompts:
+      - prompt-general-reflection-guide-daily-reflection
+      - prompt-general-reflection-identify-patterns
+      - prompt-general-reflection-turn-into-actionable-lessons
+    related_workflows: []
+    status: active
+
+  # ==================== PERSONAL ====================
+
+  - id: skill-personal-main-v1
+    name: Personal Assistant
+    path: skills/personal/skill-personal-main.md
+    category: personal
+    tags: [personal, life, productivity, organization, planning, daily]
+    summary: 个人生活管理与日常助手指南
+    intent: 提供个人任务管理、日程规划和日常事务处理能力
+    typical_use_cases:
+      - 管理个人任务时
+      - 规划日程时
+      - 整理思绪时
+      - 日常对话时
+    related_prompts:
+      - prompt-general-personal-act-as-daily-life-assistant
+      - prompt-general-personal-help-organize-tasks
+      - prompt-general-personal-turn-chaotic-thoughts-into-clear-notes
+    related_workflows: []
+    status: active
+
+  # ==================== CREATIVE SPECIAL ====================
+
+  - id: skill-creative-special-main-v1
+    name: Creative Writing Assistant
+    path: skills/creative-special/skill-creative-special-main.md
+    category: creative-special
+    tags: [creative, writing, content-generation, storytelling, marketing, social-media]
+    summary: 创意写作与特殊场景内容生成指南
+    intent: 提供创意内容生成和多场景文案撰写能力
+    typical_use_cases:
+      - 需要创意写作时
+      - 生成营销文案时
+      - 社交媒体内容创作时
+      - 故事创作时
+    related_prompts:
+      - prompt-general-creative-special-create-worldbuilding-guide
+      - prompt-task-creative-write-marketing-content
+    related_workflows: []
+    status: active
+
+  # ==================== DOCUMENTATION ====================
+
+  - id: skill-documentation-main-v1
+    name: Documentation Generation
+    path: skills/documentation/skill-documentation-main.md
+    category: documentation
+    tags: [documentation, docs, api-docs, readme, guide, specification]
+    summary: 代码与项目文档的自动生成与管理指南
+    intent: 提供文档自动生成和维护的最佳实践
+    typical_use_cases:
+      - 生成API文档时
+      - 编写README时
+      - 创建技术规范时
+      - 维护项目文档时
+    related_prompts:
+      - prompt-task-documentation-generate-api-docs
+      - prompt-task-documentation-write-readme
+    related_workflows:
+      - workflow-documentation-generation
+    status: active
+
+  # ==================== ENGINEERING PLANNING ====================
+
+  - id: skill-engineering-planning-main-v1
+    name: Engineering Planning
+    path: skills/engineering-planning/skill-engineering-planning-main.md
+    category: engineering-planning
+    tags: [planning, engineering, roadmap, estimation, project-management, milestone]
+    summary: 技术项目规划与执行的系统性方法论
+    intent: 提供工程项目规划、估算和风险管理能力
+    typical_use_cases:
+      - 制定技术路线图时
+      - 项目估算时
+      - 定义验收标准时
+      - 分解工程任务时
+    related_prompts:
+      - prompt-task-engineering-planning-estimate-risk-and-dependencies
+      - prompt-task-engineering-planning-define-acceptance-criteria
+      - prompt-task-engineering-planning-break-feature-into-engineering-tasks
+    related_workflows: []
+    status: active
+
+  # ==================== TESTING ====================
+
+  - id: skill-testing-main-v1
+    name: Test Generation
+    path: skills/testing/skill-testing-main.md
+    category: testing
+    tags: [testing, test-generation, quality, verification, tdd, bdd]
+    summary: 系统化测试生成策略与执行指南
+    intent: 提供测试策略规划和测试用例生成能力
+    typical_use_cases:
+      - 制定测试策略时
+      - 生成单元测试时
+      - 创建回归测试计划时
+      - 生成手动验证清单时
+    related_prompts:
+      - prompt-task-testing-generate-test-strategy
+      - prompt-task-testing-create-regression-test-plan
+      - prompt-task-testing-generate-manual-verification-checklist
+    related_workflows: []
+    status: active
+
+  # ==================== REFACTORING ====================
+
+  - id: skill-refactoring-main-v1
+    name: Code Refactoring
+    path: skills/refactoring/skill-refactoring-main.md
+    category: refactoring
+    tags: [refactoring, code-quality, maintainability, architecture, improvement]
+    summary: 系统性代码重构流程，从分析到实施的完整指南
+    intent: 提供代码质量分析和重构实施能力
+    typical_use_cases:
+      - 需要重构代码时
+      - 改进代码可读性时
+      - 消除重复代码时
+      - 提升代码性能时
+    related_prompts:
+      - prompt-task-refactoring-propose-refactoring-plan
+      - prompt-task-refactoring-remove-duplication-safely
+      - prompt-task-refactoring-refactor-under-constraints
+    related_workflows: []
+    status: active
+
+  - id: skill-refactoring-extract-module-v1
+    name: Extract Reusable Module
+    path: skills/refactoring/skill-refactoring-extract-module.md
+    category: refactoring
+    tags: [refactoring, module-extraction, reusability, dry, extraction]
+    summary: 从现有代码中提取可复用模块的专业流程
+    intent: 提供模块提取和复用设计指导
+    typical_use_cases:
+      - 需要提取可复用模块时
+      - 消除重复代码时
+      - 设计库或框架时
+      - 重构代码组织结构时
+    related_prompts:
+      - prompt-task-refactoring-extract-module
+      - prompt-task-refactoring-identify-duplication
+    related_workflows: []
+    status: active
+
 # ==================== METADATA ====================
 
 metadata:
-  version: v1.1.0
-  last_updated: 2026-03-20
-  total_skills: 14
+  version: v1.2.0
+  last_updated: 2026-03-22
+  total_skills: 30
   canonical_directory: skills/
   note: All skill paths now reference the canonical skills/ directory

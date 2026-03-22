@@ -9,7 +9,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from context_memory.manager import MemoryManager, ContextAssembler
 from rl_engine.engine import RLEngine, RLConfig
 from mcp_tools.framework import MCPFramework
-from mcp_tools.tools import CodeQualityCheckerTool, TestGeneratorTool
+from mcp_tools.tools import CodeQualityCheckerTool, UnitTestGeneratorTool
 
 
 class TestPerformance(unittest.TestCase):
@@ -18,7 +18,7 @@ class TestPerformance(unittest.TestCase):
         self.rl_engine = RLEngine(RLConfig())
         self.mcp_framework = MCPFramework()
         self.mcp_framework.register_tool(CodeQualityCheckerTool())
-        self.mcp_framework.register_tool(TestGeneratorTool())
+        self.mcp_framework.register_tool(UnitTestGeneratorTool())
 
     def test_memory_search_performance(self):
         for i in range(100):

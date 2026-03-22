@@ -383,7 +383,7 @@ class {subject_name}:
 
 class Concrete{observer_name}({observer_name}):
     def update(self, subject):
-        print(f"Observer: State is {{subject.state}}}")"""
+        print("Observer: State is " + str(subject.state))"""
 
 
 class Strategy(DesignPattern):
@@ -493,8 +493,8 @@ class ConcreteDecorator(Decorator):
         return "Decorator"
 
     def operation(self) -> str:
-        return f"{{self._component.operation()}} + {{self.added_behavior()}}""""
-        )
+        return self._component.operation() + " + " + self.added_behavior()"""
+    )
 
     def generate_code(self, **kwargs) -> str:
         component_name = kwargs.get("component_name", "Component")
@@ -520,7 +520,7 @@ class {decorator_name}({component_name}):
         pass
 
     def operation(self) -> str:
-        return f"{{self._component.operation()}} + {{self.added_behavior()}}"
+        return self._component.operation() + " + " + self.added_behavior()
 
 class Concrete{decorator_name}({decorator_name}):
     def added_behavior(self):
@@ -552,46 +552,39 @@ class Facade:
         self._subsystem_b = SubsystemB()
 
     def operation(self):
-        return f"{{self._subsystem_a.operation_a()}} and {{self._subsystem_b.operation_b()}}""""
+        return self._subsystem_a.operation_a() + " and " + self._subsystem_b.operation_b()"""""
         )
 
     def generate_code(self, **kwargs) -> str:
         subsystems = kwargs.get("subsystems", ["SubsystemA", "SubsystemB"])
+        sub_a = subsystems[0] if len(subsystems) > 0 else "SubsystemA"
+        sub_b = subsystems[1] if len(subsystems) > 1 else "SubsystemB"
 
-        subsystem_classes = "\n\n".join([
-            f"""class {s}:
-    def operation_{s.lower()}":
-        return "{s} operation\""""
-            for s in subsystems
-        ])
+        result = f"""class {sub_a}:
+    def operation_{sub_a.lower()}(self):
+        return "{sub_a} operation"
 
-        facade_methods = "\n        ".join([
-            f'\n        results.append(self._{s.lower()}.operation_{s.lower()}())'
-            for s in subsystems
-        ])
-
-        return f"""class {subsystems[0]}:
-    def operation_{subsystems[0].lower()}(self):
-        return "{subsystems[0]} operation"
-
-class {subsystems[1] if len(subsystems) > 1 else 'SubsystemB'}:
-    def operation_{subsystems[1].lower() if len(subsystems) > 1 else 'subsystemb'}(self):
+class {sub_b}:
+    def operation_{sub_b.lower()}(self):
         return "Subsystem operation"
 
 class Facade:
     def __init__(self):
-        self._{subsystems[0].lower()} = {subsystems[0]}(){""
+        self._{sub_a.lower()} = {sub_a}()"""
         if len(subsystems) > 1:
-            f"\n        self._{subsystems[1].lower()} = {subsystems[1]}()"
-        }
+            result += f"\n        self._{sub_b.lower()} = {sub_b}()"
 
+        result += f"""
     def operation(self):
         results = []
-        results.append(self._{subsystems[0].lower()}.operation_{subsystems[0].lower()}()){""
+        results.append(self._{sub_a.lower()}.operation_{sub_a.lower()}())"""
         if len(subsystems) > 1:
-            f"\n        results.append(self._{subsystems[1].lower()}.operation_{subsystems[1].lower()}())"
-        }
+            result += f"\n        results.append(self._{sub_b.lower()}.operation_{sub_b.lower()}())"
+
+        result += """
         return " and ".join(results)"""
+
+        return result
 
 
 class PatternLibrary:

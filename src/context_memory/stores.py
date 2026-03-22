@@ -161,7 +161,21 @@ class ShortTermMemoryStore(IMemoryStorage):
             return False
 
     async def search_by_embedding(self, query: MemoryQuery) -> List[MemorySearchResult]:
-        return []
+        if not query.query_embedding:
+            return []
+
+        from context_memory.semantic_search import VectorOperations
+        vec_ops = VectorOperations()
+
+        results = []
+        for i, entry in enumerate(self._store.values()):
+            if entry.embedding:
+                similarity = vec_ops.cosine_similarity(query.query_embedding, entry.embedding)
+                if similarity >= query.threshold:
+                    results.append(MemorySearchResult(entry=entry, similarity_score=similarity, rank=i))
+
+        results.sort(key=lambda x: x.similarity_score, reverse=True)
+        return results[:query.top_k]
 
     async def get_by_type(self, memory_type: MemoryType, limit: int = 100) -> List[MemoryEntry]:
         async with self._lock:
@@ -217,7 +231,21 @@ class MediumTermMemoryStore(IMemoryStorage):
             return False
 
     async def search_by_embedding(self, query: MemoryQuery) -> List[MemorySearchResult]:
-        return []
+        if not query.query_embedding:
+            return []
+
+        from context_memory.semantic_search import VectorOperations
+        vec_ops = VectorOperations()
+
+        results = []
+        for i, entry in enumerate(self._store.values()):
+            if entry.embedding:
+                similarity = vec_ops.cosine_similarity(query.query_embedding, entry.embedding)
+                if similarity >= query.threshold:
+                    results.append(MemorySearchResult(entry=entry, similarity_score=similarity, rank=i))
+
+        results.sort(key=lambda x: x.similarity_score, reverse=True)
+        return results[:query.top_k]
 
     async def get_by_type(self, memory_type: MemoryType, limit: int = 100) -> List[MemoryEntry]:
         async with self._lock:
@@ -294,7 +322,21 @@ class LongTermMemoryStore(IMemoryStorage):
             return False
 
     async def search_by_embedding(self, query: MemoryQuery) -> List[MemorySearchResult]:
-        return []
+        if not query.query_embedding:
+            return []
+
+        from context_memory.semantic_search import VectorOperations
+        vec_ops = VectorOperations()
+
+        results = []
+        for i, entry in enumerate(self._store.values()):
+            if entry.embedding:
+                similarity = vec_ops.cosine_similarity(query.query_embedding, entry.embedding)
+                if similarity >= query.threshold:
+                    results.append(MemorySearchResult(entry=entry, similarity_score=similarity, rank=i))
+
+        results.sort(key=lambda x: x.similarity_score, reverse=True)
+        return results[:query.top_k]
 
     async def get_by_type(self, memory_type: MemoryType, limit: int = 100) -> List[MemoryEntry]:
         async with self._lock:

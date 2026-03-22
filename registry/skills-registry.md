@@ -4,7 +4,7 @@
 
 ## 统计
 
-- **总计**: 18 个 Skills
+- **总计**: 22 个 Skills
 - **最后更新**: 2026-03-22
 
 ## 分类索引
@@ -122,6 +122,30 @@
 |----|------|------|------|
 | skill-ai-routing-v1 | AI Routing | [ai, routing, autonomous] | skills/ai-routing/skill-ai-routing.md |
 
+### MCU (微控制器类)
+
+| ID | Name | Tags | Path |
+|----|------|------|------|
+| skill-mcu-main-v1 | MCU Development | [mcu, embedded, microcontroller] | skills/mcu/skill-mcu-main.md |
+
+### Security (安全类)
+
+| ID | Name | Tags | Path |
+|----|------|------|------|
+| skill-security-main-v1 | Security Engineering | [security, vulnerability, encryption] | skills/security/skill-security-main.md |
+
+### Data Visualization (数据可视化类)
+
+| ID | Name | Tags | Path |
+|----|------|------|------|
+| skill-data-visualization-main-v1 | Data Visualization | [visualization, charts, dashboard] | skills/data-visualization/skill-data-visualization-main.md |
+
+### DevOps (运维类)
+
+| ID | Name | Tags | Path |
+|----|------|------|------|
+| skill-devops-main-v1 | DevOps Engineering | [devops, ci-cd, docker, kubernetes] | skills/devops/skill-devops-main.md |
+
 ## 添加新 Skill
 
 1. 创建文件：`skills/{category}/skill-{category}-{name}.md`
@@ -148,6 +172,10 @@
 | routing | 1 | skill-routing-v1 |
 | workflow | 1 | skill-workflows-v1 |
 | ai-routing | 1 | skill-ai-routing-v1 |
+| mcu | 1 | skill-mcu-main-v1 |
+| security | 1 | skill-security-main-v1 |
+| visualization | 1 | skill-data-visualization-main-v1 |
+| devops | 1 | skill-devops-main-v1 |
 
 ## 模块覆盖率
 
@@ -160,11 +188,12 @@
 | 个人模块 (Personal/Learning/Reflection) | 3 | 3 | 100% |
 | 工具模块 (Tool Use/Routing/Prompts) | 3 | 3 | 100% |
 | 系统模块 (System/Workflows) | 2 | 2 | 100% |
+| 专业模块 (MCU/Security/DevOps/Data Viz) | 4 | 4 | 100% |
 
 ## 下一步扩展计划
 
 - [ ] 添加更多Writing相关Skills (SEO优化, 技术文档)
 - [ ] 添加API设计Skill
-- [ ] 添加安全编码Skill
-- [ ] 添加DevOps相关Skill
+- [ ] 添加移动开发Skill (iOS/Android)
 - [ ] 添加数据分析Skill
+- [ ] 添加机器学习工程Skill

@@ -263,7 +263,7 @@ class CodeQualityCheckerTool(MCPTool):
         return issues
 
 
-class TestGeneratorTool(MCPTool):
+class UnitTestGeneratorTool(MCPTool):
     def get_definition(self) -> ToolDefinition:
         return ToolDefinition(
             name="test_generator",
@@ -704,7 +704,7 @@ class Decorator(Component):
 
 __all__ = [
     "CodeQualityCheckerTool",
-    "TestGeneratorTool",
+    "UnitTestGeneratorTool",
     "APIDocGeneratorTool",
     "RefactoringAssistantTool",
 ]

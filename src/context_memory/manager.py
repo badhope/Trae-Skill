@@ -2,10 +2,6 @@ import asyncio
 import uuid
 from datetime import datetime
 from typing import Any, Dict, List, Optional, Set
-import sys
-import os
-
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from context_memory.stores import (
     MemoryEntry,

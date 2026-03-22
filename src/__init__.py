@@ -66,7 +66,7 @@ from mcp_tools.framework import (
 )
 from mcp_tools.tools import (
     CodeQualityCheckerTool,
-    TestGeneratorTool,
+    UnitTestGeneratorTool,
     APIDocGeneratorTool,
     RefactoringAssistantTool,
 )
@@ -110,7 +110,7 @@ __all__ = [
     "ToolDefinition",
     "ToolResult",
     "CodeQualityCheckerTool",
-    "TestGeneratorTool",
+    "UnitTestGeneratorTool",
     "APIDocGeneratorTool",
     "RefactoringAssistantTool",
     "NetworkModule",
