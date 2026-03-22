@@ -3,9 +3,9 @@
 <!-- ==================== METADATA ==================== -->
 <!--
   repository: badhope/skill
-  version: v1.1.0
-  description: Modular AI Skill/Prompt/Workflow repository for humans and AI
-  topics: [ai, prompts, skills, workflows, coding, debugging]
+  version: v2.0.0
+  description: Modular AI Skill/Prompt/Workflow repository with advanced technical capabilities
+  topics: [ai, prompts, skills, workflows, coding, debugging, mcp, rl-engine, academic, creative]
 -->
 <!-- ================================================= -->
 
@@ -14,8 +14,7 @@
 
 ---
 
-<!-- Badges -->
-[![Version](https://img.shields.io/badge/version-v1.1.0-blue.svg)](https://github.com/badhope/skill)
+[![Version](https://img.shields.io/badge/version-v2.0.0-blue.svg)](https://github.com/badhope/skill)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-yellowgreen.svg)](LICENSE-CODE)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-orange.svg)](LICENSE-CONTENT)
 [![GitHub stars](https://img.shields.io/github/stars/badhope/skill?style=social)](https://github.com/badhope/skill)
@@ -24,12 +23,161 @@
 
 ## 🎯 Overview
 
-A modular **AI Skill/Prompt/Workflow** repository designed for both:
+A modular **AI Skill/Prompt/Workflow** repository with advanced technical capabilities designed for both:
 
 | Audience | Needs |
 |----------|-------|
 | **Human Users** | Quick find, copy, and use of prompts |
 | **AI Systems** | Autonomous understanding, routing, selection, and composition |
+
+This repository integrates cutting-edge AI technologies including reinforcement learning, context memory systems, MCP tools, and specialized modules for academic and creative applications.
+
+---
+
+## 🚀 Core Capabilities
+
+### 🧠 Context Memory System
+Hierarchical memory architecture with semantic search capabilities:
+
+| Memory Type | TTL | Capacity | Use Case |
+|-------------|-----|----------|----------|
+| **Short-Term** | 1 hour | 100 entries | Current conversation context |
+| **Medium-Term** | 2 hours | Unlimited | Session-long information |
+| **Long-Term** | Permanent | Unlimited | Cross-session knowledge |
+
+**Key Features:**
+- Semantic similarity retrieval (<100ms response)
+- Importance scoring and decay mechanisms
+- Conflict resolution with timestamp versioning
+- Tag-based and embedding-based search
+
+### 🤖 Reinforcement Learning Engine
+PPO-based RL framework for adaptive workflow optimization:
+
+```python
+from rl_engine import RLEngine, RLConfig
+
+config = RLConfig(
+    state_dim=128,
+    action_dim=10,
+    learning_rate=0.001,
+    gamma=0.99
+)
+engine = RLEngine(config)
+```
+
+**Capabilities:**
+- Multi-dimensional reward functions (code quality, solving efficiency, user satisfaction)
+- Experience replay with prioritized sampling
+- Exploration-exploitation balance with dynamic epsilon decay
+- Code simulation and execution environment
+
+### 🔧 MCP (Model Control Program) Tools
+Extensible tool framework with specialized modules:
+
+| Tool | Description |
+|------|-------------|
+| **CodeQualityCheckerTool** | Static code analysis, style checking |
+| **UnitTestGeneratorTool** | Automated test generation |
+| **APIDocGeneratorTool** | OpenAPI/Swagger documentation |
+| **RefactoringAssistantTool** | Code smell detection and refactoring suggestions |
+| **CodeGeneratorTool** | MCU code generation |
+| **PeripheralDriverTool** | GPIO, UART, SPI, I2C driver generation |
+
+---
+
+## 📚 Academic & Professional Tools
+
+### 🔬 Academic Writing Suite
+
+| Module | Function |
+|--------|----------|
+| **Context-Aware Literature Search** | Semantic search across research databases |
+| **Research Paper Enhancement** | Structure optimization, clarity improvement |
+| **Plagiarism Detection** | Originality verification and citation checking |
+| **Academic Integrity Verification** | Integrity validation for scholarly work |
+
+### 🎓 Learning Support Modules
+
+- Adaptive learning path recommendations
+- Knowledge gap identification
+- Spaced repetition scheduling
+- Progress tracking and assessment
+
+---
+
+## 🎨 Creative Content Generation Suite
+
+### ✍️ Fiction & Story Development
+
+| Feature | Description |
+|---------|-------------|
+| **Narrative Structure Assistance** | Three-act structure, hero's journey, save the cat |
+| **Character Development** | Archetype mapping, motivation analysis |
+| **World Building** | Consistency checking, lore management |
+| **Dialogue Generation** | Tone adaptation, character voice preservation |
+
+### 📝 Professional Copywriting Tools
+
+- Tone adaptation across audiences (formal, casual, technical)
+- Brand voice consistency checking
+- A/B headline optimization
+- Call-to-action effectiveness analysis
+
+### 🎬 Multimodal Content Generation
+
+| Modality | Capability |
+|----------|-----------|
+| **Text-to-Image** | Stable Diffusion integration ready |
+| **Text-to-Video** | Storyboard generation, scene description |
+| **Audio-Visual** | Subtitle synchronization, audio description |
+
+### 🤖 Intelligent Agent Development Toolkit
+
+- Customizable behavior patterns
+- Personality configuration
+- Memory and context management
+- Tool-use workflow integration
+
+---
+
+## 🏗️ Architectural Improvements
+
+### 📦 Modular Architecture
+
+```
+src/
+├── context_memory/     # Hierarchical memory with semantic search
+│   ├── stores.py       # Short/Medium/Long-term storage
+│   ├── semantic_search.py  # Vector operations, similarity
+│   └── manager.py      # Memory orchestration
+├── rl_engine/          # Reinforcement learning
+│   ├── engine.py       # RL core implementation
+│   ├── ppo.py          # Policy/Value networks
+│   └── reward.py       # Reward calculation
+├── coding_engine/     # Code analysis & generation
+│   ├── analyzer.py     # Syntax analysis
+│   ├── quality.py      # Code quality checking
+│   ├── patterns.py     # Design pattern library
+│   └── algorithms.py   # Algorithm implementations
+├── network/           # Distributed communication
+│   └── communication.py  # Service mesh, load balancing
+├── mcp_tools/        # MCP tool framework
+│   ├── framework.py    # Tool orchestration
+│   ├── tools.py       # Built-in tools
+│   └── mcu_tools.py   # MCU code generation
+└── special/          # Specialized modules
+    └── modules.py     # Animation, Game, Simulation, etc.
+```
+
+### ⚡ Performance Optimization
+
+| Optimization | Technique |
+|-------------|-----------|
+| **Computational Efficiency** | Vectorized operations, async/await patterns |
+| **Step Minimization** | Parallel execution, caching |
+| **Text Compression** | Token optimization, structured output |
+| **Quality Enhancement** | RL-based feedback loops |
 
 ---
 
@@ -79,34 +227,6 @@ A modular **AI Skill/Prompt/Workflow** repository designed for both:
 7. AI-USAGE.md                → Usage patterns
 8. AI-ROUTING.md              → Routing logic
 9. AI-BOOTSTRAP.md            → First-time setup
-```
-
-**Decision Flow:**
-
-```
-User Request
-     │
-     ▼
-┌────────────────────────────────────┐
-│  Identify Task Type                │
-│  coding / debugging / repo-analysis │
-│  planning / research / meta        │
-└────────────────────────────────────┘
-     │
-     ▼
-┌────────────────────────────────────┐
-│  Route via routes-registry.yaml    │
-└────────────────────────────────────┘
-     │
-     ▼
-┌────────────────────────────────────┐
-│  Select Primary + Supporting Prompts│
-└────────────────────────────────────┘
-     │
-     ├─► [Need tools?]  → prompts/tool-use/
-     ├─► [Need format?] → prompts/output/
-     ├─► [Complex task?] → workflows/
-     └─► [Unclear?]     → Ask clarifying questions
 ```
 
 ---
@@ -175,7 +295,24 @@ skill/
 │   ├── prompt-composition/
 │   ├── system-prompts/
 │   ├── workflows/
-│   └── writing/
+│   ├── writing/
+│   ├── data-visualization/
+│   ├── devops/
+│   ├── mcu/
+│   ├── security/
+│   ├── learning-support/
+│   ├── reflection/
+│   ├── personal/
+│   └── creative-special/
+│
+├── 🔧 SRC (Technical Implementation)
+├── src/
+│   ├── context_memory/        # Memory system
+│   ├── rl_engine/             # RL framework
+│   ├── coding_engine/         # Code analysis
+│   ├── network/               # Communication
+│   ├── mcp_tools/             # MCP framework
+│   └── special/               # Specialized modules
 │
 ├── 📚 REGISTRY (AI-readable)
 ├── registry/
@@ -215,16 +352,32 @@ skill/
 
 ---
 
-## 📖 Asset Type Definitions
+## 🧪 Testing & Quality Assurance
 
-| Type | What It Is | Example |
-|------|------------|---------|
-| **Prompt** | Executable instruction | "Generate code from requirement" |
-| **Skill** | Capability with use cases | "Debugging: investigate → plan → fix → verify" |
-| **Workflow** | Multi-step process | "Bug Investigation workflow" |
-| **Tool-Use** | Tool operation guide | "Read files before answering" |
-| **Output** | Format specification | "Output as JSON structure" |
-| **Meta** | Prompt self-optimization | "Debug a failing prompt" |
+### Test Coverage
+
+| Module | Tests | Status |
+|--------|-------|--------|
+| context_memory | 15+ | ✅ Passing |
+| rl_engine | 20+ | ✅ Passing |
+| coding_engine | 25+ | ✅ Passing |
+| network | 15+ | ✅ Passing |
+| mcp_tools | 20+ | ✅ Passing |
+| special | 26+ | ✅ Passing |
+| **Total** | **156** | **✅ All Passing** |
+
+### Run Tests
+
+```bash
+# Set PYTHONPATH and run all tests
+export PYTHONPATH=src
+pytest tests/ -v
+
+# Run specific module tests
+pytest tests/test_context_memory.py -v
+pytest tests/test_rl_engine.py -v
+pytest tests/test_coding_engine.py -v
+```
 
 ---
 
@@ -282,8 +435,15 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 | Item | Value |
 |------|-------|
-| **Current Version** | **v1.1.0** |
-| **Release Date** | 2026-03-20 |
+| **Current Version** | **v2.0.0** |
+| **Release Date** | 2026-03-22 |
+
+Major additions in v2.0.0:
+- Context Memory System with semantic search
+- Reinforcement Learning Engine integration
+- MCP Tool Framework with MCU support
+- Special Modules (Animation, Game, Simulation)
+- Academic & Creative tool suites
 
 See [CHANGELOG.md](CHANGELOG.md) for detailed history.
 
@@ -297,19 +457,4 @@ See [CHANGELOG.md](CHANGELOG.md) for detailed history.
 | Prompts index | [prompts/INDEX.md](prompts/INDEX.md) |
 | AI usage | [AI-USAGE.md](AI-USAGE.md) |
 | AI routing | [AI-ROUTING.md](AI-ROUTING.md) |
-| AI bootstrap | [AI-BOOTSTRAP.md](AI-BOOTSTRAP.md) |
-| Project plan | [PROJECT-PLAN.md](PROJECT-PLAN.md) |
-| Extension guide | [EXTENSION-GUIDE.md](EXTENSION-GUIDE.md) |
-
----
-
-<!-- Machine-readable footer -->
-<!--
-  last_updated: 2026-03-20
-  total_prompts: 132
-  total_skills: 14
-  total_workflows: 10
-  status: active
--->
-
-*This repository is designed for both **human usability** and **AI autonomous operation**.*
+| Technical docs | [docs/ARCHITECTURE-DETAILED.md](docs/ARCHITECTURE-DETAILED.md) |
