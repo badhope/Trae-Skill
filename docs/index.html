@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Skill Repository - 专业的AI提示词工具箱</title>
+    <meta name="description" content="77+ AI技能，132+ 高质量提示词，10+ 工作流。编程、调试、学习全覆盖的AI辅助解决方案。">
+    <meta name="keywords" content="AI提示词, AI技能, Prompt工程, 代码生成, 调试工具">
+    <meta name="author" content="badhope">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI Skill Repository">
+    <meta property="og:description" content="专业的AI提示词工具箱">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aiskill.qzz.io">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">🤖</span>
+                <span class="logo-text">AI Skill</span>
+            </a>
+            <div class="nav-links">
+                <a href="#features">功能</a>
+                <a href="#skills">技能</a>
+                <a href="#quickstart">快速开始</a>
+                <a href="https://github.com/badhope/skill" target="_blank" class="btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    v2.0 全新发布
+                </div>
+                <h1 class="hero-title">
+                    AI Skill & Prompt
+                    <span class="gradient-text">Repository</span>
+                </h1>
+                <p class="hero-subtitle">
+                    专业的AI提示词工具箱，为开发者、研究者和创作者打造的
+                    <br>模块化技能库
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="77">0</span>
+                        <span class="stat-label">AI 技能</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="132">0</span>
+                        <span class="stat-label">提示词</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="10">0</span>
+                        <span class="stat-label">工作流</span>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <a href="https://github.com/badhope/skill" class="btn-primary btn-large">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        查看仓库
+                    </a>
+                    <a href="#quickstart" class="btn-secondary btn-large">
+                        快速开始
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>向下滚动</span>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">核心功能</span>
+                <h2 class="section-title">为AI赋能，让开发更高效</h2>
+                <p class="section-subtitle">模块化设计，支持多种AI模型，覆盖开发全流程</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">代码生成与重构</h3>
+                    <p class="feature-desc">智能代码生成、跨文件重构、架构设计，支持多种编程语言</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">智能调试</h3>
+                    <p class="feature-desc">系统化Bug调查、错误分析、性能优化，快速定位问题根源</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">模块化技能</h3>
+                    <p class="feature-desc">77+独立技能模块，按需加载，灵活组合，支持自定义扩展</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27,6.96 12,12.01 20.73,6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">工作流引擎</h3>
+                    <p class="feature-desc">10+预设工作流，多步骤任务自动化，支持自定义流程编排</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">学术研究支持</h3>
+                    <p class="feature-desc">文献检索、论文写作、研究辅助，学术工作全流程支持</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">安全审计</h3>
+                    <p class="feature-desc">代码安全扫描、漏洞检测、合规检查，保障代码质量</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">技能库</span>
+                <h2 class="section-title">77+ 专业技能</h2>
+                <p class="section-subtitle">覆盖开发、运维、安全、测试全领域</p>
+            </div>
+            <div class="skills-categories">
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon dev">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <polyline points="16,18 22,12 16,6"/>
+                                <polyline points="8,6 2,12 8,18"/>
+                            </svg>
+                        </div>
+                        <h3>开发工具</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git Operations</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">CI/CD Pipeline</span>
+                        <span class="skill-tag">Shell Scripting</span>
+                        <span class="skill-tag">Terraform</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon frontend">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="9" y1="21" x2="9" y2="9"/>
+                            </svg>
+                        </div>
+                        <h3>前端开发</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Vue.js</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">GraphQL</span>
+                        <span class="skill-tag">WebSocket</span>
+                        <span class="skill-tag">E2E Testing</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon backend">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                            </svg>
+                        </div>
+                        <h3>后端与数据库</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">API Design</span>
+                        <span class="skill-tag">SQL Optimization</span>
+                        <span class="skill-tag">Redis Caching</span>
+                        <span class="skill-tag">Message Queue</span>
+                        <span class="skill-tag">Database Migration</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon security">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <h3>安全与运维</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Security Auditor</span>
+                        <span class="skill-tag">Incident Response</span>
+                        <span class="skill-tag">Network Debugging</span>
+                        <span class="skill-tag">Log Analysis</span>
+                        <span class="skill-tag">Secret Management</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon quality">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22,4 12,14.01 9,11.01"/>
+                            </svg>
+                        </div>
+                        <h3>质量保障</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Test Generator</span>
+                        <span class="skill-tag">Code Coverage</span>
+                        <span class="skill-tag">Code Review</span>
+                        <span class="skill-tag">Linting Config</span>
+                        <span class="skill-tag">Code Formatting</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="category-header">
+                        <div class="category-icon ai">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/>
+                                <circle cx="7.5" cy="14.5" r="1.5"/>
+                                <circle cx="16.5" cy="14.5" r="1.5"/>
+                            </svg>
+                        </div>
+                        <h3>AI 增强</h3>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Context Compressor</span>
+                        <span class="skill-tag">Self Memory</span>
+                        <span class="skill-tag">Instruction Refinement</span>
+                        <span class="skill-tag">Prompt Composition</span>
+                        <span class="skill-tag">Error Recovery</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-cta">
+                <a href="https://github.com/badhope/skill/tree/main/.trae/skills" class="btn-secondary">
+                    查看全部技能 →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Start Section -->
+    <section class="quickstart" id="quickstart">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">快速开始</span>
+                <h2 class="section-title">三步开始使用</h2>
+                <p class="section-subtitle">简单配置，即刻享受AI辅助开发的便捷</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>克隆仓库</h3>
+                        <div class="code-block">
+                            <code>git clone https://github.com/badhope/skill.git</code>
+                            <button class="copy-btn" data-code="git clone https://github.com/badhope/skill.git">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>配置Skills</h3>
+                        <p>将 <code>.trae/skills/</code> 目录复制到你的项目或Trae配置目录</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>开始使用</h3>
+                        <p>在Trae中打开项目，AI将自动加载所有技能，开始智能辅助开发</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="architecture">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">架构设计</span>
+                <h2 class="section-title">模块化架构</h2>
+                <p class="section-subtitle">清晰的目录结构，便于扩展和维护</p>
+            </div>
+            <div class="arch-diagram">
+                <pre class="code-block large"><code>skill/
+├── .trae/
+│   └── skills/           # 77+ 技能模块
+│       ├── coding/       # 代码生成
+│       ├── debugging/    # 调试修复
+│       ├── planning/     # 任务规划
+│       ├── security/     # 安全审计
+│       └── workflows/    # 工作流
+├── prompts/              # 132+ 提示词
+│   ├── task/            # 任务提示词
+│   ├── meta/            # 元提示词
+│   └── output/          # 输出格式
+├── docs/                 # 文档
+└── examples/             # 示例</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>准备好提升开发效率了吗？</h2>
+                <p>立即获取AI Skill Repository，开启智能开发之旅</p>
+                <div class="cta-actions">
+                    <a href="https://github.com/badhope/skill" class="btn-primary btn-large">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        访问 GitHub 仓库
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">🤖</span>
+                        <span class="logo-text">AI Skill Repository</span>
+                    </div>
+                    <p>专业的AI提示词工具箱</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>资源</h4>
+                        <a href="https://github.com/badhope/skill">GitHub 仓库</a>
+                        <a href="https://github.com/badhope/skill/issues">问题反馈</a>
+                        <a href="https://github.com/badhope/skill/pulls">贡献代码</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>文档</h4>
+                        <a href="https://github.com/badhope/skill/blob/main/README.md">使用指南</a>
+                        <a href="https://github.com/badhope/skill/blob/main/ARCHITECTURE.md">架构设计</a>
+                        <a href="https://github.com/badhope/skill/blob/main/CONTRIBUTING.md">贡献指南</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI Skill Repository. MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
