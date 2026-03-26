@@ -1,104 +1,16 @@
 # AI Skill & Prompt 仓库
 
-<!-- ==================== SEO 元数据 ==================== -->
-<!--
-  主关键词: AI提示词, ChatGPT提示词, GPT提示词, AI技能, 提示词工程,
-    代码生成, 代码调试, AI工作流, 机器学习提示词, AI助手, 效率工具
-  次关键词: 强化学习, 上下文记忆, MCP工具, 学术写作AI, 创意写作AI, Prompt模板
-  repository: badhope/skill
-  version: v2.0.0
-  description: 模块化 AI Skill/Prompt/Workflow 仓库，具备高级技术能力
-  topics: [ai, prompts, skills, workflows, coding, debugging, mcp, rl-engine, academic, creative]
--->
-<!-- ================================================= -->
-
-<!-- HTML Meta 标签 -->
-<meta name="description" content="AI Skill & Prompt 仓库 - 132+ 高质量提示词，27+ 技能定义，10+ 工作流。涵盖编程开发、调试修复、学习支持、日常工具的全方位AI辅助解决方案。支持GPT-4、Claude等主流模型。" />
-<meta name="keywords" content="AI提示词,ChatGPT提示词,GPT提示词,AI技能,提示词工程,代码生成,代码调试,AI工作流,机器学习提示词,AI助手,效率工具,强化学习,上下文记忆,MCP工具,学术写作AI,创意写作AI,Prompt模板" />
-<meta name="author" content="badhope" />
-<meta name="robots" content="index, follow" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://github.com/badhope/skill" />
-<meta property="og:title" content="AI Skill & Prompt 仓库 | 专业的AI提示词工具箱" />
-<meta property="og:description" content="132+ 高质量提示词，27+ 技能定义，10+ 工作流。涵盖编程开发、调试修复、学习支持的全方位AI辅助解决方案。" />
-<meta property="og:image" content="https://repository-images.githubusercontent.com/NO_UPLOADED_IMAGE" />
-<meta property="og:locale" content="zh_CN" />
-<meta property="og:locale:alternate" content="en_US" />
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content="https://github.com/badhope/skill" />
-<meta name="twitter:title" content="AI Skill & Prompt 仓库 | AI提示词工具箱" />
-<meta name="twitter:description" content="132+ 高质量提示词，27+ 技能定义，10+ 工作流。编程、调试、学习全覆盖。" />
-<meta name="twitter:creator" content="@badhope" />
-
-<!-- Schema.org 结构化数据 -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "AI Skill & Prompt Repository",
-  "alternateName": "AI提示词仓库",
-  "description": "模块化 AI Skill/Prompt/Workflow 仓库，具备高级技术能力，用于代码生成、调试和创意任务",
-  "url": "https://github.com/badhope/skill",
-  "applicationCategory": "DeveloperApplication",
-  "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0.00",
-    "priceCurrency": "USD"
-  },
-  "author": {
-    "@type": "Person",
-    "name": "badhope",
-    "url": "https://github.com/badhope"
-  },
-  "keywords": "AI, 提示词, 技能, 工作流, 编程, 调试, 强化学习, MCP工具",
-  "softwareVersion": "2.0.0",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "ratingCount": "100",
-    "bestRating": "5"
-  }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Collection",
-  "name": "AI提示词集合",
-  "alternateName": "AI Prompts Collection",
-  "description": "132+ 精选AI提示词，涵盖编程、调试、学习和创意任务",
-  "numberOfItems": "132",
-  "keywords": ["AI提示词", "ChatGPT提示词", "GPT提示词", "提示词工程"],
-  "about": [
-    {"@type": "Thing", "name": "代码生成"},
-    {"@type": "Thing", "name": "代码调试"},
-    {"@type": "Thing", "name": "学习支持"},
-    {"@type": "Thing", "name": "创意写作"}
-  ]
-}
-</script>
-
-<!-- Language Switcher -->
 [English](README.md) · [中文](README.zh-CN.md)
 
 ---
 
-[![版本](https://img.shields.io/badge/version-v1.2.0-blue.svg)](https://github.com/badhope/skill)
+[![版本](https://img.shields.io/badge/version-v2.0.0-blue.svg)](https://github.com/badhope/skill)
 [![许可证: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-yellowgreen.svg)](LICENSE-CODE)
 [![许可证: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-orange.svg)](LICENSE-CONTENT)
 [![GitHub stars](https://img.shields.io/github/stars/badhope/skill?style=social)](https://github.com/badhope/skill)
 [![GitHub forks](https://img.shields.io/github/forks/badhope/skill?style=social)](https://github.com/badhope/skill)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![维护中](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/badhope/skill/graphs/commit-activity)
-[![主流语言](https://img.shields.io/github/languages/top/badhope/skill)](https://github.com/badhope/skill)
-[![最近提交](https://img.shields.io/github/last-commit/badhope/skill/main)](https://github.com/badhope/skill/commits/main)
+[![维护状态](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/badhope/skill/graphs/commit-activity)
 
 ---
 
@@ -113,7 +25,7 @@
 | **研究者** | 学术写作、研究辅助、文献检索 |
 | **创作者** | 创意写作、内容生成、灵感激发 |
 
-**核心技术栈:** GPT-4 · Claude · 强化学习 · 上下文记忆 · MCP Tools
+**核心技术栈:** GPT-4 · Claude · 强化学习 · 上下文记忆 · MCP 工具
 
 ---
 
@@ -122,7 +34,7 @@
 | 特性 | 说明 |
 |------|------|
 | 🏆 **132+ 精选提示词** | 覆盖编程、调试、学习、创意等场景 |
-| 🎯 **43+ 标准化技能** | 模块化设计，即插即用 |
+| 🎯 **78+ 标准化技能** | 模块化设计，即插即用 |
 | 🔧 **10+ 预置工作流** | 开箱即用的多步骤任务流 |
 | 🧠 **上下文记忆系统** | <100ms 语义检索响应 |
 | 🤖 **强化学习引擎** | 自适应工作流优化 |
@@ -173,7 +85,7 @@ engine = RLEngine(config)
 - 动态 ε 衰减的探索-利用平衡
 - 代码模拟与执行环境
 
-### 🔧 MCP (Model Control Program) 工具框架
+### 🔧 MCP 工具框架
 
 可扩展的工具框架，包含专业模块：
 
@@ -196,7 +108,7 @@ engine = RLEngine(config)
 |------|------|
 | **上下文感知文献搜索** | 语义搜索研究数据库 |
 | **研究论文增强** | 结构优化、清晰度提升 |
-| **查重检测** | 原创性验证与引用检查 |
+| **抄袭检测** | 原创性验证与引用检查 |
 | **学术诚信验证** | 学术诚信验证 |
 
 ### 🎓 学习支持模块
@@ -230,9 +142,9 @@ engine = RLEngine(config)
 
 | 模态 | 能力 |
 |------|------|
-| **Text-to-Image** | Stable Diffusion 集成就绪 |
-| **Text-to-Video** | 故事板生成、场景描述 |
-| **Audio-Visual** | 字幕同步、音频描述 |
+| **文本转图像** | Stable Diffusion 集成就绪 |
+| **文本转视频** | 故事板生成、场景描述 |
+| **音视频** | 字幕同步、音频描述 |
 
 ### 🤖 智能体开发工具包
 
@@ -243,7 +155,7 @@ engine = RLEngine(config)
 
 ---
 
-## 🏗️ 架构优化
+## 🏗️ 架构设计
 
 ### 📦 模块化架构
 
@@ -272,15 +184,6 @@ src/
     └── modules.py     # 动画、游戏、模拟等
 ```
 
-### ⚡ 性能优化
-
-| 优化项 | 技术手段 |
-|--------|----------|
-| **计算效率** | 向量化操作、async/await |
-| **步骤精简** | 并行执行、缓存 |
-| **文本压缩** | Token优化、结构化输出 |
-| **质量提升** | RL反馈循环 |
-
 ---
 
 ## ✨ 资源一览
@@ -288,7 +191,7 @@ src/
 | 类别 | 数量 | 描述 |
 |------|:----:|------|
 | **Prompts** | 132+ | 编程、调试、规划、研究用提示词 |
-| **Skills** | 43+ | AI任务路由能力定义 |
+| **Skills** | 78+ | AI任务路由能力定义 |
 | **Workflows** | 10+ | 多步骤执行流程 |
 | **Tool-Use Guides** | 8+ | 文件读取、命令执行系统方法 |
 | **Output Formats** | 6+ | JSON、YAML、Markdown、表格、清单、报告 |
@@ -299,7 +202,7 @@ src/
 
 ## 🚀 快速导航
 
-### 面向人类用户
+### 人类用户
 
 > **"我想要AI帮我..."**
 
@@ -318,7 +221,7 @@ src/
 
 ---
 
-### 面向AI系统
+### AI 系统
 
 **引导顺序** — 按此顺序读取文件：
 
@@ -341,13 +244,11 @@ src/
 | 指标 | 数值 |
 |------|------|
 | 📝 Prompts | 132+ |
-| 🎯 Skills | 43+ |
+| 🎯 Skills | 78+ |
 | 🔧 Workflows | 10+ |
-| ⚙️ 源码模块 | 6 |
-| 📚 文档 | 50+ |
-| 🌍 语言 | 2 (EN/ZH) |
-| ⭐ GitHub Stars | [100+](https://github.com/badhope/skill/stargazers) |
-| 🍴 Forks | [50+](https://github.com/badhope/skill/network/members) |
+| ⚙️ Source Modules | 6 |
+| 📚 Documentation | 50+ |
+| 🌍 Languages | 2 (EN/ZH) |
 
 ---
 
@@ -380,23 +281,23 @@ src/
 
 | 链接 | 描述 |
 |------|------|
-| [📦 NPM 包](https://npmjs.com/) | 前端组件包 (即将上线) |
-| [🐍 PyPI 包](https://pypi.org/) | Python SDK (即将上线) |
-| [📖 文档](https://github.com/badhope/skill/wiki) | 完整文档 |
-| [🐛 问题反馈](https://github.com/badhope/skill/issues) | 问题反馈 |
-| [💬 讨论区](https://github.com/badhope/skill/discussions) | 讨论区 |
+| [📦 NPM Package](https://npmjs.com/) | 前端组件包 (即将上线) |
+| [🐍 PyPI Package](https://pypi.org/) | Python SDK (即将上线) |
+| [📖 Documentation](https://github.com/badhope/skill/wiki) | 完整文档 |
+| [🐛 Issue Tracker](https://github.com/badhope/skill/issues) | 问题反馈 |
+| [💬 Discussions](https://github.com/badhope/skill/discussions) | 讨论区 |
 
 ---
 
 ## 📬 联系方式
 
 - **GitHub**: [badhope](https://github.com/badhope)
-- **项目链接**: [https://github.com/badhope/skill](https://github.com/badhope/skill)
+- **Project Link**: [https://github.com/badhope/skill](https://github.com/badhope/skill)
 
 ---
 
 <div align="center">
   <strong>如果这个项目对你有帮助，请给它一个 ⭐</strong>
   <br>
-  <em>Built with ❤️ by badhope | 使用 ❤️ 由 badhope 构建</em>
+  <em>使用 ❤️ 由 badhope 构建</em>
 </div>
