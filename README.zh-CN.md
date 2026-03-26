@@ -191,12 +191,74 @@ src/
 | 类别 | 数量 | 描述 |
 |------|:----:|------|
 | **Prompts** | 132+ | 编程、调试、规划、研究用提示词 |
-| **Skills** | 78+ | AI任务路由能力定义 |
+| **Skills** | 95+ | AI任务路由能力定义 |
+| **MCP Skills** | 15+ | Model Context Protocol 集成技能 |
 | **Workflows** | 10+ | 多步骤执行流程 |
 | **Tool-Use Guides** | 8+ | 文件读取、命令执行系统方法 |
 | **Output Formats** | 6+ | JSON、YAML、Markdown、表格、清单、报告 |
 | **Meta Prompts** | 8+ | 提示词工程工具 |
 | **Special Modules** | 6 | 动画、游戏、模拟等专业模块 |
+
+---
+
+## 🔌 MCP (Model Context Protocol) 技能
+
+MCP 是一个开放协议，标准化 AI 模型与外部工具、资源和数据源的交互方式。本仓库包含全面的 MCP 技能：
+
+### 核心 MCP 技能
+
+| 技能 | 描述 |
+|------|------|
+| **mcp-server-development** | 服务器架构、工具、资源、提示词 |
+| **mcp-client-integration** | 客户端连接、工具发现、多服务器 |
+| **mcp-tool-creation** | 工具设计、验证、安全、性能 |
+| **mcp-resource-management** | 资源暴露、订阅、缓存 |
+| **mcp-prompt-templates** | 参数化提示词、多轮对话模板 |
+
+### 集成技能
+
+| 技能 | 描述 |
+|------|------|
+| **mcp-filesystem-integration** | 安全文件系统访问和操作 |
+| **mcp-database-integration** | PostgreSQL、MySQL、MongoDB、Redis、SQLite |
+| **mcp-browser-automation** | Puppeteer、Playwright、Chrome DevTools |
+| **mcp-github-integration** | 仓库、Issue、PR、代码搜索 |
+
+### 运维技能
+
+| 技能 | 描述 |
+|------|------|
+| **mcp-debugging-testing** | MCP Inspector、单元测试、集成测试 |
+| **mcp-deployment-operations** | Docker、Kubernetes、AWS、GCP、Azure |
+| **mcp-security-best-practices** | 认证、授权、输入验证 |
+| **mcp-api-gateway** | 多服务器路由、负载均衡、缓存 |
+
+### 高级技能
+
+| 技能 | 描述 |
+|------|------|
+| **mcp-protocol-deep-dive** | 协议规范、消息格式、传输层 |
+| **mcp-memory-context** | 会话记忆、长期存储、向量搜索 |
+| **mcp-error-handling** | 错误分类、恢复、重试机制 |
+
+### 快速开始
+
+```json
+// Claude Desktop 配置
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/workspace"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": { "GITHUB_TOKEN": "your-token" }
+    }
+  }
+}
+```
 
 ---
 

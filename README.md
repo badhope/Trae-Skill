@@ -191,12 +191,74 @@ src/
 | Category | Count | Description |
 |----------|:-----:|-------------|
 | **Prompts** | 132+ | Coding, debugging, planning, research prompts |
-| **Skills** | 78+ | AI task routing capability definitions |
+| **Skills** | 95+ | AI task routing capability definitions |
+| **MCP Skills** | 15+ | Model Context Protocol integration skills |
 | **Workflows** | 10+ | Multi-step execution flows |
 | **Tool-Use Guides** | 8+ | File reading, command execution methods |
 | **Output Formats** | 6+ | JSON, YAML, Markdown, Table, Checklist, Report |
 | **Meta Prompts** | 8+ | Prompt engineering tools |
 | **Special Modules** | 6 | Animation, games, simulation, etc. |
+
+---
+
+## 🔌 MCP (Model Context Protocol) Skills
+
+MCP is an open protocol that standardizes how AI models interact with external tools, resources, and data sources. Our repository includes comprehensive MCP skills:
+
+### Core MCP Skills
+
+| Skill | Description |
+|-------|-------------|
+| **mcp-server-development** | Server architecture, tools, resources, prompts |
+| **mcp-client-integration** | Client connection, tool discovery, multi-server |
+| **mcp-tool-creation** | Tool design, validation, security, performance |
+| **mcp-resource-management** | Resource exposure, subscription, caching |
+| **mcp-prompt-templates** | Parameterized prompts, multi-turn templates |
+
+### Integration Skills
+
+| Skill | Description |
+|-------|-------------|
+| **mcp-filesystem-integration** | Secure file system access and operations |
+| **mcp-database-integration** | PostgreSQL, MySQL, MongoDB, Redis, SQLite |
+| **mcp-browser-automation** | Puppeteer, Playwright, Chrome DevTools |
+| **mcp-github-integration** | Repository, Issues, PRs, code search |
+
+### Operations Skills
+
+| Skill | Description |
+|-------|-------------|
+| **mcp-debugging-testing** | MCP Inspector, unit tests, integration tests |
+| **mcp-deployment-operations** | Docker, Kubernetes, AWS, GCP, Azure |
+| **mcp-security-best-practices** | Authentication, authorization, input validation |
+| **mcp-api-gateway** | Multi-server routing, load balancing, caching |
+
+### Advanced Skills
+
+| Skill | Description |
+|-------|-------------|
+| **mcp-protocol-deep-dive** | Protocol specification, message format, transport |
+| **mcp-memory-context** | Session memory, long-term storage, vector search |
+| **mcp-error-handling** | Error classification, recovery, retry mechanisms |
+
+### Quick Start
+
+```json
+// Claude Desktop Configuration
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/workspace"]
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": { "GITHUB_TOKEN": "your-token" }
+    }
+  }
+}
+```
 
 ---
 
