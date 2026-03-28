@@ -1,0 +1,338 @@
+# Routing Configuration
+# Defines how tasks are routed to appropriate skills
+
+version: "2.0"
+description: "Task routing configuration for Hierarchical Collaborative Skill Architecture"
+
+# Default routing behavior
+defaults:
+  meta_skill: task-planner
+  workflow: coding-workflow
+  action: code-generator
+  bypass_meta_threshold: 3
+
+# Routing rules evaluated in order
+routing_rules:
+  # AI/LLM tasks
+  - name: "ai_llm_task"
+    priority: 110
+    condition:
+      keywords: ["langchain", "rag", "llm", "prompt", "embedding", "vector"]
+    route:
+      workflow: coding-workflow
+      domain_skill: langchain
+      
+  - name: "prompt_engineering_task"
+    priority: 109
+    condition:
+      keywords: ["prompt", "few-shot", "chain of thought", "cot", "提示词"]
+    route:
+      domain_skill: prompt-engineering
+      bypass_meta: true
+      
+  # Mobile development
+  - name: "mobile_task"
+    priority: 108
+    condition:
+      keywords: ["react native", "flutter", "mobile", "ios", "android", "移动"]
+    route:
+      workflow: coding-workflow
+      domain_skill: react-native
+      
+  # Testing tasks
+  - name: "testing_task"
+    priority: 105
+    condition:
+      keywords: ["test", "testing", "测试", "unit test", "e2e", "integration"]
+    route:
+      workflow: coding-workflow
+      domain_skill: unit-test
+      
+  # Complex coding tasks
+  - name: "complex_coding_task"
+    priority: 100
+    condition:
+      keywords: ["implement", "develop", "build", "create", "实现", "开发", "构建"]
+      complexity_threshold: 5
+      or_conditions:
+        - has_multiple_files: true
+        - has_multiple_steps: true
+    route:
+      meta_skill: task-planner
+      workflow: coding-workflow
+      
+  # Simple code fixes
+  - name: "simple_code_fix"
+    priority: 90
+    condition:
+      keywords: ["fix", "修复", "change", "修改"]
+      complexity_threshold: 3
+      and_conditions:
+        - single_file: true
+    route:
+      workflow: coding-workflow
+      bypass_meta: true
+      
+  # Debugging tasks
+  - name: "debugging_task"
+    priority: 95
+    condition:
+      keywords: ["debug", "error", "bug", "issue", "调试", "错误", "问题"]
+      or_conditions:
+        - has_error_trace: true
+        - has_stack_trace: true
+    route:
+      meta_skill: task-planner
+      workflow: debugging-workflow
+      
+  # Research tasks
+  - name: "research_task"
+    priority: 85
+    condition:
+      keywords: ["research", "analyze", "investigate", "研究", "分析", "调查"]
+    route:
+      meta_skill: task-planner
+      workflow: research-workflow
+      
+  # Refactoring tasks
+  - name: "refactoring_task"
+    priority: 80
+    condition:
+      keywords: ["refactor", "improve", "optimize", "重构", "优化"]
+      complexity_threshold: 4
+    route:
+      meta_skill: task-planner
+      workflow: refactoring-workflow
+      
+  # Documentation tasks
+  - name: "documentation_task"
+    priority: 75
+    condition:
+      keywords: ["document", "doc", "readme", "文档", "说明", "api doc"]
+    route:
+      action: documentation
+      bypass_meta: true
+      
+  # Search tasks
+  - name: "search_task"
+    priority: 74
+    condition:
+      keywords: ["find", "search", "locate", "where", "查找", "搜索"]
+    route:
+      action: code-search
+      bypass_meta: true
+      
+  # Database tasks
+  - name: "database_task"
+    priority: 88
+    condition:
+      keywords: ["database", "sql", "mongodb", "redis", "migration", "数据库"]
+    route:
+      workflow: coding-workflow
+      domain_skill: database-migration
+      
+  # DevOps tasks
+  - name: "devops_task"
+    priority: 87
+    condition:
+      keywords: ["docker", "kubernetes", "k8s", "ci/cd", "deploy", "部署"]
+    route:
+      workflow: coding-workflow
+      domain_skill: docker
+      
+  # Security-related tasks
+  - name: "security_task"
+    priority: 99
+    condition:
+      keywords: ["security", "vulnerability", "安全", "漏洞"]
+    route:
+      meta_skill: task-planner
+      workflow: security-workflow
+      
+  # Performance tasks
+  - name: "performance_task"
+    priority: 85
+    condition:
+      keywords: ["performance", "slow", "optimize", "性能", "优化"]
+    route:
+      meta_skill: task-planner
+      workflow: performance-workflow
+      
+  # GraphQL tasks
+  - name: "graphql_task"
+    priority: 86
+    condition:
+      keywords: ["graphql", "apollo", "schema", "resolver"]
+    route:
+      workflow: coding-workflow
+      domain_skill: graphql
+      
+  # TypeScript tasks
+  - name: "typescript_task"
+    priority: 84
+    condition:
+      keywords: ["typescript", "types", "interface", "generic", "类型"]
+    route:
+      workflow: coding-workflow
+      domain_skill: typescript
+      
+  # Next.js tasks
+  - name: "nextjs_task"
+    priority: 83
+    condition:
+      keywords: ["nextjs", "next.js", "ssr", "ssg", "app router"]
+    route:
+      workflow: coding-workflow
+      domain_skill: nextjs
+      
+  # ETL/Data tasks
+  - name: "etl_task"
+    priority: 82
+    condition:
+      keywords: ["etl", "pipeline", "data pipeline", "数据管道"]
+    route:
+      workflow: coding-workflow
+      domain_skill: etl
+
+# Fallback chains for each workflow type
+fallbacks:
+  coding-workflow:
+    - coding-workflow-lite
+    - manual-code-template
+    - request-human-help
+    
+  debugging-workflow:
+    - simple-debug-workflow
+    - log-analysis-only
+    - report-and-escalate
+    
+  research-workflow:
+    - quick-research
+    - web-search-only
+    - report-limitations
+
+# Skill capability mapping
+capabilities:
+  task-planner:
+    can_handle:
+      - task_decomposition
+      - complexity_assessment
+      - execution_planning
+    max_complexity: 10
+    
+  orchestrator:
+    can_handle:
+      - workflow_coordination
+      - state_management
+      - error_recovery
+    max_parallel_workflows: 5
+    
+  coding-workflow:
+    can_handle:
+      - code_generation
+      - testing
+      - review
+    max_files_per_task: 20
+    
+  debugging-workflow:
+    can_handle:
+      - error_analysis
+      - root_cause_identification
+      - fix_implementation
+    max_investigation_depth: 5
+
+# Domain skill routing
+domain_routing:
+  ai:
+    default: langchain
+    keywords:
+      langchain: ["chain", "agent", "memory", "tool"]
+      prompt-engineering: ["prompt", "few-shot", "cot"]
+      rag-system: ["rag", "retrieval", "vector", "embedding"]
+      
+  backend:
+    default: python
+    keywords:
+      python: ["python", "fastapi", "django", "flask"]
+      nodejs: ["node", "express", "nestjs", "javascript"]
+      go: ["go", "golang", "gin", "echo"]
+      graphql: ["graphql", "apollo", "schema"]
+      typescript: ["typescript", "types", "interface"]
+      
+  frontend:
+    default: react
+    keywords:
+      react: ["react", "jsx", "hooks"]
+      nextjs: ["nextjs", "ssr", "ssg"]
+      vue: ["vue", "vuex", "pinia"]
+      css-tailwind: ["tailwind", "css", "styling"]
+      
+  mobile:
+    default: react-native
+    keywords:
+      react-native: ["react native", "expo", "mobile"]
+      flutter: ["flutter", "dart", "widget"]
+      
+  testing:
+    default: unit-test
+    keywords:
+      unit-test: ["unit test", "jest", "pytest"]
+      integration-test: ["integration", "api test"]
+      e2e-test: ["e2e", "playwright", "cypress"]
+      
+  database:
+    default: sql-optimization
+    keywords:
+      mongodb: ["mongodb", "mongoose", "nosql"]
+      redis-caching: ["redis", "cache", "caching"]
+      sql-optimization: ["sql", "query", "index"]
+      database-migration: ["migration", "migrate", "schema"]
+      
+  data:
+    default: etl
+    keywords:
+      etl: ["etl", "pipeline", "airflow", "spark"]
+      data-validation: ["validation", "schema", "quality"]
+      
+  devops:
+    default: docker
+    keywords:
+      docker: ["docker", "container", "dockerfile"]
+      kubernetes: ["kubernetes", "k8s", "helm", "deployment"]
+      ci-cd-pipeline: ["ci", "cd", "pipeline", "github actions"]
+
+# Time and resource thresholds
+thresholds:
+  max_execution_time: "30m"
+  max_tokens_per_task: 50000
+  max_retries: 3
+  timeout_warning_threshold: 0.8
+  
+# Quality gates
+quality_gates:
+  implementation:
+    - no_syntax_errors
+    - type_check_passes
+    - lint_check_passes
+    
+  testing:
+    - all_tests_pass
+    - coverage_gte_80
+    
+  review:
+    - quality_score_gte_7
+    - no_security_vulnerabilities
+    - no_performance_issues
+
+# Escalation rules
+escalation:
+  triggers:
+    - max_retries_exceeded
+    - critical_error
+    - resource_exhausted
+    - user_request
+    
+  actions:
+    - notify_user
+    - request_human_intervention
+    - create_issue
