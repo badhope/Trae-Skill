@@ -3,12 +3,17 @@ name: task-planner
 description: "Intelligent task decomposition and planning engine. Use when task complexity > 5, involves multiple steps, or requires coordination across multiple skills. Keywords: implement, develop, build, create, 实现, 开发, 构建, 设计"
 layer: meta
 role: planner
-version: 1.0.0
+version: 2.0.0
 invokes:
+  - decomposition-planner
+  - task-registry
   - coding-workflow
   - debugging-workflow
   - research-workflow
   - refactoring-workflow
+invoked_by:
+  - model-router
+  - orchestrator
 capabilities:
   - intent_analysis
   - task_decomposition
@@ -44,6 +49,7 @@ metrics:
   avg_execution_time: 3s
   success_rate: 0.95
   token_efficiency: 0.85
+  complexity_accuracy: 0.88
 ---
 
 # Task Planner

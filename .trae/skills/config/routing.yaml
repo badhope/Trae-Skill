@@ -1,18 +1,107 @@
 # Routing Configuration
 # Defines how tasks are routed to appropriate skills
+# Version 3.0 - With Dispatcher and Learning Layers
 
-version: "2.0"
-description: "Task routing configuration for Hierarchical Collaborative Skill Architecture"
+version: "3.0"
+description: "Task routing configuration for Enhanced Hierarchical Collaborative Skill Architecture (6 Layers)"
 
 # Default routing behavior
 defaults:
   meta_skill: task-planner
+  dispatcher: model-router
   workflow: coding-workflow
   action: code-generator
   bypass_meta_threshold: 3
+  enable_learning: true
+  enable_reflection: true
+
+# Layer execution order
+layer_order:
+  - learning
+  - meta
+  - dispatcher
+  - workflow
+  - action
+  - domain
 
 # Routing rules evaluated in order
 routing_rules:
+  # Learning layer tasks
+  - name: "learning_task"
+    priority: 200
+    condition:
+      keywords: ["learn", "学习", "improve capability", "增强能力", "evolve", "进化"]
+    route:
+      layer: learning
+      meta_skill: strategy-learner
+      
+  - name: "reflection_task"
+    priority: 199
+    condition:
+      keywords: ["reflect", "反思", "analyze execution", "分析执行", "post-mortem"]
+    route:
+      layer: learning
+      meta_skill: reflector
+      
+  - name: "knowledge_task"
+    priority: 198
+    condition:
+      keywords: ["remember", "记忆", "retrieve knowledge", "检索知识", "knowledge base"]
+    route:
+      layer: learning
+      meta_skill: knowledge-base
+      
+  - name: "self_enhancement_task"
+    priority: 197
+    condition:
+      keywords: ["self-improve", "自我改进", "enhance capability", "增强能力", "optimize prompt"]
+    route:
+      layer: learning
+      meta_skill: self-enhancer
+
+  # Meta layer tasks - Task decomposition
+  - name: "decomposition_task"
+    priority: 150
+    condition:
+      keywords: ["decompose", "分解", "breakdown task", "拆解任务", "subtask"]
+    route:
+      layer: meta
+      meta_skill: decomposition-planner
+      
+  - name: "task_registry_task"
+    priority: 149
+    condition:
+      keywords: ["task status", "任务状态", "task history", "任务历史", "track task"]
+    route:
+      layer: meta
+      meta_skill: task-registry
+
+  # Dispatcher layer tasks - Model routing
+  - name: "model_routing_task"
+    priority: 140
+    condition:
+      keywords: ["route model", "路由模型", "select model", "选择模型", "cost optimize"]
+    route:
+      layer: dispatcher
+      meta_skill: model-router
+      
+  - name: "concurrency_task"
+    priority: 139
+    condition:
+      keywords: ["concurrent", "并发", "parallel", "并行", "rate limit", "限流"]
+    route:
+      layer: dispatcher
+      meta_skill: concurrency-manager
+
+  # Workflow layer tasks - Aggregation
+  - name: "aggregation_task"
+    priority: 130
+    condition:
+      keywords: ["aggregate", "聚合", "merge results", "合并结果", "consolidate"]
+    route:
+      layer: workflow
+      meta_skill: aggregation-processor
+
   # AI/LLM tasks
   - name: "ai_llm_task"
     priority: 110
@@ -28,6 +117,30 @@ routing_rules:
       keywords: ["prompt", "few-shot", "chain of thought", "cot", "提示词"]
     route:
       domain_skill: prompt-engineering
+      bypass_meta: true
+
+  - name: "claude_api_task"
+    priority: 108
+    condition:
+      keywords: ["claude", "anthropic", "claude api", "claude-3"]
+    route:
+      domain_skill: claude-api
+      bypass_meta: true
+
+  - name: "agent_development_task"
+    priority: 107
+    condition:
+      keywords: ["agent", "autonomous", "multi-agent", "智能体", "代理"]
+    route:
+      workflow: coding-workflow
+      domain_skill: agent-development
+
+  - name: "llm_evaluation_task"
+    priority: 106
+    condition:
+      keywords: ["evaluate", "evaluation", "benchmark", "ragas", "deepeval", "评估"]
+    route:
+      domain_skill: llm-evaluation
       bypass_meta: true
       
   # Mobile development
@@ -59,6 +172,7 @@ routing_rules:
         - has_multiple_steps: true
     route:
       meta_skill: task-planner
+      dispatcher: model-router
       workflow: coding-workflow
       
   # Simple code fixes
@@ -148,6 +262,14 @@ routing_rules:
     route:
       meta_skill: task-planner
       workflow: security-workflow
+
+  - name: "prompt_injection_task"
+    priority: 98
+    condition:
+      keywords: ["prompt injection", "injection attack", "jailbreak", "注入攻击"]
+    route:
+      domain_skill: prompt-injection-defense
+      bypass_meta: true
       
   # Performance tasks
   - name: "performance_task"
@@ -176,6 +298,24 @@ routing_rules:
       workflow: coding-workflow
       domain_skill: typescript
       
+  # Go tasks
+  - name: "go_task"
+    priority: 83
+    condition:
+      keywords: ["golang", "go语言", "goroutine", "gin", "echo", "fiber"]
+    route:
+      workflow: coding-workflow
+      domain_skill: go
+      
+  # Rust tasks
+  - name: "rust_task"
+    priority: 83
+    condition:
+      keywords: ["rust", "cargo", "tokio", "actix", "axum", "rust开发"]
+    route:
+      workflow: coding-workflow
+      domain_skill: rust
+      
   # Next.js tasks
   - name: "nextjs_task"
     priority: 83
@@ -184,6 +324,33 @@ routing_rules:
     route:
       workflow: coding-workflow
       domain_skill: nextjs
+
+  # Tailwind CSS tasks
+  - name: "tailwind_task"
+    priority: 82
+    condition:
+      keywords: ["tailwind", "tailwind css", "utility-first", "样式"]
+    route:
+      domain_skill: css-tailwind
+      bypass_meta: true
+
+  # Accessibility tasks
+  - name: "accessibility_task"
+    priority: 81
+    condition:
+      keywords: ["accessibility", "a11y", "wcag", "aria", "无障碍"]
+    route:
+      domain_skill: accessibility
+      bypass_meta: true
+
+  # i18n tasks
+  - name: "i18n_task"
+    priority: 80
+    condition:
+      keywords: ["i18n", "l10n", "internationalization", "localization", "国际化", "多语言"]
+    route:
+      domain_skill: i18n
+      bypass_meta: true
       
   # ETL/Data tasks
   - name: "etl_task"
@@ -210,9 +377,44 @@ fallbacks:
     - quick-research
     - web-search-only
     - report-limitations
+    
+  learning-workflow:
+    - strategy-learner
+    - reflector
+    - knowledge-base
 
-# Skill capability mapping
+# Skill capability mapping - Enhanced
 capabilities:
+  # Learning Layer
+  reflector:
+    can_handle:
+      - execution_analysis
+      - issue_identification
+      - insight_generation
+    triggers_after: ["task_completed", "task_failed"]
+    
+  strategy-learner:
+    can_handle:
+      - strategy_optimization
+      - pattern_recognition
+      - feedback_learning
+    schedule: "0 */6 * * *"
+    
+  self-enhancer:
+    can_handle:
+      - capability_enhancement
+      - skill_evolution
+      - prompt_optimization
+    schedule: "0 0 * * 0"
+    
+  knowledge-base:
+    can_handle:
+      - knowledge_storage
+      - semantic_search
+      - knowledge_graph
+    max_items: 100000
+    
+  # Meta Layer
   task-planner:
     can_handle:
       - task_decomposition
@@ -220,6 +422,41 @@ capabilities:
       - execution_planning
     max_complexity: 10
     
+  decomposition-planner:
+    can_handle:
+      - task_decomposition
+      - dependency_analysis
+      - execution_planning
+    max_subtasks: 20
+    
+  task-registry:
+    can_handle:
+      - task_tracking
+      - dependency_management
+      - history_persistence
+    max_tasks: 100000
+    
+  # Dispatcher Layer
+  model-router:
+    can_handle:
+      - complexity_assessment
+      - model_selection
+      - cost_optimization
+    models_available:
+      - gpt-3.5-turbo
+      - gpt-4o-mini
+      - gpt-4o
+      - claude-3-opus
+      - claude-3-sonnet
+      
+  concurrency-manager:
+    can_handle:
+      - rate_limiting
+      - request_queuing
+      - parallel_execution
+    max_concurrent: 100
+    
+  # Workflow Layer
   orchestrator:
     can_handle:
       - workflow_coordination
@@ -240,6 +477,14 @@ capabilities:
       - root_cause_identification
       - fix_implementation
     max_investigation_depth: 5
+    
+  aggregation-processor:
+    can_handle:
+      - result_aggregation
+      - conflict_detection
+      - conflict_resolution
+      - consistency_checking
+    max_sources: 50
 
 # Domain skill routing
 domain_routing:
@@ -249,6 +494,20 @@ domain_routing:
       langchain: ["chain", "agent", "memory", "tool"]
       prompt-engineering: ["prompt", "few-shot", "cot"]
       rag-system: ["rag", "retrieval", "vector", "embedding"]
+      openai: ["openai", "gpt", "chatgpt"]
+      claude-api: ["claude", "anthropic"]
+      agent-development: ["agent", "autonomous", "multi-agent"]
+      llm-evaluation: ["evaluate", "benchmark", "ragas"]
+
+  security:
+    default: prompt-injection-defense
+    keywords:
+      prompt-injection-defense: ["prompt injection", "jailbreak", "injection"]
+
+  monitoring:
+    default: monitoring
+    keywords:
+      monitoring: ["monitoring", "alerting", "prometheus", "grafana"]
       
   backend:
     default: python
@@ -256,6 +515,7 @@ domain_routing:
       python: ["python", "fastapi", "django", "flask"]
       nodejs: ["node", "express", "nestjs", "javascript"]
       go: ["go", "golang", "gin", "echo"]
+      rust: ["rust", "cargo", "tokio", "actix", "axum"]
       graphql: ["graphql", "apollo", "schema"]
       typescript: ["typescript", "types", "interface"]
       
@@ -264,8 +524,10 @@ domain_routing:
     keywords:
       react: ["react", "jsx", "hooks"]
       nextjs: ["nextjs", "ssr", "ssg"]
-      vue: ["vue", "vuex", "pinia"]
+      vue: ["vue", "vuex", "pinia", "composition"]
       css-tailwind: ["tailwind", "css", "styling"]
+      accessibility: ["a11y", "wcag", "aria", "accessibility"]
+      i18n: ["i18n", "l10n", "internationalization", "localization"]
       
   mobile:
     default: react-native
@@ -301,6 +563,40 @@ domain_routing:
       kubernetes: ["kubernetes", "k8s", "helm", "deployment"]
       ci-cd-pipeline: ["ci", "cd", "pipeline", "github actions"]
 
+# Model routing configuration
+model_routing:
+  complexity_thresholds:
+    LOW: 3
+    MEDIUM: 7
+    HIGH: 12
+    CRITICAL: 999
+    
+  routing_matrix:
+    LOW:
+      primary: "gpt-3.5-turbo"
+      fallback: "gpt-4o-mini"
+      max_tokens: 4000
+    MEDIUM:
+      primary: "gpt-4o-mini"
+      fallback: "gpt-4o"
+      max_tokens: 8000
+    HIGH:
+      primary: "gpt-4o"
+      fallback: "claude-3-opus"
+      max_tokens: 16000
+    CRITICAL:
+      primary: "claude-3-opus"
+      fallback: "gpt-4-turbo"
+      max_tokens: 32000
+      
+  rate_limits:
+    gpt-4o:
+      rpm: 500
+      tpm: 30000
+    claude-3-opus:
+      rpm: 100
+      tpm: 20000
+
 # Time and resource thresholds
 thresholds:
   max_execution_time: "30m"
@@ -323,6 +619,11 @@ quality_gates:
     - quality_score_gte_7
     - no_security_vulnerabilities
     - no_performance_issues
+    
+  learning:
+    - feedback_collected
+    - insights_generated
+    - knowledge_updated
 
 # Escalation rules
 escalation:
@@ -336,3 +637,26 @@ escalation:
     - notify_user
     - request_human_intervention
     - create_issue
+
+# Learning configuration
+learning:
+  enabled: true
+  reflection:
+    enabled: true
+    triggers: ["task_completed", "task_failed"]
+    schedule: "0 0 * * *"
+    
+  strategy_optimization:
+    enabled: true
+    schedule: "0 */6 * * *"
+    min_samples: 10
+    
+  self_enhancement:
+    enabled: true
+    schedule: "0 0 * * 0"
+    max_enhancements_per_cycle: 5
+    
+  knowledge_base:
+    enabled: true
+    auto_index: true
+    embedding_model: "text-embedding-3-small"

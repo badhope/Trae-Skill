@@ -35,22 +35,19 @@ jobs:
           warnings = []
           skill_count = 0
           
-          # Required fields in frontmatter
-          required_fields = ['name', 'description', 'category', 'tags']
+          required_fields = ['name', 'description', 'layer', 'role', 'version']
           
-          for skill_path in skills_dir.glob('*/SKILL.md'):
+          for skill_path in skills_dir.glob('**/SKILL.md'):
               skill_count += 1
-              skill_name = skill_path.parent.name
+              skill_name = str(skill_path.parent.relative_to(skills_dir))
               
               with open(skill_path, 'r', encoding='utf-8') as f:
                   content = f.read()
               
-              # Check frontmatter
               if not content.startswith('---'):
                   errors.append(f'{skill_name}: Missing frontmatter')
                   continue
               
-              # Parse frontmatter
               frontmatter_match = re.search(r'^---\s*\n(.*?)\n---', content, re.DOTALL)
               if not frontmatter_match:
                   errors.append(f'{skill_name}: Invalid frontmatter format')
@@ -58,21 +55,18 @@ jobs:
               
               frontmatter = frontmatter_match.group(1)
               
-              # Check required fields
               for field in required_fields:
                   if f'{field}:' not in frontmatter:
                       errors.append(f'{skill_name}: Missing required field \"{field}\"')
               
-              # Check content length
               main_content = content[frontmatter_match.end():].strip()
-              if len(main_content) < 500:
+              if len(main_content) < 200:
                   warnings.append(f'{skill_name}: Content is short ({len(main_content)} chars)')
               
-              # Check for English description
               if 'description:' in frontmatter:
                   desc_match = re.search(r'description:\s*[\"|\']?(.+?)[\"|\']?\s*$', frontmatter, re.MULTILINE)
                   if desc_match:
-                      desc = desc_match.group(1)
+                      desc = desc_match.group(1).strip()
                       if not desc:
                           errors.append(f'{skill_name}: Empty description')
               
@@ -99,7 +93,7 @@ jobs:
           print('\n✅ All skills validated successfully!')
           "
 
-      - name: Check skill categories
+      - name: Check skill layers
         run: |
           python -c "
           import os
@@ -107,25 +101,24 @@ jobs:
           from collections import Counter
           
           skills_dir = Path('.trae/skills')
-          categories = Counter()
+          layers = Counter()
           
-          for skill_path in skills_dir.glob('*/SKILL.md'):
+          for skill_path in skills_dir.glob('**/SKILL.md'):
               with open(skill_path, 'r', encoding='utf-8') as f:
                   content = f.read()
               
-              # Extract category
               for line in content.split('\n'):
-                  if line.startswith('category:'):
-                      cat = line.split(':', 1)[1].strip().strip('\"').strip(\"'\")
-                      categories[cat] += 1
+                  if line.startswith('layer:'):
+                      layer = line.split(':', 1)[1].strip().strip('\"').strip(\"'\")
+                      layers[layer] += 1
                       break
           
-          print('📊 Skills by Category:')
+          print('📊 Skills by Layer:')
           print('-' * 40)
-          for cat, count in sorted(categories.items(), key=lambda x: -x[1]):
-              print(f'  {cat}: {count}')
+          for layer, count in sorted(layers.items(), key=lambda x: -x[1]):
+              print(f'  {layer}: {count}')
           print('-' * 40)
-          print(f'  Total: {sum(categories.values())}')
+          print(f'  Total: {sum(layers.values())}')
           "
 
       - name: Generate skill report

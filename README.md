@@ -4,9 +4,8 @@
 
 ---
 
-[![Version](https://img.shields.io/badge/version-v3.0.0-blue.svg)](https://github.com/badhope/skill)
-[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-yellowgreen.svg)](LICENSE-CODE)
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-orange.svg)](LICENSE-CONTENT)
+[![Version](https://img.shields.io/badge/version-v4.0.0-blue.svg)](https://github.com/badhope/skill)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-yellowgreen.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/badhope/skill?style=social)](https://github.com/badhope/skill)
 [![GitHub forks](https://img.shields.io/github/forks/badhope/skill?style=social)](https://github.com/badhope/skill)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -16,7 +15,7 @@
 
 ## 🎯 Overview
 
-**AI Skill & Prompt Repository** 采用创新的 **HCSA (Hierarchical Collaborative Skill Architecture)** 四层协作架构，将传统扁平Skill升级为智能协作系统，实现任务自动分解、多Skill协调、自我反思优化。
+**AI Skill & Prompt Repository** 采用创新的 **Enhanced HCSA (Hierarchical Collaborative Skill Architecture)** 六层协作架构，将传统扁平Skill升级为智能协作系统，实现任务自动分解、多模型路由、自我反思优化、持续学习增强。
 
 | Target Users | Core Value |
 |--------------|------------|
@@ -33,29 +32,38 @@
 
 | Feature | Description |
 |---------|-------------|
-| 🏗️ **HCSA四层架构** | Meta → Workflow → Action → Domain 层级协作 |
-| 🎯 **46+ 标准化Skills** | 模块化设计，即插即用 |
-| 🧠 **智能任务路由** | 自动识别任务类型，路由到最佳Skill |
-| 🤖 **AI领域专用** | LangChain、RAG、Prompt工程完整支持 |
+| 🏗️ **Enhanced HCSA六层架构** | Learning → Meta → Dispatcher → Workflow → Action → Domain 层级协作 |
+| 🧠 **Learning Layer** | 反思学习、策略优化、自我增强、知识积累 |
+| 🔀 **Dispatcher Layer** | 智能模型路由、并发管理、成本优化 |
+| 🎯 **68+ 标准化Skills** | 模块化设计，即插即用 |
+| 🤖 **多模型路由** | 根据任务复杂度自动选择最优模型 |
 | 📱 **全栈开发覆盖** | 前端、后端、移动端、DevOps全覆盖 |
-| 🔧 **测试领域完善** | 单元测试、集成测试、E2E测试专家 |
+| 💾 **持久化存储** | 任务追踪、知识库、学习记录持久化 |
 | 🌐 **双语支持** | 完整中英文文档 |
 
 ---
 
-## 🚀 HCSA Architecture
+## 🚀 Enhanced HCSA Architecture
 
-### 四层协作架构
+### 六层协作架构
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
+│                  Learning Layer (学习层)                     │
+│   执行分析 → 模式识别 → 策略优化 → 知识积累                     │
+│   reflector | strategy-learner | self-enhancer | knowledge-base│
+├─────────────────────────────────────────────────────────────┤
 │                    Meta Layer (战略层)                       │
-│   任务规划 → 复杂度评估 → 执行计划 → 反思优化                   │
-│   task-planner | orchestrator | reflector                   │
+│   任务规划 → 复杂度评估 → 任务分解 → 执行计划                   │
+│   task-planner | decomposition-planner | task-registry       │
+├─────────────────────────────────────────────────────────────┤
+│                 Dispatcher Layer (调度层)                    │
+│   模型路由 → 成本优化 → 并发管理 → 限流控制                     │
+│   model-router | concurrency-manager                         │
 ├─────────────────────────────────────────────────────────────┤
 │                  Workflow Layer (战术层)                     │
-│   流程编排 → 状态管理 → 错误恢复 → 结果聚合                     │
-│   coding-workflow | debugging-workflow                      │
+│   流程编排 → 状态管理 → 结果聚合 → 冲突解决                     │
+│   coding-workflow | debugging-workflow | aggregation-processor│
 ├─────────────────────────────────────────────────────────────┤
 │                   Action Layer (执行层)                      │
 │   代码生成 → 测试生成 → 文档生成 → 代码搜索                     │
@@ -67,22 +75,69 @@
 └─────────────────────────────────────────────────────────────┘
 ```
 
-### 智能路由系统
+### 智能模型路由
 
 ```yaml
-# 任务自动路由示例
+# 根据任务复杂度自动选择模型
+complexity_levels:
+  LOW:      → gpt-3.5-turbo    # 简单任务，成本优先
+  MEDIUM:   → gpt-4o-mini      # 平衡性能
+  HIGH:     → gpt-4o           # 复杂推理
+  CRITICAL: → claude-3-opus    # 专家级任务
+
+# 路由示例
 用户输入: "实现一个RAG系统"
-→ 路由规则匹配: ai_llm_task
+→ 复杂度评估: HIGH
+→ 模型路由: gpt-4o
 → 选择Domain Skill: rag-system
 → 执行Workflow: coding-workflow
-→ 调用Action: code-generator
-
-用户输入: "修复这个bug"
-→ 路由规则匹配: debugging_task
-→ 选择Workflow: debugging-workflow
-→ 自动分析错误栈
-→ 生成修复方案
+→ 执行后反思: reflector分析
+→ 学习记录: knowledge-base存储
 ```
+
+### 学习循环
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    Learning Cycle                        │
+│                                                          │
+│   ┌──────────┐    ┌──────────┐    ┌──────────┐         │
+│   │ Execute  │───▶│ Reflect  │───▶│  Learn   │         │
+│   └──────────┘    └──────────┘    └──────────┘         │
+│        ▲                                 │              │
+│        └─────────────────────────────────┘              │
+│                    Improve                               │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🆕 New Features in v4.0
+
+### Learning Layer (学习层)
+| Skill | 功能 |
+|-------|------|
+| **reflector** | 执行后分析、问题识别、洞察生成 |
+| **strategy-learner** | 模式识别、策略优化、反馈学习 |
+| **self-enhancer** | 能力增强、Prompt优化、工作流改进 |
+| **knowledge-base** | 知识存储、语义搜索、知识图谱 |
+
+### Dispatcher Layer (调度层)
+| Skill | 功能 |
+|-------|------|
+| **model-router** | 复杂度评估、模型选择、成本优化 |
+| **concurrency-manager** | 限流控制、请求队列、并行执行 |
+
+### Enhanced Meta Layer
+| Skill | 功能 |
+|-------|------|
+| **decomposition-planner** | 高级任务分解、依赖分析 |
+| **task-registry** | 任务追踪、状态管理、历史持久化 |
+
+### Enhanced Workflow Layer
+| Skill | 功能 |
+|-------|------|
+| **aggregation-processor** | 结果聚合、冲突解决、一致性检查 |
 
 ---
 
@@ -95,6 +150,8 @@
 | [langchain](.trae/skills/domains/ai/langchain) | LangChain框架专家 | Chain, Agent, RAG |
 | [prompt-engineering](.trae/skills/domains/ai/prompt-engineering) | Prompt工程专家 | CoT, Few-shot, 结构化输出 |
 | [rag-system](.trae/skills/domains/ai/rag-system) | RAG系统开发 | 向量数据库, Embeddings, 检索策略 |
+| [agent-development](.trae/skills/domains/ai/agent-development) | AI Agent开发 | Multi-Agent, Tool Use |
+| [llm-evaluation](.trae/skills/domains/ai/llm-evaluation) | LLM评估 | Benchmarks, Metrics |
 
 ### 后端开发 (Backend)
 
@@ -103,6 +160,7 @@
 | [python](.trae/skills/domains/backend/python) | Python后端开发 | FastAPI, Django, Flask |
 | [nodejs](.trae/skills/domains/backend/nodejs) | Node.js后端开发 | Express, NestJS |
 | [go](.trae/skills/domains/backend/go) | Go后端开发 | Gin, Echo, gRPC |
+| [rust](.trae/skills/domains/backend/rust) | Rust系统编程 | Tokio, Actix, Axum |
 | [graphql](.trae/skills/domains/backend/graphql) | GraphQL API开发 | Apollo, Schema设计 |
 | [typescript](.trae/skills/domains/backend/typescript) | TypeScript开发 | 类型设计, 泛型编程 |
 
@@ -154,14 +212,29 @@
 ```
 skill/
 ├── .trae/
-│   └── skills/                    # HCSA架构技能库
+│   └── skills/                    # Enhanced HCSA架构技能库
+│       ├── learning/              # 学习层 (NEW)
+│       │   ├── reflector/         # 执行反思
+│       │   ├── strategy-learner/  # 策略学习
+│       │   ├── self-enhancer/     # 自我增强
+│       │   └── knowledge-base/    # 知识库
 │       ├── meta/                  # 战略层
+│       │   ├── task-planner/      # 任务规划
+│       │   ├── decomposition-planner/ # 任务分解
+│       │   └── task-registry/     # 任务注册
+│       ├── dispatcher/            # 调度层 (NEW)
+│       │   ├── model-router/      # 模型路由
+│       │   └── concurrency-manager/ # 并发管理
 │       ├── workflows/             # 战术层
+│       │   ├── coding-workflow/
+│       │   ├── debugging-workflow/
+│       │   └── aggregation-processor/ # 结果聚合
 │       ├── actions/               # 执行层
 │       ├── domains/               # 领域层
 │       ├── shared/                # 共享资源
 │       └── config/                # 配置文件
-│           └── routing.yaml       # 路由配置
+│           ├── routing.yaml       # 路由配置 (v3.0)
+│           └── storage-schema.yaml # 存储schema
 │
 ├── docs/                          # 文档
 │   └── HIERARCHICAL-SKILL-ARCHITECTURE.md
@@ -193,14 +266,18 @@ skill/
 
 ### 复杂任务 (复杂度 > 5)
 
-完整三层流程：
+完整六层流程：
 
 ```
 用户: "实现完整的用户认证系统"
+→ model-router 选择最优模型
 → task-planner 分解任务
+→ decomposition-planner 分析依赖
 → orchestrator 协调执行
 → coding-workflow 执行
+→ aggregation-processor 聚合结果
 → reflector 评估优化
+→ knowledge-base 存储知识
 ```
 
 ---
@@ -209,11 +286,13 @@ skill/
 
 | 层级 | 数量 | 说明 |
 |------|------|------|
-| Meta | 3 | 战略规划层 |
-| Workflow | 2 | 流程编排层 |
-| Action | 11 | 执行操作层 |
-| Domain | 30+ | 领域专用层 |
-| **总计** | **46+** | 持续扩展中 |
+| Learning | 4 | 自我学习层 (NEW) |
+| Meta | 4 | 战略规划层 |
+| Dispatcher | 2 | 模型调度层 (NEW) |
+| Workflow | 5 | 流程编排层 |
+| Action | 14 | 执行操作层 |
+| Domain | 39 | 领域专用层 |
+| **总计** | **68** | 持续扩展中 |
 
 ---
 
@@ -233,14 +312,17 @@ skill/
 ---
 name: skill-name
 description: "简短描述，包含关键词"
-layer: meta | workflow | action | domain
-role: planner | orchestrator | coordinator | executor | specialist
+layer: learning | meta | dispatcher | workflow | action | domain
+role: learner | planner | router | coordinator | executor | specialist
 version: 2.0.0
 invoked_by:
   - parent-skill
 capabilities:
   - capability1
   - capability2
+metrics:
+  success_rate: 0.95
+  avg_latency: 1.2s
 ---
 ```
 
@@ -256,5 +338,7 @@ capabilities:
 ## 🔗 Related Links
 
 - [HCSA架构规范](docs/HIERARCHICAL-SKILL-ARCHITECTURE.md)
-- [Skill索引](.trae/skills/README.md)
+- [Skill索引](SKILLS-INDEX.md)
+- [架构文档](ARCHITECTURE.md)
 - [路由配置](.trae/skills/config/routing.yaml)
+- [存储Schema](.trae/skills/config/storage-schema.yaml)

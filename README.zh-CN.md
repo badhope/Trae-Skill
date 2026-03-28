@@ -4,9 +4,8 @@
 
 ---
 
-[![版本](https://img.shields.io/badge/version-v2.1.0-blue.svg)](https://github.com/badhope/skill)
-[![许可证: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-yellowgreen.svg)](LICENSE-CODE)
-[![许可证: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-orange.svg)](LICENSE-CONTENT)
+[![版本](https://img.shields.io/badge/version-v3.0.0-blue.svg)](https://github.com/badhope/skill)
+[![许可证: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-yellowgreen.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/badhope/skill?style=social)](https://github.com/badhope/skill)
 [![GitHub forks](https://img.shields.io/github/forks/badhope/skill?style=social)](https://github.com/badhope/skill)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -16,16 +15,16 @@
 
 ## 🎯 项目概述
 
-**AI Skill & Prompt Repository** 是一个模块化的 **AI 技能/提示词/工作流** 知识库，专为追求高效编程和智能化工作流的开发者设计。
+**AI Skill & Prompt Repository** 采用创新的 **HCSA (Hierarchical Collaborative Skill Architecture)** 四层协作架构，将传统扁平Skill升级为智能协作系统，实现任务自动分解、多Skill协调、自我反思优化。
 
 | 适用对象 | 核心价值 |
 |----------|----------|
-| **开发者** | 快速查找、复制、使用高质量提示词 |
-| **AI 系统** | 自主理解、路由、选择和组合技能 |
+| **开发者** | 快速查找、使用高质量技能，智能任务路由 |
+| **AI 系统** | 自主理解、路由、选择、组合技能 |
 | **研究者** | 学术写作、研究辅助、文献检索 |
 | **创作者** | 创意写作、内容生成、灵感激发 |
 
-**核心技术栈:** GPT-4 · Claude · 强化学习 · 上下文记忆 · MCP 工具
+**核心技术栈:** GPT-4 · Claude · LangChain · RAG · MCP Tools
 
 ---
 
@@ -33,370 +32,210 @@
 
 | 特性 | 说明 |
 |------|------|
-| 🏆 **132+ 精选提示词** | 覆盖编程、调试、学习、创意等场景 |
-| 🎯 **110+ 标准化技能** | 模块化设计，即插即用 |
-| 🔧 **10+ 预置工作流** | 开箱即用的多步骤任务流 |
-| 🧠 **上下文记忆系统** | <100ms 语义检索响应 |
-| 🤖 **强化学习引擎** | 自适应工作流优化 |
-| 🔌 **MCP 工具框架** | 可扩展的代码质量检测、文档生成 |
-| 📚 **学术写作套件** | 文献检索、论文优化、查重检测 |
-| 🎨 **创意内容生成** | 小说创作、专业文案、多模态生成 |
-| 🌐 **双语支持** | 完整的中英文文档 |
+| 🏗️ **HCSA四层架构** | Meta → Workflow → Action → Domain 层级协作 |
+| 🎯 **60+ 标准化Skills** | 模块化设计，即插即用 |
+| 🧠 **智能任务路由** | 自动识别任务类型，路由到最佳Skill |
+| 🤖 **AI领域专用** | LangChain、RAG、Prompt工程完整支持 |
+| 📱 **全栈开发覆盖** | 前端、后端、移动端、DevOps全覆盖 |
+| 🔧 **测试领域完善** | 单元测试、集成测试、E2E测试专家 |
+| 🌐 **双语支持** | 完整中英文文档 |
 
 ---
 
-## 🚀 核心能力
+## 🚀 HCSA 架构
 
-### 🧠 上下文记忆系统
+### 四层协作架构
 
-分层记忆架构，支持语义搜索：
-
-| 记忆类型 | TTL | 容量 | 适用场景 |
-|---------|-----|------|----------|
-| **短期记忆** | 1小时 | 100条 | 当前对话上下文 |
-| **中期记忆** | 2小时 | 无限 | 会话级信息 |
-| **长期记忆** | 永久 | 无限 | 跨会话知识 |
-
-**核心特性:**
-- 语义相似度检索（响应时间 <100ms）
-- 重要性评分与衰减机制
-- 时间戳版本控制的冲突解决
-- 基于标签和嵌入向量的搜索
-
-### 🤖 强化学习引擎
-
-基于 PPO 的 RL 框架，实现自适应工作流优化：
-
-```python
-from rl_engine import RLEngine, RLConfig
-
-config = RLConfig(
-    state_dim=128,
-    action_dim=10,
-    learning_rate=0.001,
-    gamma=0.99
-)
-engine = RLEngine(config)
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Meta Layer (战略层)                       │
+│   任务规划 → 复杂度评估 → 执行计划 → 反思优化                   │
+│   task-planner | orchestrator | reflector                   │
+├─────────────────────────────────────────────────────────────┤
+│                  Workflow Layer (战术层)                     │
+│   流程编排 → 状态管理 → 错误恢复 → 结果聚合                     │
+│   coding-workflow | debugging-workflow                      │
+├─────────────────────────────────────────────────────────────┤
+│                   Action Layer (执行层)                      │
+│   代码生成 → 测试生成 → 文档生成 → 代码搜索                     │
+│   code-generator | test-generator | documentation | search  │
+├─────────────────────────────────────────────────────────────┤
+│                   Domain Layer (领域层)                      │
+│   AI领域 → 后端开发 → 前端开发 → 移动开发 → DevOps             │
+│   langchain | react | python | docker | kubernetes          │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-**能力矩阵:**
-- 多维度奖励函数（代码质量、解决效率、用户满意度）
-- 优先级采样经验回放
-- 动态 ε 衰减的探索-利用平衡
-- 代码模拟与执行环境
+### 智能路由系统
 
-### 🔧 MCP 工具框架
+```yaml
+# 任务自动路由示例
+用户输入: "实现一个RAG系统"
+→ 路由规则匹配: ai_llm_task
+→ 选择Domain Skill: rag-system
+→ 执行Workflow: coding-workflow
+→ 调用Action: code-generator
 
-可扩展的工具框架，包含专业模块：
-
-| 工具 | 功能描述 |
-|------|----------|
-| **CodeQualityCheckerTool** | 静态代码分析、风格检查 |
-| **UnitTestGeneratorTool** | 自动化测试生成 |
-| **APIDocGeneratorTool** | OpenAPI/Swagger 文档生成 |
-| **RefactoringAssistantTool** | 代码异味检测与重构建议 |
-| **CodeGeneratorTool** | MCU 代码生成 |
-| **PeripheralDriverTool** | GPIO、UART、SPI、I2C 驱动生成 |
+用户输入: "修复这个bug"
+→ 路由规则匹配: debugging_task
+→ 选择Workflow: debugging-workflow
+→ 自动分析错误栈
+→ 生成修复方案
+```
 
 ---
 
 ## 📚 技能分类
 
-### 🔌 MCP 技能 (19 个)
+### AI领域 (AI Domain)
 
-模型上下文协议集成，用于 AI 工具交互。
+| 技能 | 描述 | 技术栈 |
+|------|------|--------|
+| [langchain](.trae/skills/domains/ai/langchain) | LangChain框架专家 | Chain, Agent, RAG |
+| [prompt-engineering](.trae/skills/domains/ai/prompt-engineering) | Prompt工程专家 | CoT, Few-shot, 结构化输出 |
+| [rag-system](.trae/skills/domains/ai/rag-system) | RAG系统开发 | 向量数据库, Embeddings, 检索策略 |
+| [openai](.trae/skills/domains/ai/openai) | OpenAI API集成 | GPT-4, DALL-E, Whisper |
+| [claude-api](.trae/skills/domains/ai/claude-api) | Claude API集成 | Claude-3, Messages API |
+| [agent-development](.trae/skills/domains/ai/agent-development) | AI代理开发 | Multi-agent, 自主代理 |
+| [llm-evaluation](.trae/skills/domains/ai/llm-evaluation) | LLM评估 | RAGAS, DeepEval, 基准测试 |
 
-| 技能 | 描述 |
-|------|------|
-| mcp-server-development | 服务器架构、工具、资源 |
-| mcp-client-integration | 客户端连接、工具发现 |
-| mcp-tool-creation | 工具设计、验证、安全 |
-| mcp-resource-management | 资源暴露、订阅 |
-| mcp-prompt-templates | 参数化提示词、模板 |
-| mcp-debugging-testing | MCP Inspector、单元测试 |
-| mcp-deployment-operations | Docker、Kubernetes、云部署 |
-| mcp-security-best-practices | 认证、授权 |
-| mcp-filesystem-integration | 安全文件系统操作 |
-| mcp-database-integration | PostgreSQL、MySQL、MongoDB、Redis |
-| mcp-browser-automation | Puppeteer、Playwright 自动化 |
-| mcp-github-integration | 仓库、Issues、PRs |
-| mcp-api-gateway | 多服务器路由、负载均衡 |
-| mcp-protocol-deep-dive | 协议规范、传输 |
-| mcp-memory-context | 会话记忆、向量搜索 |
-| mcp-error-handling | 错误分类、恢复 |
-| mcp-web-search | 网页搜索集成 |
-| mcp-slack-integration | Slack 机器人和自动化 |
-| mcp-aws-integration | AWS 资源管理 |
+### 后端开发 (Backend)
 
-### 💻 编程技能 (8 个)
+| 技能 | 描述 | 技术栈 |
+|------|------|--------|
+| [python](.trae/skills/domains/backend/python) | Python后端开发 | FastAPI, Django, Flask |
+| [nodejs](.trae/skills/domains/backend/nodejs) | Node.js后端开发 | Express, NestJS |
+| [go](.trae/skills/domains/backend/go) | Go后端开发 | Gin, Echo, gRPC |
+| [rust](.trae/skills/domains/backend/rust) | Rust系统编程 | Tokio, Actix, Axum |
+| [graphql](.trae/skills/domains/backend/graphql) | GraphQL API开发 | Apollo, Schema设计 |
+| [typescript](.trae/skills/domains/backend/typescript) | TypeScript开发 | 类型设计, 泛型编程 |
 
-代码生成、审查和实现。
+### 前端开发 (Frontend)
 
-| 技能 | 描述 |
-|------|------|
-| coding | 代码生成和实现 |
-| coding-code-review | 代码质量审查 |
-| coding-bug-fixing | Bug 分析和修复 |
-| incremental-changer | 最小化目标修改 |
-| cross-file-refactor | 安全的跨文件重构 |
-| multi-language-file-handler | 多语言文件处理 |
-| test-generator | 测试用例生成 |
-| prompt-engineering | 提示词优化技术 |
+| 技能 | 描述 | 技术栈 |
+|------|------|--------|
+| [react](.trae/skills/domains/frontend/react) | React开发 | React, TypeScript |
+| [nextjs](.trae/skills/domains/frontend/nextjs) | Next.js全栈 | SSR, SSG, App Router |
+| [vue](.trae/skills/domains/frontend/vue) | Vue开发 | Vue3, Nuxt, TypeScript |
+| [css-tailwind](.trae/skills/domains/frontend/css-tailwind) | Tailwind CSS | 响应式设计、暗黑模式 |
+| [accessibility](.trae/skills/domains/frontend/accessibility) | 网页无障碍 | WCAG, ARIA |
+| [i18n](.trae/skills/domains/frontend/i18n) | 国际化 | 多语言, 本地化 |
 
-### 🐛 调试技能 (5 个)
+### 移动开发 (Mobile)
 
-系统性调试和故障排除。
+| 技能 | 描述 | 技术栈 |
+|------|------|--------|
+| [react-native](.trae/skills/domains/mobile/react-native) | React Native开发 | iOS, Android, Expo |
+| [flutter](.trae/skills/domains/mobile/flutter) | Flutter开发 | Dart, Widget, 跨平台 |
 
-| 技能 | 描述 |
-|------|------|
-| debugging | 系统性调试流程 |
-| system-debugging-agent | 调试代理能力 |
-| workflow-bug-investigation | Bug 调查工作流 |
-| workflow-tool-assisted-debug | 工具辅助调试 |
-| error-recovery | 错误恢复策略 |
+### 测试领域 (Testing)
 
-### 🔧 DevOps 技能 (12 个)
+| 技能 | 描述 | 技术栈 |
+|------|------|--------|
+| [unit-test](.trae/skills/domains/testing/unit-test) | 单元测试 | Jest, pytest, Go test |
+| [integration-test](.trae/skills/domains/testing/integration-test) | 集成测试 | Supertest, TestContainers |
+| [e2e-test](.trae/skills/domains/testing/e2e-test) | 端到端测试 | Playwright, Cypress |
 
-基础设施和部署自动化。
+### 数据库 (Database)
 
-| 技能 | 描述 |
-|------|------|
-| git-operations | Git 工作流和操作 |
-| shell-scripting | Shell 脚本自动化 |
-| docker-containerization | Docker 容器管理 |
-| ci-cd-pipeline | CI/CD 流水线配置 |
-| database-migration | 数据库迁移脚本 |
-| kubernetes-orchestration | Kubernetes 部署 |
-| terraform-iac | 基础设施即代码 |
-| incident-response | 生产事故处理 |
-| network-debugging | 网络故障排除 |
-| linting-config | Linting 工具配置 |
-| config-management | 配置管理 |
-| secret-management | 密钥和凭证管理 |
+| 技能 | 描述 | 技术栈 |
+|------|------|--------|
+| [mongodb](.trae/skills/domains/database/mongodb) | MongoDB开发 | Mongoose, 聚合管道 |
+| [redis-caching](.trae/skills/domains/database/redis-caching) | Redis缓存 | 缓存策略、限流、分布式锁 |
+| [sql-optimization](.trae/skills/domains/database/sql-optimization) | SQL优化 | 索引设计、查询优化 |
+| [database-migration](.trae/skills/domains/database/database-migration) | 数据库迁移 | Prisma, Flyway, Django |
 
-### 🎨 前端技能 (7 个)
+### DevOps
 
-UI/UX 和客户端开发。
+| 技能 | 描述 | 技术栈 |
+|------|------|--------|
+| [docker](.trae/skills/domains/devops/docker) | Docker容器化 | Dockerfile, Compose |
+| [kubernetes](.trae/skills/domains/devops/kubernetes) | K8s编排 | Deployment, Service, Helm |
+| [ci-cd-pipeline](.trae/skills/domains/devops/ci-cd-pipeline) | CI/CD流水线 | GitHub Actions, GitLab CI |
+| [monitoring](.trae/skills/domains/devops/monitoring) | 系统监控 | Prometheus, Grafana |
 
-| 技能 | 描述 |
-|------|------|
-| frontend-react | React 开发 |
-| frontend-vue | Vue.js 开发 |
-| css-tailwind | Tailwind CSS 样式 |
-| web-design-teroop | 设计优先架构 |
-| accessibility-a11y | 网页无障碍标准 |
-| i18n-localization | 国际化 |
-| web-scraping | Puppeteer 网页抓取 |
+### 安全 (Security)
 
-### ⚙️ 后端技能 (13 个)
+| 技能 | 描述 | 技术栈 |
+|------|------|--------|
+| [security-auditor](.trae/skills/domains/security/security-auditor) | 安全审计 | 漏洞扫描, 渗透测试 |
+| [prompt-injection-defense](.trae/skills/domains/security/prompt-injection-defense) | Prompt注入防御 | 输入验证, 越狱防护 |
 
-服务端和 API 开发。
+### 数据处理 (Data)
 
-| 技能 | 描述 |
-|------|------|
-| api-design | RESTful 和 GraphQL API 设计 |
-| backend-nodejs | Node.js 后端开发 |
-| backend-python | Python 后端开发 |
-| backend-go | Go 后端开发 |
-| microservices-patterns | 微服务架构 |
-| event-driven-architecture | 事件溯源、CQRS |
-| graphql-development | GraphQL 模式设计 |
-| sql-optimization | SQL 查询优化 |
-| redis-caching | Redis 缓存策略 |
-| message-queue | 消息队列系统 |
-| websocket-realtime | WebSocket 通信 |
-| state-management | Redux、Zustand、Pinia |
-| mobile-development | React Native、Flutter |
+| 技能 | 描述 | 技术栈 |
+|------|------|--------|
+| [etl](.trae/skills/domains/data/etl) | ETL管道 | Airflow, Spark |
+| [data-validation](.trae/skills/domains/data/data-validation) | 数据验证 | Schema验证, 质量检查 |
 
-### 🧪 测试技能 (5 个)
+### 性能优化 (Performance)
 
-测试自动化和覆盖率。
+| 技能 | 描述 | 技术栈 |
+|------|------|--------|
+| [performance-optimizer](.trae/skills/domains/performance/performance-optimizer) | 性能优化 | 性能分析, 瓶颈定位 |
 
-| 技能 | 描述 |
-|------|------|
-| e2e-testing | 端到端测试 |
-| test-generator | 测试用例生成 |
-| code-coverage | 测试覆盖率分析 |
-| performance-optimizer | 性能优化 |
-| security-auditor | 安全漏洞审计 |
+### MCP (Model Context Protocol)
 
-### 📊 数据技能 (6 个)
-
-数据库、缓存和数据处理。
-
-| 技能 | 描述 |
-|------|------|
-| sql-optimization | SQL 查询优化 |
-| redis-caching | Redis 缓存策略 |
-| data-pipeline | ETL 和数据管道 |
-| rag-implementation | RAG 系统 |
-| llm-fine-tuning | LLM 微调 |
-| message-queue | 消息队列系统 |
-
-### 🔒 安全技能 (4 个)
-
-安全审计和密钥管理。
-
-| 技能 | 描述 |
-|------|------|
-| security-auditor | 安全漏洞审计 |
-| auth-implementation | OAuth2、JWT、SSO、MFA |
-| secret-management | 密钥管理 |
-| mcp-security-best-practices | MCP 安全实践 |
-
-### 🔄 工作流技能 (12 个)
-
-多步骤任务自动化。
-
-| 技能 | 描述 |
-|------|------|
-| workflows | 工作流模板和指导 |
-| workflow-feature-implementation | 功能开发工作流 |
-| workflow-repo-reading-to-change-plan | 代码理解工作流 |
-| workflow-documentation-generation | 文档生成 |
-| workflow-change-verify-report | 变更验证工作流 |
-| workflow-bug-investigation | Bug 调查工作流 |
-| workflow-research-to-summary | 研究到总结工作流 |
-| workflow-new-repo-onboarding | 新仓库入门 |
-| workflow-vague-request-to-action | 需求澄清工作流 |
-| workflow-prompt-selection-composition | 提示词组合工作流 |
-| planning | 任务规划和分解 |
-| self-memory-manager | 自包含记忆 |
-
-### 🛠️ 工具使用技能 (8 个)
-
-工具使用模式和最佳实践。
-
-| 技能 | 描述 |
-|------|------|
-| tool-use | 工具使用指导 |
-| tool-use-step-by-step | 逐步工具使用 |
-| tool-use-combine-multiple-results | 结果组合 |
-| tool-use-read-files-first | 先读文件再回答 |
-| tool-use-search-before-concluding | 先搜索再下结论 |
-| tool-use-inspect-config-before-action | 先检查配置再操作 |
-| tool-use-analyze-folder-then-plan | 先分析再计划 |
-| context-compressor | 上下文压缩 |
-
-### 📝 文档技能 (3 个)
-
-文档生成。
-
-| 技能 | 描述 |
-|------|------|
-| document-processor | 文档格式处理 |
-| workflow-documentation-generation | 文档生成 |
-| cn-punctuation-checker | 中文标点检查器 |
-
-### 🧠 AI/ML 技能 (4 个)
-
-AI 代理设计和提示词工程。
-
-| 技能 | 描述 |
-|------|------|
-| ai-agent-design | AI 代理架构 |
-| prompt-engineering | 提示词优化 |
-| rag-implementation | RAG 系统 |
-| llm-fine-tuning | LLM 微调 |
-
-### 🌐 集成技能 (6 个)
-
-第三方 API 和服务集成。
-
-| 技能 | 描述 |
-|------|------|
-| api-integrator | 第三方 API 集成 |
-| mcp-github-integration | GitHub 集成 |
-| mcp-slack-integration | Slack 集成 |
-| mcp-aws-integration | AWS 集成 |
-| mcp-web-search | 网页搜索集成 |
-| mcp-browser-automation | 浏览器自动化 |
-
-### 💰 成本优化技能 (1 个)
-
-云成本管理。
-
-| 技能 | 描述 |
-|------|------|
-| cost-optimization | 云成本优化 |
-
-### 🧹 项目维护技能 (2 个)
-
-项目清理和维护。
-
-| 技能 | 描述 |
-|------|------|
-| project-cleaner | 冗余文件清理 |
-| dependency-analyzer | 依赖分析 |
-
-### 📱 平台特定技能 (2 个)
-
-平台特定开发。
-
-| 技能 | 描述 |
-|------|------|
-| wechat-mini-program-development | 微信小程序 |
-| daily-trend-writer | 微信文章生成 |
-
-### 🎬 媒体技能 (2 个)
-
-媒体处理和生成。
-
-| 技能 | 描述 |
-|------|------|
-| video-to-keyframes | 视频关键帧提取 |
-| zopia-api | AI 视频制作 |
+| 技能 | 描述 | 技术栈 |
+|------|------|--------|
+| [mcp-server-development](.trae/skills/domains/mcp/server-development) | MCP服务器开发 | 工具, 资源, 提示词 |
+| [mcp-tools](.trae/skills/domains/mcp/tools) | MCP工具创建 | 工具设计, 验证 |
 
 ---
 
 ## 📈 统计数据
 
-| 指标 | 数值 |
+| 层级 | 数量 |
 |------|------|
-| 📝 提示词 | 132+ |
-| 🎯 技能 | 110+ |
-| 🔧 工作流 | 10+ |
-| 📚 分类 | 18 |
-| 🌍 语言 | 2 (中/英) |
+| Meta | 3 |
+| Workflow | 4 |
+| Action | 14 |
+| Domain | 39 |
+| **总计** | **60** |
 
 ---
 
-## 🚀 快速导航
+## 🚀 快速开始
 
-### 人类用户
+### AI系统启动序列
 
-> **"我想让 AI..."**
-
-| 任务 | 链接 |
-|------|------|
-| 🔨 生成或修改代码 | [prompts/task/coding/](prompts/task/coding/) |
-| 🐛 调试和修复 Bug | [prompts/task/debugging/](prompts/task/debugging/) |
-| 📊 理解代码仓库 | [prompts/task/repo-analysis/](prompts/task/repo-analysis/) |
-| 📋 创建执行计划 | [prompts/task/planning/](prompts/task/planning/) |
-| 🔬 进行研究 | [prompts/task/research/](prompts/task/research/) |
-| 🔄 执行多步骤工作流 | [prompts/workflow/](prompts/workflow/) |
-| 📤 输出特定格式 | [prompts/output/](prompts/output/) |
-| 🛠️ 优化提示词 | [prompts/meta/](prompts/meta/) |
-| 📧 日常邮件写作 | [prompts/everyday/](prompts/everyday/) |
-| 📋 技能索引 | [SKILLS-INDEX.md](SKILLS-INDEX.md) |
-
----
-
-### AI 系统
-
-**启动序列** — 按顺序阅读以下文件：
+按顺序阅读以下文件：
 
 ```
-1. START-HERE.md              → 入口点
-2. ARCHITECTURE.md            → 设计理念
-3. ASSET-MAP.md               → 完整清单
-4. INDEX.md                   → 结构概览
-5. registry/prompts-registry.yaml  → 发现提示词
-6. registry/routes-registry.yaml   → 学习路由
-7. AI-USAGE.md                → 使用模式
-8. AI-ROUTING.md              → 路由逻辑
-9. AI-BOOTSTRAP.md            → 初始设置
-10. SKILLS-INDEX.md           → 技能目录
+1. ARCHITECTURE.md      → 设计理念
+2. INDEX.md             → 结构概览
+3. AI-USAGE.md          → 使用模式
+4. AI-ROUTING.md        → 路由逻辑
+5. AI-BOOTSTRAP.md      → 初始设置
+6. SKILLS-INDEX.md      → 技能目录
+```
+
+### 目录结构
+
+```
+.trae/skills/
+├── meta/                    # 战略层
+│   ├── task-planner/        # 任务规划
+│   ├── orchestrator/        # 执行协调
+│   └── reflector/           # 反思优化
+├── workflows/               # 战术层
+│   ├── coding-workflow/     # 编码工作流
+│   ├── debugging-workflow/  # 调试工作流
+│   ├── research-workflow/   # 研究工作流
+│   └── refactoring-workflow/# 重构工作流
+├── actions/                 # 执行层
+│   ├── code-generator/      # 代码生成
+│   ├── test-generator/      # 测试生成
+│   ├── documentation/       # 文档生成
+│   └── ...                  # 更多Action
+├── domains/                 # 领域层
+│   ├── ai/                  # AI领域
+│   ├── backend/             # 后端开发
+│   ├── frontend/            # 前端开发
+│   ├── devops/              # DevOps
+│   └── ...                  # 更多领域
+└── config/
+    └── routing.yaml         # 路由配置
 ```
 
 ---
@@ -419,10 +258,7 @@ AI 代理设计和提示词工程。
 
 ## 📄 许可证
 
-本项目采用双许可证：
-
-- **代码**: [Apache-2.0 许可证](LICENSE-CODE)
-- **内容**: [CC BY 4.0 许可证](LICENSE-CONTENT)
+本项目采用 [Apache-2.0 许可证](LICENSE)。
 
 ---
 
@@ -430,10 +266,10 @@ AI 代理设计和提示词工程。
 
 | 链接 | 描述 |
 |------|------|
-| [📖 文档](https://github.com/badhope/skill/wiki) | 完整文档 |
-| [🐛 问题追踪](https://github.com/badhope/skill/issues) | Bug 报告 |
-| [💬 讨论](https://github.com/badhope/skill/discussions) | 社区讨论 |
 | [📋 技能索引](SKILLS-INDEX.md) | 完整技能目录 |
+| [📖 架构文档](ARCHITECTURE.md) | 架构设计说明 |
+| [🔧 扩展指南](EXTENSION-GUIDE.md) | 技能扩展指南 |
+| [🐛 问题追踪](https://github.com/badhope/skill/issues) | Bug 报告 |
 
 ---
 

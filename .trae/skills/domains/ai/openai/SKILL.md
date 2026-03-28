@@ -1,413 +1,337 @@
 ---
 name: openai
-description: "OpenAI API integration for GPT, DALL-E, and Whisper models. Keywords: openai, gpt, chatgpt, dall-e, whisper, AI"
+description: "OpenAI API integration for GPT models, embeddings, and assistants. Keywords: openai, gpt, chatgpt, embeddings, dalle, whisper, openai api"
 layer: domain
 role: specialist
 version: 2.0.0
 domain: ai
 languages:
   - python
-  - javascript
   - typescript
 frameworks:
   - openai
   - langchain
 invoked_by:
-  - coding-workflow
-  - ai-agent
+  - code-generator
+  - langchain
+  - rag-system
 capabilities:
-  - text_generation
+  - chat_completion
+  - embedding_generation
   - image_generation
-  - speech_recognition
-  - embeddings
-  - fine_tuning
+  - audio_transcription
+triggers:
+  keywords:
+    - openai
+    - gpt
+    - chatgpt
+    - gpt-4
+    - gpt-3.5
+    - dalle
+    - whisper
+    - embeddings
+metrics:
+  avg_execution_time: 3s
+  success_rate: 0.96
+  api_efficiency: 0.92
 ---
 
 # OpenAI
 
-OpenAI API集成专家，专注于GPT、DALL-E和Whisper模型的应用开发。
+OpenAI API集成，用于GPT模型、嵌入和助手。
 
-## 适用场景
+## 目的
 
-- 文本生成与对话
-- 图像生成
-- 语音识别
-- 文本嵌入
-- 模型微调
+提供OpenAI API的最佳实践：
+- Chat Completions API
+- Embeddings API
+- DALL-E图像生成
+- Whisper语音转录
 
-## 核心架构
+## 能力
 
-### 1. Chat Completions
+- **聊天补全**: GPT模型对话补全
+- **嵌入生成**: 文本嵌入向量生成
+- **图像生成**: DALL-E图像生成
+- **语音转录**: Whisper语音识别
 
-```typescript
-import OpenAI from 'openai';
+## 模型对比
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+| 模型 | 上下文 | 特点 | 适用场景 |
+|------|--------|------|----------|
+| gpt-4-turbo | 128K | 最新旗舰 | 复杂任务 |
+| gpt-4 | 8K | 高质量 | 重要任务 |
+| gpt-3.5-turbo | 16K | 快速经济 | 日常任务 |
+| gpt-4-vision | 128K | 多模态 | 图像理解 |
 
-interface Message {
-  role: 'system' | 'user' | 'assistant';
-  content: string;
-}
+## API基础
 
-interface ChatOptions {
-  model?: string;
-  temperature?: number;
-  maxTokens?: number;
-  stream?: boolean;
-}
+### 安装
 
-async function chat(
-  messages: Message[],
-  options: ChatOptions = {}
-): Promise<string> {
-  const response = await openai.chat.completions.create({
-    model: options.model || 'gpt-4-turbo-preview',
-    messages,
-    temperature: options.temperature ?? 0.7,
-    max_tokens: options.maxTokens,
-  });
-  
-  return response.choices[0].message.content || '';
-}
-
-async function chatStream(
-  messages: Message[],
-  onChunk: (chunk: string) => void,
-  options: ChatOptions = {}
-): Promise<void> {
-  const stream = await openai.chat.completions.create({
-    model: options.model || 'gpt-4-turbo-preview',
-    messages,
-    temperature: options.temperature ?? 0.7,
-    max_tokens: options.maxTokens,
-    stream: true,
-  });
-  
-  for await (const chunk of stream) {
-    const content = chunk.choices[0]?.delta?.content || '';
-    onChunk(content);
-  }
-}
-
-async function chatWithFunctions(
-  messages: Message[],
-  functions: OpenAI.Chat.ChatCompletionCreateParams['functions']
-): Promise<any> {
-  const response = await openai.chat.completions.create({
-    model: 'gpt-4-turbo-preview',
-    messages,
-    functions,
-    function_call: 'auto',
-  });
-  
-  const message = response.choices[0].message;
-  
-  if (message.function_call) {
-    return {
-      type: 'function_call',
-      name: message.function_call.name,
-      arguments: JSON.parse(message.function_call.arguments),
-    };
-  }
-  
-  return {
-    type: 'message',
-    content: message.content,
-  };
-}
-
-const weatherFunction = {
-  name: 'get_weather',
-  description: 'Get the current weather in a location',
-  parameters: {
-    type: 'object',
-    properties: {
-      location: {
-        type: 'string',
-        description: 'City and country, e.g., "Beijing, China"',
-      },
-      unit: {
-        type: 'string',
-        enum: ['celsius', 'fahrenheit'],
-      },
-    },
-    required: ['location'],
-  },
-};
-
-const result = await chatWithFunctions(
-  [{ role: 'user', content: 'What is the weather in Beijing?' }],
-  [weatherFunction]
-);
+```bash
+pip install openai
 ```
 
-### 2. Assistants API
+### Chat Completions
 
-```typescript
-async function createAssistant() {
-  const assistant = await openai.beta.assistants.create({
-    name: 'Code Helper',
-    instructions: 'You are a helpful coding assistant.',
-    tools: [{ type: 'code_interpreter' }, { type: 'retrieval' }],
-    model: 'gpt-4-turbo-preview',
-  });
-  
-  return assistant;
-}
+```python
+from openai import OpenAI
 
-async function createThread() {
-  return openai.beta.threads.create();
-}
+client = OpenAI(api_key="your-api-key")
 
-async function addMessage(threadId: string, content: string) {
-  return openai.beta.threads.messages.create(threadId, {
-    role: 'user',
-    content,
-  });
-}
+response = client.chat.completions.create(
+    model="gpt-4-turbo",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Hello!"}
+    ],
+    temperature=0.7,
+    max_tokens=1000
+)
 
-async function runAssistant(threadId: string, assistantId: string) {
-  const run = await openai.beta.threads.runs.create(threadId, {
-    assistant_id: assistantId,
-  });
-  
-  let status = run.status;
-  
-  while (status === 'queued' || status === 'in_progress') {
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    const runStatus = await openai.beta.threads.runs.retrieve(
-      threadId,
-      run.id
-    );
-    status = runStatus.status;
-    
-    if (status === 'requires_action') {
-      const toolCalls = runStatus.required_action?.submit_tool_outputs.tool_calls;
-      
-      if (toolCalls) {
-        const outputs = await Promise.all(
-          toolCalls.map(async (call) => {
-            const result = await executeToolCall(call);
-            return {
-              tool_call_id: call.id,
-              output: JSON.stringify(result),
-            };
-          })
-        );
-        
-        await openai.beta.threads.runs.submitToolOutputs(
-          threadId,
-          run.id,
-          { tool_outputs: outputs }
-        );
-      }
+print(response.choices[0].message.content)
+```
+
+### 流式响应
+
+```python
+stream = client.chat.completions.create(
+    model="gpt-4-turbo",
+    messages=[{"role": "user", "content": "Write a story"}],
+    stream=True
+)
+
+for chunk in stream:
+    if chunk.choices[0].delta.content:
+        print(chunk.choices[0].delta.content, end="")
+```
+
+## 函数调用
+
+### 定义函数
+
+```python
+tools = [
+    {
+        "type": "function",
+        "function": {
+            "name": "get_weather",
+            "description": "Get current weather",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "location": {
+                        "type": "string",
+                        "description": "City name"
+                    }
+                },
+                "required": ["location"]
+            }
+        }
     }
-  }
-  
-  const messages = await openai.beta.threads.messages.list(threadId);
-  return messages.data[0].content[0].text.value;
-}
+]
 ```
 
-### 3. Image Generation
+### 使用函数
 
-```typescript
-async function generateImage(
-  prompt: string,
-  options: {
-    size?: '256x256' | '512x512' | '1024x1024';
-    quality?: 'standard' | 'hd';
-    n?: number;
-  } = {}
-): Promise<string[]> {
-  const response = await openai.images.generate({
-    model: 'dall-e-3',
-    prompt,
-    size: options.size || '1024x1024',
-    quality: options.quality || 'standard',
-    n: options.n || 1,
-  });
-  
-  return response.data.map(img => img.url!);
-}
+```python
+response = client.chat.completions.create(
+    model="gpt-4-turbo",
+    messages=[{"role": "user", "content": "What's the weather in Tokyo?"}],
+    tools=tools
+)
 
-async function editImage(
-  imagePath: string,
-  prompt: string,
-  maskPath?: string
-): Promise<string[]> {
-  const response = await openai.images.edit({
-    image: fs.createReadStream(imagePath),
-    mask: maskPath ? fs.createReadStream(maskPath) : undefined,
-    prompt,
-    size: '1024x1024',
-  });
-  
-  return response.data.map(img => img.url!);
-}
-
-async function createImageVariation(imagePath: string): Promise<string[]> {
-  const response = await openai.images.createVariation({
-    image: fs.createReadStream(imagePath),
-    size: '1024x1024',
-    n: 1,
-  });
-  
-  return response.data.map(img => img.url!);
-}
+if response.choices[0].message.tool_calls:
+    tool_call = response.choices[0].message.tool_calls[0]
+    function_name = tool_call.function.name
+    arguments = json.loads(tool_call.function.arguments)
+    
+    # 执行函数
+    result = get_weather(arguments["location"])
+    
+    # 返回结果
+    messages = [
+        {"role": "user", "content": "What's the weather in Tokyo?"},
+        response.choices[0].message,
+        {
+            "role": "tool",
+            "tool_call_id": tool_call.id,
+            "content": result
+        }
+    ]
+    
+    final_response = client.chat.completions.create(
+        model="gpt-4-turbo",
+        messages=messages
+    )
 ```
 
-### 4. Audio Processing
+## Embeddings
 
-```typescript
-async function transcribeAudio(
-  audioPath: string,
-  options: {
-    language?: string;
-    prompt?: string;
-  } = {}
-): Promise<string> {
-  const response = await openai.audio.transcriptions.create({
-    file: fs.createReadStream(audioPath),
-    model: 'whisper-1',
-    language: options.language,
-    prompt: options.prompt,
-  });
-  
-  return response.text;
-}
+```python
+response = client.embeddings.create(
+    model="text-embedding-3-small",
+    input="Your text here"
+)
 
-async function translateAudio(audioPath: string): Promise<string> {
-  const response = await openai.audio.translations.create({
-    file: fs.createReadStream(audioPath),
-    model: 'whisper-1',
-  });
-  
-  return response.text;
-}
-
-async function textToSpeech(
-  text: string,
-  options: {
-    voice?: 'alloy' | 'echo' | 'fable' | 'onyx' | 'nova' | 'shimmer';
-    speed?: number;
-  } = {}
-): Promise<Buffer> {
-  const response = await openai.audio.speech.create({
-    model: 'tts-1',
-    input: text,
-    voice: options.voice || 'alloy',
-    speed: options.speed,
-  });
-  
-  return Buffer.from(await response.arrayBuffer());
-}
+embedding = response.data[0].embedding
 ```
 
-### 5. Embeddings
+## 图像生成
 
-```typescript
-async function createEmbedding(text: string): Promise<number[]> {
-  const response = await openai.embeddings.create({
-    model: 'text-embedding-3-small',
-    input: text,
-  });
-  
-  return response.data[0].embedding;
-}
+### DALL-E 3
 
-async function createBatchEmbeddings(texts: string[]): Promise<number[][]> {
-  const response = await openai.embeddings.create({
-    model: 'text-embedding-3-small',
-    input: texts,
-  });
-  
-  return response.data.map(d => d.embedding);
-}
+```python
+response = client.images.generate(
+    model="dall-e-3",
+    prompt="A serene mountain landscape at sunset",
+    size="1024x1024",
+    quality="standard",
+    n=1
+)
 
-function cosineSimilarity(a: number[], b: number[]): number {
-  const dotProduct = a.reduce((sum, val, i) => sum + val * b[i], 0);
-  const magnitudeA = Math.sqrt(a.reduce((sum, val) => sum + val * val, 0));
-  const magnitudeB = Math.sqrt(b.reduce((sum, val) => sum + val * val, 0));
-  return dotProduct / (magnitudeA * magnitudeB);
-}
-
-async function semanticSearch(
-  query: string,
-  documents: string[],
-  topK: number = 5
-): Promise<{ document: string; score: number }[]> {
-  const queryEmbedding = await createEmbedding(query);
-  const docEmbeddings = await createBatchEmbeddings(documents);
-  
-  const scores = docEmbeddings.map((embedding, i) => ({
-    document: documents[i],
-    score: cosineSimilarity(queryEmbedding, embedding),
-  }));
-  
-  return scores.sort((a, b) => b.score - a.score).slice(0, topK);
-}
+image_url = response.data[0].url
 ```
 
-### 6. Fine-tuning
+### 图像编辑
 
-```typescript
-async function uploadTrainingFile(filePath: string): Promise<string> {
-  const response = await openai.files.create({
-    file: fs.createReadStream(filePath),
-    purpose: 'fine-tune',
-  });
-  
-  return response.id;
-}
+```python
+response = client.images.edit(
+    model="dall-e-2",
+    image=open("input.png", "rb"),
+    mask=open("mask.png", "rb"),
+    prompt="Add a sunset",
+    n=1,
+    size="1024x1024"
+)
+```
 
-async function createFineTuneJob(
-  trainingFileId: string,
-  model: string = 'gpt-3.5-turbo'
-): Promise<string> {
-  const response = await openai.fineTuning.jobs.create({
-    training_file: trainingFileId,
-    model,
-  });
-  
-  return response.id;
-}
+## 语音API
 
-async function getFineTuneStatus(jobId: string) {
-  return openai.fineTuning.jobs.retrieve(jobId);
-}
+### 转录
 
-async function listFineTunedModels() {
-  return openai.fineTuning.jobs.list();
-}
+```python
+response = client.audio.transcriptions.create(
+    model="whisper-1",
+    file=open("audio.mp3", "rb"),
+    language="zh"
+)
 
-async function useFineTunedModel(
-  modelId: string,
-  messages: Message[]
-): Promise<string> {
-  const response = await openai.chat.completions.create({
-    model: modelId,
-    messages,
-  });
-  
-  return response.choices[0].message.content || '';
-}
+print(response.text)
+```
+
+### 翻译
+
+```python
+response = client.audio.translations.create(
+    model="whisper-1",
+    file=open("audio.mp3", "rb")
+)
+
+print(response.text)  # 输出英文
+```
+
+### TTS
+
+```python
+response = client.audio.speech.create(
+    model="tts-1",
+    voice="alloy",
+    input="Hello, world!"
+)
+
+response.stream_to_file("output.mp3")
+```
+
+## Assistants API
+
+### 创建助手
+
+```python
+assistant = client.beta.assistants.create(
+    name="Math Tutor",
+    instructions="You are a math tutor.",
+    model="gpt-4-turbo",
+    tools=[{"type": "code_interpreter"}]
+)
+```
+
+### 运行助手
+
+```python
+thread = client.beta.threads.create()
+
+client.beta.threads.messages.create(
+    thread_id=thread.id,
+    role="user",
+    content="Solve x^2 + 1 = 0"
+)
+
+run = client.beta.threads.runs.create_and_poll(
+    thread_id=thread.id,
+    assistant_id=assistant.id
+)
+
+messages = client.beta.threads.messages.list(thread_id=thread.id)
 ```
 
 ## 最佳实践
 
-1. **Token管理**: 监控token使用量
-2. **错误处理**: 实现重试机制
-3. **流式输出**: 使用streaming提升体验
-4. **成本控制**: 选择合适的模型
-5. **安全存储**: 保护API密钥
-6. **内容审核**: 检查生成内容
+### 1. 错误处理
+
+```python
+from openai import APIError, RateLimitError, APIConnectionError
+
+try:
+    response = client.chat.completions.create(...)
+except RateLimitError:
+    time.sleep(60)
+    retry()
+except APIConnectionError:
+    handle_connection_error()
+except APIError as e:
+    log_error(e)
+```
+
+### 2. 成本优化
+
+```python
+# 使用更便宜的模型
+model = "gpt-3.5-turbo" if simple_task else "gpt-4-turbo"
+
+# 限制输出长度
+response = client.chat.completions.create(
+    model=model,
+    messages=messages,
+    max_tokens=500
+)
+```
+
+### 3. 缓存
+
+```python
+import hashlib
+
+def cached_completion(messages, model="gpt-4-turbo"):
+    cache_key = hashlib.md5(
+        str(messages).encode() + model.encode()
+    ).hexdigest()
+    
+    if cache := cache.get(cache_key):
+        return cache
+    
+    response = client.chat.completions.create(
+        model=model,
+        messages=messages
+    )
+    
+    cache.set(cache_key, response.choices[0].message.content)
+    return response.choices[0].message.content
+```
 
 ## 相关技能
 
 - [langchain](../langchain) - LangChain框架
-- [vector-database](../vector-database) - 向量数据库
-- [ai-agent](../../meta/ai-agent) - AI代理
+- [rag-system](../rag-system) - RAG系统
+- [claude-api](../claude-api) - Claude API
+- [llm-evaluation](../llm-evaluation) - LLM评估

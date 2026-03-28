@@ -8,8 +8,35 @@ build/
 .eggs/
 *.egg
 
-# Website dependencies
-website/node_modules/
+node_modules/
+.npm
+.pnpm-store/
 
-# Next.js build output
-website/.next/
+.next/
+out/
+
+.DS_Store
+Thumbs.db
+
+*.log
+*.tmp
+
+.env
+.env.local
+.env.*.local
+
+.idea/
+.vscode/
+*.swp
+*.swo
+
+coverage/
+.nyc_output/
+
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+backups/
+_site/

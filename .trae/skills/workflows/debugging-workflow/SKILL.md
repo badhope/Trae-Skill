@@ -3,7 +3,7 @@ name: debugging-workflow
 description: "Systematic debugging workflow for finding and fixing bugs. Use for bug investigation, error analysis, and issue resolution. Keywords: debug, fix, bug, error, issue, 调试, 修复, 错误, 问题"
 layer: workflow
 role: coordinator
-version: 1.0.0
+version: 2.0.0
 invokes:
   - log-analyzer
   - code-analyzer
@@ -11,9 +11,11 @@ invokes:
   - root-cause-finder
   - code-fixer
   - test-runner
+  - aggregation-processor
 invoked_by:
   - task-planner
   - orchestrator
+  - decomposition-planner
 capabilities:
   - investigation_coordination
   - hypothesis_management
@@ -40,6 +42,7 @@ metrics:
   avg_execution_time: 10m
   success_rate: 0.88
   token_efficiency: 0.78
+  root_cause_accuracy: 0.92
 ---
 
 # Debugging Workflow

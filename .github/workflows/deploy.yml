@@ -21,31 +21,60 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 9
-
-      - name: Install dependencies
-        working-directory: website
-        run: pnpm install
-
-      - name: Build
-        working-directory: website
-        run: pnpm build
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
+
+      - name: Build documentation site
+        run: |
+          mkdir -p _site
+          
+          cp README.md _site/index.md
+          cp SKILLS-INDEX.md _site/
+          cp ARCHITECTURE.md _site/
+          cp CHANGELOG.md _site/
+          cp CONTRIBUTING.md _site/
+          cp SECURITY.md _site/
+          cp README.zh-CN.md _site/ 2>/dev/null || true
+          
+          cat > _site/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>HCSA Skills Repository</title>
+            <style>
+              body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; }
+              h1 { color: #2563eb; }
+              .card { background: #f8fafc; border-radius: 8px; padding: 20px; margin: 10px 0; }
+              a { color: #2563eb; text-decoration: none; }
+              a:hover { text-decoration: underline; }
+              code { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; }
+            </style>
+          </head>
+          <body>
+            <h1>🚀 HCSA Skills Repository</h1>
+            <div class="card">
+              <h2>Documentation</h2>
+              <ul>
+                <li><a href="README.md">README</a> - Project overview</li>
+                <li><a href="SKILLS-INDEX.md">Skills Index</a> - Complete skill catalog</li>
+                <li><a href="ARCHITECTURE.md">Architecture</a> - System architecture</li>
+                <li><a href="CHANGELOG.md">Changelog</a> - Version history</li>
+                <li><a href="CONTRIBUTING.md">Contributing</a> - Contribution guide</li>
+                <li><a href="SECURITY.md">Security</a> - Security policy</li>
+              </ul>
+            </div>
+          </body>
+          </html>
+          EOF
+          
+          echo "Documentation site built successfully!"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: website/out
+          path: _site
 
   deploy:
     environment:

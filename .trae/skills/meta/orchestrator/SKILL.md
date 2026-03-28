@@ -2,16 +2,18 @@
 name: orchestrator
 description: "Execution orchestrator that coordinates Workflow-Skills and manages task execution flow. Use for coordinating complex multi-skill tasks. Keywords: execute, coordinate, manage, run, 执行, 协调, 管理"
 layer: meta
-role: orchestrator
-version: 1.0.0
+role: coordinator
+version: 2.0.0
 invokes:
+  - task-registry
   - coding-workflow
   - debugging-workflow
   - research-workflow
   - refactoring-workflow
-  - documentation-workflow
+  - aggregation-processor
 invoked_by:
   - task-planner
+  - decomposition-planner
 capabilities:
   - workflow_coordination
   - state_management
@@ -28,6 +30,7 @@ metrics:
   avg_execution_time: variable
   success_rate: 0.92
   token_efficiency: 0.80
+  coordination_efficiency: 0.85
 ---
 
 # Orchestrator

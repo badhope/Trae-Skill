@@ -1,30 +1,61 @@
 # Skills Index
 
-Complete index of all 48 skills organized by HCSA layer for easy discovery and navigation.
+Complete index of all 70 skills organized by Enhanced HCSA layer for easy discovery and navigation.
 
 ---
 
-## HCSA Architecture Overview
+## Enhanced HCSA Architecture Overview
 
 ```
-┌─────────────────────────────────────────┐
-│           Meta Layer (战略层)            │
-│   task-planner | orchestrator | reflector│
-├─────────────────────────────────────────┤
-│         Workflow Layer (战术层)          │
-│      coding-workflow | debugging-workflow│
-├─────────────────────────────────────────┤
-│          Action Layer (执行层)           │
-│   code-generator | test-generator | ...  │
-├─────────────────────────────────────────┤
-│          Domain Layer (领域层)           │
-│   AI | Backend | Frontend | DevOps | ... │
-└─────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────┐
+│               Learning Layer (学习层)                        │
+│   reflector | strategy-learner | self-enhancer | knowledge-base│
+│   - Execution analysis    - Pattern recognition              │
+│   - Self-improvement      - Knowledge accumulation           │
+├─────────────────────────────────────────────────────────────┤
+│               Meta Layer (战略层)                            │
+│   task-planner | decomposition-planner | task-registry       │
+│   - Strategic planning    - Task decomposition               │
+│   - Dependency analysis   - Task tracking                    │
+├─────────────────────────────────────────────────────────────┤
+│            Dispatcher Layer (调度层)                         │
+│   model-router | concurrency-manager                         │
+│   - Model routing         - Cost optimization                │
+│   - Rate limiting         - Parallel execution               │
+├─────────────────────────────────────────────────────────────┤
+│               Workflow Layer (战术层)                        │
+│   coding-workflow | debugging-workflow | aggregation-processor│
+│   - Process coordination  - State management                │
+│   - Result aggregation    - Error recovery                  │
+├─────────────────────────────────────────────────────────────┤
+│               Action Layer (执行层)                          │
+│   code-generator | test-generator | documentation | ...     │
+│   - Specific operations    - Tool calls                     │
+│   - Data processing        - Code generation                │
+├─────────────────────────────────────────────────────────────┤
+│               Domain Layer (领域层)                          │
+│   AI | Backend | Frontend | DevOps | Database | Security    │
+│   - Domain-specific expertise                               │
+│   - Best practices & patterns                               │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Meta Layer (战略层)
+## Learning Layer (学习层) - NEW
+
+Self-improvement and knowledge accumulation skills.
+
+| Skill | Description | Location |
+|-------|-------------|----------|
+| reflector | Execution analysis and reflection | [learning/reflector](.trae/skills/learning/reflector) |
+| strategy-learner | Strategy optimization from feedback | [learning/strategy-learner](.trae/skills/learning/strategy-learner) |
+| self-enhancer | Capability enhancement and evolution | [learning/self-enhancer](.trae/skills/learning/self-enhancer) |
+| knowledge-base | Knowledge storage and retrieval | [learning/knowledge-base](.trae/skills/learning/knowledge-base) |
+
+---
+
+## Meta Layer (战略层) - ENHANCED
 
 Strategic planning and coordination skills.
 
@@ -32,11 +63,23 @@ Strategic planning and coordination skills.
 |-------|-------------|----------|
 | task-planner | Task decomposition and planning | [meta/task-planner](.trae/skills/meta/task-planner) |
 | orchestrator | Execution coordination | [meta/orchestrator](.trae/skills/meta/orchestrator) |
-| reflector | Self-reflection and learning | [meta/reflector](.trae/skills/meta/reflector) |
+| decomposition-planner | Advanced task decomposition | [meta/decomposition-planner](.trae/skills/meta/decomposition-planner) |
+| task-registry | Task tracking and history | [meta/task-registry](.trae/skills/meta/task-registry) |
 
 ---
 
-## Workflow Layer (战术层)
+## Dispatcher Layer (调度层) - NEW
+
+Model routing and resource management skills.
+
+| Skill | Description | Location |
+|-------|-------------|----------|
+| model-router | Intelligent model routing | [dispatcher/model-router](.trae/skills/dispatcher/model-router) |
+| concurrency-manager | Concurrent task management | [dispatcher/concurrency-manager](.trae/skills/dispatcher/concurrency-manager) |
+
+---
+
+## Workflow Layer (战术层) - ENHANCED
 
 Process coordination skills.
 
@@ -44,6 +87,9 @@ Process coordination skills.
 |-------|-------------|----------|
 | coding-workflow | Code implementation workflow | [workflows/coding-workflow](.trae/skills/workflows/coding-workflow) |
 | debugging-workflow | Bug fixing workflow | [workflows/debugging-workflow](.trae/skills/workflows/debugging-workflow) |
+| research-workflow | Systematic research workflow | [workflows/research-workflow](.trae/skills/workflows/research-workflow) |
+| refactoring-workflow | Code refactoring workflow | [workflows/refactoring-workflow](.trae/skills/workflows/refactoring-workflow) |
+| aggregation-processor | Result aggregation and conflict resolution | [workflows/aggregation-processor](.trae/skills/workflows/aggregation-processor) |
 
 ---
 
@@ -64,6 +110,9 @@ Execution and operation skills.
 | cross-file-refactor | Cross-file refactoring | [actions/code/cross-file-refactor](.trae/skills/actions/code/cross-file-refactor) |
 | git-operations | Git operations | [actions/tools/git-operations](.trae/skills/actions/tools/git-operations) |
 | tool-use | Tool usage | [actions/tools/tool-use](.trae/skills/actions/tools/tool-use) |
+| code-review | Code review | [actions/code-review](.trae/skills/actions/code-review) |
+| dependency-analyzer | Dependency analysis | [actions/analysis/dependency-analyzer](.trae/skills/actions/analysis/dependency-analyzer) |
+| error-analyzer | Error analysis | [actions/analysis/error-analyzer](.trae/skills/actions/analysis/error-analyzer) |
 
 ---
 
@@ -79,6 +128,9 @@ Domain-specific expertise skills.
 | prompt-engineering | Prompt optimization | [domains/ai/prompt-engineering](.trae/skills/domains/ai/prompt-engineering) |
 | rag-system | RAG implementation | [domains/ai/rag-system](.trae/skills/domains/ai/rag-system) |
 | openai | OpenAI API | [domains/ai/openai](.trae/skills/domains/ai/openai) |
+| claude-api | Claude API | [domains/ai/claude-api](.trae/skills/domains/ai/claude-api) |
+| agent-development | AI agent development | [domains/ai/agent-development](.trae/skills/domains/ai/agent-development) |
+| llm-evaluation | LLM evaluation | [domains/ai/llm-evaluation](.trae/skills/domains/ai/llm-evaluation) |
 
 ### Backend
 
@@ -87,6 +139,7 @@ Domain-specific expertise skills.
 | python | Python development | [domains/backend/python](.trae/skills/domains/backend/python) |
 | nodejs | Node.js development | [domains/backend/nodejs](.trae/skills/domains/backend/nodejs) |
 | go | Go development | [domains/backend/go](.trae/skills/domains/backend/go) |
+| rust | Rust development | [domains/backend/rust](.trae/skills/domains/backend/rust) |
 | graphql | GraphQL API | [domains/backend/graphql](.trae/skills/domains/backend/graphql) |
 | typescript | TypeScript | [domains/backend/typescript](.trae/skills/domains/backend/typescript) |
 
@@ -98,6 +151,8 @@ Domain-specific expertise skills.
 | vue | Vue development | [domains/frontend/vue](.trae/skills/domains/frontend/vue) |
 | nextjs | Next.js framework | [domains/frontend/nextjs](.trae/skills/domains/frontend/nextjs) |
 | css-tailwind | Tailwind CSS | [domains/frontend/css-tailwind](.trae/skills/domains/frontend/css-tailwind) |
+| accessibility | Web accessibility | [domains/frontend/accessibility](.trae/skills/domains/frontend/accessibility) |
+| i18n | Internationalization | [domains/frontend/i18n](.trae/skills/domains/frontend/i18n) |
 
 ### DevOps
 
@@ -106,6 +161,7 @@ Domain-specific expertise skills.
 | docker | Docker containerization | [domains/devops/docker](.trae/skills/domains/devops/docker) |
 | kubernetes | K8s orchestration | [domains/devops/kubernetes](.trae/skills/domains/devops/kubernetes) |
 | ci-cd-pipeline | CI/CD workflows | [domains/devops/ci-cd-pipeline](.trae/skills/domains/devops/ci-cd-pipeline) |
+| monitoring | System monitoring | [domains/devops/monitoring](.trae/skills/domains/devops/monitoring) |
 
 ### Database
 
@@ -138,12 +194,23 @@ Domain-specific expertise skills.
 | etl | ETL pipeline | [domains/data/etl](.trae/skills/domains/data/etl) |
 | data-validation | Data validation | [domains/data/data-validation](.trae/skills/domains/data/data-validation) |
 
-### Other
+### Security
 
 | Skill | Description | Location |
 |-------|-------------|----------|
 | security-auditor | Security auditing | [domains/security/security-auditor](.trae/skills/domains/security/security-auditor) |
+| prompt-injection-defense | Prompt injection defense | [domains/security/prompt-injection-defense](.trae/skills/domains/security/prompt-injection-defense) |
+
+### Performance
+
+| Skill | Description | Location |
+|-------|-------------|----------|
 | performance-optimizer | Performance optimization | [domains/performance/performance-optimizer](.trae/skills/domains/performance/performance-optimizer) |
+
+### MCP
+
+| Skill | Description | Location |
+|-------|-------------|----------|
 | mcp-server-development | MCP server dev | [domains/mcp/server-development](.trae/skills/domains/mcp/server-development) |
 | mcp-tools | MCP tools | [domains/mcp/tools](.trae/skills/domains/mcp/tools) |
 
@@ -153,8 +220,31 @@ Domain-specific expertise skills.
 
 | Layer | Count |
 |-------|-------|
-| Meta | 3 |
-| Workflow | 2 |
-| Action | 11 |
-| Domain | 32 |
-| **Total** | **48** |
+| Learning | 4 |
+| Meta | 4 |
+| Dispatcher | 2 |
+| Workflow | 5 |
+| Action | 14 |
+| Domain | 39 |
+| **Total** | **68** |
+
+---
+
+## New Features in v2.0
+
+### Learning Layer
+- **Reflector**: Post-execution analysis and insight generation
+- **Strategy Learner**: Pattern recognition and strategy optimization
+- **Self-Enhancer**: Capability enhancement and prompt optimization
+- **Knowledge Base**: Persistent knowledge storage with semantic search
+
+### Dispatcher Layer
+- **Model Router**: Intelligent model selection based on task complexity
+- **Concurrency Manager**: Rate limiting, queuing, and parallel execution
+
+### Enhanced Meta Layer
+- **Decomposition Planner**: Advanced task decomposition with dependency analysis
+- **Task Registry**: Persistent task tracking with history
+
+### Enhanced Workflow Layer
+- **Aggregation Processor**: Result aggregation with conflict resolution

@@ -3,10 +3,15 @@ name: reflector
 description: "Self-reflection and learning engine that analyzes execution results, identifies improvements, and extracts lessons. Use after task completion for quality assurance. Keywords: reflect, analyze, improve, learn, 反思, 分析, 改进, 学习"
 layer: meta
 role: reflector
-version: 1.0.0
+version: 2.0.0
+invokes:
+  - learning/reflector
+  - learning/strategy-learner
+  - learning/knowledge-base
 invoked_by:
   - orchestrator
   - task-planner
+  - aggregation-processor
 capabilities:
   - quality_assessment
   - error_analysis
@@ -24,6 +29,7 @@ metrics:
   avg_execution_time: 2s
   success_rate: 0.98
   token_efficiency: 0.90
+  insight_quality: 0.85
 ---
 
 # Reflector

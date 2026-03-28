@@ -1,261 +1,401 @@
 ---
-name: frontend-vue
-description: "Vue.js and Nuxt.js development expert with Composition API, Pinia state management, and composables. Keywords: vue, nuxt, pinia, composition-api, typescript, frontend"
+name: vue
+description: "Vue.js development for progressive web applications with Composition API. Keywords: vue, vue3, composition api, pinia, vuex, vite, vue开发"
 layer: domain
 role: specialist
 version: 2.0.0
 domain: frontend
 language: typescript
 frameworks:
-  - vue
-  - nuxt
+  - vue3
+  - pinia
+  - vite
 invoked_by:
   - coding-workflow
+  - frontend-react
 capabilities:
   - component_development
   - state_management
-  - composables
-  - ssr
-  - testing
+  - routing
+  - composition_api
+triggers:
+  keywords:
+    - vue
+    - vue3
+    - vue.js
+    - composition api
+    - pinia
+    - vuex
+    - vite
+metrics:
+  avg_execution_time: 3s
+  success_rate: 0.95
+  component_quality: 0.90
 ---
 
-# Frontend Vue
+# Vue.js
 
-Vue.js和Nuxt.js开发专家，精通Composition API、Pinia状态管理和Composables。
+Vue.js开发，用于渐进式Web应用开发。
 
-## 适用场景
+## 目的
 
-- 构建Vue应用
-- 使用Composition API
-- Pinia状态管理
-- Nuxt.js SSR
-- 组件设计
-- 组件测试
+提供Vue.js开发的最佳实践：
+- 组件开发
+- 状态管理
+- 路由配置
+- Composition API
 
-## 核心概念
+## 能力
 
-### Composition API
+- **组件开发**: Vue组件设计和实现
+- **状态管理**: Pinia/Vuex状态管理
+- **路由**: Vue Router配置
+- **Composition API**: 组合式API使用
+
+## Vue 3特性
+
+### Composition API vs Options API
+
+| 特性 | Composition API | Options API |
+|------|----------------|-------------|
+| 代码组织 | 按功能组织 | 按选项组织 |
+| 逻辑复用 | Composables | Mixins |
+| TypeScript | 更好支持 | 一般支持 |
+| 适用场景 | 大型项目 | 小型项目 |
+
+## 组件开发
+
+### 基本组件
 
 ```vue
-<script setup lang="ts">
-import { ref, computed, watch, onMounted } from 'vue';
-
-const props = defineProps<{ userId: string }>();
-const emit = defineEmits<{ update: [user: User] }>();
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-}
-
-const user = ref<User | null>(null);
-const loading = ref(true);
-
-const displayName = computed(() => user.value?.name ?? 'Unknown');
-
-async function fetchUser() {
-  loading.value = true;
-  const response = await fetch(`/api/users/${props.userId}`);
-  user.value = await response.json();
-  loading.value = false;
-}
-
-watch(() => props.userId, fetchUser, { immediate: true });
-</script>
-
 <template>
-  <div v-if="loading">Loading...</div>
-  <div v-else-if="user" class="user-profile">
-    <h1>{{ user.name }}</h1>
-    <p>{{ user.email }}</p>
+  <div class="counter">
+    <p>Count: {{ count }}</p>
+    <button @click="increment">+1</button>
   </div>
 </template>
 
+<script setup>
+import { ref, computed } from 'vue'
+
+const props = defineProps({
+  initialValue: {
+    type: Number,
+    default: 0
+  }
+})
+
+const emit = defineEmits(['change'])
+
+const count = ref(props.initialValue)
+
+const doubled = computed(() => count.value * 2)
+
+function increment() {
+  count.value++
+  emit('change', count.value)
+}
+</script>
+
 <style scoped>
-.user-profile { padding: 1rem; }
+.counter {
+  padding: 1rem;
+}
 </style>
+```
+
+### Props和Emits
+
+```vue
+<script setup>
+const props = defineProps({
+  title: {
+    type: String,
+    required: true
+  },
+  items: {
+    type: Array,
+    default: () => []
+  }
+})
+
+const emit = defineEmits(['update', 'delete'])
+
+function handleUpdate(item) {
+  emit('update', item)
+}
+</script>
+```
+
+### 插槽
+
+```vue
+<template>
+  <div class="card">
+    <header>
+      <slot name="header">
+        Default Header
+      </slot>
+    </header>
+    <main>
+      <slot></slot>
+    </main>
+    <footer>
+      <slot name="footer" :data="footerData">
+        Default Footer
+      </slot>
+    </footer>
+  </div>
+</template>
+```
+
+## Composition API
+
+### 响应式
+
+```typescript
+import { ref, reactive, computed, watch, watchEffect } from 'vue'
+
+// ref - 基本类型
+const count = ref(0)
+count.value++
+
+// reactive - 对象
+const state = reactive({
+  name: 'Vue',
+  version: 3
+})
+
+// computed
+const doubled = computed(() => count.value * 2)
+
+// watch
+watch(count, (newVal, oldVal) => {
+  console.log(`Count changed: ${oldVal} -> ${newVal}`)
+})
+
+// watchEffect
+watchEffect(() => {
+  console.log(`Count is: ${count.value}`)
+})
 ```
 
 ### Composables
 
 ```typescript
-import { ref, watch, type Ref } from 'vue';
+// composables/useCounter.ts
+import { ref, computed } from 'vue'
 
-export function useFetch<T>(url: Ref<string> | string) {
-  const data = ref<T | null>(null) as Ref<T | null>;
-  const loading = ref(true);
-  const error = ref<Error | null>(null);
+export function useCounter(initialValue = 0) {
+  const count = ref(initialValue)
   
-  async function fetchData() {
-    loading.value = true;
-    try {
-      const response = await fetch(typeof url === 'string' ? url : url.value);
-      data.value = await response.json();
-    } catch (err) {
-      error.value = err as Error;
-    } finally {
-      loading.value = false;
-    }
+  const doubled = computed(() => count.value * 2)
+  
+  function increment() {
+    count.value++
   }
   
-  if (typeof url === 'string') {
-    fetchData();
-  } else {
-    watch(url, fetchData, { immediate: true });
+  function decrement() {
+    count.value--
   }
   
-  return { data, loading, error, refetch: fetchData };
+  function reset() {
+    count.value = initialValue
+  }
+  
+  return {
+    count,
+    doubled,
+    increment,
+    decrement,
+    reset
+  }
 }
 
-export function useDebounce<T>(value: Ref<T>, delay: number) {
-  const debouncedValue = ref(value.value) as Ref<T>;
-  
-  watch(value, (newValue) => {
-    const timer = setTimeout(() => {
-      debouncedValue.value = newValue;
-    }, delay);
-    return () => clearTimeout(timer);
-  });
-  
-  return debouncedValue;
-}
+// 使用
+<script setup>
+import { useCounter } from './composables/useCounter'
+
+const { count, increment } = useCounter(10)
+</script>
 ```
 
-### Pinia Store
+### 生命周期
 
 ```typescript
-import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
+import {
+  onMounted,
+  onUpdated,
+  onUnmounted,
+  onBeforeMount,
+  onBeforeUpdate,
+  onBeforeUnmount
+} from 'vue'
+
+onMounted(() => {
+  console.log('Component mounted')
+})
+
+onUnmounted(() => {
+  // 清理
+})
+```
+
+## 状态管理
+
+### Pinia
+
+```typescript
+// stores/user.ts
+import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
 
 export const useUserStore = defineStore('user', () => {
-  const user = ref<User | null>(null);
-  const token = ref<string | null>(null);
+  const user = ref(null)
+  const isLoggedIn = computed(() => !!user.value)
   
-  const isAuthenticated = computed(() => !!token.value);
-  
-  async function login(email: string, password: string) {
-    const response = await fetch('/api/login', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-    });
-    const data = await response.json();
-    user.value = data.user;
-    token.value = data.token;
+  async function login(credentials) {
+    const response = await api.login(credentials)
+    user.value = response.user
   }
   
   function logout() {
-    user.value = null;
-    token.value = null;
+    user.value = null
   }
   
-  return { user, token, isAuthenticated, login, logout };
-});
-```
+  return {
+    user,
+    isLoggedIn,
+    login,
+    logout
+  }
+})
 
-## Nuxt.js
+// 使用
+<script setup>
+import { useUserStore } from '@/stores/user'
 
-### 页面和路由
+const userStore = useUserStore()
 
-```vue
-<script setup lang="ts">
-const route = useRoute();
-const { data: user, pending } = await useFetch(`/api/users/${route.params.id}`);
+const { user, isLoggedIn } = storeToRefs(userStore)
+const { login, logout } = userStore
 </script>
-
-<template>
-  <div v-if="pending">Loading...</div>
-  <div v-else>
-    <h1>{{ user?.name }}</h1>
-  </div>
-</template>
 ```
 
-### 服务端路由
+## 路由
+
+### Vue Router
 
 ```typescript
-export default defineEventHandler(async (event) => {
-  const method = getMethod(event);
-  const id = getRouterParam(event, 'id');
-  
-  if (method === 'GET') {
-    return await getUserById(id);
+// router/index.ts
+import { createRouter, createWebHistory } from 'vue-router'
+
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: () => import('@/views/Home.vue')
+  },
+  {
+    path: '/users/:id',
+    name: 'User',
+    component: () => import('@/views/User.vue'),
+    props: true,
+    children: [
+      {
+        path: 'profile',
+        name: 'UserProfile',
+        component: () => import('@/views/UserProfile.vue')
+      }
+    ]
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () => import('@/views/NotFound.vue')
   }
-  
-  if (method === 'PUT') {
-    const body = await readBody(event);
-    return await updateUser(id, body);
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
+
+// 导航守卫
+router.beforeEach((to, from) => {
+  if (to.meta.requiresAuth && !isAuthenticated()) {
+    return { name: 'Login', query: { redirect: to.fullPath } }
   }
-  
-  throw createError({ statusCode: 405, message: 'Method not allowed' });
-});
+})
+
+export default router
 ```
 
-## 组件模式
-
-### Props和Emits
+### 组合式路由
 
 ```vue
-<script setup lang="ts">
-interface Props {
-  title: string;
-  items: Array<{ id: string; name: string }>;
-  maxItems?: number;
+<script setup>
+import { useRoute, useRouter } from 'vue-router'
+
+const route = useRoute()
+const router = useRouter()
+
+const userId = computed(() => route.params.id)
+
+function navigateToUser(id) {
+  router.push({ name: 'User', params: { id } })
 }
-
-const props = withDefaults(defineProps<Props>(), {
-  maxItems: 10,
-});
-
-const emit = defineEmits<{
-  select: [item: { id: string; name: string }];
-  delete: [id: string];
-}>();
-
-const visibleItems = computed(() => props.items.slice(0, props.maxItems));
 </script>
-
-<template>
-  <div class="list">
-    <h2>{{ title }}</h2>
-    <ul>
-      <li
-        v-for="item in visibleItems"
-        :key="item.id"
-        @click="emit('select', item)"
-      >
-        {{ item.name }}
-      </li>
-    </ul>
-  </div>
-</template>
-```
-
-### v-model
-
-```vue
-<script setup lang="ts">
-const model = defineModel<string>({ default: '' });
-</script>
-
-<template>
-  <input
-    :value="model"
-    @input="model = ($event.target as HTMLInputElement).value"
-  />
-</template>
 ```
 
 ## 最佳实践
 
-1. **TypeScript**: 类型安全
-2. **Composition API**: 使用script setup
-3. **状态管理**: Pinia
-4. **组件设计**: 单一职责
-5. **可访问性**: 语义化HTML
-6. **测试**: Vitest
+### 1. 组件命名
+
+```
+组件文件: PascalCase (UserProfile.vue)
+组件注册: PascalCase (<UserProfile />)
+Props: camelCase (userName)
+Events: kebab-case (user-updated)
+```
+
+### 2. 目录结构
+
+```
+src/
+├── components/
+│   ├── common/
+│   └── features/
+├── composables/
+├── stores/
+├── views/
+├── router/
+└── main.ts
+```
+
+### 3. 性能优化
+
+```typescript
+// 异步组件
+const AsyncComponent = defineAsyncComponent(() =>
+  import('./components/Heavy.vue')
+)
+
+// v-memo
+<div v-memo="[item.id]">
+  {{ item.name }}
+</div>
+
+// 懒加载路由
+{
+  path: '/heavy',
+  component: () => import('@/views/Heavy.vue')
+}
+```
 
 ## 相关技能
 
-- [frontend-react](../react) - React开发
-- [backend-nodejs](../../backend/nodejs) - Node.js后端
+- [react](../react) - React开发
+- [nextjs](../nextjs) - Next.js框架
+- [typescript](../../backend/typescript) - TypeScript
+- [css-tailwind](../css-tailwind) - Tailwind CSS

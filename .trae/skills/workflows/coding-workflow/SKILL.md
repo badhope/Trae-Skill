@@ -3,7 +3,7 @@ name: coding-workflow
 description: "Orchestrates code generation, testing, and review workflow. Use for feature implementation and code development tasks. Keywords: implement, code, develop, write, 实现, 编码, 开发, 编写"
 layer: workflow
 role: coordinator
-version: 1.0.0
+version: 2.0.0
 invokes:
   - code-analyzer
   - code-generator
@@ -12,9 +12,11 @@ invokes:
   - doc-writer
   - type-checker
   - linter
+  - aggregation-processor
 invoked_by:
   - task-planner
   - orchestrator
+  - decomposition-planner
 capabilities:
   - state_management
   - phase_coordination
@@ -40,6 +42,7 @@ metrics:
   avg_execution_time: 8m
   success_rate: 0.90
   token_efficiency: 0.82
+  quality_score_avg: 8.5
 ---
 
 # Coding Workflow
