@@ -1,6 +1,6 @@
 # Skills Index
 
-Complete index of all 97 skills organized in two views:
+Complete index of all 105 skills organized in two views:
 1. **By Layer**: Enhanced HCSA 6-layer architecture (AI-friendly)
 2. **By Function**: Functional categories (human-friendly)
 3. **By Tier**: Complexity tier (for collaboration mode)
@@ -125,6 +125,14 @@ Process coordination skills.
 | data-augmentation | Data augmentation for training data (NEW) | [workflows/data-augmentation](.trae/skills/workflows/data-augmentation) |
 | model-finetuning | Model fine-tuning and customization (NEW) | [workflows/model-finetuning](.trae/skills/workflows/model-finetuning) |
 | ab-testing | A/B testing and experimentation (NEW) | [workflows/ab-testing](.trae/skills/workflows/ab-testing) |
+| one-click-project | One-click full project development (NEW Tier 3) | [workflows/one-click-project](.trae/skills/workflows/one-click-project) |
+| web-automation | Web automation and browser operations (NEW) | [workflows/web-automation](.trae/skills/workflows/web-automation) |
+| design-to-code | Convert design mockups to production code (NEW) | [workflows/design-to-code](.trae/skills/workflows/design-to-code) |
+| mcp-orchestrator | MCP tool discovery and orchestration (NEW) | [workflows/mcp-orchestrator](.trae/skills/workflows/mcp-orchestrator) |
+| skill-showcase-website | Generate skill showcase website (NEW) | [workflows/skill-showcase-website](.trae/skills/workflows/skill-showcase-website) |
+| ai-research-assistant | AI research and literature review (NEW) | [workflows/ai-research-assistant](.trae/skills/workflows/ai-research-assistant) |
+| game-developer | Game development from concept to playable (NEW) | [workflows/game-developer](.trae/skills/workflows/game-developer) |
+| data-visualizer | Data visualization and dashboard creation (NEW) | [workflows/data-visualizer](.trae/skills/workflows/data-visualizer) |
 
 ---
 
@@ -371,6 +379,7 @@ Skills organized by what they do, not by architecture layer.
 ### Tier 3: Complex Skills - Lead-Worker + Handoff
 | Skill | Description | Layer |
 |-------|-------------|-------|
+| one-click-project | One-click full project development (NEW) | Workflow |
 | full-stack-development | Full stack project development (NEW) | Workflow |
 | enterprise-project | Enterprise software project (NEW) | Workflow |
 | research-paper-writing | Academic research paper writing (NEW) | Workflow |
@@ -427,18 +436,18 @@ All remaining 58 skills (Actions, Domains, most Learning) are Tier 1 - single ag
 | Learning | 4 |
 | Meta | 4 |
 | Dispatcher | 2 |
-| Workflow | 34 (19 + 15 NEW) |
+| Workflow | 42 (34 + 8 NEW) |
 | Action | 14 |
 | Domain | 39 |
-| **Total** | **97** |
+| **Total** | **105** |
 
 ### By Tier
 | Tier | Count |
 |------|-------|
 | Tier 1 | ~61 |
-| Tier 2 | ~30 |
-| Tier 3 | ~6 |
-| **Total** | **97** |
+| Tier 2 | ~37 |
+| Tier 3 | ~7 |
+| **Total** | **105** |
 
 ---
 
