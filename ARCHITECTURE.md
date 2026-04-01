@@ -6,12 +6,83 @@ This document explains **why** this repository is structured the way it is, and 
 
 ## Design Philosophy
 
-This repository follows three core principles:
+This repository follows five core principles:
 
-1. **Enhanced Hierarchical Collaborative Skill Architecture (HCSA)**: Skills are organized in six layers - Learning, Meta, Dispatcher, Workflow, Action, Domain
-2. **AI-First Discoverability**: The routing system enables AI to autonomously find, select, and compose skills
-3. **Self-Improvement**: Built-in learning and reflection capabilities for continuous optimization
-4. **Modularity**: Each skill is self-contained and composable
+1. **Enhanced HCSA v5.0 Fusion Architecture**: 6-layer system with Lead-Worker + Handoff collaboration
+2. **Tiered Complexity**: Not all skills need multi-agent - use single/chain/fusion as needed
+3. **AI-First Discoverability**: Routing system enables AI to autonomously find, select, and compose skills
+4. **Human-Friendly Index**: Dual views (by layer + by function) for easy navigation
+5. **Self-Improvement**: Built-in learning and reflection capabilities
+
+---
+
+## HCSA v5.0 Fusion Architecture
+
+The fusion architecture combines the best of:
+- **Anthropic**: Lead-Worker structure with parallel sub-agents
+- **OpenAI**: Handoff (移交) mechanism for seamless collaboration
+- **Google Research**: Avoid multi-agent overhead for simple tasks
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    LEAD AGENT (Meta Layer)                      │
+│  • Task planning & decomposition                                │
+│  • Worker team assembly & assignment                            │
+│  • Final result review & quality check                          │
+└────────────────────────┬────────────────────────────────────────┘
+                         │
+         ┌───────────────┼───────────────┐
+         │               │               │
+┌────────▼────────┐ ┌───▼────────┐ ┌──▼──────────┐
+│ WORKER TEAM 1   │ │ WORKER TEAM 2│ │ WORKER TEAM N│
+│  • Expert 1     │ │  • Expert A  │ │  • Expert X │
+│  • Expert 2 ━━┓ │ │  • Expert B ━━┓│ │  • Expert Y ━━┓│
+│  • Expert 3 ◀━┛ │ │  • Expert C ◀━┛│ │  • Expert Z ◀━┛│
+│    (Handoff)     │ │   (Handoff)    │ │   (Handoff)     │
+└────────┬─────────┘ └──────┬───────┘ └──────┬────────┘
+         │                    │                 │
+         └────────────────────┼─────────────────┘
+                              │
+                    ┌─────────▼─────────┐
+                    │   RESULT AGGREGATOR │
+                    │   (Workflow Layer) │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                 (6-layer HCSA pipeline)
+```
+
+---
+
+## Tier Classification (When to Use What)
+
+Based on Google 2026 research, we don't use multi-agent for everything.
+
+| Tier | Name | Architecture | Use Case | Skill Count |
+|------|------|--------------|----------|-------------|
+| **Tier 1** | Atomic Skills | Single Agent | Simple, focused tasks | ~58 |
+| **Tier 2** | Composite Skills | Handoff Chain | Multi-step sequential | ~7 |
+| **Tier 3** | Complex Skills | Lead-Worker + Handoff | Complex, parallel, need QC | ~6 |
+
+---
+
+## Handoff Mechanism (OpenAI Style)
+
+The handoff is a core innovation: Agent passes the baton like a relay race.
+
+```
+┌─────────────┐    handoff     ┌─────────────┐    handoff     ┌─────────────┐
+│   Expert A  │ ━━━━━━━━━━━━━► │   Expert B  │ ━━━━━━━━━━━━━► │   Expert C  │
+│  (Designer) │                │  (Coder)    │                │  (Tester)   │
+└─────────────┘                └─────────────┘                └─────────────┘
+       │                              │                              │
+  context +                      context +                      context +
+  partial result                 partial result                 final result
+```
+
+---
+
+## Enhanced HCSA 6-Layer Pipeline
 
 ---
 

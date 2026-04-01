@@ -1,44 +1,53 @@
 # Skills Index
 
-Complete index of all 70 skills organized by Enhanced HCSA layer for easy discovery and navigation.
+Complete index of all 70 skills organized in two views:
+1. **By Layer**: Enhanced HCSA 6-layer architecture (AI-friendly)
+2. **By Function**: Functional categories (human-friendly)
+3. **By Tier**: Complexity tier (for collaboration mode)
 
 ---
 
-## Enhanced HCSA Architecture Overview
+## HCSA v5.0 Fusion Architecture Overview
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│               Learning Layer (学习层)                        │
-│   reflector | strategy-learner | self-enhancer | knowledge-base│
-│   - Execution analysis    - Pattern recognition              │
-│   - Self-improvement      - Knowledge accumulation           │
-├─────────────────────────────────────────────────────────────┤
-│               Meta Layer (战略层)                            │
-│   task-planner | decomposition-planner | task-registry       │
-│   - Strategic planning    - Task decomposition               │
-│   - Dependency analysis   - Task tracking                    │
-├─────────────────────────────────────────────────────────────┤
-│            Dispatcher Layer (调度层)                         │
-│   model-router | concurrency-manager                         │
-│   - Model routing         - Cost optimization                │
-│   - Rate limiting         - Parallel execution               │
-├─────────────────────────────────────────────────────────────┤
-│               Workflow Layer (战术层)                        │
-│   coding-workflow | debugging-workflow | aggregation-processor│
-│   - Process coordination  - State management                │
-│   - Result aggregation    - Error recovery                  │
-├─────────────────────────────────────────────────────────────┤
-│               Action Layer (执行层)                          │
-│   code-generator | test-generator | documentation | ...     │
-│   - Specific operations    - Tool calls                     │
-│   - Data processing        - Code generation                │
-├─────────────────────────────────────────────────────────────┤
-│               Domain Layer (领域层)                          │
-│   AI | Backend | Frontend | DevOps | Database | Security    │
-│   - Domain-specific expertise                               │
-│   - Best practices & patterns                               │
-└─────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    LEAD AGENT (Meta Layer)                      │
+│  • Task planning & decomposition                                │
+│  • Worker team assembly & assignment                            │
+│  • Final result review & quality check                          │
+└────────────────────────┬────────────────────────────────────────┘
+                         │
+         ┌───────────────┼───────────────┐
+         │               │               │
+┌────────▼────────┐ ┌───▼────────┐ ┌──▼──────────┐
+│ WORKER TEAM 1   │ │ WORKER TEAM 2│ │ WORKER TEAM N│
+│  • Expert 1     │ │  • Expert A  │ │  • Expert X │
+│  • Expert 2 ━━┓ │ │  • Expert B ━━┓│ │  • Expert Y ━━┓│
+│  • Expert 3 ◀━┛ │ │  • Expert C ◀━┛│ │  • Expert Z ◀━┛│
+│    (Handoff)     │ │   (Handoff)    │ │   (Handoff)     │
+└────────┬─────────┘ └──────┬───────┘ └──────┬────────┘
+         │                    │                 │
+         └────────────────────┼─────────────────┘
+                              │
+                    ┌─────────▼─────────┐
+                    │   RESULT AGGREGATOR │
+                    │   (Workflow Layer) │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                 (6-layer HCSA pipeline)
 ```
+
+---
+
+## Tier Classification
+
+| Tier | Name | Architecture | Skill Count |
+|------|------|--------------|-------------|
+| **Tier 1** | Atomic Skills | Single Agent | ~40 |
+| **Tier 2** | Composite Skills | Handoff Chain | ~20 |
+| **Tier 3** | Complex Skills | Lead-Worker + Handoff | ~9 |
+
 
 ---
 
@@ -216,21 +225,167 @@ Domain-specific expertise skills.
 
 ---
 
+## By Function (Functional Categories) - Human-Friendly View
+
+Skills organized by what they do, not by architecture layer.
+
+### Code Development
+| Skill | Description | Tier |
+|-------|-------------|------|
+| code-generator | Code generation | Tier 1 |
+| api-design | API design | Tier 1 |
+| code-formatting | Code formatting | Tier 1 |
+| linting-config | Lint configuration | Tier 1 |
+| cross-file-refactor | Cross-file refactoring | Tier 1 |
+| code-review | Code review | Tier 1 |
+| coding-workflow | Code implementation workflow | Tier 2 |
+| refactoring-workflow | Code refactoring workflow | Tier 2 |
+
+### Testing & Quality
+| Skill | Description | Tier |
+|-------|-------------|------|
+| test-generator | Test generation | Tier 1 |
+| code-coverage | Coverage analysis | Tier 1 |
+| unit-test | Unit testing | Tier 1 |
+| integration-test | Integration testing | Tier 1 |
+| e2e-test | E2E testing | Tier 1 |
+| debugging-workflow | Bug fixing workflow | Tier 2 |
+| error-analyzer | Error analysis | Tier 1 |
+
+### AI & Agents
+| Skill | Description | Tier |
+|-------|-------------|------|
+| langchain | LangChain framework | Tier 1 |
+| prompt-engineering | Prompt optimization | Tier 1 |
+| rag-system | RAG implementation | Tier 1 |
+| openai | OpenAI API | Tier 1 |
+| claude-api | Claude API | Tier 1 |
+| agent-development | AI agent development | Tier 1 |
+| llm-evaluation | LLM evaluation | Tier 1 |
+| research-workflow | Systematic research workflow | Tier 2 |
+| full-stack-development | Full stack project (NEW) | Tier 3 |
+| enterprise-project | Enterprise project (NEW) | Tier 3 |
+| research-paper-writing | Research paper writing (NEW) | Tier 3 |
+
+### DevOps & Infrastructure
+| Skill | Description | Tier |
+|-------|-------------|------|
+| docker | Docker containerization | Tier 1 |
+| kubernetes | K8s orchestration | Tier 1 |
+| ci-cd-pipeline | CI/CD workflows | Tier 1 |
+| monitoring | System monitoring | Tier 1 |
+| git-operations | Git operations | Tier 1 |
+| tool-use | Tool usage | Tier 1 |
+
+### Data & Database
+| Skill | Description | Tier |
+|-------|-------------|------|
+| sql-optimization | SQL optimization | Tier 1 |
+| mongodb | MongoDB | Tier 1 |
+| redis-caching | Redis caching | Tier 1 |
+| database-migration | DB migration | Tier 1 |
+| etl | ETL pipeline | Tier 1 |
+| data-validation | Data validation | Tier 1 |
+
+### Frontend
+| Skill | Description | Tier |
+|-------|-------------|------|
+| react | React development | Tier 1 |
+| vue | Vue development | Tier 1 |
+| nextjs | Next.js framework | Tier 1 |
+| css-tailwind | Tailwind CSS | Tier 1 |
+| accessibility | Web accessibility | Tier 1 |
+| i18n | Internationalization | Tier 1 |
+
+### Backend
+| Skill | Description | Tier |
+|-------|-------------|------|
+| python | Python development | Tier 1 |
+| nodejs | Node.js development | Tier 1 |
+| go | Go development | Tier 1 |
+| rust | Rust development | Tier 1 |
+| graphql | GraphQL API | Tier 1 |
+| typescript | TypeScript | Tier 1 |
+
+### Security & Performance
+| Skill | Description | Tier |
+|-------|-------------|------|
+| security-auditor | Security auditing | Tier 1 |
+| prompt-injection-defense | Prompt injection defense | Tier 1 |
+| performance-optimizer | Performance optimization | Tier 1 |
+
+### Documentation & Search
+| Skill | Description | Tier |
+|-------|-------------|------|
+| documentation | Doc generation | Tier 1 |
+| code-search | Code search | Tier 1 |
+
+### MCP
+| Skill | Description | Tier |
+|-------|-------------|------|
+| mcp-server-development | MCP server dev | Tier 1 |
+| mcp-tools | MCP tools | Tier 1 |
+
+### Mobile
+| Skill | Description | Tier |
+|-------|-------------|------|
+| react-native | React Native | Tier 1 |
+| flutter | Flutter | Tier 1 |
+
+---
+
+## By Tier (Complexity Level)
+
+### Tier 3: Complex Skills - Lead-Worker + Handoff
+| Skill | Description | Layer |
+|-------|-------------|-------|
+| full-stack-development | Full stack project development (NEW) | Workflow |
+| enterprise-project | Enterprise software project (NEW) | Workflow |
+| research-paper-writing | Academic research paper writing (NEW) | Workflow |
+| decomposition-planner | Advanced task decomposition | Meta |
+| orchestrator | Multi-agent orchestration | Meta |
+| aggregation-processor | Result aggregation with conflict resolution | Workflow |
+
+### Tier 2: Composite Skills - Handoff Chain
+| Skill | Description | Layer |
+|-------|-------------|-------|
+| coding-workflow | Code implementation workflow | Workflow |
+| debugging-workflow | Bug fixing workflow | Workflow |
+| research-workflow | Systematic research workflow | Workflow |
+| refactoring-workflow | Code refactoring workflow | Workflow |
+| task-planner | Task decomposition and planning | Meta |
+| model-router | Intelligent model routing | Dispatcher |
+| concurrency-manager | Concurrent task management | Dispatcher |
+
+### Tier 1: Atomic Skills - Single Agent
+All remaining 58 skills (Actions, Domains, most Learning) are Tier 1 - single agent, focused, tool-light operations.
+
+---
+
 ## Statistics
 
+### By Layer
 | Layer | Count |
 |-------|-------|
 | Learning | 4 |
 | Meta | 4 |
 | Dispatcher | 2 |
-| Workflow | 5 |
+| Workflow | 8 (5 + 3 NEW) |
 | Action | 14 |
 | Domain | 39 |
-| **Total** | **68** |
+| **Total** | **71** |
+
+### By Tier
+| Tier | Count |
+|------|-------|
+| Tier 1 | ~58 |
+| Tier 2 | ~7 |
+| Tier 3 | ~6 |
+| **Total** | **71** |
 
 ---
 
-## New Features in v2.0
+## New Features in v5.0 - Fusion Architecture
 
 ### Learning Layer
 - **Reflector**: Post-execution analysis and insight generation
