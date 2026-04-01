@@ -105,6 +105,11 @@ Process coordination skills.
 | solution-merger | Merge subproblem solutions into final solution | [workflows/solution-merger](.trae/skills/workflows/solution-merger) |
 | git-bisect-debugger | Git bisect - binary search commit history | [workflows/git-bisect-debugger](.trae/skills/workflows/git-bisect-debugger) |
 | code-modularizer | Break monolithic code into clean modules | [workflows/code-modularizer](.trae/skills/workflows/code-modularizer) |
+| iteration-controller | Control iterations, prevent infinite loops | [workflows/iteration-controller](.trae/skills/workflows/iteration-controller) |
+| content-generator | Generate content - blogs, product descriptions | [workflows/content-generator](.trae/skills/workflows/content-generator) |
+| progress-reporter | Report progress, show status, estimate ETA | [workflows/progress-reporter](.trae/skills/workflows/progress-reporter) |
+| fallback-manager | Handle failures gracefully with fallback strategies | [workflows/fallback-manager](.trae/skills/workflows/fallback-manager) |
+| human-in-the-loop | Involve human in decision making | [workflows/human-in-the-loop](.trae/skills/workflows/human-in-the-loop) |
 
 ---
 
@@ -387,18 +392,18 @@ All remaining 58 skills (Actions, Domains, most Learning) are Tier 1 - single ag
 | Learning | 4 |
 | Meta | 4 |
 | Dispatcher | 2 |
-| Workflow | 14 (8 + 6 NEW) |
+| Workflow | 19 (14 + 5 NEW) |
 | Action | 14 |
 | Domain | 39 |
-| **Total** | **77** |
+| **Total** | **82** |
 
 ### By Tier
 | Tier | Count |
 |------|-------|
-| Tier 1 | ~59 |
-| Tier 2 | ~12 |
+| Tier 1 | ~61 |
+| Tier 2 | ~15 |
 | Tier 3 | ~6 |
-| **Total** | **77** |
+| **Total** | **82** |
 
 ---
 
