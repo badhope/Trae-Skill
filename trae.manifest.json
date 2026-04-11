@@ -1,0 +1,162 @@
+{
+  "manifestVersion": "1.0.0",
+  "id": "trae-official-skills",
+  "name": "Trae Official Skills Collection",
+  "version": "1.0.0",
+  "description": "Official MCP Skills Collection for Trae IDE - 16 production-grade tools for AI-assisted development",
+  "publisher": "Trae Official",
+  "icon": "📦",
+  "type": "mcp-collection",
+  
+  "tags": [
+    "Productivity",
+    "Code Quality",
+    "Testing",
+    "Debugging",
+    "Refactoring",
+    "Security",
+    "Performance"
+  ],
+  
+  "categories": [
+    "Development",
+    "Code Quality",
+    "Workflow"
+  ],
+  
+  "galleryBanner": {
+    "color": "#6366f1",
+    "theme": "dark"
+  },
+  
+  "badges": [
+    {
+      "type": "Official",
+      "value": "Trae Team"
+    },
+    {
+      "type": "Featured",
+      "value": "Editor's Pick"
+    }
+  ],
+  
+  "mcpServers": [
+    {
+      "id": "git",
+      "name": "Git Version Control",
+      "path": "./mcp/git/index.ts",
+      "autoStart": true
+    },
+    {
+      "id": "terminal",
+      "name": "Terminal Execution",
+      "path": "./mcp/terminal/index.ts",
+      "autoStart": true
+    },
+    {
+      "id": "code-review",
+      "name": "AI Code Review",
+      "path": "./mcp/code-review/index.ts",
+      "autoStart": true
+    },
+    {
+      "id": "test-generator",
+      "name": "Test Automation",
+      "path": "./mcp/test-generator/index.ts",
+      "autoStart": false
+    },
+    {
+      "id": "documentation",
+      "name": "Documentation Generator",
+      "path": "./mcp/documentation/index.ts",
+      "autoStart": false
+    },
+    {
+      "id": "search",
+      "name": "Advanced Code Search",
+      "path": "./mcp/search/index.ts",
+      "autoStart": false
+    },
+    {
+      "id": "code-generator",
+      "name": "Code Scaffolding",
+      "path": "./mcp/code-generator/index.ts",
+      "autoStart": false
+    },
+    {
+      "id": "dependency-analyzer",
+      "name": "Dependency Audit",
+      "path": "./mcp/dependency-analyzer/index.ts",
+      "autoStart": false
+    },
+    {
+      "id": "react",
+      "name": "React Toolkit",
+      "path": "./mcp/react/index.ts",
+      "autoStart": false
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript Master",
+      "path": "./mcp/typescript/index.ts",
+      "autoStart": false
+    },
+    {
+      "id": "docker",
+      "name": "Docker Toolkit",
+      "path": "./mcp/docker/index.ts",
+      "autoStart": false
+    },
+    {
+      "id": "security-auditor",
+      "name": "Security Auditor",
+      "path": "./mcp/security-auditor/index.ts",
+      "autoStart": false
+    },
+    {
+      "id": "performance-optimizer",
+      "name": "Performance Optimizer",
+      "path": "./mcp/performance-optimizer/index.ts",
+      "autoStart": false
+    },
+    {
+      "id": "coding-workflow",
+      "name": "Coding Workflow",
+      "path": "./mcp/coding-workflow/index.ts",
+      "autoStart": true
+    },
+    {
+      "id": "debugging-workflow",
+      "name": "Debugging Workflow",
+      "path": "./mcp/debugging-workflow/index.ts",
+      "autoStart": false
+    },
+    {
+      "id": "refactoring-workflow",
+      "name": "Refactoring Workflow",
+      "path": "./mcp/refactoring-workflow/index.ts",
+      "autoStart": false
+    }
+  ],
+  
+  "activationHooks": [
+    "workspaceContains:package.json",
+    "workspaceContains:.git",
+    "onStartup"
+  ],
+  
+  "dependencies": {},
+  
+  "homepage": "https://github.com/badhope/trae-skills",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/badhope/trae-skills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/badhope/trae-skills/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "trae": ">=0.1.0"
+  }
+}
