@@ -1,0 +1,22 @@
+{
+  "name": "@badhope/trae-skills",
+  "version": "1.0.0",
+  "exports": {
+    ".": "./packages/core/index.ts",
+    "./mcp/*": "./mcp/*/index.ts"
+  },
+  "publish": {
+    "include": [
+      "packages/**/*.ts",
+      "mcp/**/*.ts",
+      "tsconfig.json",
+      "README.md",
+      "LICENSE"
+    ],
+    "exclude": [
+      "dist",
+      "node_modules",
+      "*.tgz"
+    ]
+  }
+}

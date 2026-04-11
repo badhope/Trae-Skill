@@ -1,0 +1,76 @@
+{
+  "publisher": "badhope",
+  "name": "trae-skills-bundle",
+  "version": "1.0.0",
+  "displayName": "Trae Skills Bundle - 16 MCP Tools",
+  "description": "The most comprehensive MCP Skills collection. 16 production-grade tools for AI-assisted development including Git, Terminal, Code Review, Testing, Debugging, and more.",
+  "longDescription": "# Trae Skills Bundle\n\n## The World's Largest MCP Skills Collection\n\n16 production-grade Model Context Protocol servers designed for AI IDEs:\n\n### 🚀 Core Skills (Auto-Start)\n- **Git** - Complete version control toolkit\n- **Terminal** - Secure shell execution environment\n- **Code Review** - AI-powered code analysis\n- **Coding Workflow** - Standardized development process\n\n### 🧪 Development Tools\n- **Test Generator** - Automatic test creation\n- **Documentation** - JSDoc & README generation\n- **Code Search** - Advanced semantic search\n- **Code Generator** - Intelligent scaffolding\n- **Dependency Analyzer** - NPM audit & version management\n\n### 🛠️ Language Specific\n- **React Toolkit** - Hooks, components, best practices\n- **TypeScript Master** - Type safety & optimization\n\n### 🔐 DevOps & Security\n- **Docker Toolkit** - Container generation\n- **Security Auditor** - Vulnerability scanning\n- **Performance Optimizer** - Bundle size & speed\n\n### 🔄 Workflows\n- **Debugging Workflow** - Systematic troubleshooting\n- **Refactoring Workflow** - Safe code transformation\n\n---\n\n## Compatibility\n\n✅ **Trae IDE** - Native support\n✅ **Claude Desktop** - Zero configuration\n✅ **Cursor IDE** - Auto-detected\n✅ **Windsurf** - Full MCP support\n✅ **Ollama** - Local model support",
+  
+  "categories": [
+    "developer-tools",
+    "productivity",
+    "code-quality",
+    "testing",
+    "security"
+  ],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai",
+    "trae",
+    "claude",
+    "cursor",
+    "developer-tools",
+    "code-review",
+    "testing",
+    "debugging",
+    "git",
+    "terminal"
+  ],
+  "homepage": "https://github.com/badhope/skill",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/badhope/skill.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "badhope",
+    "url": "https://github.com/badhope"
+  },
+  "mcpServers": [
+    {
+      "id": "git",
+      "name": "Git Version Control",
+      "command": "npx",
+      "args": ["-y", "@badhope/trae-skills", "mcp", "git"],
+      "env": {}
+    },
+    {
+      "id": "terminal",
+      "name": "Terminal Execution",
+      "command": "npx",
+      "args": ["-y", "@badhope/trae-skills", "mcp", "terminal"],
+      "env": {}
+    },
+    {
+      "id": "code-review",
+      "name": "AI Code Review",
+      "command": "npx",
+      "args": ["-y", "@badhope/trae-skills", "mcp", "code-review"],
+      "env": {}
+    },
+    {
+      "id": "coding-workflow",
+      "name": "Coding Workflow",
+      "command": "npx",
+      "args": ["-y", "@badhope/trae-skills", "mcp", "coding-workflow"],
+      "env": {}
+    }
+  ],
+  "installation": {
+    "type": "npm",
+    "command": "npm install @badhope/trae-skills --save-dev",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "badges": ["official", "featured", "most-downloaded"]
+}

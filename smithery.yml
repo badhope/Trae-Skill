@@ -1,0 +1,29 @@
+id: badhope/trae-skills
+name: Trae Skills Collection
+version: 1.0.0
+description: 16 Production-grade MCP Servers for AI Development
+author: badhope
+tags:
+  - mcp
+  - ai
+  - developer-tools
+  - code-review
+  - testing
+  - git
+  - terminal
+
+mcpServers:
+  git:
+    command: npx
+    args: ["-y", "@badhope/trae-skills", "mcp", "git"]
+  
+  terminal:
+    command: npx
+    args: ["-y", "@badhope/trae-skills", "mcp", "terminal"]
+  
+  code-review:
+    command: npx
+    args: ["-y", "@badhope/trae-skills", "mcp", "code-review"]
+
+homepage: https://github.com/badhope/skill
+repository: https://github.com/badhope/skill.git
