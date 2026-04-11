@@ -10,12 +10,13 @@
 
 | Metric | Status |
 |--------|--------|
-| 📦 **MCP Servers** | 16 Production-Grade |
-| 🔧 **AI Tools** | 52 |
-| ⚡ **User Prompts** | 21 |
-| 📄 **Context Resources** | 6 |
+| 📦 **MCP Servers** | 70 Production-Grade |
+| 🔧 **AI Tools** | 350+ |
+| ⚡ **User Prompts** | 80+ |
+| 📄 **Context Resources** | 35 |
 | ✅ **TypeScript Validated** | 0 Errors |
 | 🎯 **Trae Optimized** | 100% Ready |
+| 🤖 **AI Agent Modules** | 7 Advanced |
 
 ---
 
@@ -92,6 +93,29 @@ Add to your Trae configuration:
 
 ---
 
+## 🤖 AI Agent Suite (NEW)
+
+State-of-the-art AI agent capabilities inspired by AutoGPT, BabyAGI, and multi-agent systems.
+
+### Autonomous Execution
+
+| Server | Icon | Key Capabilities |
+|--------|------|------------------|
+| **agent-autonomous** | 🎯 | Task creation, prioritization, execution loop |
+| **agent-multi** | 👥 | 6 expert roles, debate, voting, consensus building |
+| **agent-reflection** | 🧠 | Metacognition, bias detection, quality gates |
+| **website-builder** | 🌐 | One-click landing page generation with Tailwind CSS |
+
+### Enhanced Cognitive Capabilities
+
+| Server | Icon | Key Capabilities |
+|--------|------|------------------|
+| **memory** | 🧠 | Vector embeddings, semantic search, human forgetting curves |
+| **thinking** | 💭 | Sequential Chain-of-Thought, self-criticism loop |
+| **web-search** | 🔍 | DuckDuckGo + Wikipedia real-time knowledge |
+
+---
+
 ## 🎯 Why This is Built for Trae IDE
 
 ### Native MCP Integration
@@ -134,17 +158,21 @@ node packages/cli/index.js mcp
 ```
 🔌 Trae MCP - Model Context Protocol Servers
 
-Found 16 MCP Servers:
+Found 70 MCP Servers:
 
-  📦  git@1.0.0 by Trae Official
+  🎯  agent-autonomous@1.1.0
+      AutoGPT-style autonomous task executor
+      Tools: 8 | BabyAGI loop | Multi-agent support
+
+  📦  git@1.1.0 by Trae Official
       Git version control toolkit
       Tools: 4 | Prompts: 1 | Resources: 1
 
-  💻  terminal@1.0.0 by Trae Official
+  💻  terminal@1.1.0 by Trae Official
       Secure sandboxed terminal execution
       Tools: 4 | Prompts: 1 | Resources: 1
 
-  ... 14 more
+  ... 67 more production-grade servers
 ```
 
 ### Browse All AI Tools

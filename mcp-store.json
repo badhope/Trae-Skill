@@ -2,9 +2,21 @@
   "publisher": "badhope",
   "name": "trae-skills-bundle",
   "version": "1.0.0",
-  "displayName": "Trae Skills Bundle - 50 MCP Tools",
-  "description": "The World's Largest MCP Skills Collection. 50 production-grade tools for AI-assisted development including Git, Cloud, Database, DevOps, Office, and more.",
-  "longDescription": "# Trae Skills Bundle\n\n## 🏆 The World's Largest MCP Skills Collection\n\n50 production-grade Model Context Protocol servers designed for AI IDEs:\n\n### 🚀 Core Skills (Auto-Start)\n- **Git** - Complete version control toolkit\n- **Terminal** - Secure shell execution environment\n- **Code Review** - AI-powered code analysis\n- **Coding Workflow** - Standardized development process\n\n### 🧪 Development Tools\n- **Test Generator** - Automatic test creation\n- **Documentation** - JSDoc & README generation\n- **Code Search** - Advanced semantic search\n- **Code Generator** - Intelligent scaffolding\n- **Dependency Analyzer** - NPM audit & version management\n\n### 🛠️ Language Specific\n- **React Toolkit** - Hooks, components, best practices\n- **TypeScript Master** - Type safety & optimization\n\n### 🔐 DevOps & Security\n- **Docker Toolkit** - Container generation\n- **Security Auditor** - Vulnerability scanning\n- **Performance Optimizer** - Bundle size & speed\n\n### 🔄 Workflows\n- **Debugging Workflow** - Systematic troubleshooting\n- **Refactoring Workflow** - Safe code transformation\n\n---\n\n## Compatibility\n\n✅ **Trae IDE** - Native support\n✅ **Claude Desktop** - Zero configuration\n✅ **Cursor IDE** - Auto-detected\n✅ **Windsurf** - Full MCP support\n✅ **Ollama** - Local model support",
+  "displayName": "Trae Skills Bundle - 65+ MCP Tools",
+  "description": "The World's Largest MCP Skills Collection. 65+ production-grade tools including Development, Utility, Productivity, and Entertainment tools.",
+  "longDescription": "# Trae Skills Bundle
+
+## 🏆 The World's Largest MCP Skills Collection
+
+65+ production-grade Model Context Protocol servers designed for AI IDEs:
+
+### 🎯 Four Major Categories
+- **基础工具 (Basic)** - 15+ 通用处理工具
+- **提高工具 (Intermediate)** - 20+ 专业处理工具
+- **高级工具 (Advanced)** - 20+ 开发工作流工具
+- **特色好玩 (Fun)** - 10+ 娱乐特色工具
+
+### 🚀 Core Skills (Auto-Start)\n- **Git** - Complete version control toolkit\n- **Terminal** - Secure shell execution environment\n- **Code Review** - AI-powered code analysis\n- **Coding Workflow** - Standardized development process\n\n### 🧪 Development Tools\n- **Test Generator** - Automatic test creation\n- **Documentation** - JSDoc & README generation\n- **Code Search** - Advanced semantic search\n- **Code Generator** - Intelligent scaffolding\n- **Dependency Analyzer** - NPM audit & version management\n\n### 🛠️ Language Specific\n- **React Toolkit** - Hooks, components, best practices\n- **TypeScript Master** - Type safety & optimization\n\n### 🔐 DevOps & Security\n- **Docker Toolkit** - Container generation\n- **Security Auditor** - Vulnerability scanning\n- **Performance Optimizer** - Bundle size & speed\n\n### 🔄 Workflows\n- **Debugging Workflow** - Systematic troubleshooting\n- **Refactoring Workflow** - Safe code transformation\n\n---\n\n## Compatibility\n\n✅ **Trae IDE** - Native support\n✅ **Claude Desktop** - Zero configuration\n✅ **Cursor IDE** - Auto-detected\n✅ **Windsurf** - Full MCP support\n✅ **Ollama** - Local model support",
   
   "categories": [
     "developer-tools",
@@ -86,7 +98,29 @@
     {"id": "vector", "name": "Vector Database", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "vector"], "env": {}},
     {"id": "vercel", "name": "Vercel Toolkit", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "vercel"], "env": {}},
     {"id": "web-crawler", "name": "Web Crawler", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "web-crawler"], "env": {}},
-    {"id": "word", "name": "Word Document Toolkit", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "word"], "env": {}}
+    {"id": "word", "name": "Word Document Toolkit", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "word"], "env": {}},
+    {"id": "colors", "name": "Color Manipulation Toolkit", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "colors"], "env": {}},
+    {"id": "compression", "name": "Compression Toolkit", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "compression"], "env": {}},
+    {"id": "csv", "name": "CSV Processing Toolkit", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "csv"], "env": {}},
+    {"id": "datetime", "name": "DateTime Toolkit", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "datetime"], "env": {}},
+    {"id": "diff", "name": "Diff & Merge Toolkit", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "diff"], "env": {}},
+    {"id": "encoding", "name": "Encoding & Hash Toolkit", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "encoding"], "env": {}},
+    {"id": "env", "name": "Environment Variables Toolkit", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "env"], "env": {}},
+    {"id": "fun", "name": "Fun & Entertainment Toolkit", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "fun"], "env": {}},
+    {"id": "json", "name": "JSON Processing Toolkit", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "json"], "env": {}},
+    {"id": "markdown", "name": "Markdown Toolkit", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "markdown"], "env": {}},
+    {"id": "math", "name": "Mathematics Toolkit", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "math"], "env": {}},
+    {"id": "network", "name": "Network Utility Toolkit", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "network"], "env": {}},
+    {"id": "random", "name": "Random Generation Toolkit", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "random"], "env": {}},
+    {"id": "regex", "name": "Regex Toolkit", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "regex"], "env": {}},
+    {"id": "yaml", "name": "YAML Processing Toolkit", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "yaml"], "env": {}},
+    {"id": "web-search", "name": "Web Search Engine", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "web-search"], "env": {}},
+    {"id": "thinking", "name": "Sequential Thinking Engine", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "thinking"], "env": {}},
+    {"id": "memory", "name": "Long-term Memory System", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "memory"], "env": {}},
+    {"id": "agent-autonomous", "name": "AutoGPT Autonomous Executor", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "agent-autonomous"], "env": {}},
+    {"id": "agent-multi", "name": "Multi-Agent Expert Collaboration", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "agent-multi"], "env": {}},
+    {"id": "agent-reflection", "name": "Self-Improving Reflection System", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "agent-reflection"], "env": {}},
+    {"id": "website-builder", "name": "One-Click Website Generator", "command": "npx", "args": ["-y", "@badhope/trae-skills", "mcp", "website-builder"], "env": {}}
   ],
   "installation": {
     "type": "npm",
