@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MCP Mega-Agent Platform - 96+ professional tools for AI agent development. Build once, run on every LLM platform.">
+  <meta name="keywords" content="MCP, AI Agent, LLM, Claude, Cursor, LangChain, OpenAI, TypeScript, Developer Tools">
+  <title>MCP Mega-Agent Platform</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f8fafc;
+    }
+    .hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .hero h1 { font-size: 3em; margin-bottom: 10px; }
+    .hero p { font-size: 1.5em; opacity: 0.9; }
+    .badges { margin-top: 20px; }
+    .badges img { margin: 0 5px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      margin: 20px 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    h2 { color: #2563eb; margin-bottom: 20px; font-size: 2em; }
+    h3 { color: #7c3aed; margin: 20px 0 10px; }
+    code {
+      background: #e2e8f0;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-family: 'Fira Code', monospace;
+    }
+    pre {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+    pre code { background: none; padding: 0; color: inherit; }
+    ul { margin-left: 30px; }
+    li { margin: 10px 0; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .stat-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .stat-card h4 { font-size: 2.5em; margin-bottom: 5px; }
+    .modules {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+    }
+    .module {
+      background: #f1f5f9;
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid #667eea;
+    }
+    .module strong { color: #2563eb; }
+    .platforms {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .platform {
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9em;
+    }
+    a { color: #2563eb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .footer {
+      text-align: center;
+      padding: 40px;
+      color: #64748b;
+      border-top: 1px solid #e2e8f0;
+      margin-top: 40px;
+    }
+    .step {
+      background: #dbeafe;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+    }
+    .step-number {
+      background: #2563eb;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2em; }
+      .hero p { font-size: 1.2em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>🚀 MCP Mega-Agent Platform</h1>
+    <p>96+ Professional Tools for AI Agent Development</p>
+    <p>Build once, run on every LLM platform</p>
+    <div class="badges">
+      <img src="https://img.shields.io/badge/TypeScript-5.0+-blue.svg" alt="TypeScript">
+      <img src="https://img.shields.io/badge/MCP-Standard-green.svg" alt="MCP">
+      <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
+      <img src="https://img.shields.io/github/stars/badhope/skills?style=social" alt="Stars">
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="stats">
+      <div class="stat-card">
+        <h4>96+</h4>
+        <p>MCP Tools</p>
+      </div>
+      <div class="stat-card">
+        <h4>13</h4>
+        <p>Expert Engines</p>
+      </div>
+      <div class="stat-card">
+        <h4>7</h4>
+        <p>AI Agent Modules</p>
+      </div>
+      <div class="stat-card">
+        <h4>100%</h4>
+        <p>TypeScript</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>⚡ Quick Start</h2>
+      <p>Get started in just 3 steps:</p>
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <div>
+          <strong>Clone the Project</strong>
+          <pre><code>git clone https://github.com/badhope/skills.git
+cd skills</code></pre>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <div>
+          <strong>Give It to Your LLM</strong>
+          <p>Drag and drop the <code>skills</code> folder into your AI interface</p>
+          <div class="platforms">
+            <span class="platform">Claude Desktop</span>
+            <span class="platform">Cursor</span>
+            <span class="platform">Windsurf</span>
+            <span class="platform">Cline</span>
+            <span class="platform">Roo Code</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <div>
+          <strong>Just Tell It What You Want!</strong>
+          <pre><code>"帮我创建一个React待办应用"
+"我的API报错了，帮我调试"
+"Deploy my app to AWS"</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🏗️ Architecture</h2>
+      <p>The platform is built with a layered architecture:</p>
+      <ul>
+        <li><strong>Intent Analyzer</strong> - Understands user requests</li>
+        <li><strong>Expert Engines (13)</strong> - Specialized agents for different domains</li>
+        <li><strong>Platform Services</strong> - Tool registry, message bus, monitoring, auth</li>
+        <li><strong>Tools (96+)</strong> - Reusable tools for various tasks</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>📦 Available Modules</h2>
+
+      <h3>🤖 AI Agent Modules</h3>
+      <div class="modules">
+        <div class="module"><strong>agent-autonomous</strong> - Autonomous task execution (6 tools)</div>
+        <div class="module"><strong>agent-multi</strong> - Multi-agent collaboration (6 tools)</div>
+        <div class="module"><strong>agent-reflection</strong> - Self-reflection system (5 tools)</div>
+        <div class="module"><strong>agent-coordinator</strong> - 11 expert roles coordination</div>
+        <div class="module"><strong>agent-devkit</strong> - AI agent development kit (5 tools)</div>
+        <div class="module"><strong>agent-unified-toolkit</strong> - Unified tool calling (5 tools)</div>
+      </div>
+
+      <h3>🔧 Development Modules</h3>
+      <div class="modules">
+        <div class="module"><strong>core-dev-kit</strong> - Core development (8 tools)</div>
+        <div class="module"><strong>frontend-dev-kit</strong> - Frontend development (10 tools)</div>
+        <div class="module"><strong>backend-dev-kit</strong> - Backend development (12 tools)</div>
+        <div class="module"><strong>code-generator</strong> - Code generation (6 tools)</div>
+        <div class="module"><strong>debugging-workflow</strong> - Debugging tools (7 tools)</div>
+      </div>
+
+      <h3>☁️ DevOps Modules</h3>
+      <div class="modules">
+        <div class="module"><strong>docker</strong> - Docker management (8 tools)</div>
+        <div class="module"><strong>kubernetes</strong> - K8s management (9 tools)</div>
+        <div class="module"><strong>aws</strong> - AWS services (10 tools)</div>
+        <div class="module"><strong>github</strong> - GitHub integration (6 tools)</div>
+        <div class="module"><strong>git</strong> - Git operations (7 tools)</div>
+      </div>
+
+      <h3>🔒 Security Modules</h3>
+      <div class="modules">
+        <div class="module"><strong>security-auditor</strong> - Security auditing (8 tools)</div>
+        <div class="module"><strong>secrets</strong> - API key management (5 tools)</div>
+        <div class="module"><strong>auth</strong> - RBAC access control (9 tools)</div>
+      </div>
+
+      <h3>📊 Data Engineering</h3>
+      <div class="modules">
+        <div class="module"><strong>data-crawler</strong> - Web crawling & data processing</div>
+        <div class="module"><strong>csv</strong> - CSV operations (5 tools)</div>
+        <div class="module"><strong>database</strong> - Database operations (9 tools)</div>
+        <div class="module"><strong>mongodb</strong> - MongoDB support (7 tools)</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>💡 Usage Examples</h2>
+
+      <h3>Build a React App</h3>
+      <pre><code>User: "Create a React todo app with local storage"
+System automatically:
+- Selects frontend-dev-kit + react
+- Invokes code-generator
+- Creates component structure
+- Implements local storage
+- Returns complete code</code></pre>
+
+      <h3>Debug an Issue</h3>
+      <pre><code>User: "My API returns 500 error, help me debug"
+System automatically:
+- Selects debugging-workflow
+- Invokes error analysis
+- Checks API endpoints
+- Reviews error logs
+- Provides solution</code></pre>
+
+      <h3>Deploy to Cloud</h3>
+      <pre><code>User: "Deploy my Node.js app to AWS"
+System automatically:
+- Selects aws + docker
+- Creates Dockerfile
+- Sets up CI/CD
+- Deploys application</code></pre>
+
+      <h3>Data Crawling</h3>
+      <pre><code>User: "Crawl product data from e-commerce site"
+System automatically:
+- Selects data-crawler + web-crawler
+- Analyzes page structure
+- Extracts data
+- Exports to CSV/JSON</code></pre>
+    </div>
+
+    <div class="card">
+      <h2>🔌 MCP Platform Compatibility</h2>
+      <div class="platforms">
+        <span class="platform">✅ Claude Desktop - Native Support</span>
+        <span class="platform">✅ Cursor Composer - Full MCP Integration</span>
+        <span class="platform">✅ Windsurf Cascade - Built for Agentic Workflows</span>
+        <span class="platform">✅ Cline / Roo Code - MCP Tool Protocol</span>
+        <span class="platform">✅ Any MCP Client - Standard Protocol</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📚 Documentation</h2>
+      <ul>
+        <li><a href="https://github.com/badhope/skills#english-documentation">English README</a></li>
+        <li><a href="https://github.com/badhope/skills#chinese-documentation">中文说明</a></li>
+        <li><a href="https://github.com/badhope/skills/blob/main/CONTRIBUTING.md">Contributing Guide</a></li>
+        <li><a href="https://github.com/badhope/skills/blob/main/SECURITY.md">Security Policy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>MCP Mega-Agent Platform</strong> - Build once, run on every LLM platform</p>
+    <p>Repository: <a href="https://github.com/badhope/skills">github.com/badhope/skills</a></p>
+    <p>License: MIT</p>
+    <p>Built with ❤️ for the AI developer community</p>
+  </div>
+</body>
+</html>
