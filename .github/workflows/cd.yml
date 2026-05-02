@@ -1,0 +1,102 @@
+name: CD
+
+on:
+  push:
+    branches: [ main ]
+  release:
+    types: [ published ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    name: Prepare Deployment
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get version
+        id: version
+        run: |
+          VERSION="1.0.0"
+          if [ -f "package.json" ]; then
+            VERSION=$(grep '"version"' package.json | head -1 | sed 's/.*"version": *"\([0-9.]*\)".*/\1/')
+          fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Version: $VERSION"
+
+  build-docs:
+    name: Build Documentation
+    runs-on: ubuntu-latest
+    needs: prepare
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Generate documentation site
+        run: |
+          mkdir -p _site
+
+          if [ -f "README.md" ]; then
+            cp README.md _site/index.md
+          else
+            echo "# Documentation" > _site/index.md
+          fi
+
+          for doc in CONTRIBUTING.md SECURITY.md; do
+            [ -f "$doc" ] && cp "$doc" "_site/" || true
+          done
+
+          if [ -d "docs" ]; then
+            cp -r docs/* _site/ 2>/dev/null || true
+          fi
+
+          echo "Documentation site built successfully!"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy-pages:
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    needs: build-docs
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  summary:
+    name: Deployment Summary
+    runs-on: ubuntu-latest
+    needs: [prepare, deploy-pages]
+    if: always()
+    steps:
+      - name: Generate summary
+        run: |
+          echo "## ✅ Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Version: v${{ needs.prepare.outputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Deployed Resources" >> $GITHUB_STEP_SUMMARY
+          echo "- GitHub Pages: https://badhope.github.io/skill/" >> $GITHUB_STEP_SUMMARY

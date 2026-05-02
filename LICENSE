@@ -1,0 +1,38 @@
+# License Overview
+
+This repository uses a **dual license** model to best serve both human users and AI systems.
+
+## License Summary
+
+| License |适用内容 | 说明 |
+|---------|----------|------|
+| **Apache-2.0** | Code, scripts, configs | `.agent-skills/`、`.github/`、配置文件、脚本 |
+| **CC BY 4.0** | Content assets | `prompts/`、`workflows/`、`skills/`、`docs/`、`templates/` |
+
+## Why Dual License?
+
+- **Code/Scripts**: Use Apache-2.0 for permissive use in any project
+- **Content/Prompts**: Use CC BY 4.0 to protect authorship while allowing sharing and adaptation
+
+## License Files
+
+- [LICENSE-CODE](LICENSE-CODE) - Apache-2.0 License (for code, scripts, configs)
+- [LICENSE-CONTENT](LICENSE-CONTENT) - CC BY 4.0 License (for prompts, workflows, skills, docs)
+
+## Usage
+
+When using content from this repository:
+
+| Content Type | License | Allowed |
+|-------------|---------|---------|
+| Code in `.agent-skills/` | Apache-2.0 | Use freely with attribution |
+| Prompt files in `prompts/` | CC BY 4.0 | Share and adapt with attribution |
+| Workflow files | CC BY 4.0 | Share and adapt with attribution |
+| Documentation | CC BY 4.0 | Share and adapt with attribution |
+
+## Attribution
+
+When using content under CC BY 4.0, please attribute:
+- Source: This repository
+- URL: https://github.com/badhope/skill
+- License: CC BY 4.0

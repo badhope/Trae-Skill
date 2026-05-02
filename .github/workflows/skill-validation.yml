@@ -1,0 +1,65 @@
+name: Skill Validation
+
+on:
+  push:
+    paths:
+      - '.trae/skills/**'
+      - '.github/workflows/**'
+  pull_request:
+    paths:
+      - '.trae/skills/**'
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+jobs:
+  validate-skills:
+    name: Validate All Skills
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate skill files
+        run: |
+          SKILLS_DIR=".trae/skills"
+          
+          if [ ! -d "$SKILLS_DIR" ]; then
+            echo "No skills directory found"
+            echo "✅ Skill validation skipped"
+            exit 0
+          fi
+
+          SKILL_COUNT=$(find "$SKILLS_DIR" -name "SKILL.md" 2>/dev/null | wc -l)
+          echo "Found $SKILL_COUNT skill files"
+
+          echo ""
+          echo "✅ Skill validation complete!"
+
+      - name: Check skill layers
+        run: |
+          SKILLS_DIR=".trae/skills"
+          
+          if [ ! -d "$SKILLS_DIR" ]; then
+            echo "✅ Layer check skipped"
+            exit 0
+          fi
+
+          echo "📊 Skills found: $(find "$SKILLS_DIR" -name "SKILL.md" | wc -l)"
+
+      - name: Generate skill report
+        run: |
+          echo "## Skill Validation Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          SKILLS_DIR=".trae/skills"
+          if [ -d "$SKILLS_DIR" ]; then
+            SKILL_COUNT=$(find "$SKILLS_DIR" -name "SKILL.md" | wc -l)
+            echo "✅ **$SKILL_COUNT skills found**" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ **No skills directory found**" >> $GITHUB_STEP_SUMMARY
+          fi

@@ -1,0 +1,70 @@
+name: Dependency Review
+
+on:
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  dependency-review:
+    name: Dependency Review
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: moderate
+          deny-licenses: GPL-3.0, AGPL-3.0
+
+  check-dependencies:
+    name: Check Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check for package.json files
+        run: |
+          echo "Checking for package.json files..."
+          FOUND=0
+          while IFS= read -r pkg; do
+            echo "Found: $pkg"
+            FOUND=$((FOUND + 1))
+            dir=$(dirname "$pkg")
+            if [ -f "$dir/package-lock.json" ]; then
+              echo "  ✓ Has package-lock.json"
+            else
+              echo "  ⚠ Missing package-lock.json"
+            fi
+          done < <(find . -name "package.json" -type f 2>/dev/null)
+
+          if [ $FOUND -eq 0 ]; then
+            echo "No package.json files found"
+          else
+            echo "Found $FOUND package.json files"
+          fi
+
+      - name: Check for requirements.txt files
+        run: |
+          echo "Checking for requirements.txt files..."
+          FOUND=0
+          while IFS= read -r req; do
+            echo "Found: $req"
+            FOUND=$((FOUND + 1))
+          done < <(find . -name "requirements.txt" -type f 2>/dev/null)
+
+          if [ $FOUND -eq 0 ]; then
+            echo "No requirements.txt files found (this is normal for JS/TS projects)"
+          else
+            echo "Found $FOUND requirements.txt files"
+          fi

@@ -1,0 +1,89 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Build documentation site
+        run: |
+          mkdir -p _site
+
+          if [ -f "README.md" ]; then
+            cp README.md _site/index.md
+          else
+            echo "# MCP Mega-Agent Platform" > _site/index.md
+          fi
+
+          for doc in CONTRIBUTING.md SECURITY.md CODE_OF_CONDUCT.md; do
+            [ -f "$doc" ] && cp "$doc" "_site/" || true
+          done
+
+          if [ -d "docs" ]; then
+            cp -r docs/* _site/ 2>/dev/null || true
+          fi
+
+          cat > _site/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>MCP Mega-Agent Platform</title>
+            <style>
+              body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; }
+              h1 { color: #2563eb; }
+              .card { background: #f8fafc; border-radius: 8px; padding: 20px; margin: 10px 0; }
+              a { color: #2563eb; text-decoration: none; }
+              a:hover { text-decoration: underline; }
+              code { background: #e2e8f0; padding: 2px 6px; border-radius: 4px; }
+            </style>
+          </head>
+          <body>
+            <h1>🚀 MCP Mega-Agent Platform</h1>
+            <div class="card">
+              <h2>Documentation</h2>
+              <ul>
+                <li><a href="index.md">README</a> - Project overview</li>
+              </ul>
+            </div>
+          </body>
+          </html>
+          EOF
+
+          echo "Documentation site built successfully!"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
