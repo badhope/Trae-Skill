@@ -1,27 +1,23 @@
 # Thesis Specialist
 
-## 论文专家智能体 | Academic Thesis Writing Agent
+---
 
-[![Version](https://img.shields.io/badge/version-2.2.0-blue.svg)](README.md)
-[![Platform](https://img.shields.io/badge/platform-Folder--as--Agent-green.svg)](README.md)
-[![License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE)
+# 📖 Table of Contents
+
+- [About](#about)
+- [Features](#features)
+- [Quick Start](#quick-start)
+- [Usage Examples](#usage-examples)
+- [Architecture](#architecture)
+- [File Structure](#file-structure)
+- [Development](#development)
+- [Contributing](#contributing)
+- [License](#license)
+- [Support](#support)
 
 ---
 
-# 📖 目录 | Table of Contents
-
-- [English Description](#english)
-- [中文介绍](#中文)
-- [快速开始 | Quick Start](#quick-start)
-- [完整使用指南 | Complete Usage Guide](#usage-guide)
-- [架构说明 | Architecture](#architecture)
-- [示例 | Examples](#examples)
-
----
-
-# English
-
-## Platform Overview
+# About
 
 **Thesis Specialist** is an innovative **Folder-as-Agent** platform designed specifically for academic thesis writing. The entire platform can be downloaded and directly submitted to any Large Language Model (LLM) such as Doubao, Claude, GPT, or Gemini for immediate use.
 
@@ -29,7 +25,25 @@
 
 The **Folder-as-Agent** concept transforms this folder itself into an intelligent agent. Simply download the folder and submit it to any compatible LLM—the agent will automatically execute the complete thesis writing workflow according to predefined processes.
 
-### Key Features
+### Platform Positioning
+
+This platform is positioned as a **professional academic writing assistant** that:
+- **Out-of-the-box**: No configuration required, ready to use upon download
+- **Complete Workflow**: Strictly executes the full 8-phase process
+- **Multi-Agent Collaboration**: Coordinates multiple experts for complex tasks
+- **Quality Assured**: Includes verification and review mechanisms
+
+[![Version](https://img.shields.io/badge/version-2.2.0-blue.svg)](README.md)
+[![Platform](https://img.shields.io/badge/platform-Folder--as--Agent-green.svg)](README.md)
+[![License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE)
+[![CI Status](https://img.shields.io/github/actions/workflow/status/badhope/Thesis-Specialist-Agent/ci.yml?branch=main)](https://github.com/badhope/Thesis-Specialist-Agent/actions)
+[![Issues](https://img.shields.io/github/issues/badhope/Thesis-Specialist-Agent)](https://github.com/badhope/Thesis-Specialist-Agent/issues)
+[![Stars](https://img.shields.io/github/stars/badhope/Thesis-Specialist-Agent)](https://github.com/badhope/Thesis-Specialist-Agent/stargazers)
+[![Forks](https://img.shields.io/github/forks/badhope/Thesis-Specialist-Agent)](https://github.com/badhope/Thesis-Specialist-Agent/network/members)
+
+---
+
+# Features
 
 | Feature | Description |
 |---------|-------------|
@@ -38,52 +52,11 @@ The **Folder-as-Agent** concept transforms this folder itself into an intelligen
 | **4 Meta Agents** | Coordination, planning, review, and progress tracking |
 | **4 Tools** | Literature search, grammar check, data visualization, format conversion |
 | **Memory System** | User preferences, conversation history, project state, knowledge base |
-| **No Configuration** | Download and use immediately |
-
-### Platform Positioning
-
-This platform is positioned as a **professional academic writing assistant** that:
-
-1. **Out-of-the-box**: No configuration required, ready to use upon download
-2. **Complete Workflow**: Strictly executes the full 8-phase process
-3. **Multi-Agent Collaboration**: Coordinates multiple experts for complex tasks
-4. **Quality Assured**: Includes verification and review mechanisms
+| **Zero Configuration** | Download and use immediately |
 
 ---
 
-# 中文
-
-## 平台概述
-
-**Thesis Specialist（论文专家智能体）** 是一个创新的 **"文件夹即智能体"（Folder-as-Agent）** 平台，专为学术论文写作而设计。整个平台可以下载后直接提交给任何大语言模型（LLM），如豆包、Claude、GPT或Gemini，立即使用。
-
-### 核心概念
-
-**"文件夹即智能体"** 概念将整个文件夹转变为一个智能体。只需下载文件夹并提交给任何兼容的LLM，智能体会自动按照预定义的流程执行完整的论文写作工作流。
-
-### 核心特性
-
-| 特性 | 描述 |
-|------|------|
-| **8阶段执行流程** | 从意图识别到最终输出的严格8阶段流程 |
-| **8个专家引擎** | 主题、文献、结构、写作等专业化引擎 |
-| **4个元智能体** | 协调、规划、评审、进度追踪 |
-| **4个工具** | 文献检索、语法检查、数据可视化、格式转换 |
-| **记忆系统** | 用户偏好、会话历史、项目状态、知识库 |
-| **零配置** | 下载即用 |
-
-### 平台定位
-
-本平台定位为**专业学术写作助手**，具备以下特点：
-
-1. **开箱即用**：无需配置，下载即可使用
-2. **完整流程**：严格遵循8阶段工作流程
-3. **多智能体协作**：协调多个专家完成复杂任务
-4. **质量保障**：包含验证和评审机制
-
----
-
-# Quick Start | 快速开始
+# Quick Start
 
 ## Method 1: Direct LLM Submission (Recommended)
 
@@ -105,53 +78,71 @@ This platform is positioned as a **professional academic writing assistant** tha
 
 ---
 
-# Usage Guide | 完整使用指南
+# Usage Examples
 
-## Step 1: Understand Your Needs
+## Example 1: Topic Selection
 
-Before starting, clarify:
+**Input:**
+```
+Help me come up with a research topic in computer vision for my master's thesis.
+```
 
-| Question | Purpose |
-|----------|---------|
-| What is your research field? | Match with expert engine |
-| What stage of writing are you at? | Determine workflow phase |
-| Do you need a single expert or multiple? | Single expert vs coordinator |
-
-## Step 2: Choose Interaction Mode
-
-### Single Expert Mode
-For specific tasks:
-- Topic selection → Topic Expert
-- Literature review → Literature Expert
-- Writing assistance → Writing Expert
-
-### Multi-Expert Mode
-For complex tasks requiring coordination:
-- Complete thesis → Coordinator Agent
-- Full workflow planning → Task Planner
-
-## Step 3: Describe Your Requirements
-
-Example inputs:
-
-| English | 中文 |
-|---------|------|
-| "Help me find a research topic in computer vision" | "帮我找一个计算机视觉的研究方向" |
-| "Write the literature review chapter" | "帮我写文献综述章节" |
-| "Plan my thesis writing workflow" | "帮我规划论文写作流程" |
-| "Polish my abstract" | "帮我润色摘要" |
-
-## Step 4: Receive Expert Output
-
-Each expert provides structured output:
-- Topic Expert → Topic proposals with evaluation
-- Literature Expert → Search strategy + review outline
-- Writing Expert → Chapter content with formatting
-- Reviewer → Quality assessment + improvement suggestions
+**Output:** The Topic Expert provides:
+- 3-5 candidate topics with detailed analysis
+- Evaluation scores (innovation, feasibility, research value)
+- Recommended ranking with reasoning
+- Suggested next steps
 
 ---
 
-# Architecture | 架构说明
+## Example 2: Literature Review
+
+**Input:**
+```
+I need help writing the literature review chapter for my thesis on machine learning in healthcare.
+```
+
+**Output:** The Literature Expert provides:
+- Search strategy for multiple databases
+- Organized literature structure
+- Summary of key findings
+- Citation recommendations
+
+---
+
+## Example 3: Thesis Planning
+
+**Input:**
+```
+Help me plan the entire workflow for writing my thesis. It's due in 3 months.
+```
+
+**Output:** The Task Planner provides:
+- Task decomposition into manageable phases
+- Timeline with milestones
+- Expert allocation for each phase
+- Progress tracking checkpoints
+
+---
+
+## Example 4: Multi-Expert Coordination
+
+**Input:**
+```
+I need to complete my entire thesis. Can you coordinate multiple experts?
+```
+
+**Output:** The Coordinator Agent:
+1. Analyzes the complex task
+2. Decomposes into subtasks
+3. Assigns appropriate experts
+4. Coordinates execution sequence
+5. Integrates all outputs
+6. Performs quality verification
+
+---
+
+# Architecture
 
 ## System Architecture
 
@@ -159,18 +150,18 @@ Each expert provides structured output:
 ┌─────────────────────────────────────────────────────────────┐
 │                    Thesis Specialist                          │
 ├─────────────────────────────────────────────────────────────┤
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐     │
-│  │   Intent    │ →  │   Expert    │ →  │    Tool     │     │
-│  │ Recognition │    │  Matching   │    │   Calling   │     │
-│  └─────────────┘    └─────────────┘    └─────────────┘     │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐       │
+│  │   Intent    │ →  │   Expert    │ →  │    Tool     │       │
+│  │ Recognition │    │  Matching   │    │   Calling   │       │
+│  └─────────────┘    └─────────────┘    └─────────────┘       │
 │         ↓                  ↓                  ↓              │
-│  ┌─────────────────────────────────────────────────────┐    │
-│  │              8-Phase Execution Flow                  │    │
-│  │  1. Intent Recognition → 2. Expert Matching         │    │
-│  │  3. Task Planning → 4. Expert Execution            │    │
-│  │  5. Tool Calling → 6. Result Integration           │    │
-│  │  7. Quality Check → 8. Final Output               │    │
-│  └─────────────────────────────────────────────────────┘    │
+│  ┌─────────────────────────────────────────────────────┐     │
+│  │              8-Phase Execution Flow                  │     │
+│  │  1. Intent Recognition → 2. Expert Matching         │     │
+│  │  3. Task Planning → 4. Expert Execution            │     │
+│  │  5. Tool Calling → 6. Result Integration           │     │
+│  │  7. Quality Check → 8. Final Output               │     │
+│  └─────────────────────────────────────────────────────┘     │
 ├─────────────────────────────────────────────────────────────┤
 │  Expert Engines (8)    │  Meta Agents (4)  │  Tools (4)   │
 │  ├─ Topic Expert       │  ├─ Coordinator   │  ├─ Search   │
@@ -184,17 +175,31 @@ Each expert provides structured output:
 ├─────────────────────────────────────────────────────────────┤
 │                    Memory System                             │
 │  ├─ User Preferences  ├─ Conversation History               │
-│  ├─ Project State     └─ Knowledge Base                   │
+│  ├─ Project State     └─ Knowledge Base                    │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## File Structure
+---
+
+# File Structure
 
 ```
 thesis-specialist/
-├── agent.yaml                 # Platform configuration
-├── system-prompt.md          # System prompt for LLM
-├── README.md                 # This file
+├── .github/
+│   └── workflows/
+│       └── ci.yml                 # CI/CD pipeline
+├── .gitignore                     # Git ignore rules
+├── LICENSE                        # MIT License
+├── README.md                      # English documentation
+├── README_zh.md                   # 中文文档
+├── CONTRIBUTING.md                # Contributing guidelines
+├── CODE_OF_CONDUCT.md             # Code of conduct
+├── SUPPORT.md                     # Support information
+├── SECURITY.md                    # Security policy
+├── agent.yaml                     # Platform configuration
+├── system-prompt.md              # System prompt
+├── config-validator.py            # Config validator
+├── logger.py                     # Logger system
 │
 ├── skills/
 │   ├── engines/            # 8 Expert Engines
@@ -208,7 +213,7 @@ thesis-specialist/
 │   │   └── format-expert/      # Format compliance
 │   └── meta/                # Meta Agents
 │       ├── coordinator/    # Multi-expert coordination
-│       ├── task-planner/   # Workflow planning
+│       ├── task-planner/    # Workflow planning
 │       ├── reviewer/       # Quality review
 │       └── progress-tracker/  # Progress tracking
 │
@@ -221,10 +226,6 @@ thesis-specialist/
 ├── memory/                  # Memory System
 │   ├── memory-system.yaml  # Memory configuration
 │   └── stores/            # Data stores
-│       ├── user-preferences.json
-│       ├── conversation-history.json
-│       ├── project-state.json
-│       └── knowledge-base.json
 │
 ├── utils/                  # Utilities
 │   ├── routing_optimizer.py   # Smart routing
@@ -237,82 +238,67 @@ thesis-specialist/
 
 ---
 
-# Examples | 示例
+# Development
 
-## Example 1: Topic Selection
+## Requirements
 
-**Input | 输入:**
+- Python 3.10+
+- PyYAML
+
+## Installation
+
+```bash
+pip install pyyaml
 ```
-Help me come up with a research topic in computer vision for my master's thesis.
-帮我找一个计算机视觉方向的硕士论文研究方向。
+
+## Running Tests
+
+```bash
+python -m unittest tests.test_agent -v
 ```
 
-**Output | 输出:**
-The Topic Expert provides:
-- 3-5 candidate topics with detailed analysis
-- Evaluation scores (innovation, feasibility, research value)
-- Recommended ranking with reasoning
-- Suggested next steps
+## Configuration Validation
+
+```bash
+python config-validator.py
+```
 
 ---
 
-## Example 2: Literature Review
+# Contributing
 
-**Input | 输入:**
-```
-I need help writing the literature review chapter for my thesis on machine learning in healthcare.
-帮我写一篇关于机器学习在医疗领域应用的文献综述。
-```
-
-**Output | 输出:**
-The Literature Expert provides:
-- Search strategy for multiple databases
-- Organized literature structure
-- Summary of key findings
-- Citation recommendations
+Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) before submitting pull requests.
 
 ---
 
-## Example 3: Thesis Planning
+# Code of Conduct
 
-**Input | 输入:**
-```
-Help me plan the entire workflow for writing my thesis. It's due in 3 months.
-帮我规划一下论文写作的整体流程，我需要在3个月内完成。
-```
-
-**Output | 输出:**
-The Task Planner provides:
-- Task decomposition into manageable phases
-- Timeline with milestones
-- Expert allocation for each phase
-- Progress tracking checkpoints
+Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before participating in this project.
 
 ---
 
-## Example 4: Multi-Expert Coordination
+# Security
 
-**Input | 输入:**
-```
-I need to complete my entire thesis. Can you coordinate multiple experts?
-我需要完成一篇完整的论文，你能协调多个专家吗？
-```
-
-**Output | 输出:**
-The Coordinator Agent:
-1. Analyzes the complex task
-2. Decomposes into subtasks
-3. Assigns appropriate experts
-4. Coordinates execution sequence
-5. Integrates all outputs
-6. Performs quality verification
+For security vulnerabilities, please read our [Security Policy](SECURITY.md).
 
 ---
 
-# Platform Comparison | 平台对比
+# Support
+
+If you need help, please read our [Support Guide](SUPPORT.md).
+
+---
+
+# License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+# Platform Comparison
 
 | Feature | Traditional LLM | Thesis Specialist |
-|---------|-----------------|-------------------|
+|---------|----------------|-------------------|
 | Configuration | Manual setup required | Zero configuration |
 | Workflow | Ad-hoc, may skip steps | Strict 8-phase process |
 | Expertise | General purpose | Domain-specific experts |
@@ -322,7 +308,7 @@ The Coordinator Agent:
 
 ---
 
-# 技术规格 | Technical Specifications
+# Technical Specifications
 
 | Item | Value |
 |------|-------|
@@ -336,16 +322,10 @@ The Coordinator Agent:
 
 ---
 
-# 许可证 | License
+# Contact
 
-MIT License - Free for academic and commercial use.
-
----
-
-# 联系方式 | Contact
-
-For issues and suggestions, please refer to the project repository.
+- GitHub Issues: [https://github.com/badhope/Thesis-Specialist-Agent/issues](https://github.com/badhope/Thesis-Specialist-Agent/issues)
 
 ---
 
-**Last Updated: 2026-05-04 | 最后更新：2026-05-04**
+**Last Updated: 2026-05-04**

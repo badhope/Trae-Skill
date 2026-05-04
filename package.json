@@ -1,0 +1,48 @@
+{
+  "name": "Thesis Specialist",
+  "short_name": "ThesisSpecialist",
+  "description": "An innovative Folder-as-Agent platform for academic thesis writing",
+  "description_zh": "创新的文件夹即智能体平台，用于学术论文写作",
+  "version": "2.2.0",
+  "keywords": [
+    "thesis-writing",
+    "academic-writing",
+    "ai-agent",
+    "folder-as-agent",
+    "llm",
+    "research-assistant",
+    "paper-writing",
+    "dissertation",
+    "academic-research"
+  ],
+  "topics": [
+    "thesis",
+    "writing",
+    "academic",
+    "agent",
+    "llm",
+    "automation"
+  ],
+  "languages": {
+    "primary": "en",
+    "supported": ["en", "zh"],
+    "fallback": "en"
+  },
+  "repository": {
+    "owner": "badhope",
+    "name": "Thesis-Specialist-Agent",
+    "url": "https://github.com/badhope/Thesis-Specialist-Agent"
+  },
+  "documentation": {
+    "en": "README.md",
+    "zh": "README_zh.md"
+  },
+  "license": {
+    "type": "MIT",
+    " SPDX": "MIT"
+  },
+  "author": {
+    "name": "Thesis Specialist Project",
+    "email": ""
+  }
+}

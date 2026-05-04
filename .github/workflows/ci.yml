@@ -1,4 +1,4 @@
-# Thesis Specialist Platform - GitHub Actions
+# Thesis Specialist Platform - GitHub Actions CI/CD
 name: CI
 
 on:
@@ -28,10 +28,12 @@ jobs:
     - name: Validate configuration
       run: |
         python config-validator.py
+      shell: bash
 
     - name: Run unit tests
       run: |
         python -m unittest tests.test_agent -v
+      shell: bash
 
   lint:
     runs-on: ubuntu-latest
@@ -47,18 +49,21 @@ jobs:
 
     - name: Check YAML syntax
       run: |
-        python -c "import yaml; yaml.safe_load(open('agent.yaml'))"
-        python -c "import yaml; yaml.safe_load(open('memory/memory-system.yaml'))"
+        python -c "import yaml; yaml.safe_load(open('agent.yaml'))" && echo "agent.yaml: OK"
+        python -c "import yaml; yaml.safe_load(open('memory/memory-system.yaml'))" && echo "memory-system.yaml: OK"
 
     - name: Check file structure
       run: |
-        test -f agent.yaml && echo "agent.yaml exists"
-        test -f system-prompt.md && echo "system-prompt.md exists"
-        test -f README.md && echo "README.md exists"
-        test -d skills/engines && echo "skills/engines exists"
-        test -d skills/meta && echo "skills/meta exists"
-        test -d tools && echo "tools exists"
-        test -d memory && echo "memory exists"
+        test -f agent.yaml && echo "✓ agent.yaml exists"
+        test -f system-prompt.md && echo "✓ system-prompt.md exists"
+        test -f README.md && echo "✓ README.md exists"
+        test -f README_zh.md && echo "✓ README_zh.md exists"
+        test -d skills/engines && echo "✓ skills/engines exists"
+        test -d skills/meta && echo "✓ skills/meta exists"
+        test -d tools && echo "✓ tools exists"
+        test -d memory && echo "✓ memory exists"
+        test -d utils && echo "✓ utils exists"
+        test -d tests && echo "✓ tests exists"
 
   build:
     runs-on: ubuntu-latest
@@ -69,9 +74,81 @@ jobs:
 
     - name: Count files
       run: |
+        echo "=== Project Statistics ==="
         echo "Total files:"
-        find . -type f | wc -l
+        find . -type f -not -path './.git/*' | wc -l
+        echo ""
         echo "SKILL files:"
-        find . -name "SKILL.md" | wc -l
+        find . -name "SKILL.md" -not -path './.git/*' | wc -l
+        echo ""
         echo "Tool definitions:"
-        find ./tools -name "tool.yaml" | wc -l
+        find ./tools -name "tool.yaml" -not -path './.git/*' | wc -l
+        echo ""
+        echo "Memory stores:"
+        find ./memory/stores -name "*.json" -not -path './.git/*' | wc -l
+
+    - name: Verify expert engines
+      run: |
+        echo "=== Expert Engines ==="
+        for engine in topic literature structure writing english data-analysis reference format; do
+          if [ -f "skills/engines/${engine}-expert/SKILL.md" ]; then
+            echo "✓ ${engine}-expert"
+          else
+            echo "✗ ${engine}-expert MISSING"
+            exit 1
+          fi
+        done
+
+    - name: Verify meta agents
+      run: |
+        echo "=== Meta Agents ==="
+        for agent in coordinator task-planner reviewer progress-tracker; do
+          if [ -f "skills/meta/${agent}/SKILL.md" ]; then
+            echo "✓ ${agent}"
+          else
+            echo "✗ ${agent} MISSING"
+            exit 1
+          fi
+        done
+
+  quality-check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Check for required files
+      run: |
+        echo "=== Required Documentation ==="
+        test -f LICENSE && echo "✓ LICENSE"
+        test -f CONTRIBUTING.md && echo "✓ CONTRIBUTING.md"
+        test -f CODE_OF_CONDUCT.md && echo "✓ CODE_OF_CONDUCT.md"
+        test -f SECURITY.md && echo "✓ SECURITY.md"
+        test -f SUPPORT.md && echo "✓ SUPPORT.md"
+        test -f .gitignore && echo "✓ .gitignore"
+        test -f .github/workflows/ci.yml && echo "✓ CI workflow"
+
+  test-utils:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Test routing optimizer
+      run: |
+        python -c "from utils.routing_optimizer import RoutingOptimizer; r = RoutingOptimizer(); print('✓ RoutingOptimizer works')"
+
+    - name: Test error handler
+      run: |
+        python -c "from utils.error_handler import ErrorHandler; e = ErrorHandler(); print('✓ ErrorHandler works')"
+
+    - name: Test performance monitor
+      run: |
+        python -c "from utils.performance import PerformanceMonitor; p = PerformanceMonitor(); print('✓ PerformanceMonitor works')"
