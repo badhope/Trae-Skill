@@ -1,5 +1,14 @@
 # Thesis Specialist - 论文专家智能体
 
+[![版本](https://img.shields.io/badge/version-2.2.0-blue.svg)](README_zh.md)
+[![平台](https://img.shields.io/badge/platform-Folder--as--Agent-green.svg)](README_zh.md)
+[![许可证](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE)
+[![CI状态](https://img.shields.io/github/actions/workflow/status/badhope/Thesis-Specialist-Agent/ci.yml?branch=main)](https://github.com/badhope/Thesis-Specialist-Agent/actions)
+
+---
+
+**🌐 语言:** [English](README.md) | [中文](README_zh.md)
+
 ---
 
 ## 目录

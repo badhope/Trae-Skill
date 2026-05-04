@@ -1,5 +1,14 @@
 # Thesis Specialist
 
+[![Version](https://img.shields.io/badge/version-2.2.0-blue.svg)](README.md)
+[![Platform](https://img.shields.io/badge/platform-Folder--as--Agent-green.svg)](README.md)
+[![License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE)
+[![CI Status](https://img.shields.io/github/actions/workflow/status/badhope/Thesis-Specialist-Agent/ci.yml?branch=main)](https://github.com/badhope/Thesis-Specialist-Agent/actions)
+
+---
+
+**🌐 Language:** [English](README.md) | [中文](README_zh.md)
+
 ---
 
 # 📖 Table of Contents
