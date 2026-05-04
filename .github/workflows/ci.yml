@@ -49,8 +49,8 @@ jobs:
 
     - name: Check YAML syntax
       run: |
-        python -c "import yaml; yaml.safe_load(open('agent.yaml'))" && echo "agent.yaml: OK"
-        python -c "import yaml; yaml.safe_load(open('memory/memory-system.yaml'))" && echo "memory-system.yaml: OK"
+        python -c "import yaml; list(yaml.safe_load_all(open('agent.yaml', encoding='utf-8')))" && echo "agent.yaml: OK"
+        python -c "import yaml; list(yaml.safe_load_all(open('memory/memory-system.yaml', encoding='utf-8')))" && echo "memory-system.yaml: OK"
 
     - name: Check file structure
       run: |
