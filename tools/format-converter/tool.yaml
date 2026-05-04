@@ -1,0 +1,145 @@
+# 🔄 Format Converter Tool
+# Tool for converting documents between formats
+---
+name: "format-converter"
+description: "Convert documents between different formats including PDF, DOCX, Markdown, HTML, and more. Support academic document conversion and formatting."
+version: "1.0.0"
+author: "Folder-as-Agent Project"
+
+# Tool capabilities
+capabilities:
+  - "Convert between multiple document formats"
+  - "Preserve formatting and structure"
+  - "Support academic document types"
+  - "Batch conversion"
+  - "Text extraction from images (OCR)"
+  - "Reference formatting"
+
+# Input parameters
+parameters:
+  - name: "input_content"
+    type: "string"
+    required: false
+    description: "Content to convert (text or base64 encoded)"
+  
+  - name: "input_file_path"
+    type: "string"
+    required: false
+    description: "Path to input file"
+  
+  - name: "input_format"
+    type: "string"
+    required: true
+    description: "Source format"
+    options:
+      - "markdown"
+      - "html"
+      - "docx"
+      - "pdf"
+      - "txt"
+      - "latex"
+      - "json"
+      - "yaml"
+  
+  - name: "output_format"
+    type: "string"
+    required: true
+    description: "Target format"
+    options:
+      - "markdown"
+      - "html"
+      - "docx"
+      - "pdf"
+      - "txt"
+      - "latex"
+      - "json"
+      - "yaml"
+      - "bibtex"
+  
+  - name: "preserve_structure"
+    type: "boolean"
+    required: false
+    description: "Preserve document structure and formatting"
+    default: true
+  
+  - name: "remove_images"
+    type: "boolean"
+    required: false
+    description: "Remove images during conversion"
+    default: false
+  
+  - name: "extract_text_only"
+    type: "boolean"
+    required: false
+    description: "Extract only text content"
+    default: false
+
+# Output format
+output:
+  type: "object"
+  properties:
+    content: { type: "string" }
+    file_path: { type: "string" }
+    format: { type: "string" }
+    metadata:
+      type: "object"
+      properties:
+        word_count: { type: "integer" }
+        char_count: { type: "integer" }
+        page_count: { type: "integer" }
+        conversion_time: { type: "number" }
+    warnings: { type: "array", items: { type: "string" } }
+
+# Usage examples
+examples:
+  - name: "Markdown to HTML"
+    description: "Convert Markdown document to HTML"
+    input:
+      input_content: "# Hello World\n\nThis is a **test** document."
+      input_format: "markdown"
+      output_format: "html"
+    expected_output: "Returns HTML representation of the markdown content"
+  
+  - name: "Markdown to DOCX"
+    description: "Convert markdown to Word document"
+    input:
+      input_content: "# Thesis Title\n\n## Abstract\n\nThis is my thesis abstract."
+      input_format: "markdown"
+      output_format: "docx"
+      preserve_structure: true
+    expected_output: "Returns DOCX file with proper heading structure"
+  
+  - name: "Extract Text from PDF"
+    description: "Extract text content from PDF"
+    input:
+      input_file_path: "/path/to/document.pdf"
+      input_format: "pdf"
+      output_format: "txt"
+      extract_text_only: true
+    expected_output: "Returns plain text extracted from PDF"
+
+# Error handling
+errors:
+  - code: "INVALID_FORMAT"
+    message: "Unsupported input/output format"
+    solution: "Choose from supported formats"
+  
+  - code: "CONVERSION_ERROR"
+    message: "Error during conversion"
+    solution: "Check input content and try again"
+  
+  - code: "FILE_NOT_FOUND"
+    message: "Input file not found"
+    solution: "Verify file path and try again"
+  
+  - code: "EMPTY_CONTENT"
+    message: "No content provided for conversion"
+    solution: "Provide input_content or input_file_path"
+
+# Dependencies
+dependencies:
+  - "pandoc"
+  - "python-docx"
+  - "pdfplumber"
+  - "markdown"
+  - "PyYAML"

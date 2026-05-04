@@ -1,157 +1,77 @@
-# Contributing to AI Skill & Prompt Repository
+# Contributing to Thesis Specialist
 
-Thank you for your interest in contributing to this repository. This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to Thesis Specialist!
 
----
+## Code of Conduct
 
-## Ways to Contribute
+This project and everyone participating in it is governed by our [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
 
-### Report Issues
-- Report broken prompts or incorrect outputs
-- Report missing functionality
-- Report registry inconsistencies
-- Suggest new assets or improvements
+## How Can I Contribute?
 
-### Contribute Content
-- Add new prompts following the template
-- Add new skills following the skill template
-- Add new workflows for common task patterns
-- Improve existing asset documentation
+### Reporting Bugs
 
-### Improve Documentation
-- Fix typos or unclear explanations
-- Improve selection_hints and when_to_use descriptions
-- Add usage examples
-- Translate documentation
+Before creating bug reports, please check the issue list as you might find that you don't need to create one. When you are creating a bug report, please include as many details as possible:
 
----
+- Use a clear and descriptive title
+- Describe the exact steps to reproduce the problem
+- Provide specific examples to demonstrate the steps
+- Include details about your environment
 
-## Contribution Guidelines
+### Suggesting Enhancements
 
-### Prompt Contribution Standards
+Enhancement suggestions are tracked as GitHub issues. When you are creating an enhancement suggestion, please include:
 
-1. **Follow the Template**
-   - Use `docs/guides/prompt-template.md` as reference
-   - Include all required metadata fields
-   - Use consistent naming conventions
+- Use a clear and descriptive title
+- Provide a step-by-step description of the suggested enhancement
+- Provide specific examples to demonstrate the steps
+- Explain why this enhancement would be useful
 
-2. **Naming Convention**
-   - File name: `prompt-<task>-<action>.md`
-   - ID: `prompt-<category>-<specific-action>`
+### Pull Requests
 
-3. **Required Fields**
-   ```yaml
-   ---
-   id: prompt-xxx-v1
-   name: Clear Name
-   summary: Brief description
-   type: routing|system|task|workflow|tool-use|output|meta
-   category: primary category
-   sub_category: specific category
-   when_to_use:
-     - Specific use case 1
-     - Specific use case 2
-   when_not_to_use:
-     - Specific non-use case 1
-   input_requirements:
-     - Required input 1
-   output_shape:
-     - Expected output 1
-   tags: [tag1, tag2]
-   status: active
-   ---
-   ```
-
-4. **Quality Standards**
-   - Prompts must be actionable and specific
-   - Avoid vague or generic instructions
-   - Include clear input/output specifications
-   - Provide meaningful selection_hints
-
-### Skill Contribution Standards
-
-1. **Follow the Skill Template**
-   - Use `docs/guides/skill-template.md` as reference
-   - Include use cases and input/output definitions
-
-2. **Naming Convention**
-   - Directory: `skills/<category>/`
-   - File: `skill-<name>.md`
-
-### Registry Updates
-
-When adding new assets, you must also update the appropriate registry:
-
-1. **New Prompt** → Add entry to `registry/prompts-registry.yaml`
-2. **New Skill** → Add entry to `registry/skills-registry.yaml`
-3. **New Tag** → Add entry to `registry/tags-registry.yaml`
-4. **New Relationship** → Add entry to `registry/relations-registry.yaml`
-
-### Workflow Contribution
-
-1. **Follow the Workflow Template**
-   - Use `docs/guides/workflow-template.md` as reference
-   - Define clear steps and dependencies
-
-2. **Documentation**
-   - List all required prompts
-   - Specify execution order
-   - Include fallback strategies
-
----
-
-## Process
-
-### For Minor Changes
 1. Fork the repository
-2. Make your changes
-3. Test locally if possible
-4. Submit a pull request with clear description
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-### For Major Changes
-1. Open an issue first to discuss
-2. Get approval before implementing
-3. Follow the full contribution workflow
-4. Include tests and documentation
+## Development Setup
 
-### Pull Request Guidelines
-- Use clear, descriptive titles
-- Reference related issues
-- Describe what changed and why
-- Include before/after if applicable
+```bash
+# Clone your fork
+git clone https://github.com/YOUR_USERNAME/Thesis-Specialist-Agent.git
 
----
+# Install dependencies
+pip install pyyaml
 
-## Quality Checklist
+# Run tests
+python -m unittest tests.test_agent -v
 
-Before submitting, verify:
+# Validate configuration
+python config-validator.py
+```
 
-- [ ] Prompt follows template structure
-- [ ] All required fields are present
-- [ ] Registry entry matches actual file
-- [ ] No broken links or references
-- [ ] Selection hints are helpful and specific
-- [ ] when_to_use / when_not_to_use are not vague
+## Style Guides
+
+### Git Commit Messages
+
+- Use the present tense ("Add feature" not "Added feature")
+- Use the imperative mood ("Move cursor to..." not "Moves cursor to...")
+- Limit the first line to 72 characters or less
+- Reference issues and pull requests after the first line
+
+### Python Style Guide
+
+- Follow PEP 8
+- Use meaningful variable names
+- Add docstrings to functions and classes
+- Keep functions focused and small
+
+## Recognition
+
+Contributors will be listed in the README and recognized for their contributions.
 
 ---
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under:
-- **CC BY 4.0** for content (prompts, skills, workflows, documentation)
-
----
-
-## Questions?
-
-If you have questions, please open an issue or contact the maintainers.
-
----
-
-## Recognition
-
-Contributors will be recognized in the README and CHANGELOG.
-
----
-
-*Thank you for helping improve this repository!*
+By contributing, you agree that your contributions will be licensed under the MIT License.

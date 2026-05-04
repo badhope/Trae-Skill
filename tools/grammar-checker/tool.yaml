@@ -1,0 +1,137 @@
+# 🔤 Grammar Checker Tool
+# Tool for academic English grammar checking and polishing
+---
+name: "grammar-checker"
+description: "Check grammar, spelling, and punctuation in academic English texts. Provide suggestions for improving academic tone, clarity, and style."
+version: "1.0.0"
+author: "Folder-as-Agent Project"
+
+# Tool capabilities
+capabilities:
+  - "Grammar and spelling correction"
+  - "Punctuation checking"
+  - "Academic tone improvement"
+  - "Sentence structure suggestions"
+  - "Vocabulary enhancement"
+  - "Passive voice detection"
+  - "Readability analysis"
+
+# Input parameters
+parameters:
+  - name: "text"
+    type: "string"
+    required: true
+    description: "The text to be checked"
+  
+  - name: "language"
+    type: "string"
+    required: false
+    description: "Language of the text"
+    default: "en"
+    options:
+      - "en"
+      - "zh"
+  
+  - name: "check_types"
+    type: "array"
+    required: false
+    description: "Types of checks to perform"
+    default: ["grammar", "spelling", "punctuation", "style", "readability"]
+    options:
+      - "grammar"
+      - "spelling"
+      - "punctuation"
+      - "style"
+      - "readability"
+      - "vocabulary"
+      - "passive_voice"
+  
+  - name: "academic_mode"
+    type: "boolean"
+    required: false
+    description: "Enable academic writing mode for more formal suggestions"
+    default: true
+  
+  - name: "suggestions_only"
+    type: "boolean"
+    required: false
+    description: "Return only suggestions without applying corrections"
+    default: false
+
+# Output format
+output:
+  type: "object"
+  properties:
+    corrected_text: { type: "string" }
+    errors:
+      type: "array"
+      items:
+        type: "object"
+        properties:
+          type: { type: "string" }
+          message: { type: "string" }
+          suggestion: { type: "string" }
+          original: { type: "string" }
+          replacement: { type: "string" }
+          position: { type: "object", properties: { start: { type: "integer" }, end: { type: "integer" } } }
+    statistics:
+      type: "object"
+      properties:
+        word_count: { type: "integer" }
+        sentence_count: { type: "integer" }
+        error_count: { type: "integer" }
+        readability_score: { type: "number" }
+        passive_sentence_ratio: { type: "number" }
+    suggestions:
+      type: "array"
+      items:
+        type: "object"
+        properties:
+          type: { type: "string" }
+          category: { type: "string" }
+          suggestion: { type: "string" }
+          examples: { type: "array", items: { type: "string" } }
+
+# Usage examples
+examples:
+  - name: "Basic Grammar Check"
+    description: "Check grammar and spelling in a paragraph"
+    input:
+      text: "The data was collected from 100 participant. The results shows a significant correlation."
+      check_types: ["grammar", "spelling"]
+    expected_output: "Corrects 'participant' to 'participants' and 'shows' to 'show'"
+  
+  - name: "Academic Polishing"
+    description: "Polish academic text for better style and tone"
+    input:
+      text: "I think this is a very important finding. It can help us understand the problem better."
+      academic_mode: true
+      check_types: ["style", "vocabulary"]
+    expected_output: "Suggests replacing 'I think' with 'This study suggests' and 'very important' with 'crucial'"
+  
+  - name: "Readability Analysis"
+    description: "Analyze readability and get improvement suggestions"
+    input:
+      text: "The phenomenon which was observed in the experiment indicates that there exists a relationship between the variables that were measured."
+      check_types: ["readability", "style"]
+    expected_output: "Identifies complex sentence structure and suggests simplification"
+
+# Error handling
+errors:
+  - code: "INVALID_TEXT"
+    message: "Text cannot be empty"
+    solution: "Provide the text to be checked"
+  
+  - code: "LANGUAGE_NOT_SUPPORTED"
+    message: "Language not supported"
+    solution: "Use 'en' for English or 'zh' for Chinese"
+  
+  - code: "PROCESSING_ERROR"
+    message: "Error processing the text"
+    solution: "Try again with a shorter text or check internet connection"
+
+# Dependencies
+dependencies:
+  - "language-tool-python"
+  - "textstat"
+  - "nltk"

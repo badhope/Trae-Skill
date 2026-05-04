@@ -1,23 +1,62 @@
-node_modules/
-dist/
-.pnp
-.pnp.js
-.env
-.env.local
-.env.*.local
-coverage/
+# Thesis Specialist - .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
 build/
-*.log
-.idea/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+
+# IDE
 .vscode/
+.idea/
 *.swp
 *.swo
+*~
+
+# Logs
+logs/
+*.log
+
+# OS
 .DS_Store
 Thumbs.db
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-*.test.js
-*.spec.js
-tmp/
-temp/
+
+# Generated files
+config-validation-report.json
+*.tmp
+
+# Memory stores (runtime data)
+memory/stores/*.json
+!memory/stores/*.json.example
+
+# Cache
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Temporary files
+*.bak
+*.temp
+*.swp

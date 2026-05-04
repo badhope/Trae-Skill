@@ -1,38 +1,21 @@
-# License Overview
+MIT License
 
-This repository uses a **dual license** model to best serve both human users and AI systems.
+Copyright (c) 2026 Thesis Specialist Project
 
-## License Summary
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-| License |适用内容 | 说明 |
-|---------|----------|------|
-| **Apache-2.0** | Code, scripts, configs | `.agent-skills/`、`.github/`、配置文件、脚本 |
-| **CC BY 4.0** | Content assets | `prompts/`、`workflows/`、`skills/`、`docs/`、`templates/` |
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-## Why Dual License?
-
-- **Code/Scripts**: Use Apache-2.0 for permissive use in any project
-- **Content/Prompts**: Use CC BY 4.0 to protect authorship while allowing sharing and adaptation
-
-## License Files
-
-- [LICENSE-CODE](LICENSE-CODE) - Apache-2.0 License (for code, scripts, configs)
-- [LICENSE-CONTENT](LICENSE-CONTENT) - CC BY 4.0 License (for prompts, workflows, skills, docs)
-
-## Usage
-
-When using content from this repository:
-
-| Content Type | License | Allowed |
-|-------------|---------|---------|
-| Code in `.agent-skills/` | Apache-2.0 | Use freely with attribution |
-| Prompt files in `prompts/` | CC BY 4.0 | Share and adapt with attribution |
-| Workflow files | CC BY 4.0 | Share and adapt with attribution |
-| Documentation | CC BY 4.0 | Share and adapt with attribution |
-
-## Attribution
-
-When using content under CC BY 4.0, please attribute:
-- Source: This repository
-- URL: https://github.com/badhope/skill
-- License: CC BY 4.0
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

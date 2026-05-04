@@ -8,26 +8,21 @@ We pledge to act and interact in ways that contribute to an open, welcoming, div
 
 ## Our Standards
 
-### Positive Behaviors
+Examples of behavior that contributes to a positive environment for our community include:
 
-Examples of behavior that contributes to a positive environment:
+- Demonstrating empathy and kindness toward other people
+- Being respectful of differing opinions, viewpoints, and experiences
+- Giving and gracefully accepting constructive feedback
+- Accepting responsibility and apologizing to those affected by our mistakes
+- Focusing on what is best not just for us as individuals, but for the overall community
 
-- Using welcoming and inclusive language
-- Being respectful of differing viewpoints and experiences
-- Gracefully accepting constructive criticism
-- Focusing on what is best for the community
-- Showing empathy towards other community members
-- Supporting diverse perspectives and contributions
+Examples of unacceptable behavior include:
 
-### Unacceptable Behaviors
-
-Examples of unacceptable behavior:
-
-- Harassment, discrimination, or intimidation of any form
-- Personal attacks or derogatory comments
-- Publishing others' private information without explicit permission
-- Conduct that could reasonably be considered inappropriate in a professional setting
-- Any form of unwelcome sexual attention or advances
+- The use of sexualized language or imagery, and sexual attention or advances of any kind
+- Trolling, insulting or derogatory comments, and personal or political attacks
+- Public or private harassment
+- Publishing others' private information, such as a physical or email address, without their explicit permission
+- Other conduct which could reasonably be considered inappropriate in a professional setting
 
 ## Enforcement Responsibilities
 
@@ -43,34 +38,34 @@ Instances of abusive, harassing, or otherwise unacceptable behavior may be repor
 
 All complaints will be reviewed and investigated promptly and fairly.
 
-### Enforcement Guidelines
+## Enforcement Guidelines
 
-1. **Correction**: A private warning with explanation
-2. **Warning**: Formal warning with conditions for continued participation
-3. **Temporary Ban**: Suspension from community interaction for a specified period
-4. **Permanent Ban**: Permanent expulsion from the community
+Community leaders will follow these Community Impact Guidelines in determining the consequences for any action they deem in violation of this Code of Conduct:
+
+### Correction
+
+**Community Impact**: Use of inappropriate language or other behavior deemed unprofessional or unwelcome in the community.
+
+**Consequence**: A private, written warning from community leaders, providing clarity around the nature of the violation and an explanation of why the behavior was inappropriate.
+
+### Warning
+
+**Community Impact**: A violation through a single incident or series of actions.
+
+**Consequence**: A warning with consequences for continued behavior. No interaction with the people involved for a specified period of time.
+
+### Temporary Ban
+
+**Community Impact**: A serious violation of community standards, including sustained inappropriate behavior.
+
+**Consequence**: A temporary ban from any sort of interaction or public communication with the community for a specified period of time.
+
+### Permanent Ban
+
+**Community Impact**: Demonstrating a pattern of violation of community standards, including sustained inappropriate behavior, harassment of an individual, or aggression toward or disparagement of classes of individuals.
+
+**Consequence**: A permanent ban from any sort of public interaction within the community.
 
 ## Attribution
 
-This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/), version 2.0.
-
----
-
-## For This Repository
-
-### Contributing Responsibly
-
-When contributing prompts, skills, or workflows:
-
-- Ensure content is original or properly attributed
-- Do not submit copyrighted material without permission
-- Respect the dual licensing model (Apache-2.0 for code, CC BY 4.0 for content)
-- Do not include personal information or sensitive data
-
-### Reporting Issues
-
-If you find content that violates this code of conduct, please report it by opening an issue with the label "code-of-conduct".
-
----
-
-*Community leaders will address any concerns with respect and fairness.*
+This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/), version 2.0, available at https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.
