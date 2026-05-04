@@ -1,1013 +1,320 @@
-# 🚀 MCP Mega-Agent Platform / MCP Super Agent Platform
+# 🚀 Mega-Agent Developer Platform
+---
+## 🌐 简介
+**Mega-Agent Developer Platform** 是世界上首个基于MCP标准的智能体开发平台，包含 **13个专家引擎** 和 **96+个专业工具**。
 
-[![CI Status](https://github.com/badhope/skills/actions/workflows/ci.yml/badge.svg)](https://github.com/badhope/skills/actions)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
-[![MCP Compatible](https://img.shields.io/badge/MCP-Standard-green.svg)](https://modelcontextprotocol.io/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+**一次构建，全平台兼容！** ✨
+
+### 核心特色
+- 🎯 **多专家引擎**: 13个专业领域专家，覆盖全栈开发
+- 🤖 **元智能体协调**: 5个协调智能体，自动分解复杂任务
+- 🔧 **MCP标准工具**: 96+专业工具，开箱即用
+- 🌍 **全平台兼容**: Claude Desktop, Cursor, Windsurf, Cline, Trae等
 
 ---
-
-## 🌐 Language / 语言
-
-- [English](#english-documentation)
-- [中文](#chinese-documentation)
-
----
-
-# English Documentation
-
-## 🎯 Overview
-
-**MCP Mega-Agent Platform** is the world's first MCP-based Mega-Agent Platform with **96+ professional tools** and **13 expert engines**. Build once, run on **every LLM platform** that supports the MCP standard.
-
-> One architecture to rule them all.
-
-## ⚡️ Quick Start (Just 3 Steps!)
-
-### Step 1: Clone the Project
+## 📦 快速开始（仅需3步！）
+### 第一步：克隆项目
 ```bash
 git clone https://github.com/badhope/skills.git
 cd skills
 ```
 
-### Step 2: Give It to Your LLM
-Simply drag and drop the `skills` folder into your AI interface, or configure it as a workspace:
+### 第二步：加载到AI平台
+根据你使用的平台，选择合适的加载方式：
 
-**For Claude Desktop:**
-- Open Settings → Plugins → Add the `skills` folder path
-- Or drag the folder directly into Claude's file panel
+| 平台 | 加载方式 |
+|------|---------|
+| **Trae** | 将文件夹添加为项目目录 |
+| **Cursor** | 使用 `@load ./skills` 命令 |
+| **Claude Desktop** | 设置中添加文件夹路径 |
+| **Windsurf** | 添加为工作区目录 |
+| **Cline** | 配置MCP服务器指向 `skills/mcp` |
 
-**For Cursor:**
-- Use `@load ./skills` command
-- Or add as workspace in Settings → Workspaces
-
-**For Windsurf:**
-- Add `skills` directory to your workspace
-- Or use the Cascade commands to load the folder
-
-**For Cline / Roo Code:**
-- Configure MCP servers to point to `skills/mcp`
-
-### Step 3: Just Tell It What You Want!
-Once the skills folder is loaded, simply describe your request in natural language:
-
-```
-"Build a React todo app"
-"I need to build a React login page with JWT authentication"
-"My API is returning errors, help me debug"
-"Deploy my Node.js app to AWS"
-"Crawl product data from this e-commerce website"
-```
-
-The system will automatically:
-1. Analyze your intent
-2. Select appropriate expert engines
-3. Discover and invoke relevant tools
-4. Execute the task
-5. Return the complete result
-
-**That's it!** No complex configuration, no setup needed. Just clone, give it to your AI, and start building!
+### 第三步：开始使用！
+用自然语言描述你的需求即可：
+- "帮我创建一个React待办应用"
+- "调试我的API返回500错误"
+- "部署Node.js应用到AWS"
+- "重构代码提高可读性"
 
 ---
-
-## 🏗️ Architecture
-
+## 🏗️ 架构概览
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                     User Intent                            │
-│            (Natural Language Input)                       │
-└─────────────────────────┬─────────────────────────────────┘
-                          ↓
+│                   用户请求入口层                             │
+│                   (自然语言输入)                            │
+└───────────────────────────────┬───────────────────────────────┘
+                                │
+                                ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                    Intent Analyzer                         │
-│              (clarify module)                              │
-└─────────────────────────┬─────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────────┐
-│                  Expert Engines (13)                       │
-│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐            │
-│  │   AI Agent  │ │  Full-Stack │ │  DevOps     │            │
-│  │  Architect  │ │  Engineer   │ │  Engineer   │            │
-│  └─────────────┘ └─────────────┘ └─────────────┘            │
-│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐            │
-│  │  Security   │ │  Database  │ │  Testing    │            │
-│  │  Auditor    │ │  Specialist │ │  Master     │            │
-│  └─────────────┘ └─────────────┘ └─────────────┘            │
-└─────────────────────────┬─────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────────┐
-│                   Platform Services                         │
-│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐            │
-│  │    Tool     │ │   Message  │ │   Auth      │            │
-│  │  Registry   │ │    Bus      │ │  Manager    │            │
-│  └─────────────┘ └─────────────┘ └─────────────┘            │
-│  ┌─────────────┐ ┌─────────────┐                            │
-│  │  Protocol   │ │  Monitoring │                            │
-│  │  Standard   │ │   System    │                            │
-│  └─────────────┘ └─────────────┘                            │
-└─────────────────────────┬─────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────────┐
-│                  Tools (96+)                                │
-│  filesystem │ terminal │ search │ code-generator │ ...     │
-└─────────────────────────────────────────────────────────────┘
+│              智能路由层 (根据关键词匹配)                      │
+└───────────────────────────────┬───────────────────────────────┘
+                                │
+              ┌─────────────────┼──────────────────┐
+              ▼                 ▼                  ▼
+┌────────────────────┐ ┌──────────────────┐ ┌──────────────────┐
+│   👥 专家引擎     │ │   🧠 元智能体    │ │  🛠️ MCP工具库    │
+│   (13个)         │ │   (5个)         │ │   (96+)         │
+│                  │ │                 │ │                 │
+└────────────────────┘ └──────────────────┘ └──────────────────┘
 ```
 
 ---
+## 👥 专家引擎团队
+### 🔧 全栈开发工程师
+完整应用开发，从数据库到部署
+- **适用**: 构建新应用、完整功能开发
+- **关键词**: 开发、构建、创建、应用
 
-## 📦 Available Modules (96+ Tools)
+### 🎨 前端大师
+React/Vue等前端开发专家
+- **适用**: UI开发、组件设计、前端优化
+- **关键词**: 前端、React、Vue、UI、CSS
 
-### 🤖 AI Agent Modules
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `agent-autonomous` | Autonomous task execution | 6 tools |
-| `agent-multi` | Multi-agent collaboration | 6 tools |
-| `agent-reflection` | Self-reflection system | 5 tools |
-| `agent-devkit` | AI agent development kit | 5 tools |
-| `agent-coordinator` | Agent coordination hub | 11 expert roles |
-| `agent-unified-toolkit` | Unified tool calling | 5 tools |
-| `agent-persistence` | Persistent storage | 8 tools |
+### ⚡ 后端大师
+多语言后端开发与微服务
+- **适用**: API开发、微服务设计、认证
+- **关键词**: 后端、API、Server、微服务
 
-### 🔧 Development Modules
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `core-dev-kit` | Core development toolkit | 8 tools |
-| `frontend-dev-kit` | Frontend development | 10 tools |
-| `backend-dev-kit` | Backend development | 12 tools |
-| `api-dev` | API development | 8 tools |
-| `code-generator` | Code generation | 6 tools |
-| `code-review` | Code review | 5 tools |
-| `refactoring-workflow` | Code refactoring | 6 tools |
-| `debugging-workflow` | Debugging tools | 7 tools |
+### 🗄️ 数据库专家
+数据库建模、优化与迁移
+- **适用**: 数据库设计、性能优化、迁移
+- **关键词**: 数据库、MySQL、PostgreSQL、MongoDB
 
-### 🎨 Frontend Modules
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `react` | React development | 8 tools |
-| `typescript` | TypeScript support | 6 tools |
-| `ui-design-kit` | UI design | 7 tools |
-| `colors` | Color utilities | 5 tools |
+### 📦 DevOps工程师
+Docker/K8s/CI/CD/多云部署
+- **适用**: 容器化、部署、CI/CD、云服务
+- **关键词**: 部署、Docker、K8s、云、CI/CD
 
-### 🗄️ Database Modules
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `database` | Database operations | 9 tools |
-| `mongodb` | MongoDB support | 7 tools |
-| `redis` | Redis support | 6 tools |
+### 🔒 安全审计官
+安全审计与漏洞检测
+- **适用**: 安全检查、渗透测试、漏洞修复
+- **关键词**: 安全、漏洞、审计、Security
 
-### ☁️ DevOps Modules
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `docker` | Docker management | 8 tools |
-| `kubernetes` | K8s management | 9 tools |
-| `git` | Git operations | 7 tools |
-| `github` | GitHub integration | 6 tools |
-| `gitlab` | GitLab integration | 5 tools |
-| `aws` | AWS services | 10 tools |
-| `aliyun` | Aliyun services | 8 tools |
-| `cloudflare` | Cloudflare CDN | 6 tools |
-| `vercel` | Vercel deployment | 5 tools |
-| `ssh` | SSH management | 6 tools |
-| `terminal` | Terminal operations | 7 tools |
-| `network` | Network tools | 8 tools |
-| `system-admin` | System administration | 9 tools |
+### ♻️ 代码质量专家
+重构、设计模式与规范评审
+- **适用**: 代码审查、重构、优化
+- **关键词**: 重构、代码审查、质量
 
-### 🔒 Security Modules
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `security-auditor` | Security auditing | 8 tools |
-| `secrets` | API key management | 5 tools |
-| `auth` | RBAC access control | 9 tools |
+### 🧪 测试大师
+全层级测试与性能压测
+- **适用**: 单元测试、集成测试、性能测试
+- **关键词**: 测试、单元测试、E2E
 
-### 🧪 Testing Modules
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `qa-dev-kit` | QA toolkit | 7 tools |
-| `testing-toolkit` | Testing utilities | 6 tools |
-| `test-generator` | Test generation | 5 tools |
-| `performance-optimizer` | Performance optimization | 8 tools |
+### 🤖 AI智能体架构师
+Agent/MCP/RAG/提示词工程
+- **适用**: 智能体开发、RAG、提示词优化
+- **关键词**: Agent、MCP、RAG、提示词
 
-### 📊 Data Engineering
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `data-crawler` | Web crawling & data processing | 4 tools |
-| `csv` | CSV operations | 5 tools |
-| `spreadsheet` | Spreadsheet operations | 6 tools |
-| `json` | JSON utilities | 5 tools |
-| `yaml` | YAML utilities | 4 tools |
+### 📚 文档写作大师
+技术文档与API文档
+- **适用**: README、API文档、技术文档
+- **关键词**: 文档、Readme、API文档
 
-### 🌐 Platform Services
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `tool-registry` | Dynamic tool discovery & registration | 6 tools |
-| `protocol` | Standardized calling protocol | 7 tools |
-| `message-bus` | Pub/sub messaging & state sync | 9 tools |
-| `monitoring` | Logging, metrics & error tracking | 11 tools |
-| `clarify` | Intent analysis & requirement clarification | 5 tools |
-| `libraries` | Library recommendations | 4 tools |
-| `proxy` | Proxy configuration | 4 tools |
+### 🐛 调试捉虫专家
+系统性根因分析与Bug修复
+- **适用**: 调试、错误排查、问题定位
+- **关键词**: 调试、Bug、错误、Fix
 
-### 📚 Documentation Modules
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `documentation` | Technical documentation | 6 tools |
-| `markdown` | Markdown processing | 5 tools |
-| `pdf` | PDF operations | 4 tools |
-| `academic-writing` | Academic writing | 7 tools |
-
-### 🔍 Search & Utility
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `search` | Search operations | 5 tools |
-| `web-search` | Web search | 4 tools |
-| `search-tools` | Advanced search | 6 tools |
-| `filesystem` | File operations | 8 tools |
-| `datetime` | Date/time utilities | 5 tools |
-| `math` | Math operations | 6 tools |
-| `regex` | Regex utilities | 4 tools |
-| `compression` | Compression tools | 5 tools |
-| `encoding` | Encoding utilities | 4 tools |
-| `env` | Environment variables | 5 tools |
-
-### 🌐 Integrations
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `browser-automation` | Puppeteer automation | 8 tools |
-| `web-crawler` | Web crawling | 6 tools |
-| `site-generator` | Site generation | 7 tools |
-| `website-builder` | Website builder | 9 tools |
-| `game-dev-toolkit` | Game development | 8 tools |
-| `puppeteer` | Browser automation | 7 tools |
-| `jira` | Jira integration | 5 tools |
-| `fun` | Entertainment tools | 6 tools |
+### 🎮 游戏开发工具包
+游戏开发专用工具
+- **适用**: 游戏开发、Unity、Unreal
+- **关键词**: 游戏、Unity、Unreal
 
 ---
+## 🧠 元智能体（协调层）
+### 🎯 任务编排器
+复杂任务分解与多引擎协调
+- **触发词**: 编排、协调、Workflow
 
-## 💡 Usage Examples
+### 📋 任务规划师
+大任务分解为可执行的小任务
+- **触发词**: 规划、分解、计划
 
-### Example 1: Build a React App
-```
-User: "Create a React todo app with local storage"
-System automatically:
-- Selects frontend-dev-kit + react
-- Invokes code-generator
-- Creates component structure
-- Implements local storage
-- Returns complete code
-```
+### 🔍 反思器
+任务复盘与经验沉淀
+- **触发词**: 复盘、反思、改进
 
-### Example 2: Debug an Issue
-```
-User: "My API returns 500 error, help me debug"
-System automatically:
-- Selects debugging-workflow
-- Invokes error analysis
-- Checks API endpoints
-- Reviews error logs
-- Provides solution
-```
+### 🛠️ 技能工匠
+创建和升级智能体定义
+- **触发词**: 创建技能、Skill、新技能
 
-### Example 3: Deploy to Cloud
-```
-User: "Deploy my Node.js app to AWS"
-System automatically:
-- Selects aws + docker
-- Creates Dockerfile
-- Sets up CI/CD
-- Configures infrastructure
-- Deploys application
-```
+### 📈 持续学习器
+从执行中学习，不断优化输出质量
 
-### Example 4: Data Crawling
-```
-User: "Crawl product data from an e-commerce site"
-System automatically:
-- Selects data-crawler + web-crawler
-- Analyzes page structure
-- Extracts data
-- Processes and cleans
-- Exports to CSV/JSON
-```
+---
+## 🛠️ MCP工具分类
+### 🔧 核心工具
+- `filesystem` - 文件读写
+- `terminal` - 终端命令
+- `git` - Git操作
+- `diff` - 对比差异
+- `env` - 环境变量
 
-### Example 5: Security Audit
-```
-User: "Run a security audit on my code"
-System automatically:
-- Selects security-auditor
-- Scans for vulnerabilities
-- Checks dependencies
-- Reviews authentication
-- Generates report
-```
+### 🎨 前端工具
+- `frontend-dev-kit` - 前端开发工具包
+- `react` - React专用
+- `typescript` - TypeScript支持
+- `ui-design-kit` - UI设计工具
 
-### Example 6: Multi-Agent Collaboration
-```
-User: "Design and implement a new feature with team collaboration"
-System automatically:
-- Creates agent team (PM + Tech Lead + Dev + QA)
-- Coordinates discussions
-- Synthesizes decisions
-- Implements code
-- Runs tests
-```
+### ⚡ 后端工具
+- `backend-dev-kit` - 后端开发工具包
+- `api-dev` - API开发
+- `code-generator` - 代码生成
+- `auth` - 认证授权
 
-### Example 7: Database Operations
-```
-User: "Create a user table with pagination"
-System automatically:
-- Selects database + mongodb/redis
-- Creates schema
-- Implements CRUD
-- Adds pagination
-- Returns queries
-```
+### 🗄️ 数据库工具
+- `database` - 通用数据库
+- `mongodb` - MongoDB
+- `redis` - Redis
+- `json` - JSON数据处理
+- `csv` - CSV数据处理
 
-### Example 8: Requirement Clarification
+### ☁️ DevOps工具
+- `docker` - Docker容器
+- `kubernetes` - K8s集群
+- `aws` - AWS服务
+- `aliyun` - 阿里云
+- `github` - GitHub集成
+- `gitlab` - GitLab集成
+- `gitee` - Gitee集成
+
+### 🔒 安全工具
+- `security-auditor` - 安全审计
+- `secrets` - 密钥管理
+- `auth` - 认证模块
+
+### 🧪 测试工具
+- `testing-toolkit` - 测试工具包
+- `test-generator` - 测试用例生成
+- `performance-optimizer` - 性能优化
+
+### 🤖 Agent工具
+- `agent-dev-kit` - Agent开发工具包
+- `agent-coordinator` - 智能体协调
+- `agent-multi` - 多智能体系统
+- `agent-reflection` - 反思机制
+- `agent-persistence` - 持久化
+
+---
+## 📂 项目结构
 ```
-User: "I want to make something AI-related"
-System automatically:
-- Invokes clarify module
-- Analyzes vague intent
-- Generates clarifying questions
-- Helps refine requirements
-- Suggests appropriate tools
+skills/
+├── agent.yaml                      # 智能体配置文件
+├── system-prompt.md                # 系统提示词
+├── README.md                       # 项目说明（本文件）
+│
+├── .agent-skills/skills/          # 专家引擎目录
+│   ├── config/routing.yaml         # 路由配置
+│   ├── engines/                   # 13个专家引擎
+│   │   ├── fullstack-engine/
+│   │   ├── frontend-master/
+│   │   ├── backend-master/
+│   │   ├── database-specialist/
+│   │   ├── devops-engineer/
+│   │   ├── security-auditor/
+│   │   ├── code-quality-expert/
+│   │   ├── testing-master/
+│   │   ├── ai-agent-architect/
+│   │   ├── documentation-suite/
+│   │   ├── bug-hunter/
+│   │   └── game-dev-toolkit/
+│   └── meta/                      # 5个元智能体
+│       ├── orchestrator/
+│       ├── task-planner/
+│       ├── reflector/
+│       ├── skill-crafter/
+│       └── continuous-learning/
+│
+└── mcp/                           # 96+ MCP工具
+    ├── core-dev-kit/
+    ├── frontend-dev-kit/
+    ├── backend-dev-kit/
+    ├── api-dev/
+    ├── database/
+    ├── docker/
+    ├── kubernetes/
+    ├── github/
+    ├── gitlab/
+    ├── security-auditor/
+    └── ... (更多工具)
 ```
 
 ---
+## 💡 使用示例
+### 示例1：构建React应用
+```
+用户: "创建一个React待办应用，带本地存储"
 
-## 🔧 API Reference
-
-### Core Functions
-
-```typescript
-import {
-  processUserRequest,
-  discoverTools,
-  initializePlatform,
-  getSystemInfo,
-  listAllTools
-} from 'skills'
-
-// Initialize the platform
-await initializePlatform()
-
-// Process user intent (main entry point)
-const result = await processUserRequest("your task description")
-
-// Discover relevant tools
-const tools = discoverTools("react development")
-
-// Get system information
-const info = await getSystemInfo()
+系统自动:
+- 选择前端大师引擎
+- 调用frontend-dev-kit + react工具
+- 生成完整组件代码
+- 包含本地存储功能
 ```
 
-### Tool Registry
+### 示例2：调试问题
+```
+用户: "我的API返回500错误，帮我调试"
 
-```typescript
-import { toolRegistry } from 'skills/mcp/tool-registry'
-
-// Register a new tool
-await toolRegistry.registerTool(serverId, toolId, metadata, handler)
-
-// Discover tools
-const tools = await toolRegistry.discoverTools({ category: 'frontend' })
-
-// Invoke a tool
-const result = await toolRegistry.invokeTool(toolId, params)
+系统自动:
+- 选择调试捉虫专家
+- 调用debugging-workflow工具
+- 分析日志和错误堆栈
+- 定位根因并修复
 ```
 
-### Message Bus
+### 示例3：部署应用
+```
+用户: "部署Node.js应用到AWS"
 
-```typescript
-import { messageBus } from 'skills/mcp/message-bus'
-
-// Subscribe to messages
-const subscriptionId = messageBus.subscribe('topic', handler)
-
-// Publish a message
-messageBus.publish({ topic: 'agent.task', payload: {...}, priority: 'high' })
-
-// State synchronization
-stateSyncManager.updateState(agentId, state)
+系统自动:
+- 选择DevOps工程师
+- 调用docker + aws工具
+- 生成Dockerfile和CI/CD配置
+- 提供部署步骤
 ```
 
 ---
-
-## 📋 Protocol Standard
-
-### Tool Call Format
-
-```json
-{
-  "tool_name": "module_name/tool_name",
-  "parameters": {
-    "param1": "value1",
-    "param2": "value2"
-  },
-  "timeout": 30000,
-  "retries": 3
-}
-```
-
-### Response Format
-
-```json
-{
-  "success": true,
-  "data": {...},
-  "metadata": {
-    "toolId": "module/tool",
-    "version": "1.0.0",
-    "executionTime": 123
-  }
-}
-```
-
-### Error Format
-
-```json
-{
-  "success": false,
-  "error": {
-    "code": "VALIDATION_ERROR",
-    "message": "Invalid parameters",
-    "details": {...},
-    "retryable": true
-  }
-}
-```
+## 🔌 平台兼容性
+| 平台 | 状态 | 说明 |
+|------|------|------|
+| ✅ Trae | 原生支持 | 最佳体验 |
+| ✅ Claude Desktop | 原生支持 | MCP标准 |
+| ✅ Cursor | 完全兼容 | 深度集成 |
+| ✅ Windsurf | 完全兼容 | Cascade支持 |
+| ✅ Cline / Roo Code | 完全兼容 | MCP工具 |
+| ✅ 任何支持MCP的平台 | 完全兼容 | 标准协议 |
 
 ---
-
-## 🏷️ Tags & Categories
-
-### Module Categories
-- `ai-agent` - AI agent development
-- `frontend` - Frontend development
-- `backend` - Backend development
-- `database` - Database operations
-- `devops` - DevOps & infrastructure
-- `security` - Security & secrets
-- `testing` - Testing & QA
-- `data` - Data engineering
-- `documentation` - Documentation
-- `utility` - Utilities
-- `integration` - Third-party integrations
-- `platform` - Platform services
-
-### Tool Tags
-- `code-generation` - Code generation
-- `analysis` - Analysis tools
-- `automation` - Automation
-- `monitoring` - Monitoring
-- `optimization` - Optimization
-- `collaboration` - Collaboration
-- `discovery` - Discovery
-- `management` - Management
+## 📊 项目统计
+| 指标 | 数值 |
+|------|------|
+| **专家引擎** | 13个 |
+| **元智能体** | 5个 |
+| **MCP工具** | 96+个 |
+| **架构版本** | 3.1.0 |
+| **标准协议** | MCP v1.0 |
+| **兼容性** | 全平台 |
 
 ---
-
-## 🔌 MCP Platform Compatibility
-
-| Platform | Status | Notes |
-|----------|--------|-------|
-| Claude Desktop | ✅ Native | Official MCP support |
-| Cursor Composer | ✅ Native | Full MCP integration |
-| Windsurf Cascade | ✅ Native | Built for agentic workflows |
-| Cline / Roo Code | ✅ Compatible | MCP tool protocol |
-| Any MCP Client | ✅ Standard | Model Context Protocol |
+## 🤝 贡献指南
+欢迎贡献！请参考以下步骤：
+1. Fork项目仓库
+2. 创建功能分支
+3. 提交更改
+4. 推送到分支
+5. 提交Pull Request
 
 ---
-
-## 📊 Statistics
-
-| Metric | Value |
-|--------|-------|
-| **Expert Engines** | 13 |
-| **MCP Tools** | 96+ |
-| **AI Agents** | 7 dedicated modules |
-| **Platform Services** | 5 core services |
-| **TypeScript Coverage** | 100% |
-| **Architecture Version** | 3.1 |
+## 📄 许可证
+MIT License - 详见LICENSE文件
 
 ---
-
-## 🤝 Contributing
-
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
-
-### Contribution Guidelines
-
-1. **Report Issues**: Create an Issue describing the problem
-2. **Submit Fixes**: Fork the repository and submit a Pull Request
-3. **Add New Features**: Create an Issue first to discuss the design
-4. **Code Standards**: Follow TypeScript best practices
-
----
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) file.
-
----
-
-# Chinese Documentation
-
-## 🎯 Overview
-
-**MCP Mega-Agent Platform** is the world's first MCP-based Mega-Agent Platform with **96+ professional tools** and **13 expert engines**. Build once, run on **every LLM platform** that supports the MCP standard.
-
-> One architecture to rule them all.
-
-## ⚡️ Quick Start (Just 3 Steps!)
-
-### Step 1: Clone the Project
-```bash
-git clone https://github.com/badhope/skills.git
-cd skills
-```
-
-### Step 2: Give It to Your LLM
-Simply drag and drop the `skills` folder into your AI interface, or configure it as a workspace:
-
-**For Claude Desktop:**
-- Open Settings → Plugins → Add the `skills` folder path
-- Or drag the folder directly into Claude's file panel
-
-**For Cursor:**
-- Use `@load ./skills` command
-- Or add as workspace in Settings → Workspaces
-
-**For Windsurf:**
-- Add `skills` directory to your workspace
-- Or use the Cascade commands to load the folder
-
-**For Cline / Roo Code:**
-- Configure MCP servers to point to `skills/mcp`
-
-### Step 3: Just Tell It What You Want!
-Once the skills folder is loaded, simply describe your request in natural language:
-
-```
-"帮我创建一个React待办应用"
-"I need to build a React login page with JWT authentication"
-"我的API报错了，帮我调试"
-"Deploy my Node.js app to AWS"
-"爬取这个电商网站的产品数据"
-```
-
-The system will automatically:
-1. Analyze your intent
-2. Select appropriate expert engines
-3. Discover and invoke relevant tools
-4. Execute the task
-5. Return the complete result
-
-**That's it!** No complex configuration, no setup needed. Just clone, give it to your AI, and start building!
-
----
-
-## 🏗️ Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                     User Intent                            │
-│            (Natural Language Input)                       │
-└─────────────────────────┬─────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────────┐
-│                    Intent Analyzer                         │
-│              (clarify module)                              │
-└─────────────────────────┬─────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────────┐
-│                  Expert Engines (13)                       │
-│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐            │
-│  │   AI Agent  │ │  Full-Stack │ │  DevOps     │            │
-│  │  Architect  │ │  Engineer   │ │  Engineer   │            │
-│  └─────────────┘ └─────────────┘ └─────────────┘            │
-│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐            │
-│  │  Security   │ │  Database  │ │  Testing    │            │
-│  │  Auditor    │ │  Specialist │ │  Master     │            │
-│  └─────────────┘ └─────────────┘ └─────────────┘            │
-└─────────────────────────┬─────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────────┐
-│                   Platform Services                         │
-│  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐            │
-│  │    Tool     │ │   Message  │ │   Auth      │            │
-│  │  Registry   │ │    Bus      │ │  Manager    │            │
-│  └─────────────┘ └─────────────┘ └─────────────┘            │
-│  ┌─────────────┐ ┌─────────────┐                            │
-│  │  Protocol   │ │  Monitoring │                            │
-│  │  Standard   │ │   System    │                            │
-│  └─────────────┘ └─────────────┘                            │
-└─────────────────────────┬─────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────────┐
-│                  Tools (96+)                                │
-│  filesystem │ terminal │ search │ code-generator │ ...     │
-└─────────────────────────────────────────────────────────────┘
-```
-
----
-
-## 📦 Available Modules (96+ Tools)
-
-### 🤖 AI Agent Modules
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `agent-autonomous` | Autonomous task execution | 6 tools |
-| `agent-multi` | Multi-agent collaboration | 6 tools |
-| `agent-reflection` | Self-reflection system | 5 tools |
-| `agent-devkit` | AI agent development kit | 5 tools |
-| `agent-coordinator` | Agent coordination hub | 11 expert roles |
-| `agent-unified-toolkit` | Unified tool calling | 5 tools |
-| `agent-persistence` | Persistent storage | 8 tools |
-
-### 🔧 Development Modules
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `core-dev-kit` | Core development toolkit | 8 tools |
-| `frontend-dev-kit` | Frontend development | 10 tools |
-| `backend-dev-kit` | Backend development | 12 tools |
-| `api-dev` | API development | 8 tools |
-| `code-generator` | Code generation | 6 tools |
-| `code-review` | Code review | 5 tools |
-| `refactoring-workflow` | Code refactoring | 6 tools |
-| `debugging-workflow` | Debugging tools | 7 tools |
-
-### 🎨 Frontend Modules
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `react` | React development | 8 tools |
-| `typescript` | TypeScript support | 6 tools |
-| `ui-design-kit` | UI design | 7 tools |
-| `colors` | Color utilities | 5 tools |
-
-### 🗄️ Database Modules
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `database` | Database operations | 9 tools |
-| `mongodb` | MongoDB support | 7 tools |
-| `redis` | Redis support | 6 tools |
-
-### ☁️ DevOps Modules
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `docker` | Docker management | 8 tools |
-| `kubernetes` | K8s management | 9 tools |
-| `git` | Git operations | 7 tools |
-| `github` | GitHub integration | 6 tools |
-| `gitlab` | GitLab integration | 5 tools |
-| `aws` | AWS services | 10 tools |
-| `aliyun` | Aliyun services | 8 tools |
-| `cloudflare` | Cloudflare CDN | 6 tools |
-| `vercel` | Vercel deployment | 5 tools |
-| `ssh` | SSH management | 6 tools |
-| `terminal` | Terminal operations | 7 tools |
-| `network` | Network tools | 8 tools |
-| `system-admin` | System administration | 9 tools |
-
-### 🔒 Security Modules
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `security-auditor` | Security auditing | 8 tools |
-| `secrets` | API key management | 5 tools |
-| `auth` | RBAC access control | 9 tools |
-
-### 🧪 Testing Modules
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `qa-dev-kit` | QA toolkit | 7 tools |
-| `testing-toolkit` | Testing utilities | 6 tools |
-| `test-generator` | Test generation | 5 tools |
-| `performance-optimizer` | Performance optimization | 8 tools |
-
-### 📊 Data Engineering
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `data-crawler` | Web crawling & data processing | 4 tools |
-| `csv` | CSV operations | 5 tools |
-| `spreadsheet` | Spreadsheet operations | 6 tools |
-| `json` | JSON utilities | 5 tools |
-| `yaml` | YAML utilities | 4 tools |
-
-### 🌐 Platform Services
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `tool-registry` | Dynamic tool discovery & registration | 6 tools |
-| `protocol` | Standardized calling protocol | 7 tools |
-| `message-bus` | Pub/sub messaging & state sync | 9 tools |
-| `monitoring` | Logging, metrics & error tracking | 11 tools |
-| `clarify` | Intent analysis & requirement clarification | 5 tools |
-| `libraries` | Library recommendations | 4 tools |
-| `proxy` | Proxy configuration | 4 tools |
-
-### 📚 Documentation Modules
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `documentation` | Technical documentation | 6 tools |
-| `markdown` | Markdown processing | 5 tools |
-| `pdf` | PDF operations | 4 tools |
-| `academic-writing` | Academic writing | 7 tools |
-
-### 🔍 Search & Utility
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `search` | Search operations | 5 tools |
-| `web-search` | Web search | 4 tools |
-| `search-tools` | Advanced search | 6 tools |
-| `filesystem` | File operations | 8 tools |
-| `datetime` | Date/time utilities | 5 tools |
-| `math` | Math operations | 6 tools |
-| `regex` | Regex utilities | 4 tools |
-| `compression` | Compression tools | 5 tools |
-| `encoding` | Encoding utilities | 4 tools |
-| `env` | Environment variables | 5 tools |
-
-### 🌐 Integrations
-| Module | Description | Tools |
-|--------|-------------|-------|
-| `browser-automation` | Puppeteer automation | 8 tools |
-| `web-crawler` | Web crawling | 6 tools |
-| `site-generator` | Site generation | 7 tools |
-| `website-builder` | Website builder | 9 tools |
-| `game-dev-toolkit` | Game development | 8 tools |
-| `puppeteer` | Browser automation | 7 tools |
-| `jira` | Jira integration | 5 tools |
-| `fun` | Entertainment tools | 6 tools |
-
----
-
-## 💡 Usage Examples
-
-### Example 1: Build a React App
-```
-User: "Create a React todo app with local storage"
-System automatically:
-- Selects frontend-dev-kit + react
-- Invokes code-generator
-- Creates component structure
-- Implements local storage
-- Returns complete code
-```
-
-### Example 2: Debug an Issue
-```
-User: "My API returns 500 error, help me debug"
-System automatically:
-- Selects debugging-workflow
-- Invokes error analysis
-- Checks API endpoints
-- Reviews error logs
-- Provides solution
-```
-
-### Example 3: Deploy to Cloud
-```
-User: "Deploy my Node.js app to AWS"
-System automatically:
-- Selects aws + docker
-- Creates Dockerfile
-- Sets up CI/CD
-- Configures infrastructure
-- Deploys application
-```
-
-### Example 4: Data Crawling
-```
-User: "Crawl product data from an e-commerce site"
-System automatically:
-- Selects data-crawler + web-crawler
-- Analyzes page structure
-- Extracts data
-- Processes and cleans
-- Exports to CSV/JSON
-```
-
-### Example 5: Security Audit
-```
-User: "Run a security audit on my code"
-System automatically:
-- Selects security-auditor
-- Scans for vulnerabilities
-- Checks dependencies
-- Reviews authentication
-- Generates report
-```
-
-### Example 6: Multi-Agent Collaboration
-```
-User: "Design and implement a new feature with team collaboration"
-System automatically:
-- Creates agent team (PM + Tech Lead + Dev + QA)
-- Coordinates discussions
-- Synthesizes decisions
-- Implements code
-- Runs tests
-```
-
-### Example 7: Database Operations
-```
-User: "Create a user table with pagination"
-System automatically:
-- Selects database + mongodb/redis
-- Creates schema
-- Implements CRUD
-- Adds pagination
-- Returns queries
-```
-
-### Example 8: Requirement Clarification
-```
-User: "I want to make something AI-related"
-System automatically:
-- Invokes clarify module
-- Analyzes vague intent
-- Generates clarifying questions
-- Helps refine requirements
-- Suggests appropriate tools
-```
-
----
-
-## 🔧 API Reference
-
-### Core Functions
-
-```typescript
-import {
-  processUserRequest,
-  discoverTools,
-  initializePlatform,
-  getSystemInfo,
-  listAllTools
-} from 'skills'
-
-// Initialize the platform
-await initializePlatform()
-
-// Process user intent (main entry point)
-const result = await processUserRequest("your task description")
-
-// Discover relevant tools
-const tools = discoverTools("react development")
-
-// Get system information
-const info = await getSystemInfo()
-```
-
-### Tool Registry
-
-```typescript
-import { toolRegistry } from 'skills/mcp/tool-registry'
-
-// Register a new tool
-await toolRegistry.registerTool(serverId, toolId, metadata, handler)
-
-// Discover tools
-const tools = await toolRegistry.discoverTools({ category: 'frontend' })
-
-// Invoke a tool
-const result = await toolRegistry.invokeTool(toolId, params)
-```
-
-### Message Bus
-
-```typescript
-import { messageBus } from 'skills/mcp/message-bus'
-
-// Subscribe to messages
-const subscriptionId = messageBus.subscribe('topic', handler)
-
-// Publish a message
-messageBus.publish({ topic: 'agent.task', payload: {...}, priority: 'high' })
-
-// State synchronization
-stateSyncManager.updateState(agentId, state)
-```
-
----
-
-## 📋 Protocol Standard
-
-### Tool Call Format
-
-```json
-{
-  "tool_name": "module_name/tool_name",
-  "parameters": {
-    "param1": "value1",
-    "param2": "value2"
-  },
-  "timeout": 30000,
-  "retries": 3
-}
-```
-
-### Response Format
-
-```json
-{
-  "success": true,
-  "data": {...},
-  "metadata": {
-    "toolId": "module/tool",
-    "version": "1.0.0",
-    "executionTime": 123
-  }
-}
-```
-
-### Error Format
-
-```json
-{
-  "success": false,
-  "error": {
-    "code": "VALIDATION_ERROR",
-    "message": "Invalid parameters",
-    "details": {...},
-    "retryable": true
-  }
-}
-```
-
----
-
-## 🏷️ Tags & Categories
-
-### Module Categories
-- `ai-agent` - AI agent development
-- `frontend` - Frontend development
-- `backend` - Backend development
-- `database` - Database operations
-- `devops` - DevOps & infrastructure
-- `security` - Security & secrets
-- `testing` - Testing & QA
-- `data` - Data engineering
-- `documentation` - Documentation
-- `utility` - Utilities
-- `integration` - Third-party integrations
-- `platform` - Platform services
-
-### Tool Tags
-- `code-generation` - Code generation
-- `analysis` - Analysis tools
-- `automation` - Automation
-- `monitoring` - Monitoring
-- `optimization` - Optimization
-- `collaboration` - Collaboration
-- `discovery` - Discovery
-- `management` - Management
-
----
-
-## 🔌 MCP Platform Compatibility
-
-| Platform | Status | Notes |
-|----------|--------|-------|
-| Claude Desktop | ✅ Native | Official MCP support |
-| Cursor Composer | ✅ Native | Full MCP integration |
-| Windsurf Cascade | ✅ Native | Built for agentic workflows |
-| Cline / Roo Code | ✅ Compatible | MCP tool protocol |
-| Any MCP Client | ✅ Standard | Model Context Protocol |
-
----
-
-## 📊 Statistics
-
-| Metric | Value |
-|--------|-------|
-| **Expert Engines** | 13 |
-| **MCP Tools** | 96+ |
-| **AI Agents** | 7 dedicated modules |
-| **Platform Services** | 5 core services |
-| **TypeScript Coverage** | 100% |
-| **Architecture Version** | 3.1 |
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
-
-### Contribution Guidelines
-
-1. **Report Issues**: Create an Issue describing the problem
-2. **Submit Fixes**: Fork the repository and submit a Pull Request
-3. **Add New Features**: Create an Issue first to discuss the design
-4. **Code Standards**: Follow TypeScript best practices
-
----
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) file.
-
----
-
-> **The future is multi-platform.**
->
-> Don't build for one LLM. Build for **all** LLMs. 🚀
+## 🚀 开始使用
+准备好开始了吗？只需：
+1. 将此文件夹复制到你的项目中
+2. 在你的AI平台中加载
+3. 开始用自然语言描述需求！
+
+**一次构建，处处运行！** 🌍✨

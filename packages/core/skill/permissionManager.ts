@@ -1,3 +1,5 @@
+import crypto from 'crypto';
+
 export type Role = 'admin' | 'developer' | 'user' | 'guest';
 
 export type Permission = 
@@ -224,7 +226,7 @@ export class PermissionManager {
     const user = this.users.get(userId);
     if (!user) return null;
 
-    const sessionId = `session-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    const sessionId = `session-${Date.now()}-${crypto.randomUUID()}`;
     const expiresAt = new Date(Date.now() + this.sessionTimeoutMinutes * 60 * 1000);
 
     const session: Session = {

@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -134,7 +135,7 @@ export class AgentMemory {
   async remember(interaction: Omit<Interaction, 'id' | 'timestamp'>): Promise<void> {
     const newInteraction: Interaction = {
       ...interaction,
-      id: `mem-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      id: `mem-${Date.now()}-${crypto.randomUUID()}`,
       timestamp: new Date()
     };
 

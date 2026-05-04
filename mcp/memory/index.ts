@@ -1,3 +1,4 @@
+import crypto from 'crypto'
 import { createMCPServer } from '../../packages/core/mcp/builder'
 import { validateParams, formatSuccess, formatError } from '../../packages/core'
 import * as fs from 'fs/promises'
@@ -48,7 +49,7 @@ async function writeIndex(index: MemoryIndex): Promise<void> {
 }
 
 function generateId(): string {
-  return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+  return `${Date.now()}-${crypto.randomUUID()}`
 }
 
 function simpleVector(text: string): number[] {

@@ -1,3 +1,4 @@
+import crypto from 'crypto'
 import { createMCPServer } from '../../packages/core/mcp/builder'
 import { validateParams, formatSuccess, formatError, safeExec, sanitizePath } from '../../packages/core/shared/utils'
 import * as fs from 'fs/promises'
@@ -26,7 +27,7 @@ interface AgentState {
 }
 
 function generateTaskId(): string {
-  return 'task_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 6)
+  return 'task_' + Date.now().toString(36) + '_' + crypto.randomUUID().replace(/-/g, '').slice(0, 8)
 }
 
 export default createMCPServer({

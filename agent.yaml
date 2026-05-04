@@ -1,0 +1,346 @@
+# Mega-Agent Developer Platform Configuration
+# Version: 3.1.0
+# Description: Core configuration for the intelligent agent framework
+
+# ====================
+# Core Settings
+# ====================
+name: "Mega-Agent Developer Platform"
+version: "3.1.0"
+description: "Professional AI Agent Platform for full-stack development"
+author: "MCP Expert Community"
+icon: "🚀"
+
+# ====================
+# Agent Settings
+# ====================
+agent:
+  # Maximum iterations for autonomous task execution
+  maxIterations: 20
+  
+  # Enable reflection capabilities
+  enableReflection: true
+  
+  # Enable persistence for task history
+  enablePersistence: true
+  
+  # Default timeout in milliseconds
+  defaultTimeout: 30000
+  
+  # Error recovery settings
+  errorRecovery:
+    enabled: true
+    maxRetries: 3
+    retryDelayMs: 1000
+
+# ====================
+# Expert Engine Configuration
+# ====================
+experts:
+  - id: "fullstack-engine"
+    name: "Full-Stack Production Engineer"
+    role: "fullstack-engine"
+    enabled: true
+    priority: 1
+    
+  - id: "frontend-master"
+    name: "Frontend Master"
+    role: "frontend-master"
+    enabled: true
+    priority: 2
+    
+  - id: "backend-master"
+    name: "Backend Master"
+    role: "backend-master"
+    enabled: true
+    priority: 3
+    
+  - id: "database-specialist"
+    name: "Database Specialist"
+    role: "database-specialist"
+    enabled: true
+    priority: 4
+    
+  - id: "devops-engineer"
+    name: "DevOps Engineer"
+    role: "devops-engineer"
+    enabled: true
+    priority: 5
+    
+  - id: "security-auditor"
+    name: "Security Auditor"
+    role: "security-auditor"
+    enabled: true
+    priority: 6
+    
+  - id: "code-quality-expert"
+    name: "Code Quality Expert"
+    role: "code-quality-expert"
+    enabled: true
+    priority: 7
+    
+  - id: "testing-master"
+    name: "Testing Master"
+    role: "testing-master"
+    enabled: true
+    priority: 8
+    
+  - id: "ai-agent-architect"
+    name: "AI Agent Architect"
+    role: "ai-agent-architect"
+    enabled: true
+    priority: 9
+    
+  - id: "documentation-suite"
+    name: "Documentation Suite"
+    role: "documentation-suite"
+    enabled: true
+    priority: 10
+    
+  - id: "bug-hunter"
+    name: "Bug Hunting Specialist"
+    role: "bug-hunter"
+    enabled: true
+    priority: 11
+
+# ====================
+# Meta Agents (Orchestration Layer)
+# ====================
+meta-agents:
+  - id: "orchestrator"
+    name: "Task Orchestrator"
+    enabled: true
+    triggerKeywords: ["orchestrate", "coordinate", "workflow", "manage"]
+    
+  - id: "task-planner"
+    name: "Task Planner"
+    enabled: true
+    triggerKeywords: ["plan", "decompose", "breakdown", "strategy"]
+    
+  - id: "reflector"
+    name: "Reflector"
+    enabled: true
+    triggerKeywords: ["reflect", "review", "analyze", "improve"]
+    
+  - id: "skill-crafter"
+    name: "Skill Crafter"
+    enabled: true
+    triggerKeywords: ["create skill", "build agent", "design capability"]
+    
+  - id: "continuous-learning"
+    name: "Continuous Learning"
+    enabled: true
+    triggerKeywords: ["learn", "adapt", "improve", "feedback"]
+
+# ====================
+# Tool Configuration
+# ====================
+tools:
+  # Core tools
+  - id: "filesystem"
+    enabled: true
+    category: "core"
+    
+  - id: "terminal"
+    enabled: true
+    category: "core"
+    
+  - id: "git"
+    enabled: true
+    category: "core"
+    
+  - id: "diff"
+    enabled: true
+    category: "core"
+    
+  # Development tools
+  - id: "frontend-dev-kit"
+    enabled: true
+    category: "development"
+    
+  - id: "backend-dev-kit"
+    enabled: true
+    category: "development"
+    
+  - id: "api-dev"
+    enabled: true
+    category: "development"
+    
+  - id: "database"
+    enabled: true
+    category: "development"
+    
+  # DevOps tools
+  - id: "docker"
+    enabled: true
+    category: "devops"
+    
+  - id: "kubernetes"
+    enabled: true
+    category: "devops"
+    
+  - id: "aws"
+    enabled: true
+    category: "devops"
+    
+  - id: "aliyun"
+    enabled: true
+    category: "devops"
+    
+  # Security tools
+  - id: "security-auditor"
+    enabled: true
+    category: "security"
+    
+  - id: "secrets"
+    enabled: true
+    category: "security"
+    
+  - id: "auth"
+    enabled: true
+    category: "security"
+    
+  # Testing tools
+  - id: "testing-toolkit"
+    enabled: true
+    category: "testing"
+    
+  - id: "test-generator"
+    enabled: true
+    category: "testing"
+    
+  - id: "performance-optimizer"
+    enabled: true
+    category: "testing"
+    
+  # Agent tools
+  - id: "agent-coordinator"
+    enabled: true
+    category: "agent"
+    
+  - id: "agent-multi"
+    enabled: true
+    category: "agent"
+    
+  - id: "agent-reflection"
+    enabled: true
+    category: "agent"
+    
+  - id: "agent-persistence"
+    enabled: true
+    category: "agent"
+    
+  - id: "agent-unified-toolkit"
+    enabled: true
+    category: "agent"
+
+# ====================
+# Routing Configuration
+# ====================
+routing:
+  # Default routing strategy
+  strategy: "keyword-based"
+  
+  # Confidence threshold for matching
+  confidenceThreshold: 0.7
+  
+  # Enable fallback to next best match
+  enableFallback: true
+
+# ====================
+# Storage Configuration
+# ====================
+storage:
+  # Storage type: filesystem, database, memory
+  type: "filesystem"
+  
+  # Base directory for file storage
+  directory: ".agent-storage"
+  
+  # Enable automatic cleanup of old data
+  autoCleanup: true
+  
+  # Retention period in days
+  retentionDays: 90
+
+# ====================
+# Monitoring Configuration
+# ====================
+monitoring:
+  enabled: true
+  
+  # Log level: debug, info, warn, error
+  logLevel: "info"
+  
+  # Enable performance metrics
+  metrics: true
+  
+  # Enable audit logging
+  audit: true
+
+# ====================
+# Safety Configuration
+# ====================
+safety:
+  # Enable human-in-the-loop for sensitive operations
+  humanInTheLoop: true
+  
+  # List of sensitive operations requiring confirmation
+  sensitiveOperations:
+    - "delete"
+    - "rm"
+    - "rmdir"
+    - "deploy"
+    - "destroy"
+    - "reset"
+    
+  # Maximum file size for writes (bytes)
+  maxFileSizeBytes: 10485760
+  
+  # Enable output filtering for sensitive data
+  outputFiltering: true
+
+# ====================
+# Platform Compatibility
+# ====================
+platforms:
+  - id: "trae"
+    name: "Trae"
+    enabled: true
+    priority: 1
+    
+  - id: "claude"
+    name: "Claude Desktop"
+    enabled: true
+    priority: 2
+    
+  - id: "cursor"
+    name: "Cursor"
+    enabled: true
+    priority: 3
+    
+  - id: "windsurf"
+    name: "Windsurf"
+    enabled: true
+    priority: 4
+    
+  - id: "cline"
+    name: "Cline"
+    enabled: true
+    priority: 5
+
+# ====================
+# Performance Configuration
+# ====================
+performance:
+  # Enable caching for tool results
+  enableCaching: true
+  
+  # Cache TTL in seconds
+  cacheTTL: 300
+  
+  # Enable parallel tool execution
+  parallelExecution: true
+  
+  # Maximum parallel tasks
+  maxParallelTasks: 5

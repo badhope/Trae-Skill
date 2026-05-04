@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import fs from 'fs/promises';
 import path from 'path';
 import { TaskContext, TaskStep, TaskResult, WorkflowPhase, WorkflowStep } from './types';
@@ -271,7 +272,7 @@ export class TaskStateManager {
   }
 
   async createInitialState(description: string, complexity: number): Promise<TaskState> {
-    const taskId = `task-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    const taskId = `task-${Date.now()}-${crypto.randomUUID()}`;
     
     const state: TaskState = {
       taskId,

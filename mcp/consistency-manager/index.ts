@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { createMCPServer } from '../../packages/core/mcp/builder';
 import { validateParams, formatSuccess, formatError } from '../../packages/core/shared/utils';
 import * as fs from 'fs/promises';
@@ -386,7 +387,7 @@ async function findFiles(pattern: string, olderThan: string | undefined): Promis
 
   for (let i = 0; i < count; i++) {
     foundFiles.push({
-      path: `temp/file-${i}-${Math.random().toString(36).substr(2, 9)}.tmp`,
+      path: `temp/file-${i}-${crypto.randomUUID()}.tmp`,
       type: 'temp',
       size: Math.floor(Math.random() * 10240),
       lastModified: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString()

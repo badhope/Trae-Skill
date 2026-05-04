@@ -35,7 +35,10 @@ export default createMCPServer({
       const dir = validation.data.directory || validation.data.url.split('/').pop()?.replace('.git', '') || 'repo'
       let cloneUrl = validation.data.url
       if (validation.data.token && cloneUrl.includes('github.com')) {
-        cloneUrl = cloneUrl.replace('https://', `https://${validation.data.token}@`)
+        const safeToken = validation.data.token.replace(/[^a-zA-Z0-9_-]/g, '')
+        if (safeToken && safeToken.length >= 8) {
+          cloneUrl = cloneUrl.replace('https://', `https://${safeToken}@`)
+        }
       }
       const branchFlag = validation.data.branch ? `-b ${validation.data.branch}` : ''
       const depthFlag = validation.data.depth > 0 ? `--depth ${validation.data.depth}` : ''

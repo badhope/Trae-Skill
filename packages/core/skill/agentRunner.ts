@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { SkillRegistry } from './registry';
 import { SkillOrchestrator } from './orchestrator';
 import { WorkflowEngine } from './workflowEngine';
@@ -54,7 +55,7 @@ export class AgentRunner {
   }
 
   async run(taskDescription: string): Promise<AgentResponse> {
-    const taskId = `task-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    const taskId = `task-${Date.now()}-${crypto.randomUUID()}`;
     const startTime = Date.now();
     const toolsUsed: string[] = [];
     const errors: number[] = [];

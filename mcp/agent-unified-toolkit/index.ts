@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { createMCPServer } from '../../packages/core/mcp/builder';
 import { validateParams, formatSuccess, formatError } from '../../packages/core/shared/utils';
 
@@ -113,7 +114,7 @@ const TOOL_REGISTRY: ToolRegistry = {
 };
 
 function generateId(): string {
-  return `tool-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+  return `tool-${Date.now()}-${crypto.randomUUID()}`;
 }
 
 export default createMCPServer({

@@ -1,3 +1,5 @@
+import crypto from 'crypto';
+
 interface User {
   id: string;
   username: string;
@@ -58,7 +60,7 @@ class AuthManager {
   private apiKeys: Map<string, APIKey> = new Map();
 
   createUser(username: string, email: string, roles: string[]): User {
-    const userId = `user-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    const userId = `user-${Date.now()}-${crypto.randomUUID()}`;
     
     const user: User = {
       id: userId,
@@ -91,7 +93,7 @@ class AuthManager {
   }
 
   generateApiKey(userId: string, name: string, permissions: string[]): APIKey {
-    const key = `sk-${Date.now()}-${Math.random().toString(36).substr(2, 24)}`;
+    const key = `sk-${crypto.randomUUID()}`;
     
     const apiKey: APIKey = {
       id: `key-${Date.now()}`,

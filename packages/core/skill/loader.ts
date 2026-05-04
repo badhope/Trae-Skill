@@ -257,7 +257,7 @@ export class SkillLoader {
       return step as WorkflowStep;
     }
     
-    const ifMatch = cleaned.match(/^\s*IF\s+(.+)\s*[:-]\s*(.+)/i);
+    const ifMatch = cleaned.match(/^\s*IF\s+([^\n:+-]{1,200})\s*[:-]\s*(.+)/i);
     if (ifMatch) {
       step.type = 'conditional';
       step.condition = ifMatch[1];
@@ -313,12 +313,12 @@ export class SkillLoader {
 
   parseTools(content: string): ToolReference[] {
     const tools: ToolReference[] = [];
-    
-    const tableMatch = content.match(/\|.*Tool.*\|.*Purpose.*\|.*Fallback.*\|[\s\S]*?(\|.*\|[\s\S]*?)*?(\n{2,}|\Z)/i);
+
+    const tableMatch = content.match(/\|[^|\n]*Tool[^|\n]*\|[^|\n]*Purpose[^|\n]*\|[^|\n]*Fallback[^|\n]*\|[\s\S]{0,5000}(?:\n{2,}|$)/i);
     if (tableMatch) {
       const table = tableMatch[0];
       const lines = table.split('\n').filter(l => l.includes('|'));
-      
+
       for (let i = 2; i < lines.length; i++) {
         const cells = lines[i].split('|').map(c => c.trim()).filter(Boolean);
         if (cells.length >= 3 && !cells[0].match(/Tool/i)) {
@@ -330,7 +330,7 @@ export class SkillLoader {
         }
       }
     }
-    
+
     return tools;
   }
 

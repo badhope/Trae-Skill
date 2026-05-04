@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { createMCPServer } from '../../packages/core/mcp/builder'
 import { validateParams, formatSuccess, formatError } from '../../packages/core/shared/utils'
 
@@ -125,8 +126,9 @@ export default createMCPServer({
       if (validation.data.symbols) charset += '!@#$%^&*()_+-=[]{}|;:,.?'
 
       let password = ''
+      const randomBytes = crypto.randomBytes(validation.data.length)
       for (let i = 0; i < validation.data.length; i++) {
-        password += charset[Math.floor(Math.random() * charset.length)]
+        password += charset[randomBytes[i] % charset.length]
       }
 
       return formatSuccess({

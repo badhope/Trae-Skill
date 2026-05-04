@@ -88,6 +88,143 @@ export interface SkillDefinition {
   constraints: Record<string, any>;
 }
 
+export interface AgentCapability {
+  id: string;
+  name: string;
+  description: string;
+  keywords: string[];
+}
+
+export interface AgentToolDependency {
+  id: string;
+  name: string;
+  required: boolean;
+  fallback: string;
+}
+
+export interface AgentExecutionConfig {
+  maxIterations: number;
+  defaultTimeout: number;
+  enableReflection: boolean;
+  requireConfirmation: boolean;
+}
+
+export interface AgentOutputConfig {
+  format: 'markdown' | 'json' | 'html';
+  includeSteps: boolean;
+  includeConfidence: boolean;
+  includeRecommendations: boolean;
+}
+
+export interface KnowledgeConfig {
+  enabled: boolean;
+  embeddingModel: string;
+  chunkSize: number;
+  similarityThreshold: number;
+  topK: number;
+}
+
+export interface MemoryConfig {
+  enabled: boolean;
+  maxNodes: number;
+  decayRate: number;
+}
+
+export interface AgentYaml {
+  version: string;
+  id: string;
+  name: string;
+  description: string;
+  author: string;
+  tags: string[];
+  capabilities: AgentCapability[];
+  tools: AgentToolDependency[];
+  execution: AgentExecutionConfig;
+  output: AgentOutputConfig;
+  knowledge?: KnowledgeConfig;
+  memory?: MemoryConfig;
+}
+
+export interface IntentDefinition {
+  id: string;
+  name: string;
+  description: string;
+  keywords: string[];
+  confidenceThreshold: number;
+  workflow: string;
+}
+
+export interface StageDefinition {
+  id: string;
+  name: string;
+  description: string;
+  required: boolean;
+  timeout: number;
+  tools: string[];
+  outputs: string[];
+}
+
+export interface WorkflowDefinition {
+  id: string;
+  name: string;
+  description: string;
+  stages: StageDefinition[];
+}
+
+export interface ToolCallDefinition {
+  id: string;
+  toolId: string;
+  operation: string;
+  parameters: Record<string, { type: string; required: boolean; description: string }>;
+  safetyLevel: 'low' | 'medium' | 'high';
+  requiresConfirmation: boolean;
+}
+
+export interface TestCase {
+  id: string;
+  name: string;
+  description: string;
+  input: string;
+  expectedStages: string[];
+  expectedOutputs: string[];
+  expectedConfidence: number;
+}
+
+export interface AgentDefinition {
+  agentYaml: AgentYaml;
+  systemPrompt: string;
+  intents: IntentDefinition[];
+  workflows: Record<string, WorkflowDefinition>;
+  toolCalls: ToolCallDefinition[];
+  knowledgeBase: string[];
+  testCases: TestCase[];
+}
+
+export interface StageExecutionResult {
+  stageId: string;
+  name: string;
+  status: 'pending' | 'in-progress' | 'completed' | 'failed';
+  startTime: Date;
+  endTime?: Date;
+  outputs: string[];
+  confidence: number;
+  error?: string;
+}
+
+export interface AgentExecutionResult {
+  agentId: string;
+  taskId: string;
+  status: 'completed' | 'failed' | 'in-progress';
+  timestamp: Date;
+  stages: StageExecutionResult[];
+  finalOutputs: Array<{ type: string; path: string; description: string }>;
+  overallConfidence: number;
+  reflection?: {
+    successFactors: string[];
+    improvementAreas: string[];
+  };
+}
+
 export interface TaskAnalysis {
   complexity: number;
   factors: string[];

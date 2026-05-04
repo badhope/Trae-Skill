@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { createMCPServer } from '../../packages/core/mcp/builder'
 import { validateParams, formatSuccess, formatError } from '../../packages/core'
 import * as fs from 'fs/promises'
@@ -50,7 +51,7 @@ async function loadSession(sessionId: string): Promise<ThinkingSession | null> {
 }
 
 function generateId(): string {
-  return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+  return crypto.randomUUID()
 }
 
 const VALID_THINK_TYPES = ['observation', 'reasoning', 'hypothesis', 'verification', 'conclusion']

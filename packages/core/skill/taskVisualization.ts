@@ -1,6 +1,10 @@
 import { TaskContext, TaskStep, TaskResult, Workflow, WorkflowPhase } from './types';
 import { TaskStateManager, TaskState } from './taskStateManager';
 
+function escapeDotString(str: string): string {
+  return str.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n').replace(/\r/g, '\\r');
+}
+
 export interface TaskProgress {
   taskId: string;
   description: string;
@@ -278,7 +282,7 @@ export class TaskVisualizationManager {
             ? '#FFD700'
             : '#FFFFFF';
         
-        dot += `    "${task.id}" [label="${task.description.replace(/"/g, '\\"')}", color="${taskColor}"];\n`;
+        dot += `    "${escapeDotString(task.id)}" [label="${escapeDotString(task.description)}", color="${taskColor}"];\n`;
       }
 
       dot += '  }\n\n';

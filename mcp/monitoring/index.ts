@@ -1,3 +1,5 @@
+import crypto from 'crypto';
+
 interface LogEntry {
   id: string;
   timestamp: number;
@@ -34,7 +36,7 @@ class Logger {
 
   log(level: LogEntry['level'], source: string, message: string, metadata?: Record<string, any>): LogEntry {
     const entry: LogEntry = {
-      id: `${level}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      id: `${level}-${Date.now()}-${crypto.randomUUID()}`,
       timestamp: Date.now(),
       level,
       source,
@@ -90,7 +92,7 @@ class PerformanceTracker {
 
   record(operation: string, duration: number, success: boolean, error?: string, metadata?: Record<string, any>): PerformanceMetric {
     const metric: PerformanceMetric = {
-      id: `perf-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      id: `perf-${Date.now()}-${crypto.randomUUID()}`,
       timestamp: Date.now(),
       operation,
       duration,

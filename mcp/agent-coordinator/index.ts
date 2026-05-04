@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { createMCPServer } from '../../packages/core/mcp/builder';
 import { validateParams, formatSuccess, formatError } from '../../packages/core/shared/utils';
 
@@ -202,7 +203,7 @@ const EXPERT_AGENTS: ExpertAgent[] = [
 ];
 
 function generateId(): string {
-  return `msg-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+  return `msg-${Date.now()}-${crypto.randomUUID()}`;
 }
 
 export default createMCPServer({
@@ -512,6 +513,180 @@ export default createMCPServer({
         ]
       });
     }
+  })
+  .addTool({
+    name: 'activate_agent',
+    description: '激活特定专家提供输入',
+    parameters: {
+      agentId: { type: 'string', description: '专家ID', required: true },
+      topic: { type: 'string', description: '讨论主题', required: true },
+      context: { type: 'string', description: '背景上下文', required: true }
+    },
+    execute: async (params: Record<string, any>) => {
+      const validation = validateParams(params, {
+        agentId: { type: 'string', required: true },
+        topic: { type: 'string', required: true },
+        context: { type: 'string', required: true }
+      });
+
+      if (!validation.valid) return formatError('Invalid parameters', validation.errors);
+
+      const agent = EXPERT_AGENTS.find(e => e.id === validation.data.agentId);
+      
+      if (!agent) {
+        return formatError('Agent not found', { agentId: validation.data.agentId });
+      }
+
+      const agentPrompt = `
+## ${agent.name} ACTIVATED
+
+**Topic:** ${validation.data.topic}
+
+---
+
+### 🎯 YOUR EXPERT PERSONA
+
+${agent.systemPrompt}
+
+---
+
+### 📋 CONTEXT
+
+${validation.data.context}
+
+---
+
+### 📝 YOUR INPUT NEEDED
+
+Provide your expert opinion on:
+1. Key risks and concerns specific to ${agent.name.split(' ').slice(1).join(' ')}
+2. Concrete recommendations
+3. 3 follow-up questions that need clarification
+4. Your confidence level in current approach (0-100%)
+
+Format as structured, actionable advice.
+      `.trim();
+
+      return formatSuccess({
+        success: true,
+        agentActivated: agent.name,
+        expertise: agent.expertise,
+        agentPrompt
+      });
+    }
+  })
+  .addTool({
+    name: 'debate_topic',
+    description: '让多个专家辩论一个主题 - 专家小组讨论',
+    parameters: {
+      topic: { type: 'string', description: '辩论主题', required: true },
+      agentIds: { type: 'string', description: '专家ID列表，逗号分隔', required: true },
+      currentProposal: { type: 'string', description: '当前提议的解决方案', required: true }
+    },
+    execute: async (params: Record<string, any>) => {
+      const validation = validateParams(params, {
+        topic: { type: 'string', required: true },
+        agentIds: { type: 'string', required: true },
+        currentProposal: { type: 'string', required: true }
+      });
+
+      if (!validation.valid) return formatError('Invalid parameters', validation.errors);
+
+      const agentIds = validation.data.agentIds.split(',').map((id: string) => id.trim());
+      const agents = EXPERT_AGENTS.filter(e => agentIds.includes(e.id) && e.active);
+
+      const debateFramework = `
+## 👥 EXPERT PANEL DEBATE
+
+**Topic:** ${validation.data.topic}
+
+**Current Proposal:** ${validation.data.currentProposal}
+
+---
+
+### 🎯 DEBATE FORMAT
+
+EACH expert will speak in turn. For each expert:
+
+1. **✅ AGREE** - Which parts of the proposal do you support?
+2. **❌ CHALLENGE** - Which parts do you question?
+3. **💡 PROPOSE** - What changes would you recommend?
+4. **🎯 ASK** - One question for other panel members
+
+---
+
+### 🎭 EXPERT ROLES
+
+${agents.map((a, i: number) => `**${i + 1}. ${a.name}**
+   Expertise: ${a.expertise}`).join('\n\n')}
+
+---
+
+### ⚖️ FACILITATOR INSTRUCTIONS
+
+After all experts speak:
+1. Summarize points of AGREEMENT
+2. Highlight points of CONTENTION
+3. Call for consensus or recommend additional research
+
+💡 Remember: Good decisions come from DISAGREEMENT! Healthy debate = better outcomes.
+      `.trim();
+
+      return formatSuccess({
+        success: true,
+        panel: agents.map(a => a.name),
+        panelSize: agents.length,
+        debateFramework
+      });
+    }
+  })
+  .addPrompt({
+    name: 'expert-consultation',
+    description: '完整的专家小组咨询工作流',
+    arguments: [
+      { name: 'decisionTopic', description: '要做出的决策', required: true }
+    ],
+    generate: async (args?: Record<string, any>) => `
+## 👥 MULTI-AGENT CONSULTATION ACTIVATED
+
+We will now make high-quality decisions using expert panel input.
+
+---
+
+### 🎯 DECISION TOPIC:
+
+> ${args?.decisionTopic || 'User did not specify decision topic'}
+
+---
+
+### ⚙️ CONSULTATION WORKFLOW
+
+**Step 1: ASSEMBLE THE PANEL**
+Call \`list_experts\` and select 3-5 relevant experts for this decision.
+
+**Step 2: HEAR FROM EACH EXPERT**
+For each selected expert:
+- Call \`activate_agent\` with full context
+- Record their input, concerns, and recommendations
+
+**Step 3: OPTIONAL PANEL DEBATE**
+For controversial decisions, call \`debate_topic\` to have experts respond to each other.
+
+**Step 4: SYNTHESIZE AND DECIDE**
+Call \`synthesize_decision\` to create formal decision record.
+
+---
+
+### ❌ RULES FOR GOOD DECISION MAKING
+
+1. **DO NOT SKIP** any expert input
+2. **DO NOT IGNORE** concerns - address them explicitly
+3. **DO NOT RUSH** - quality > speed
+4. **DISSENT IS GOOD** - we want to hear disagreements
+5. **BE EXPLICIT** about trade-offs accepted
+
+No expert is ever 100% wrong. No expert is ever 100% right.
+    `.trim()
   })
   .build();
 

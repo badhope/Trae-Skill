@@ -1,3 +1,5 @@
+import crypto from 'crypto';
+
 interface Message {
   id: string;
   topic: string;
@@ -21,7 +23,7 @@ class MessageBus {
   private isProcessing = false;
 
   subscribe(topic: string, handler: (message: Message) => void, filter?: (message: Message) => boolean): string {
-    const subscriptionId = `${topic}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    const subscriptionId = `${topic}-${Date.now()}-${crypto.randomUUID()}`;
     
     const subscription: Subscription = {
       id: subscriptionId,
@@ -50,7 +52,7 @@ class MessageBus {
   }
 
   publish(message: Omit<Message, 'id' | 'timestamp'>): string {
-    const messageId = `${message.topic}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    const messageId = `${message.topic}-${Date.now()}-${crypto.randomUUID()}`;
     
     const fullMessage: Message = {
       ...message,

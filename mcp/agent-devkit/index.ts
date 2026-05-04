@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { createMCPServer } from '../../packages/core/mcp/builder';
 import { validateParams, formatSuccess, formatError } from '../../packages/core/shared/utils';
 
@@ -100,7 +101,7 @@ export default createMCPServer({
         id: `collab-${Date.now()}`,
         agents: agents.map(agent => ({
           ...agent,
-          id: `agent-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+          id: `agent-${Date.now()}-${crypto.randomUUID()}`,
           status: 'ready'
         })),
         interactionPattern,
