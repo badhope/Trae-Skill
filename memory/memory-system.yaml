@@ -1,0 +1,196 @@
+# 🧠 Memory System Configuration
+# Thesis Specialist Platform v2.2
+---
+name: "Memory System"
+description: "Advanced memory management system for thesis writing agent"
+version: "2.2.0"
+author: "Thesis Specialist Project"
+
+# Memory stores configuration
+stores:
+  - id: "user-preferences"
+    name: "User Preferences Store"
+    description: "Store user research field, writing habits, preferences"
+    storage_type: "json"
+    file_path: "memory/stores/user-preferences.json"
+    retention_policy: "permanent"
+    max_size: "1MB"
+
+  - id: "conversation-history"
+    name: "Conversation History Store"
+    description: "Store conversation history for context retention"
+    storage_type: "json"
+    file_path: "memory/stores/conversation-history.json"
+    retention_policy: "session"
+    max_size: "10MB"
+    max_messages: 100
+
+  - id: "project-state"
+    name: "Project State Store"
+    description: "Store current thesis writing progress and state"
+    storage_type: "json"
+    file_path: "memory/stores/project-state.json"
+    retention_policy: "project"
+    max_size: "5MB"
+
+  - id: "knowledge-base"
+    name: "Knowledge Base Store"
+    description: "Store research domain knowledge and references"
+    storage_type: "json"
+    file_path: "memory/stores/knowledge-base.json"
+    retention_policy: "permanent"
+    max_size: "50MB"
+
+# Memory operations
+operations:
+  - id: "store"
+    name: "Store"
+    description: "Save information to memory"
+    parameters:
+      - name: "store_id"
+        type: "string"
+        required: true
+      - name: "key"
+        type: "string"
+        required: true
+      - name: "value"
+        type: "any"
+        required: true
+      - name: "expiry"
+        type: "string"
+        required: false
+
+  - id: "retrieve"
+    name: "Retrieve"
+    description: "Retrieve information from memory"
+    parameters:
+      - name: "store_id"
+        type: "string"
+        required: true
+      - name: "key"
+        type: "string"
+        required: true
+
+  - id: "update"
+    name: "Update"
+    description: "Update existing memory entry"
+    parameters:
+      - name: "store_id"
+        type: "string"
+        required: true
+      - name: "key"
+        type: "string"
+        required: true
+      - name: "value"
+        type: "any"
+        required: true
+
+  - id: "delete"
+    name: "Delete"
+    description: "Delete memory entry"
+    parameters:
+      - name: "store_id"
+        type: "string"
+        required: true
+      - name: "key"
+        type: "string"
+        required: true
+
+  - id: "search"
+    name: "Search"
+    description: "Search across memory stores"
+    parameters:
+      - name: "query"
+        type: "string"
+        required: true
+      - name: "stores"
+        type: "array"
+        required: false
+
+  - id: "clean"
+    name: "Clean"
+    description: "Clean expired or old entries"
+    parameters:
+      - name: "store_id"
+        type: "string"
+        required: false
+
+# Memory schema definitions
+schemas:
+  user_preferences:
+    type: "object"
+    properties:
+      research_field: { type: "string" }
+      writing_style: { type: "string" }
+      language_preference: { type: "string", enum: ["en", "zh"] }
+      journal_format: { type: "string" }
+      word_count_target: { type: "integer" }
+      deadline: { type: "string", format: "date" }
+
+  conversation_entry:
+    type: "object"
+    properties:
+      timestamp: { type: "string", format: "datetime" }
+      role: { type: "string", enum: ["user", "assistant"] }
+      content: { type: "string" }
+      intent: { type: "string" }
+      expert_used: { type: "string" }
+
+  project_state:
+    type: "object"
+    properties:
+      project_id: { type: "string" }
+      project_name: { type: "string" }
+      topic: { type: "string" }
+      current_stage: { type: "string" }
+      progress: { type: "number", minimum: 0, maximum: 100 }
+      chapters: { type: "array" }
+      last_updated: { type: "string", format: "datetime" }
+
+  knowledge_entry:
+    type: "object"
+    properties:
+      id: { type: "string" }
+      title: { type: "string" }
+      content: { type: "string" }
+      category: { type: "string" }
+      tags: { type: "array", items: { type: "string" } }
+      source: { type: "string" }
+      created_at: { type: "string", format: "datetime" }
+
+# Context management rules
+context_rules:
+  - name: "Recency-based Retrieval"
+    description: "Prioritize recent conversations"
+    weight: 0.4
+
+  - name: "Relevance Matching"
+    description: "Match based on keyword similarity"
+    weight: 0.3
+
+  - name: "User Preferences"
+    description: "Consider user preferences"
+    weight: 0.2
+
+  - name: "Project Context"
+    description: "Consider current project state"
+    weight: 0.1
+
+# Default memory files
+defaults:
+  user_preferences:
+    research_field: ""
+    writing_style: "academic"
+    language_preference: "en"
+    journal_format: "apa"
+    word_count_target: 10000
+    deadline: ""
+
+  project_state:
+    project_id: ""
+    project_name: "Untitled Thesis"
+    topic: ""
+    current_stage: "topic-selection"
+    progress: 0
+    chapters: []
+    last_updated: ""

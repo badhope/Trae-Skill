@@ -1,0 +1,77 @@
+# Thesis Specialist Platform - GitHub Actions
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyyaml
+
+    - name: Validate configuration
+      run: |
+        python config-validator.py
+
+    - name: Run unit tests
+      run: |
+        python -m unittest tests.test_agent -v
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Check YAML syntax
+      run: |
+        python -c "import yaml; yaml.safe_load(open('agent.yaml'))"
+        python -c "import yaml; yaml.safe_load(open('memory/memory-system.yaml'))"
+
+    - name: Check file structure
+      run: |
+        test -f agent.yaml && echo "agent.yaml exists"
+        test -f system-prompt.md && echo "system-prompt.md exists"
+        test -f README.md && echo "README.md exists"
+        test -d skills/engines && echo "skills/engines exists"
+        test -d skills/meta && echo "skills/meta exists"
+        test -d tools && echo "tools exists"
+        test -d memory && echo "memory exists"
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Count files
+      run: |
+        echo "Total files:"
+        find . -type f | wc -l
+        echo "SKILL files:"
+        find . -name "SKILL.md" | wc -l
+        echo "Tool definitions:"
+        find ./tools -name "tool.yaml" | wc -l

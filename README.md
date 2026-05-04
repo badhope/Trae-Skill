@@ -1,363 +1,351 @@
-# 🎓 学生信息系统
+# Thesis Specialist
 
-一个功能完善的Web端学生信息管理系统，用于管理学生资料、考试成绩、名册录入以及确认与统计等事务。
+## 论文专家智能体 | Academic Thesis Writing Agent
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![Node.js](https://img.shields.io/badge/Node.js-14+-green)
-![License](https://img.shields.io/badge/license-MIT-yellow)
+[![Version](https://img.shields.io/badge/version-2.2.0-blue.svg)](README.md)
+[![Platform](https://img.shields.io/badge/platform-Folder--as--Agent-green.svg)](README.md)
+[![License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE)
 
 ---
 
-## 📋 项目概述
+# 📖 目录 | Table of Contents
 
-### 核心功能
+- [English Description](#english)
+- [中文介绍](#中文)
+- [快速开始 | Quick Start](#quick-start)
+- [完整使用指南 | Complete Usage Guide](#usage-guide)
+- [架构说明 | Architecture](#architecture)
+- [示例 | Examples](#examples)
 
-本系统旨在为社团部长等学生管理人员提供一个便捷的工具，用于处理日常工作中的学生信息管理需求。
+---
 
-| 功能模块 | 说明 |
+# English
+
+## Platform Overview
+
+**Thesis Specialist** is an innovative **Folder-as-Agent** platform designed specifically for academic thesis writing. The entire platform can be downloaded and directly submitted to any Large Language Model (LLM) such as Doubao, Claude, GPT, or Gemini for immediate use.
+
+### Core Concept
+
+The **Folder-as-Agent** concept transforms this folder itself into an intelligent agent. Simply download the folder and submit it to any compatible LLM—the agent will automatically execute the complete thesis writing workflow according to predefined processes.
+
+### Key Features
+
+| Feature | Description |
+|---------|-------------|
+| **8-Phase Execution** | Strictly follows 8 phases from intent recognition to final output |
+| **8 Expert Engines** | Specialized engines for topic, literature, structure, writing, etc. |
+| **4 Meta Agents** | Coordination, planning, review, and progress tracking |
+| **4 Tools** | Literature search, grammar check, data visualization, format conversion |
+| **Memory System** | User preferences, conversation history, project state, knowledge base |
+| **No Configuration** | Download and use immediately |
+
+### Platform Positioning
+
+This platform is positioned as a **professional academic writing assistant** that:
+
+1. **Out-of-the-box**: No configuration required, ready to use upon download
+2. **Complete Workflow**: Strictly executes the full 8-phase process
+3. **Multi-Agent Collaboration**: Coordinates multiple experts for complex tasks
+4. **Quality Assured**: Includes verification and review mechanisms
+
+---
+
+# 中文
+
+## 平台概述
+
+**Thesis Specialist（论文专家智能体）** 是一个创新的 **"文件夹即智能体"（Folder-as-Agent）** 平台，专为学术论文写作而设计。整个平台可以下载后直接提交给任何大语言模型（LLM），如豆包、Claude、GPT或Gemini，立即使用。
+
+### 核心概念
+
+**"文件夹即智能体"** 概念将整个文件夹转变为一个智能体。只需下载文件夹并提交给任何兼容的LLM，智能体会自动按照预定义的流程执行完整的论文写作工作流。
+
+### 核心特性
+
+| 特性 | 描述 |
+|------|------|
+| **8阶段执行流程** | 从意图识别到最终输出的严格8阶段流程 |
+| **8个专家引擎** | 主题、文献、结构、写作等专业化引擎 |
+| **4个元智能体** | 协调、规划、评审、进度追踪 |
+| **4个工具** | 文献检索、语法检查、数据可视化、格式转换 |
+| **记忆系统** | 用户偏好、会话历史、项目状态、知识库 |
+| **零配置** | 下载即用 |
+
+### 平台定位
+
+本平台定位为**专业学术写作助手**，具备以下特点：
+
+1. **开箱即用**：无需配置，下载即可使用
+2. **完整流程**：严格遵循8阶段工作流程
+3. **多智能体协作**：协调多个专家完成复杂任务
+4. **质量保障**：包含验证和评审机制
+
+---
+
+# Quick Start | 快速开始
+
+## Method 1: Direct LLM Submission (Recommended)
+
+```
+1. Download this folder
+2. Submit the entire folder to Doubao, Claude, GPT, or Gemini
+3. Describe your thesis requirements in natural language
+4. The agent automatically executes the complete workflow
+```
+
+## Method 2: Reference Files
+
+```
+1. Read agent.yaml for platform configuration
+2. Read system-prompt.md for system instructions
+3. Select appropriate SKILL.md for your task
+4. Submit to LLM with specific requirements
+```
+
+---
+
+# Usage Guide | 完整使用指南
+
+## Step 1: Understand Your Needs
+
+Before starting, clarify:
+
+| Question | Purpose |
+|----------|---------|
+| What is your research field? | Match with expert engine |
+| What stage of writing are you at? | Determine workflow phase |
+| Do you need a single expert or multiple? | Single expert vs coordinator |
+
+## Step 2: Choose Interaction Mode
+
+### Single Expert Mode
+For specific tasks:
+- Topic selection → Topic Expert
+- Literature review → Literature Expert
+- Writing assistance → Writing Expert
+
+### Multi-Expert Mode
+For complex tasks requiring coordination:
+- Complete thesis → Coordinator Agent
+- Full workflow planning → Task Planner
+
+## Step 3: Describe Your Requirements
+
+Example inputs:
+
+| English | 中文 |
 |---------|------|
-| 👥 基础信息管理 | 管理学生的学号、姓名、性别、班级、联系方式等基本信息 |
-| 📝 考试/成绩录入 | 录入各种考试（期末、月考、体育测试、四六级等）的成绩 |
-| 📋 名册/点名录入 | 管理四六级报名、比赛报名、活动参加、签到表等各种名册 |
-| ✅ 确认与统计 | 创建活动确认、表单提交确认，统计确认状态 |
-| 💾 数据备份与恢复 | 支持手动备份和恢复数据，防止数据丢失 |
+| "Help me find a research topic in computer vision" | "帮我找一个计算机视觉的研究方向" |
+| "Write the literature review chapter" | "帮我写文献综述章节" |
+| "Plan my thesis writing workflow" | "帮我规划论文写作流程" |
+| "Polish my abstract" | "帮我润色摘要" |
 
-### 价值定位
+## Step 4: Receive Expert Output
 
-- **简单易用**：无需专业培训即可上手操作
-- **功能全面**：覆盖学生管理的各种场景
-- **数据安全**：支持数据导入导出和备份恢复
-- **界面美观**：现代化UI设计，交互友好
+Each expert provides structured output:
+- Topic Expert → Topic proposals with evaluation
+- Literature Expert → Search strategy + review outline
+- Writing Expert → Chapter content with formatting
+- Reviewer → Quality assessment + improvement suggestions
 
 ---
 
-## 🏗️ 技术架构
+# Architecture | 架构说明
 
-### 系统架构图
+## System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                      前端 (浏览器)                           │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │              HTML + CSS + JavaScript                │   │
-│  │  • 响应式布局  • Font Awesome图标  • 动画效果      │   │
-│  └─────────────────────────────────────────────────────┘   │
+│                    Thesis Specialist                          │
+├─────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐     │
+│  │   Intent    │ →  │   Expert    │ →  │    Tool     │     │
+│  │ Recognition │    │  Matching   │    │   Calling   │     │
+│  └─────────────┘    └─────────────┘    └─────────────┘     │
+│         ↓                  ↓                  ↓              │
+│  ┌─────────────────────────────────────────────────────┐    │
+│  │              8-Phase Execution Flow                  │    │
+│  │  1. Intent Recognition → 2. Expert Matching         │    │
+│  │  3. Task Planning → 4. Expert Execution            │    │
+│  │  5. Tool Calling → 6. Result Integration           │    │
+│  │  7. Quality Check → 8. Final Output               │    │
+│  └─────────────────────────────────────────────────────┘    │
+├─────────────────────────────────────────────────────────────┤
+│  Expert Engines (8)    │  Meta Agents (4)  │  Tools (4)   │
+│  ├─ Topic Expert       │  ├─ Coordinator   │  ├─ Search   │
+│  ├─ Literature Expert  │  ├─ Task Planner │  ├─ Grammar  │
+│  ├─ Structure Expert   │  ├─ Reviewer     │  ├─ Visual   │
+│  ├─ Writing Expert     │  └─ Progress     │  └─ Format   │
+│  ├─ English Expert     │                   │              │
+│  ├─ Data Analysis     │                   │              │
+│  ├─ Reference Expert  │                   │              │
+│  └─ Format Expert     │                   │              │
+├─────────────────────────────────────────────────────────────┤
+│                    Memory System                             │
+│  ├─ User Preferences  ├─ Conversation History               │
+│  ├─ Project State     └─ Knowledge Base                   │
 └─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼ HTTP API
-┌─────────────────────────────────────────────────────────────┐
-│                    后端 (Node.js + Express)                 │
-│  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐       │
-│  │ 数据管理API  │ │ 文件导入/导出 │ │ 备份/恢复API │       │
-│  └──────────────┘ └──────────────┘ └──────────────┘       │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                      数据存储 (JSON文件)                     │
-│  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐           │
-│  │students │ │ exams  │ │rosters  │ │confirms │           │
-│  │.json   │ │ .json  │ │ .json   │ │  .json  │           │
-│  └─────────┘ └─────────┘ └─────────┘ └─────────┘           │
-│                      backups/ (备份文件)                     │
-└─────────────────────────────────────────────────────────────┘
 ```
 
-### 技术栈
+## File Structure
 
-| 层次 | 技术选型 | 说明 |
-|------|----------|------|
-| 前端框架 | 原生 HTML/CSS/JS | 无需构建工具，直接运行 |
-| 后端框架 | Express.js | 轻量级Node.js Web框架 |
-| 文件处理 | xlsx.js | Excel文件解析与生成 |
-| 文件上传 | Multer | Node.js文件上传中间件 |
-| 数据存储 | JSON文件 | 本地文件系统存储 |
-| 图标库 | Font Awesome 6.4 | Web图标库 |
-
----
-
-## 🚀 环境配置与安装
-
-### 环境要求
-
-- **操作系统**：Windows 7+ / macOS / Linux
-- **Node.js**：14.0.0 或更高版本
-- **npm**：6.0.0 或更高版本
-
-### 安装步骤
-
-#### 1. 克隆或下载项目
-
-```bash
-# 如果使用Git
-git clone <repository-url>
-
-# 或者直接解压下载的ZIP文件
-cd Student-information
 ```
-
-#### 2. 安装依赖
-
-```bash
-npm install
-```
-
-#### 3. 启动系统
-
-```bash
-npm start
-```
-
-#### 4. 访问系统
-
-打开浏览器访问：**http://localhost:3000**
-
----
-
-## 📖 详细使用指南
-
-### 功能模块说明
-
-#### 1. 基础信息管理
-
-用于管理学生的基本信息，包括：
-- 学号（必填）
-- 姓名（必填）
-- 性别
-- 班级
-- 联系方式
-
-**操作流程：**
-1. 点击"添加学生"按钮
-2. 填写学生信息表单
-3. 点击"保存"按钮
-
-#### 2. 考试/成绩录入
-
-用于记录各类考试的成绩，包括：
-- 期末考试
-- 期中考试
-- 月考
-- 体育测试
-- 四六级考试
-- 其他
-
-**支持的功能：**
-- 按考试类型筛选
-- 按学生姓名搜索
-- 批量导入Excel
-
-#### 3. 名册/点名录入
-
-用于管理各种名册，如：
-- 四六级报名名单
-- 比赛报名名单
-- 活动参加名单
-- 签到表
-
-**支持的功能：**
-- 按名册类型筛选
-- 按名称或学生搜索
-- 批量导入Excel
-
-#### 4. 确认与统计
-
-用于创建和管理各类确认事务：
-- 活动确认
-- 表单提交确认
-- 报名确认
-
-**操作流程：**
-1. 点击"创建确认"按钮
-2. 填写确认名称和类型
-3. 选择需要确认的学生
-4. 保存后可查看确认状态统计
-
-### 数据导入说明
-
-#### Excel文件格式要求
-
-Excel文件应包含以下列（根据数据类型）：
-
-**学生基础信息：**
-| 学号 | 姓名 | 性别 | 班级 | 联系方式 |
-|------|------|------|------|----------|
-| 2024001 | 张三 | 男 | 计算机2401 | 13800001001 |
-
-**考试记录：**
-| 考试名称 | 考试类型 | 学号 | 姓名 | 科目 | 成绩 | 考试日期 |
-|----------|----------|------|------|------|------|----------|
-| 期末考试 | 期末考试 | 2024001 | 张三 | 高数 | 92 | 2025-01-15 |
-
-**名册记录：**
-| 名册名称 | 名册类型 | 学号 | 姓名 | 详细信息 |
-|----------|----------|------|------|----------|
-| 四六级报名 | 四六级报名 | 2024001 | 张三 | 英语六级 |
-
-#### 导入步骤
-
-1. 点击对应模块的"导入"按钮
-2. 点击文件上传区域或拖拽Excel文件
-3. 系统会显示数据预览
-4. 确认无误后点击"确认导入"
-
-### 数据导出说明
-
-每个模块都支持导出为Excel文件：
-1. 点击对应模块的"导出"按钮
-2. 系统会自动下载Excel文件
-3. 文件名格式：`模块名_日期.xlsx`
-
-### 数据备份与恢复
-
-#### 创建备份
-
-1. 点击右上角"数据备份"按钮
-2. 点击"创建备份"按钮
-3. 备份文件将保存在 `backups` 目录
-
-#### 恢复数据
-
-1. 点击右上角"数据备份"按钮
-2. 在备份历史中找到需要的备份
-3. 点击"恢复"按钮
-4. 确认后数据将被覆盖
-
-#### 外部文件恢复
-
-也可以导入外部的JSON备份文件：
-1. 点击"恢复数据"按钮
-2. 选择JSON格式的备份文件
-3. 系统会将数据合并到现有数据中
-
----
-
-## ⚙️ 配置参数说明
-
-### 默认配置
-
-| 参数 | 默认值 | 说明 |
-|------|--------|------|
-| PORT | 3000 | 服务器监听端口 |
-| DATA_DIR | ./data | 数据存储目录 |
-| BACKUP_DIR | ./backups | 备份文件目录 |
-| MAX_FILE_SIZE | 5MB | 最大上传文件大小 |
-
-### 自定义配置
-
-可以通过环境变量修改配置：
-
-```bash
-# 修改端口
-PORT=8080 npm start
-
-# 修改数据目录
-DATA_DIR=/path/to/data npm start
+thesis-specialist/
+├── agent.yaml                 # Platform configuration
+├── system-prompt.md          # System prompt for LLM
+├── README.md                 # This file
+│
+├── skills/
+│   ├── engines/            # 8 Expert Engines
+│   │   ├── topic-expert/   # Topic selection
+│   │   ├── literature-expert/  # Literature review
+│   │   ├── structure-expert/   # Structure planning
+│   │   ├── writing-expert/     # Content writing
+│   │   ├── english-expert/     # English polishing
+│   │   ├── data-analysis-expert/  # Data analysis
+│   │   ├── reference-expert/   # Reference management
+│   │   └── format-expert/      # Format compliance
+│   └── meta/                # Meta Agents
+│       ├── coordinator/    # Multi-expert coordination
+│       ├── task-planner/   # Workflow planning
+│       ├── reviewer/       # Quality review
+│       └── progress-tracker/  # Progress tracking
+│
+├── tools/                   # Tools
+│   ├── literature-search/  # Academic database search
+│   ├── grammar-checker/    # Grammar & style check
+│   ├── data-visualizer/    # Chart generation
+│   └── format-converter/   # Format conversion
+│
+├── memory/                  # Memory System
+│   ├── memory-system.yaml  # Memory configuration
+│   └── stores/            # Data stores
+│       ├── user-preferences.json
+│       ├── conversation-history.json
+│       ├── project-state.json
+│       └── knowledge-base.json
+│
+├── utils/                  # Utilities
+│   ├── routing_optimizer.py   # Smart routing
+│   ├── error_handler.py       # Error handling
+│   └── performance.py         # Performance optimization
+│
+└── tests/                  # Tests
+    └── test_agent.py      # Unit tests
 ```
 
 ---
 
-## 🤝 贡献指南
+# Examples | 示例
 
-### 代码规范
+## Example 1: Topic Selection
 
-- 使用有意义的变量和函数命名
-- 保持代码缩进一致（4空格）
-- 添加必要的错误处理
-- 遵循RESTful API设计原则
-
-### 提交流程
-
-1. Fork 本仓库
-2. 创建特性分支 (`git checkout -b feature/xxx`)
-3. 提交更改 (`git commit -m 'Add xxx'`)
-4. 推送分支 (`git push origin feature/xxx`)
-5. 创建 Pull Request
-
----
-
-## 📄 许可证
-
-本项目基于 **MIT 许可证** 开源。
-
+**Input | 输入:**
 ```
-MIT License
-
-Copyright (c) 2025 学生信息系统
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+Help me come up with a research topic in computer vision for my master's thesis.
+帮我找一个计算机视觉方向的硕士论文研究方向。
 ```
 
----
-
-## ❓ 常见问题解答 (FAQ)
-
-### Q1: 如何修改服务器端口？
-
-可以通过环境变量修改：`PORT=8080 npm start`
-
-### Q2: 数据存储在哪里？
-
-数据存储在项目目录下的 `data` 文件夹中，每个模块对应一个JSON文件。
-
-### Q3: 如何导入Excel文件？
-
-点击对应模块的"导入"按钮，选择Excel文件（.xlsx或.xls格式）即可。
-
-### Q4: 如何备份数据？
-
-点击右上角的"数据备份"按钮，可以创建备份或恢复数据。
-
-### Q5: 导入Excel时报错怎么办？
-
-1. 检查Excel文件格式是否正确
-2. 确保表头与系统要求一致
-3. 检查是否有特殊字符
-4. 文件大小不能超过5MB
-
-### Q6: 系统无法启动怎么办？
-
-1. 检查Node.js是否正确安装：`node -v`
-2. 检查端口是否被占用：`netstat -ano | findstr :3000`
-3. 检查依赖是否安装成功：`npm install`
-4. 查看控制台错误信息
-
-### Q7: 如何卸载/删除系统？
-
-1. 停止服务器（Ctrl+C）
-2. 删除项目文件夹
-3. 如果需要，可以删除data和backups文件夹
-
-### Q8: 支持移动端使用吗？
-
-系统采用响应式设计，支持在手机和平板上使用。
+**Output | 输出:**
+The Topic Expert provides:
+- 3-5 candidate topics with detailed analysis
+- Evaluation scores (innovation, feasibility, research value)
+- Recommended ranking with reasoning
+- Suggested next steps
 
 ---
 
-## 📞 技术支持
+## Example 2: Literature Review
 
-如果遇到问题，请检查：
+**Input | 输入:**
+```
+I need help writing the literature review chapter for my thesis on machine learning in healthcare.
+帮我写一篇关于机器学习在医疗领域应用的文献综述。
+```
 
-1. [常见问题解答](#常见问题解答-faq)
-2. 控制台错误信息
-3. Node.js版本是否满足要求
+**Output | 输出:**
+The Literature Expert provides:
+- Search strategy for multiple databases
+- Organized literature structure
+- Summary of key findings
+- Citation recommendations
 
 ---
 
-**祝您使用愉快！** 🎉
+## Example 3: Thesis Planning
+
+**Input | 输入:**
+```
+Help me plan the entire workflow for writing my thesis. It's due in 3 months.
+帮我规划一下论文写作的整体流程，我需要在3个月内完成。
+```
+
+**Output | 输出:**
+The Task Planner provides:
+- Task decomposition into manageable phases
+- Timeline with milestones
+- Expert allocation for each phase
+- Progress tracking checkpoints
+
+---
+
+## Example 4: Multi-Expert Coordination
+
+**Input | 输入:**
+```
+I need to complete my entire thesis. Can you coordinate multiple experts?
+我需要完成一篇完整的论文，你能协调多个专家吗？
+```
+
+**Output | 输出:**
+The Coordinator Agent:
+1. Analyzes the complex task
+2. Decomposes into subtasks
+3. Assigns appropriate experts
+4. Coordinates execution sequence
+5. Integrates all outputs
+6. Performs quality verification
+
+---
+
+# Platform Comparison | 平台对比
+
+| Feature | Traditional LLM | Thesis Specialist |
+|---------|-----------------|-------------------|
+| Configuration | Manual setup required | Zero configuration |
+| Workflow | Ad-hoc, may skip steps | Strict 8-phase process |
+| Expertise | General purpose | Domain-specific experts |
+| Output Quality | Variable | Verified and structured |
+| Learning Curve | Steep | Minimal |
+| Productivity | Moderate | High |
+
+---
+
+# 技术规格 | Technical Specifications
+
+| Item | Value |
+|------|-------|
+| Version | 2.2.0 |
+| Release Date | 2026-05-04 |
+| Protocol | MCP (Model Context Protocol) |
+| Configuration | YAML-based |
+| Languages | EN (core), ZH (README) |
+| Testing | Unit tests included |
+| Validation | Config validator included |
+
+---
+
+# 许可证 | License
+
+MIT License - Free for academic and commercial use.
+
+---
+
+# 联系方式 | Contact
+
+For issues and suggestions, please refer to the project repository.
+
+---
+
+**Last Updated: 2026-05-04 | 最后更新：2026-05-04**

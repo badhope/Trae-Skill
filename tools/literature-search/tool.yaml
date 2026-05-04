@@ -1,0 +1,140 @@
+# 📚 Literature Search Tool
+# Tool for academic literature search
+---
+name: "literature-search"
+description: "Search academic literature from major databases including Web of Science, Scopus, Google Scholar, IEEE Xplore, and ACM Digital Library"
+version: "1.0.0"
+author: "Folder-as-Agent Project"
+
+# Tool capabilities
+capabilities:
+  - "Search multiple academic databases"
+  - "Support Boolean search operators"
+  - "Filter by publication year"
+  - "Filter by journal/conference"
+  - "Return formatted citations"
+  - "Export results to reference managers"
+
+# Input parameters
+parameters:
+  - name: "query"
+    type: "string"
+    required: true
+    description: "Search query string, supports Boolean operators (AND, OR, NOT) and wildcards (*, ?)"
+  
+  - name: "databases"
+    type: "array"
+    required: false
+    description: "List of databases to search"
+    default: ["webofscience", "scopus", "googlescholar"]
+    options:
+      - "webofscience"
+      - "scopus"
+      - "googlescholar"
+      - "ieee"
+      - "acm"
+      - "pubmed"
+      - "springer"
+      - "arxiv"
+  
+  - name: "start_year"
+    type: "integer"
+    required: false
+    description: "Start year for publication date filter"
+  
+  - name: "end_year"
+    type: "integer"
+    required: false
+    description: "End year for publication date filter"
+  
+  - name: "max_results"
+    type: "integer"
+    required: false
+    description: "Maximum number of results to return"
+    default: 10
+  
+  - name: "sort_by"
+    type: "string"
+    required: false
+    description: "Sort order for results"
+    default: "relevance"
+    options:
+      - "relevance"
+      - "citations"
+      - "date"
+
+# Output format
+output:
+  type: "object"
+  properties:
+    results:
+      type: "array"
+      items:
+        type: "object"
+        properties:
+          title: { type: "string" }
+          authors: { type: "array", items: { type: "string" } }
+          journal: { type: "string" }
+          year: { type: "integer" }
+          volume: { type: "string" }
+          issue: { type: "string" }
+          pages: { type: "string" }
+          doi: { type: "string" }
+          abstract: { type: "string" }
+          citations: { type: "integer" }
+          url: { type: "string" }
+          database: { type: "string" }
+    metadata:
+      type: "object"
+      properties:
+        total_results: { type: "integer" }
+        search_query: { type: "string" }
+        execution_time: { type: "number" }
+
+# Usage examples
+examples:
+  - name: "Basic Search"
+    description: "Search for machine learning in education"
+    input:
+      query: "machine learning AND education"
+      max_results: 5
+    expected_output: "Returns 5 relevant papers on machine learning in education"
+  
+  - name: "Advanced Search with Filters"
+    description: "Search recent papers on deep learning from specific databases"
+    input:
+      query: "(deep learning OR neural network) AND image classification"
+      databases: ["webofscience", "ieee"]
+      start_year: 2020
+      max_results: 10
+      sort_by: "citations"
+    expected_output: "Returns top 10 highly cited papers on deep learning for image classification published since 2020"
+  
+  - name: "Boolean Search"
+    description: "Use Boolean operators for precise search"
+    input:
+      query: "(climate change AND agriculture) NOT (crop yield)"
+      databases: ["scopus", "pubmed"]
+      start_year: 2021
+      end_year: 2023
+    expected_output: "Returns papers on climate change and agriculture excluding crop yield studies"
+
+# Error handling
+errors:
+  - code: "INVALID_QUERY"
+    message: "Invalid search query format"
+    solution: "Check query syntax and try again"
+  
+  - code: "NO_RESULTS"
+    message: "No results found for the given query"
+    solution: "Try broader search terms or adjust filters"
+  
+  - code: "API_ERROR"
+    message: "Error accessing database API"
+    solution: "Try again later or contact support"
+
+# Dependencies
+dependencies:
+  - "requests"
+  - "beautifulsoup4"
+  - "pandas"

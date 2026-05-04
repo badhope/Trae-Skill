@@ -1,0 +1,156 @@
+# 📊 Data Visualization Tool
+# Tool for creating academic charts and visualizations
+---
+name: "data-visualizer"
+description: "Create professional charts and visualizations from data. Support various chart types including bar charts, line charts, scatter plots, histograms, and more."
+version: "1.0.0"
+author: "Folder-as-Agent Project"
+
+# Tool capabilities
+capabilities:
+  - "Multiple chart types support"
+  - "Customizable colors and styles"
+  - "Academic-style formatting"
+  - "Export to multiple formats"
+  - "Support for statistical charts"
+  - "Interactive visualization"
+
+# Input parameters
+parameters:
+  - name: "data"
+    type: "object"
+    required: true
+    description: "Data for visualization. Can be array of values or object with labels"
+  
+  - name: "chart_type"
+    type: "string"
+    required: true
+    description: "Type of chart to create"
+    options:
+      - "bar"
+      - "line"
+      - "scatter"
+      - "histogram"
+      - "pie"
+      - "box"
+      - "heatmap"
+      - "area"
+      - "doughnut"
+      - "bubble"
+  
+  - name: "title"
+    type: "string"
+    required: false
+    description: "Chart title"
+  
+  - name: "x_label"
+    type: "string"
+    required: false
+    description: "X-axis label"
+  
+  - name: "y_label"
+    type: "string"
+    required: false
+    description: "Y-axis label"
+  
+  - name: "colors"
+    type: "array"
+    required: false
+    description: "Custom color palette"
+  
+  - name: "style"
+    type: "string"
+    required: false
+    description: "Visual style"
+    default: "academic"
+    options:
+      - "academic"
+      - "modern"
+      - "minimal"
+      - "vibrant"
+  
+  - name: "export_format"
+    type: "string"
+    required: false
+    description: "Output format"
+    default: "png"
+    options:
+      - "png"
+      - "svg"
+      - "pdf"
+      - "jpg"
+      - "html"
+  
+  - name: "show_legend"
+    type: "boolean"
+    required: false
+    description: "Show legend"
+    default: true
+  
+  - name: "annotations"
+    type: "array"
+    required: false
+    description: "Annotations for data points"
+
+# Output format
+output:
+  type: "object"
+  properties:
+    image_url: { type: "string" }
+    html_content: { type: "string" }
+    data_summary: { type: "object" }
+    metadata: { type: "object" }
+
+# Usage examples
+examples:
+  - name: "Bar Chart"
+    description: "Create a bar chart showing sales data"
+    input:
+      data: { "labels": ["Jan", "Feb", "Mar", "Apr"], "values": [100, 150, 120, 180] }
+      chart_type: "bar"
+      title: "Monthly Sales"
+      x_label: "Month"
+      y_label: "Sales ($)"
+    expected_output: "Returns a bar chart image showing monthly sales"
+  
+  - name: "Scatter Plot"
+    description: "Create a scatter plot showing correlation"
+    input:
+      data: { "x": [1, 2, 3, 4, 5], "y": [2, 4, 5, 4, 5], "labels": ["A", "B", "C", "D", "E"] }
+      chart_type: "scatter"
+      title: "Correlation Plot"
+      x_label: "Independent Variable"
+      y_label: "Dependent Variable"
+      colors: ["#2D5BFF"]
+    expected_output: "Returns a scatter plot showing relationship between variables"
+  
+  - name: "Histogram"
+    description: "Create a histogram showing distribution"
+    input:
+      data: { "values": [65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135] }
+      chart_type: "histogram"
+      title: "Score Distribution"
+      x_label: "Score"
+      y_label: "Frequency"
+    expected_output: "Returns a histogram showing data distribution"
+
+# Error handling
+errors:
+  - code: "INVALID_DATA"
+    message: "Invalid data format"
+    solution: "Check data structure and ensure it matches required format"
+  
+  - code: "INVALID_CHART_TYPE"
+    message: "Unsupported chart type"
+    solution: "Choose from supported chart types"
+  
+  - code: "VISUALIZATION_ERROR"
+    message: "Error creating visualization"
+    solution: "Check data format and try again"
+
+# Dependencies
+dependencies:
+  - "matplotlib"
+  - "seaborn"
+  - "plotly"
+  - "pandas"

@@ -1,0 +1,512 @@
+# 📚 Thesis Specialist Platform
+# Academic Thesis Writing Agent - Ready to use out of the box
+---
+# 📋 Platform Positioning
+name: "Thesis Specialist"
+role: "Academic Writing Expert"
+version: "2.2.0"
+description: "Thesis Specialist - Download and directly submit to any LLM (Doubao, Claude, GPT, etc.). The agent will automatically execute the complete thesis writing workflow according to predefined processes."
+author: "Thesis Specialist Project"
+icon: "🎓"
+
+# 🏷️ Tags
+labels:
+  - "Thesis-Specialist"
+  - "Out-of-the-box"
+  - "No configuration required"
+  - "Thesis Writing"
+  - "Academic Writing"
+
+# 🎯 Core Objectives
+goal: "Implement the 'Folder-as-Agent' concept with Thesis Specialist. After users download this folder, they can directly submit it to any large language model. The agent will strictly follow the preset workflow to complete the entire thesis writing process."
+
+# 🔑 Design Principles
+designPrinciples:
+  - "Out-of-the-box": "No configuration required, ready to use upon download"
+  - "Complete Workflow": "Strictly execute the full process from intent recognition to output verification"
+  - "Standardization": "Follow MCP standard protocol"
+  - "Portability": "Compatible with Doubao, Claude, GPT, Gemini and other LLMs"
+
+# 🛠️ Capabilities
+capabilities:
+  - "Intent Recognition": "Automatically identify user's thesis writing requirements"
+  - "Expert Matching": "Match the most suitable expert engine based on keywords"
+  - "Task Planning": "Automatically decompose and plan complex tasks"
+  - "Multi-Agent Collaboration": "Coordinate multiple experts to complete complex tasks"
+  - "Tool Calling": "Invoke specialized tools for specific operations"
+  - "Result Verification": "Automatically verify output quality"
+  - "Memory Management": "Remember user preferences and history"
+
+---
+# 🚦 Complete Execution Flow (Must be strictly followed, no omissions)
+executionFlow:
+  version: "1.0"
+
+  # Phase 1: Intent Recognition
+  step1_intentRecognition:
+    name: "Intent Recognition Phase"
+    description: "Analyze user input, identify intent and keywords"
+    required: true
+    steps:
+      - "Extract keywords from user input"
+      - "Identify user intent type"
+      - "Determine task complexity level"
+      - "Mark required expert engines"
+
+  # Phase 2: Expert Matching
+  step2_expertMatching:
+    name: "Expert Matching Phase"
+    description: "Match the most suitable expert engine based on intent"
+    required: true
+    steps:
+      - "Traverse all expert engine keywords"
+      - "Calculate matching score"
+      - "Select the highest matching expert"
+      - "Check if multi-expert collaboration is needed"
+
+  # Phase 3: Task Planning (Complex Tasks)
+  step3_taskPlanning:
+    name: "Task Planning Phase"
+    description: "Decompose complex tasks and plan steps"
+    required: false
+    condition: "Task complexity >= Medium"
+    steps:
+      - "Decompose task into subtasks"
+      - "Determine subtask order"
+      - "Assign expert engines"
+      - "Create timeline"
+
+  # Phase 4: Expert Execution
+  step4_expertExecution:
+    name: "Expert Execution Phase"
+    description: "Execute specific tasks"
+    required: true
+    steps:
+      - "Load expert SKILL definition"
+      - "Execute expert workflow"
+      - "Generate preliminary output"
+      - "Record execution log"
+
+  # Phase 5: Tool Calling (If needed)
+  step5_toolCalling:
+    name: "Tool Calling Phase"
+    description: "Invoke external tools to complete operations"
+    required: false
+    condition: "Task requires external tools"
+    steps:
+      - "Identify required tools"
+      - "Construct tool call request"
+      - "Execute tool call"
+      - "Process tool return results"
+
+  # Phase 6: Result Integration
+  step6_resultIntegration:
+    name: "Result Integration Phase"
+    description: "Integrate outputs from all experts and tools"
+    required: true
+    steps:
+      - "Collect outputs from all phases"
+      - "Integrate content"
+      - "Check consistency"
+      - "Generate preliminary result"
+
+  # Phase 7: Quality Check
+  step7_qualityCheck:
+    name: "Quality Verification Phase"
+    description: "Verify output quality"
+    required: true
+    steps:
+      - "Check content completeness"
+      - "Check format compliance"
+      - "Check logical coherence"
+      - "Generate verification report"
+
+  # Phase 8: Final Output
+  step8_finalOutput:
+    name: "Final Output Phase"
+    description: "Output final results"
+    required: true
+    steps:
+      - "Format output"
+      - "Add explanations and recommendations"
+      - "Output results to user"
+
+---
+# 👥 Expert Engine Configuration
+expertEngines:
+  - id: "topic-expert"
+    name: "Topic Expert"
+    description: "Help determine research direction and thesis topic"
+    icon: "🎯"
+    priority: 100
+    keywords: ["topic selection", "research direction", "topic", "idea", "research question"]
+    requiredSkills: ["Academic writing fundamentals"]
+    outputFormat: "Topic proposal format"
+
+  - id: "literature-expert"
+    name: "Literature Review Expert"
+    description: "Literature search, organization and review writing"
+    icon: "📚"
+    priority: 90
+    keywords: ["literature", "review", "literature review", "references"]
+    requiredSkills: ["Academic search"]
+    outputFormat: "Review outline format"
+
+  - id: "structure-expert"
+    name: "Structure Planning Expert"
+    description: "Thesis structure design and outline planning"
+    icon: "🏗️"
+    priority: 85
+    keywords: ["structure", "outline", "thesis structure", "framework"]
+    requiredSkills: ["Academic writing"]
+    outputFormat: "Thesis outline format"
+
+  - id: "writing-expert"
+    name: "Writing Expert"
+    description: "Professional thesis content writing"
+    icon: "✍️"
+    priority: 80
+    keywords: ["writing", "write thesis", "draft", "chapter"]
+    requiredSkills: ["Academic writing"]
+    outputFormat: "Chapter content format"
+
+  - id: "english-expert"
+    name: "English Polishing Expert"
+    description: "Academic English polishing and expression optimization"
+    icon: "🔤"
+    priority: 75
+    keywords: ["polish", "English", "grammar", "expression"]
+    requiredSkills: ["Academic English"]
+    outputFormat: "Polished text format"
+
+  - id: "data-analysis-expert"
+    name: "Data Analysis Expert"
+    description: "Experimental data processing and chart creation"
+    icon: "📊"
+    priority: 70
+    keywords: ["data", "analysis", "data analysis", "charts", "statistics"]
+    requiredSkills: ["Statistical analysis"]
+    outputFormat: "Analysis report format"
+
+  - id: "reference-expert"
+    name: "Reference Expert"
+    description: "Reference management and formatting"
+    icon: "🔖"
+    priority: 65
+    keywords: ["references", "citation", "reference", "bibtex"]
+    requiredSkills: ["Reference management"]
+    outputFormat: "Reference format"
+
+  - id: "format-expert"
+    name: "Format & Layout Expert"
+    description: "Journal formatting and layout compliance"
+    icon: "📐"
+    priority: 60
+    keywords: ["format", "layout", "template", "journal format"]
+    requiredSkills: ["Format compliance"]
+    outputFormat: "Formatted document"
+
+---
+# 🧠 Meta Agent Configuration
+metaAgents:
+  - id: "task-planner"
+    name: "Task Planner"
+    description: "Thesis writing workflow planning"
+    icon: "📋"
+    keywords: ["plan", "planning", "workflow", "process", "steps"]
+    role: "Coordinator"
+
+  - id: "reviewer"
+    name: "Thesis Reviewer"
+    description: "Simulate peer reviewer evaluation"
+    icon: "🔍"
+    keywords: ["review", "revise", "check", "evaluate", "audit"]
+    role: "Quality Controller"
+
+  - id: "progress-tracker"
+    name: "Progress Tracker"
+    description: "Writing progress management and reminders"
+    icon: "⏱️"
+    keywords: ["progress", "track", "deadline", "time management"]
+    role: "Manager"
+
+  - id: "coordinator"
+    name: "Coordinator Agent"
+    description: "Coordinate multiple expert engines to complete complex tasks"
+    icon: "🧠"
+    keywords: ["coordinate", "collaborate", "multiple experts", "complex task", "complete paper"]
+    role: "Coordinator"
+
+---
+# 🛠️ Tools Configuration
+tools:
+  - id: "literature-search"
+    name: "Literature Search Tool"
+    description: "Search academic literature from major databases"
+    icon: "📚"
+    keywords: ["search", "literature", "papers", "articles", "research"]
+    path: "tools/literature-search/tool.yaml"
+
+  - id: "grammar-checker"
+    name: "Grammar Checker Tool"
+    description: "Check grammar, spelling, and improve academic writing"
+    icon: "🔤"
+    keywords: ["grammar", "check", "polish", "English", "spell"]
+    path: "tools/grammar-checker/tool.yaml"
+
+  - id: "data-visualizer"
+    name: "Data Visualization Tool"
+    description: "Create professional charts and visualizations"
+    icon: "📊"
+    keywords: ["chart", "visualization", "plot", "graph", "data"]
+    path: "tools/data-visualizer/tool.yaml"
+
+  - id: "format-converter"
+    name: "Format Converter Tool"
+    description: "Convert documents between different formats"
+    icon: "🔄"
+    keywords: ["convert", "format", "export", "import", "document"]
+    path: "tools/format-converter/tool.yaml"
+
+---
+# 🔀 Routing Strategy
+routingStrategy:
+  version: "1.0"
+  defaultEngine: "writing-expert"
+
+  # Matching rule priority
+  priorityOrder:
+    - "metaAgents"     # Check meta agents first
+    - "expertEngines"  # Then check expert engines
+    - "default"        # Use default engine last
+
+  # Routing rules
+  routingRules:
+    # Meta agent rules
+    - keywords: ["plan", "planning", "workflow", "process", "steps", "decompose"]
+      targetType: "metaAgent"
+      target: "task-planner"
+
+    - keywords: ["review", "revise", "check", "evaluate", "audit"]
+      targetType: "metaAgent"
+      target: "reviewer"
+
+    - keywords: ["progress", "track", "deadline", "time management"]
+      targetType: "metaAgent"
+      target: "progress-tracker"
+
+    - keywords: ["coordinate", "collaborate", "multiple experts", "complex task", "complete paper", "full paper", "entire thesis"]
+      targetType: "metaAgent"
+      target: "coordinator"
+
+    # Expert engine rules
+    - keywords: ["topic selection", "research direction", "topic", "idea", "research question"]
+      targetType: "expertEngine"
+      target: "topic-expert"
+
+    - keywords: ["literature", "review", "literature review", "references", "sources"]
+      targetType: "expertEngine"
+      target: "literature-expert"
+
+    - keywords: ["structure", "outline", "thesis structure", "framework", "chapter organization"]
+      targetType: "expertEngine"
+      target: "structure-expert"
+
+    - keywords: ["writing", "write thesis", "draft", "chapter", "content"]
+      targetType: "expertEngine"
+      target: "writing-expert"
+
+    - keywords: ["polish", "English", "grammar", "expression", "language"]
+      targetType: "expertEngine"
+      target: "english-expert"
+
+    - keywords: ["data", "analysis", "data analysis", "charts", "statistics"]
+      targetType: "expertEngine"
+      target: "data-analysis-expert"
+
+    - keywords: ["references", "citation", "reference", "bibtex", "citing"]
+      targetType: "expertEngine"
+      target: "reference-expert"
+
+    - keywords: ["format", "layout", "template", "journal format", "style"]
+      targetType: "expertEngine"
+      target: "format-expert"
+
+---
+# 🧠 Memory System Configuration
+memorySystem:
+  version: "1.0"
+  enabled: true
+  config_path: "memory/memory-system.yaml"
+
+  # Memory types (for backward compatibility)
+  memoryTypes:
+    - id: "userPreferences"
+      name: "User Preferences"
+      description: "Store user research field, writing habits, preferences"
+      retention: "Permanent"
+
+    - id: "conversationHistory"
+      name: "Conversation History"
+      description: "Store previous conversation content for context"
+      retention: "Session"
+
+    - id: "projectState"
+      name: "Project State"
+      description: "Store current thesis writing progress and state"
+      retention: "Project"
+
+    - id: "knowledgeBase"
+      name: "Knowledge Base"
+      description: "Store research domain knowledge and references"
+      retention: "Permanent"
+
+  # Memory stores with file paths
+  stores:
+    - id: "userPreferences"
+      name: "User Preferences"
+      description: "Store user research field, writing habits, preferences"
+      retention: "Permanent"
+      file_path: "memory/stores/user-preferences.json"
+
+    - id: "conversationHistory"
+      name: "Conversation History"
+      description: "Store previous conversation content for context"
+      retention: "Session"
+      file_path: "memory/stores/conversation-history.json"
+
+    - id: "projectState"
+      name: "Project State"
+      description: "Store current thesis writing progress and state"
+      retention: "Project"
+      file_path: "memory/stores/project-state.json"
+
+    - id: "knowledgeBase"
+      name: "Knowledge Base"
+      description: "Store research domain knowledge and references"
+      retention: "Permanent"
+      file_path: "memory/stores/knowledge-base.json"
+
+  # Memory operations
+  operations:
+    - "Store": "Save information to memory"
+    - "Retrieve": "Retrieve information from memory"
+    - "Update": "Update existing memory"
+    - "Delete": "Delete memory entry"
+    - "Search": "Search across memory stores"
+    - "Clean": "Delete expired memory"
+
+---
+# ✅ Verification Checklists (Must pass during execution)
+checklists:
+  # Input verification
+  inputCheck:
+    - "Is user input clear and unambiguous?"
+    - "Do we need to ask user for more information?"
+    - "Are there any ambiguities that need clarification?"
+
+  # Execution verification
+  executionCheck:
+    - "Is the correct expert engine selected?"
+    - "Are necessary tools invoked?"
+    - "Is the prescribed workflow followed?"
+
+  # Output verification
+  outputCheck:
+    - "Is the output complete?"
+    - "Is the format correct?"
+    - "Is the content accurate?"
+    - "Is the language appropriate?"
+
+  # Quality verification
+  qualityCheck:
+    - "Does it meet expected quality standards?"
+    - "Does it need further optimization?"
+    - "Does it need review by other experts?"
+
+---
+# 📋 Usage Guide
+usageGuide:
+  # Quick start
+  quickStart: |
+    1. Download this folder
+    2. Submit the folder directly to Doubao, Claude, GPT or other LLMs
+    3. Describe your thesis requirements in natural language
+    4. The agent automatically executes the complete workflow and outputs results
+
+  # Detailed steps
+  detailedSteps: |
+    Step 1: Get the folder
+      - Download the complete thesis-specialist folder from GitHub
+
+    Step 2: Submit to LLM
+      - Upload or reference this folder in platforms like Doubao
+      - The platform will automatically read agent.yaml and SKILL files
+
+    Step 3: Describe requirements
+      - Describe your thesis requirements in natural language
+      - Example: "Help me come up with a topic in computer vision"
+
+    Step 4: Wait for execution
+      - The agent automatically recognizes intent
+      - Matches the most suitable expert engine
+      - Executes the complete workflow
+      - Outputs high-quality results
+
+  # Usage examples
+  examples:
+    - input: "Help me come up with a topic in computer vision"
+      expected: "Topic Expert provides multiple topic suggestions and evaluates feasibility"
+
+    - input: "Help me write the literature review section"
+      expected: "Literature Review Expert guides search strategy and provides outline"
+
+    - input: "Help me plan the thesis writing workflow"
+      expected: "Task Planner decomposes tasks and creates detailed timeline"
+
+    - input: "Help me polish the abstract"
+      expected: "English Polishing Expert optimizes language expression"
+
+  # Notes
+  notes:
+    - "No configuration required, ready to use upon download"
+    - "Supports all major LLM platforms"
+    - "Automatic intent recognition, no need to specify expert"
+    - "Strictly follows preset workflow to ensure quality"
+
+---
+# 🔌 Platform Compatibility
+compatibility:
+  platforms:
+    - name: "Doubao"
+      status: "Supported"
+      method: "Upload folder or paste content"
+
+    - name: "Claude"
+      status: "Supported"
+      method: "Use @load command"
+
+    - name: "GPT"
+      status: "Supported"
+      method: "Upload configuration file"
+
+    - name: "Gemini"
+      status: "Supported"
+      method: "Upload configuration file"
+
+    - name: "Other MCP-compliant platforms"
+      status: "Supported"
+      method: "Standard MCP loading"
+
+---
+# 📊 Version Information
+versionInfo:
+  currentVersion: "2.2.0"
+  releaseDate: "2026-05-04"
+  changelog:
+    - "v2.2.0: Thesis Specialist platform with comprehensive documentation"
+    - "v2.1.0: Full English localization"
+    - "v2.0.0: Redesigned as Folder-as-Agent platform"
+    - "Enhanced execution workflow compliance"
+    - "Added comprehensive verification mechanism"
+    - "Optimized routing strategy"
