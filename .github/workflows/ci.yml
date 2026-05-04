@@ -47,6 +47,10 @@ jobs:
       with:
         python-version: '3.10'
 
+    - name: Install dependencies
+      run: |
+        pip install pyyaml
+
     - name: Check YAML syntax
       run: |
         python -c "import yaml; list(yaml.safe_load_all(open('agent.yaml', encoding='utf-8')))" && echo "agent.yaml: OK"
@@ -140,6 +144,10 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install pyyaml
 
     - name: Test routing optimizer
       run: |
