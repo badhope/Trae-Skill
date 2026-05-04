@@ -1,63 +1,85 @@
-# 🚀 skills
+# 🚀 DevFlow Agent
 
-**MCP Mega-Agent Platform - 11 Expert Engines + 80+ Professional Tools for ALL LLMs**
+**Development Workflow Agent - 7 Core Skills + 16 Workflows for AI Platforms**
 
-> ✅ Works on **ALL LLM Platforms**: Claude Desktop • Cursor • Windsurf • Cline • Trae • Any MCP Client
+> ✅ 适用于所有 AI 平台: Claude Desktop • Cursor • Windsurf • Trae • 豆包
 
 ---
 
-## ⚡ Quick Install
+## ⚡ 快速开始
 
-### Claude Desktop
+### 使用示例智能体
 
-Add to your `claude_desktop_config.json`:
+1. 下载 `example-agents/full-stack-assistant/` 文件夹
+2. 上传到您的 AI 平台
+3. 用自然语言描述任务
+
+### 加载到编辑器
+
+#### Claude Desktop
+
+添加到 `claude_desktop_config.json`:
 
 ```json
 {
   "mcpServers": {
-    "skills": {
+    "devflow-agent": {
       "command": "npx",
-      "args": ["-y", "skills"]
+      "args": ["-y", "@devflow-agent/core"]
     }
   }
 }
 ```
 
-### Cursor / Windsurf / Cline
+#### Cursor / Windsurf / Trae
 
-Follow your editor's MCP configuration and add:
+按照编辑器的 MCP 配置添加:
 
 ```bash
-npx -y skills
+npx -y @devflow-agent/core
 ```
 
 ---
 
-## 📦 What's Inside
+## 📦 核心功能
 
-| Component | Count | Description |
-|-----------|-------|-------------|
-| 🚀 **Expert Engines** | 11 | L4 Production-grade domain experts |
-| 📦 **MCP Tools** | 80+ | Professional developer tools |
-| 🧩 **Meta Agents** | 5 | Task planning & orchestration |
-| 🔌 **Platforms** | 6+ | All MCP-compatible LLMs |
-
----
-
-## 🔗 Links
-
-- 📚 [Full Documentation](.trae/skills/README.md)
-- 🛠️ [MCP Module List](mcp/README.md)
-- 📝 [Architecture v3.0 Plan](.trae/skills/SKILL_MERGE_PLAN.md)
-- 🐛 [Issues](https://github.com/badhope/skills/issues)
-- 💬 [Discussions](https://github.com/badhope/skills/discussions)
+| 组件 | 数量 | 描述 |
+|------|------|------|
+| 🚀 **核心技能** | 7 | Task Planner, Fullstack Engine, Testing Master, etc. |
+| 📋 **工作流** | 16 | 覆盖开发全周期 |
+| 🛠️ **工具映射** | 50+ | 完整的工具-技能映射 |
+| 🔌 **平台支持** | 5+ | 所有 MCP 兼容的 AI 平台 |
 
 ---
 
-## ⭐ Show your support
+## 📁 项目结构
 
-Give a ⭐ if this project helped you!
+```
+DevFlow Agent/
+├── example-agents/           # 示例智能体
+│   └── full-stack-assistant/ # 全栈开发助手
+├── packages/core/skill/      # 核心技能实现
+│   └── skills/              # 7个技能
+├── .agent-skills/           # 技能配置
+│   └── skills/config/       # 工具-技能映射
+└── README.md                # 主文档
+```
 
 ---
 
-**Built with ❤️ for the AI developer community**
+## 🔗 链接
+
+- 📚 [完整文档](../README.md)
+- 🛠️ [技能列表](../packages/core/skill/)
+- 🐛 [问题反馈](https://github.com/badhope/devflow-agent/issues)
+- 💬 [讨论区](https://github.com/badhope/devflow-agent/discussions)
+
+---
+
+## ⭐ 支持
+
+如果这个项目对您有帮助，请给一个 ⭐！
+
+---
+
+**为 AI 开发者社区构建** ❤️
