@@ -1,71 +1,69 @@
 # Code of Conduct
 
+**English** | [简体中文](#简体中文)
+
+---
+
 ## Our Pledge
 
-We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
-
-We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
+We pledge to make participation in our project a harassment-free experience for everyone, regardless of level of experience, gender, gender identity and expression, age, nationality, religion, or disability.
 
 ## Our Standards
 
-Examples of behavior that contributes to a positive environment for our community include:
+### Positive Behaviors
+- Using welcoming and inclusive language
+- Being respectful of differing viewpoints and experiences
+- Gracefully accepting constructive criticism
+- Focusing on what is best for the community
+- Showing empathy towards other community members
 
-- Demonstrating empathy and kindness toward other people
-- Being respectful of differing opinions, viewpoints, and experiences
-- Giving and gracefully accepting constructive feedback
-- Accepting responsibility and apologizing to those affected by our mistakes
-- Focusing on what is best not just for us as individuals, but for the overall community
-
-Examples of unacceptable behavior include:
-
-- The use of sexualized language or imagery, and sexual attention or advances of any kind
-- Trolling, insulting or derogatory comments, and personal or political attacks
+### Unacceptable Behaviors
+- The use of sexualized language or imagery and unwelcome sexual attention
+- Trolling, insulting/derogatory comments, and personal or political attacks
 - Public or private harassment
-- Publishing others' private information, such as a physical or email address, without their explicit permission
-- Other conduct which could reasonably be considered inappropriate in a professional setting
+- Publishing others' private information without explicit permission
+- Other conduct which could reasonably be considered inappropriate
 
-## Enforcement Responsibilities
+## Our Responsibilities
 
-Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, offensive, or harmful.
-
-## Scope
-
-This Code of Conduct applies within all community spaces, and also applies when an individual is officially representing the community in public spaces.
+Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team. All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances.
 
-All complaints will be reviewed and investigated promptly and fairly.
+---
 
-## Enforcement Guidelines
+---
 
-Community leaders will follow these Community Impact Guidelines in determining the consequences for any action they deem in violation of this Code of Conduct:
+# 简体中文
 
-### Correction
+## 行为准则
 
-**Community Impact**: Use of inappropriate language or other behavior deemed unprofessional or unwelcome in the community.
+## 我们的承诺
 
-**Consequence**: A private, written warning from community leaders, providing clarity around the nature of the violation and an explanation of why the behavior was inappropriate.
+我们承诺让每个人都能积极参与我们的项目，无论经验水平、性别、性别认同和表达、年龄、国籍、宗教或残疾如何，都能获得无骚扰的体验。
 
-### Warning
+## 我们的标准
 
-**Community Impact**: A violation through a single incident or series of actions.
+### 积极行为
+- 使用热情和包容性的语言
+- 尊重不同的观点和经历
+- 优雅地接受建设性批评
+- 关注对社区最有利的事情
+- 对社区成员表示同理心
 
-**Consequence**: A warning with consequences for continued behavior. No interaction with the people involved for a specified period of time.
+### 不可接受的行为
+- 使用性化语言或图像，以及不受欢迎的性关注
+- 恶意攻击、侮辱/贬损评论，以及人身或政治攻击
+- 公开或私人骚扰
+- 未经明确许可发布他人的私人信息
+- 其他可能被合理认为不适当的行为
 
-### Temporary Ban
+## 我们的责任
 
-**Community Impact**: A serious violation of community standards, including sustained inappropriate behavior.
+项目维护者负责澄清可接受行为的标准，并期望对任何不可接受行为的实例采取适当和公平的纠正措施。
 
-**Consequence**: A temporary ban from any sort of interaction or public communication with the community for a specified period of time.
+## 执法
 
-### Permanent Ban
-
-**Community Impact**: Demonstrating a pattern of violation of community standards, including sustained inappropriate behavior, harassment of an individual, or aggression toward or disparagement of classes of individuals.
-
-**Consequence**: A permanent ban from any sort of public interaction within the community.
-
-## Attribution
-
-This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/), version 2.0, available at https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.
+可通过联系项目团队来报告滥用、骚扰或其他不可接受行为的实例。所有投诉都将被审查和调查，并会得到被认为是必要且适合情况的回应。

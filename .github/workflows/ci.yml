@@ -1,4 +1,4 @@
-# Thesis Specialist Platform - GitHub Actions CI/CD
+# DevFlow Agent - GitHub Actions CI/CD
 name: CI
 
 on:
@@ -15,25 +15,20 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
       with:
-        python-version: '3.10'
+        node-version: '20'
+        cache: 'npm'
 
     - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pyyaml
+      run: npm ci
 
-    - name: Validate configuration
-      run: |
-        python config-validator.py
-      shell: bash
+    - name: Type check
+      run: npm run typecheck
 
-    - name: Run unit tests
-      run: |
-        python -m unittest tests.test_agent -v
-      shell: bash
+    - name: Run tests
+      run: npm test
 
   lint:
     runs-on: ubuntu-latest
@@ -42,32 +37,27 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
       with:
-        python-version: '3.10'
+        node-version: '20'
+        cache: 'npm'
 
     - name: Install dependencies
-      run: |
-        pip install pyyaml
+      run: npm ci
 
-    - name: Check YAML syntax
-      run: |
-        python -c "import yaml; list(yaml.safe_load_all(open('agent.yaml', encoding='utf-8')))" && echo "agent.yaml: OK"
-        python -c "import yaml; list(yaml.safe_load_all(open('memory/memory-system.yaml', encoding='utf-8')))" && echo "memory-system.yaml: OK"
+    - name: Run ESLint
+      run: npm run lint
 
     - name: Check file structure
       run: |
+        echo "=== DevFlow Agent Structure ==="
         test -f agent.yaml && echo "✓ agent.yaml exists"
         test -f system-prompt.md && echo "✓ system-prompt.md exists"
         test -f README.md && echo "✓ README.md exists"
-        test -f README_zh.md && echo "✓ README_zh.md exists"
-        test -d skills/engines && echo "✓ skills/engines exists"
-        test -d skills/meta && echo "✓ skills/meta exists"
-        test -d tools && echo "✓ tools exists"
-        test -d memory && echo "✓ memory exists"
-        test -d utils && echo "✓ utils exists"
-        test -d tests && echo "✓ tests exists"
+        test -d workflow/ && echo "✓ workflow/ exists"
+        test -d knowledge/ && echo "✓ knowledge/ exists"
+        test -d tests/ && echo "✓ tests/ exists"
 
   build:
     runs-on: ubuntu-latest
@@ -76,44 +66,35 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Count files
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build project
+      run: npm run build
+
+    - name: Count project statistics
       run: |
-        echo "=== Project Statistics ==="
+        echo "=== DevFlow Agent Statistics ==="
         echo "Total files:"
-        find . -type f -not -path './.git/*' | wc -l
+        find . -type f -not -path './.git/*' -not -path './node_modules/*' | wc -l
         echo ""
-        echo "SKILL files:"
-        find . -name "SKILL.md" -not -path './.git/*' | wc -l
+        echo "Workflow definitions:"
+        find . -name "stages.yaml" -not -path './.git/*' | wc -l
+        echo ""
+        echo "Intent definitions:"
+        find . -name "intent.yaml" -not -path './.git/*' | wc -l
         echo ""
         echo "Tool definitions:"
-        find ./tools -name "tool.yaml" -not -path './.git/*' | wc -l
+        find . -name "tools.yaml" -not -path './.git/*' | wc -l
         echo ""
-        echo "Memory stores:"
-        find ./memory/stores -name "*.json" -not -path './.git/*' | wc -l
-
-    - name: Verify expert engines
-      run: |
-        echo "=== Expert Engines ==="
-        for engine in topic literature structure writing english data-analysis reference format; do
-          if [ -f "skills/engines/${engine}-expert/SKILL.md" ]; then
-            echo "✓ ${engine}-expert"
-          else
-            echo "✗ ${engine}-expert MISSING"
-            exit 1
-          fi
-        done
-
-    - name: Verify meta agents
-      run: |
-        echo "=== Meta Agents ==="
-        for agent in coordinator task-planner reviewer progress-tracker; do
-          if [ -f "skills/meta/${agent}/SKILL.md" ]; then
-            echo "✓ ${agent}"
-          else
-            echo "✗ ${agent} MISSING"
-            exit 1
-          fi
-        done
+        echo "Test cases:"
+        find . -name "test_cases.yaml" -not -path './.git/*' | wc -l
 
   quality-check:
     runs-on: ubuntu-latest
@@ -122,41 +103,30 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Check for required files
+    - name: Check required files
       run: |
         echo "=== Required Documentation ==="
         test -f LICENSE && echo "✓ LICENSE"
         test -f CONTRIBUTING.md && echo "✓ CONTRIBUTING.md"
         test -f CODE_OF_CONDUCT.md && echo "✓ CODE_OF_CONDUCT.md"
-        test -f SECURITY.md && echo "✓ SECURITY.md"
-        test -f SUPPORT.md && echo "✓ SUPPORT.md"
         test -f .gitignore && echo "✓ .gitignore"
         test -f .github/workflows/ci.yml && echo "✓ CI workflow"
 
-  test-utils:
+  security-check:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
       with:
-        python-version: '3.10'
+        node-version: '20'
+        cache: 'npm'
 
     - name: Install dependencies
-      run: |
-        pip install pyyaml
+      run: npm ci
 
-    - name: Test routing optimizer
-      run: |
-        python -c "from utils.routing_optimizer import RoutingOptimizer; r = RoutingOptimizer(); print('✓ RoutingOptimizer works')"
-
-    - name: Test error handler
-      run: |
-        python -c "from utils.error_handler import ErrorHandler; e = ErrorHandler(); print('✓ ErrorHandler works')"
-
-    - name: Test performance monitor
-      run: |
-        python -c "from utils.performance import PerformanceMonitor; p = PerformanceMonitor(); print('✓ PerformanceMonitor works')"
+    - name: Audit dependencies
+      run: npm audit --audit-level=high
